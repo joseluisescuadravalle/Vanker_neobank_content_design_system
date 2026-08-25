@@ -11,7 +11,8 @@ out, and is it settled.
    logo when available. 40px.
 2. **Name:** the counterparty or merchant (`title`, 600), one line, truncated with an
    ellipsis.
-3. **Meta:** category and time, or a status ("Groceries · 14:32", "Subscription").
+3. **Meta:** the category and the time, always shown ("Groceries · 2:32 pm"). A status
+   tag may follow when relevant ("Subscription", "Pending").
    `body-sm`, `color.text-secondary`, one line.
 4. **Amount:** trailing, right-aligned, tabular numbers, European format.
 
@@ -38,7 +39,8 @@ Rows are grouped under date headers: "Today", "Yesterday", then a full date
 
 - **Name:** the real counterparty or merchant. If it is unknown, show the raw
   description rather than inventing a name.
-- **Meta:** one line, category and time or a status, never both crammed together.
+- **Meta:** always show the time, in 12-hour format with am/pm ("2:32 pm", "9:00 am"),
+  paired with the category or a status. Keep it to one line.
 - **Amounts:** European format (€ after the amount, dot thousands, comma decimals),
   tabular numbers. See `../../terminology/glossary.md`.
 - Keep the name and meta each to a single line; the amount is never truncated.
@@ -53,7 +55,7 @@ Rows are grouped under date headers: "Today", "Yesterday", then a full date
 ## Accessibility
 
 - The row is a single focusable control with one meaningful name that combines the
-  parts, for example "Mercadona, 52,40 euros out, groceries, today at 14:32".
+  parts, for example "Mercadona, 52,40 euros out, groceries, today at 2:32 pm".
 - In or out is conveyed by the sign and by words for screen readers ("received" /
   "sent"), never by color alone.
 - The pending or failed status is announced, not shown by color alone.

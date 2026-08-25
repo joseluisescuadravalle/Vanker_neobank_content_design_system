@@ -71,3 +71,9 @@ to avoid.
 - Placeholders follow the same order: `{amount} €`.
 - Amounts always use tabular numbers (see `../components/foundations/typography.md`).
 - Thousands are separated by a dot, decimals by a comma: `2.540,00 €`.
+
+## Time and date format
+
+- Clock times use the 12-hour format with a space and lowercase am/pm: `2:32 pm`,
+  `9:00 am`. Transaction times are always shown.
+- Date headers read "Today", "Yesterday", then day month year: `5 May 2026`.

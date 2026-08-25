@@ -67,10 +67,12 @@ to avoid.
 ## Money format
 
 - The euro symbol goes **after** the amount, with a space (European convention):
-  `150 €`, `2.540,00 €`. Never before the amount.
+  `150 €`, `52,40 €`. Never before the amount.
+- Thousands are separated by a dot, decimals by a comma: `2.540,75 €`.
+- **Show decimals only when the amount has cents.** A round amount shows no decimals
+  (`150 €`, `2.540 €`), never `150,00 €`. With cents, show exactly two (`52,40 €`).
 - Placeholders follow the same order: `{amount} €`.
 - Amounts always use tabular numbers (see `../components/foundations/typography.md`).
-- Thousands are separated by a dot, decimals by a comma: `2.540,00 €`.
 
 ## Time and date format
 

@@ -9,9 +9,10 @@ happens when they tap it.
 
 - Lead with a verb. Say the specific action, not "OK", "Submit", or "Continue" when a
   clearer verb exists.
-- Match the label to the outcome. "Send {amount} €" beats "Confirm" on a payment button.
+- Match the label to the outcome ("Send money", not "Confirm"). Never put an amount or any data value in the label.
 - Keep it short: an action verb phrase, 3 words maximum.
-- A button label is only the action. Never put a message, status, notification, or toast text in a button.
+- A button label is only the action. Never put an amount, a message, a status, a notification, or toast text in a button.
+- When a button confirms an action named in a heading or title, it uses the same words as that heading ("Confirm payment" title -> "Confirm payment" button).
 - Sentence case, no ending period, no emoji.
 - One primary action per screen. Secondary actions are lower emphasis.
 - Be honest about consequence. A destructive action says so ("Delete space"), it never
@@ -26,11 +27,11 @@ happens when they tap it.
 
 | Context | Primary (Do) | Avoid |
 | --- | --- | --- |
-| Send money | Send {amount} € | Confirm |
+| Send a payment | Send money | Confirm |
 | Add a card | Add card | Submit |
 | Create a space | Create space | OK |
 | Confirm identity | Confirm identity | Proceed |
-| Move money to a space | Move {amount} € | Continue |
+| Move money to a space | Move money | Continue |
 | Freeze a lost card | Freeze card | Manage |
 | Delete a space | Delete space | Remove |
 | Dismiss a promo | Not now | Cancel |
@@ -40,4 +41,4 @@ happens when they tap it.
 - Label starts with a verb, except neutral secondaries ("Cancel", "Not now", "Back").
 - 3 words or fewer.
 - No ending punctuation, no emoji.
-- Money actions state the amount where it is known.
+- Labels contain no amounts or other data values.

@@ -21,7 +21,7 @@ Rows are grouped under date headers: "Today", "Yesterday", then a full date
 
 ## Amount and sign convention
 
-- **Incoming:** a leading plus and `color.success-text` (green): `+150,00 €`.
+- **Incoming:** a leading plus and `color.success-text` (green): `+150 €`.
 - **Outgoing:** a leading minus sign (the real minus, not a hyphen) and
   `color.text-primary`: `−52,40 €`.
 - The sign carries the meaning; color never carries it alone.

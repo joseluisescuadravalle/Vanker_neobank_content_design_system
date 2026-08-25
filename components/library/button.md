@@ -44,8 +44,8 @@ Rule: one Primary **or** one Accent per screen, never both competing as main act
 ## Content rules
 
 - The label is an action verb phrase, 3 words maximum.
-- Never put a message, status, notification, or toast text in a button.
-- Match the label to the outcome ("Send 150 €", not "Confirm"). See `../../patterns/ctas.md`.
+- Never put an amount, a message, a status, a notification, or toast text in a button.
+- Match the label to the outcome ("Send money", not "Confirm"). Never put an amount in the label. See `../../patterns/ctas.md`.
 
 ## Accessibility
 
@@ -80,7 +80,7 @@ foundations already define.
     "icon": { "size": "icon.md", "gap": "space.2" },
     "press": { "scale": 0.97, "duration": "motion.duration.fast", "easing": "motion.easing.standard" },
     "focus": "focus.ring",
-    "content": { "label": "action verb, max 3 words", "forbid": ["message", "status", "notification", "toast"] }
+    "content": { "label": "action verb, max 3 words", "forbid": ["amount", "message", "status", "notification", "toast"] }
   }
 }
 ```

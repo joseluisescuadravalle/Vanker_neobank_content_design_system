@@ -14,7 +14,7 @@ destructive action.
 Rules:
 - State exactly what will happen: what, how much, to whom, when, and any fee.
 - No hidden surprises. If there is a fee or a delay, it appears here.
-- The primary button restates the action, for example "Send {amount} €" (see `ctas.md`).
+- The primary button is a clear action verb ("Send money"); it never repeats the amount, which is already shown in the summary (see `ctas.md`).
 - For destructive actions, name the consequence and make the safe choice the easy one.
 
 Examples:

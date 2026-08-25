@@ -15,7 +15,7 @@ with a scrim and use the `overlay` elevation role.
 ## Bottom sheet
 
 - **Anatomy:** a grab handle, an optional short title, the content, and the actions
-  (primary, then a secondary "Cancel").
+  stacked full width (the primary on top, "Cancel" below).
 - **Shape:** rounded top corners at `radius.2xl` (28px); it meets the bottom edge.
 - **Motion:** slides up over `motion.duration.moderate` (240ms) with
   `motion.easing.standard`; leaves with `motion.easing.exit`.
@@ -26,8 +26,8 @@ with a scrim and use the `overlay` elevation role.
 
 ## Modal dialog
 
-- **Anatomy:** a title (a question for decisions), a short body, and an actions row
-  (secondary "Cancel", then the primary or destructive action).
+- **Anatomy:** a title (a question for decisions), a short body, and the actions
+  stacked full width: the primary or destructive action on top, "Cancel" below.
 - **Shape:** centered card at `radius.xl` (20px), `overlay` shadow.
 - **Motion:** fades and scales in from 0.96 over `motion.duration.base`.
 - **Destructive content:** name the consequence and whether it can be undone ("Deleting
@@ -46,6 +46,9 @@ with a scrim and use the `overlay` elevation role.
 - The primary button matches the words of the sheet or modal title that names the action ("Confirm payment", "Delete space"); never a bare
   "OK" or "Confirm". See `../../patterns/ctas.md`.
 - One primary action. The safe way out ("Cancel") is always present.
+- Actions are full-width and stacked (primary on top, "Cancel" below) in both sheets and
+  modals. Side-by-side buttons are avoided: on narrow screens they cramp and deform the
+  labels. Two very short, low-stakes labels may sit side by side as a rare exception.
 
 ## Accessibility
 
@@ -74,7 +77,7 @@ with a scrim and use the `overlay` elevation role.
       "dismiss": ["scrim", "cancel"]
     },
     "destructive": { "dismiss-on-scrim": false, "requires-explicit-choice": true },
-    "content": { "primary": "matches-title-action", "cancel": "always-present" },
+    "content": { "primary": "matches-title-action", "cancel": "always-present", "button-layout": "stacked-full-width" },
     "a11y": { "role": "dialog", "aria-modal": true, "focus-trap": true, "return-focus": true, "esc": "cancel" }
   }
 }

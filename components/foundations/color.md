@@ -73,6 +73,8 @@ accent). Light-first, with a full dark mode. Primary `#111827`, accent `#DB2777`
 - For money-in and success text on light backgrounds, use `success-text` (`#15803D`),
   not the brighter `success` fill, so it meets contrast.
 - Destructive actions use `error`, never fuchsia.
+- The fuchsia accent is for light surfaces. Do not use it as text on the dark toast (or any
+  dark surface), where it reads poorly; use white (`on-primary`) there.
 
 ## Contrast (AA checks, key pairs)
 

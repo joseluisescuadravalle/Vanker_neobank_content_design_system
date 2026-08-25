@@ -19,7 +19,14 @@
 | `icon.sm` | 16px | Inline with `body-sm`, dense UI |
 | `icon.md` | 20px | Inline with `body`, inside buttons |
 | `icon.lg` | 24px | Navigation, standalone actions (default) |
-| `icon.xl` | 32px | Feature moments, empty states |
+| `icon.xl` | 32px | Feature moments |
+| `icon.illustration` | ~56px | Illustration in empty states and onboarding (fuchsia stroke, no container) |
+
+## Roles
+
+- **UI icons** (16 to 32px): navigation, banners, toasts, buttons, and inline with text.
+- **Illustration icons** (about 56px): the focal image in empty states and in some
+  onboarding or marketing moments. Fuchsia (`color.accent`) stroke, standalone, no circle.
 
 ## Color by state
 
@@ -57,7 +64,7 @@ icon automatically.
     "style": "outline",
     "stroke": 1.75,
     "grid": 24,
-    "size": { "sm": 16, "md": 20, "lg": 24, "xl": 32 },
+    "size": { "sm": 16, "md": 20, "lg": 24, "xl": 32, "illustration": 56 },
     "color": {
       "default": "#6B7280",
       "prominent": "#111827",

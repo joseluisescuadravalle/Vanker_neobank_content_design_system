@@ -11,8 +11,9 @@ retry (see `banner-toast.md` and `../../patterns/errors.md`), not "nothing here"
 
 ## Anatomy
 
-1. **Icon** (optional): a single outline icon in a fuchsia accent circle, decorative only
-   (a small brand moment).
+1. **Icon** (optional): a single **illustration** icon (larger, see
+   `../foundations/iconography.md`), `color.accent` (fuchsia) stroke, standalone, no circle
+   (it works as the illustration of the empty state).
 2. **Title:** a short line naming what belongs here or what to do ("Set money aside").
 3. **Description:** one or two plain lines: what will appear, and why it is worth it.
 4. **Primary action** (only when there is a clear first step): a button following
@@ -39,7 +40,7 @@ Centered, with generous vertical spacing (`space.8`).
 
 ## Visual
 
-- Icon 56px in a `color.accent-subtle` circle, `color.accent` (fuchsia), for illustrative
+- Icon at illustration size (about 56px), `color.accent` (fuchsia) stroke, no circle, for
   icons. A semantic state keeps its semantic color: an all-caught-up tick is
   `color.success` on `color.success-subtle`.
 - Title `title` (18 / 700); description `body-sm`, `color.text-secondary`.
@@ -64,7 +65,7 @@ Centered, with generous vertical spacing (`space.8`).
       "no-results": { "action": "none-or-clear-filters", "tone": "neutral" },
       "all-caught-up": { "action": "none", "tone": "positive" }
     },
-    "icon": { "size": 56, "bg": "color.accent-subtle", "color": "color.accent", "decorative": true, "semantic-exception": "success tick uses color.success on color.success-subtle" },
+    "icon": { "size": 56, "role": "illustration", "color": "color.accent", "container": "none", "decorative": true, "semantic-exception": "success tick uses color.success" },
     "not-for": "failed-load (use an error with retry)",
     "content": { "forbid": ["emoji", "jokes", "blame", "bare-no-data"] }
   }

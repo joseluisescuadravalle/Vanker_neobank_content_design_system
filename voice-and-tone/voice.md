@@ -64,7 +64,7 @@ promotional copy; everywhere else Vanker is warm but serious.
 - **Reading level:** plain English aimed at roughly CEFR B1 to B2, for a wide audience
   of all ages. Short sentences. One idea per sentence where possible.
 - **Acronyms:** always expanded on first use.
-- **Numbers, money, time:** always concrete and specific ("3 to 5 working days", "a €2
+- **Numbers, money, time:** always concrete and specific ("3 to 5 working days", "a 2 €
   fee"), never vague ("shortly", "a small fee").
 
 ## Anti-voice (what Vanker is not)

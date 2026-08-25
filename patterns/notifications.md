@@ -28,19 +28,19 @@ security notifications are precise and serious; marketing may show personality.
 ## Examples
 
 **Money received**
-- Do: Title "Money in" / Body "You received €{amount} from {sender}."
+- Do: Title "Money in" / Body "You received {amount} € from {sender}."
 - Not: "You have got money!"
 
 **Payment sent**
-- Do: Title "Payment sent" / Body "€{amount} is on its way to {recipient}."
+- Do: Title "Payment sent" / Body "{amount} € is on its way to {recipient}."
 - Not: "Your transfer has been processed successfully."
 
 **Card payment**
-- Do: Title "Card payment" / Body "€{amount} at {merchant}."
+- Do: Title "Card payment" / Body "{amount} € at {merchant}."
 - Not: "A transaction occurred on your account."
 
 **Low balance**
-- Do: Title "Low balance" / Body "Your current account is down to €{balance}."
+- Do: Title "Low balance" / Body "Your current account is down to {balance} €."
 - Not: "Uh oh, running low!"
 
 **Security check**

@@ -9,7 +9,7 @@ happens when they tap it.
 
 - Lead with a verb. Say the specific action, not "OK", "Submit", or "Continue" when a
   clearer verb exists.
-- Match the label to the outcome. "Send €{amount}" beats "Confirm" on a payment button.
+- Match the label to the outcome. "Send {amount} €" beats "Confirm" on a payment button.
 - Keep it short: an action verb phrase, 3 words maximum.
 - A button label is only the action. Never put a message, status, notification, or toast text in a button.
 - Sentence case, no ending period, no emoji.
@@ -26,11 +26,11 @@ happens when they tap it.
 
 | Context | Primary (Do) | Avoid |
 | --- | --- | --- |
-| Send money | Send €{amount} | Confirm |
+| Send money | Send {amount} € | Confirm |
 | Add a card | Add card | Submit |
 | Create a space | Create space | OK |
 | Confirm identity | Confirm identity | Proceed |
-| Move money to a space | Move €{amount} | Continue |
+| Move money to a space | Move {amount} € | Continue |
 | Freeze a lost card | Freeze card | Manage |
 | Delete a space | Delete space | Remove |
 | Dismiss a promo | Not now | Cancel |

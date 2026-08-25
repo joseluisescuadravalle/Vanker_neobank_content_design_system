@@ -19,7 +19,7 @@ to avoid.
 
 | Term | Use it for | Notes |
 | --- | --- | --- |
-| euro, € | The currency | Symbol before the amount: €150. |
+| euro, € | The currency | Symbol before the amount: 150. € |
 | balance | Total money in an account | |
 | available balance | Money you can spend right now | Use when it differs from balance. |
 | fee | A charge | Always state the exact amount. Never "a small fee". |
@@ -63,3 +63,11 @@ to avoid.
 | we | Vanker | Vanker always speaks as "we". |
 | you | The customer | |
 | Hi [First name] | Greeting when the name is known | Fall back to "Hi there" when it is not. |
+
+## Money format
+
+- The euro symbol goes **after** the amount, with a space (European convention):
+  `150 €`, `2.540,00 €`. Never before the amount.
+- Placeholders follow the same order: `{amount} €`.
+- Amounts always use tabular numbers (see `../components/foundations/typography.md`).
+- Thousands are separated by a dot, decimals by a comma: `2.540,00 €`.

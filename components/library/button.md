@@ -45,7 +45,7 @@ Rule: one Primary **or** one Accent per screen, never both competing as main act
 
 - The label is an action verb phrase, 3 words maximum.
 - Never put a message, status, notification, or toast text in a button.
-- Match the label to the outcome ("Send €150", not "Confirm"). See `../../patterns/ctas.md`.
+- Match the label to the outcome ("Send 150 €", not "Confirm"). See `../../patterns/ctas.md`.
 
 ## Accessibility
 

@@ -35,7 +35,7 @@ step. Calm, human, specific.
 ### Money movement and confirmations
 Precise and transparent. State exactly what will happen, how much, and when. No
 ambiguity, no softening the numbers.
-- **Do:** "You are sending €150 to Ana. It will arrive today. There is no fee."
+- **Do:** "You are sending 150 € to Ana. It will arrive today. There is no fee."
 - **Not:** "Sending some money to Ana, should be there soon."
 
 ### Security and fraud

@@ -10,7 +10,8 @@ happens when they tap it.
 - Lead with a verb. Say the specific action, not "OK", "Submit", or "Continue" when a
   clearer verb exists.
 - Match the label to the outcome. "Send €{amount}" beats "Confirm" on a payment button.
-- Keep it short: 1 to 3 words ideally, 4 at most.
+- Keep it short: an action verb phrase, 3 words maximum.
+- A button label is only the action. Never put a message, status, notification, or toast text in a button.
 - Sentence case, no ending period, no emoji.
 - One primary action per screen. Secondary actions are lower emphasis.
 - Be honest about consequence. A destructive action says so ("Delete space"), it never
@@ -37,6 +38,6 @@ happens when they tap it.
 ## Eval hooks
 
 - Label starts with a verb, except neutral secondaries ("Cancel", "Not now", "Back").
-- 4 words or fewer.
+- 3 words or fewer.
 - No ending punctuation, no emoji.
 - Money actions state the amount where it is known.

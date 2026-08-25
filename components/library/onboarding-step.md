@@ -31,7 +31,7 @@ The tone is patient and plain (see `../../voice-and-tone/tone.md`, "Onboarding")
 - Assume no prior knowledge; never talk down.
 - One primary action per step. A skip or defer appears only for truly optional steps, at
   low emphasis.
-- Give the title and description generous separation; the screen must feel simple and airy, not crowded. Keep sentences short and separate the
+- Give the title and description generous separation; the screen must feel simple and airy, not crowded. The title-to-body gap is deliberately large (about 80px on a step and about 112px on the welcome screen, roughly double the usual section gap). Keep sentences short and separate the
   reason (the "why") from the practical detail, rather than stacking several sentences in
   one dense paragraph.
 

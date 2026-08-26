@@ -2,14 +2,21 @@
 
 **Status: tooling, not customer-facing content.**
 
-The evaluation suite for the system. It turns the rules in `/CLAUDE.md` and the
-other layers into checks: does a generated string stay on-brand and compliant?
+The evaluation suite for Vanker's content design system. It answers one question: does a
+piece of copy generated with this system stay **on-brand and compliant**?
 
-This is where the project connects to evaluation practice: assertions derived from
-the `never` / `always` rules, a golden set of inputs with expected behavior, and a
-rubric for an LLM-as-judge that scores on-brand and compliance.
+## Files
 
-Contents (to be added):
-- `assertions.md` — rule-based pass/fail checks.
-- `golden-set/` — input cases with expected output or expected behavior.
-- `rubric.md` — LLM-as-judge scoring rubric.
+- `approach.md` — the strategy: the two eval layers, the golden set, and the loop. Read
+  this first.
+- `assertions.md` — the catalog of deterministic (code-checkable) rules.
+- `assertions.py` — a runnable starter implementing the deterministic checks.
+- `golden-set/` — the fixed set of test cases (`cases.jsonl`) with expected behavior.
+- `rubric.md` — the LLM-as-judge scoring rubric for subjective quality.
+- `judge-prompt.md` — the prompt template for the judge model.
+
+## Where the rules come from
+
+Every "Eval hooks" block across the system (in `../patterns/`, `../components/`, and
+`../compliance/`) is a source of checks. `assertions.md` collects the deterministic ones;
+`rubric.md` covers the ones that need judgment.

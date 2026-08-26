@@ -15,3 +15,10 @@ The fixed set of representative tasks the system is measured against. Each line 
 
 Grow the set as new surfaces and edge cases appear. Keep it small enough to run often and
 representative enough to catch regressions.
+
+## Running it
+
+`python run_golden.py` (from `evals/`) runs the deterministic layer over every case that
+carries an approved `context.candidate`, and skips the ones that still need a model to
+generate a candidate. A case with `expect_fail: true` is a **negative test**: it is OK
+precisely when the checks catch it. The LLM-as-judge layer (`rubric.md`) runs separately.

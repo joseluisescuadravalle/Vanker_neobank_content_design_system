@@ -17,7 +17,7 @@ PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
     "can't lose", "cannot lose", "beat the market", "guaranteed approval",
 ]
-KNOWN_ACRONYMS = ["KYC", "APR", "SCA", "VoP", "IBAN", "BIC", "SEPA", "PIN", "2FA", "CVV"]
+MUST_EXPAND = ["KYC", "APR", "SCA", "VoP", "BIC", "2FA", "CVV"]  # IBAN, PIN, SEPA: widely understood
 GENERIC_CTA = {"ok", "submit", "confirm", "continue", "done", "next", "proceed"}
 
 EMOJI = re.compile("[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]")
@@ -54,7 +54,7 @@ def no_prohibited_claims(text, surface=None):
 
 def acronyms_expanded(text, surface=None):
     missing = []
-    for a in KNOWN_ACRONYMS:
+    for a in MUST_EXPAND:
         if re.search(r"\b" + re.escape(a) + r"\b", text) and (a + " (") not in text:
             missing.append(a)
     return (not missing, ("not expanded: " + ", ".join(missing)) if missing else "ok")

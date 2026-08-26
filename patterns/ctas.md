@@ -9,6 +9,9 @@ happens when they tap it.
 
 - Lead with a verb. Say the specific action, not "OK", "Submit", or "Continue" when a
   clearer verb exists.
+- Generic labels ("Continue", "OK", "Submit", "Confirm", "Done", "Next", "Proceed") are
+  never a primary action. Neutral labels are allowed only for a secondary or dismissive
+  action ("Cancel", "Back", "Not now").
 - Match the label to the outcome ("Send money", not "Confirm"). Never put an amount or any data value in the label.
 - Keep it short: an action verb phrase, 3 words maximum.
 - A button label is only the action. Never put an amount, a message, a status, a notification, or toast text in a button.

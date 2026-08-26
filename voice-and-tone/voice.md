@@ -63,7 +63,8 @@ promotional copy; everywhere else Vanker is warm but serious.
   occasional. Never in errors, money movement, security, onboarding, or compliance.
 - **Reading level:** plain English aimed at roughly CEFR B1 to B2, for a wide audience
   of all ages. Short sentences. One idea per sentence where possible.
-- **Acronyms:** always expanded on first use.
+- **Acronyms:** expanded on first use, except widely-understood ones (IBAN, PIN, SEPA).
+  See `../terminology/glossary.md`.
 - **Numbers, money, time:** always concrete and specific ("3 to 5 working days", "a 2 €
   fee"), never vague ("shortly", "a small fee").
 

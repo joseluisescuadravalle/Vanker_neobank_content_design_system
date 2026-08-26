@@ -79,3 +79,13 @@ to avoid.
 - Clock times use the 12-hour format with a space and lowercase am/pm: `2:32 pm`,
   `9:00 am`. Transaction times are always shown.
 - Date headers read "Today", "Yesterday", then day month year: `5 May 2026`.
+
+## Acronyms
+
+- Expand an acronym on first use, in parentheses: KYC (Know Your Customer).
+- **Always expand:** KYC, APR (Annual Percentage Rate), VoP (Verification of Payee), SCA
+  (Strong Customer Authentication), CVV (Card Verification Value), BIC (Bank Identifier
+  Code), 2FA (two-factor authentication).
+- **Widely understood, no expansion needed:** IBAN, PIN, SEPA.
+- In customer copy, prefer the plain phrase over the acronym where possible ("confirm your
+  identity", not "KYC").

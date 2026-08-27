@@ -19,6 +19,8 @@ PROHIBITED_CLAIMS = [
 ]
 MUST_EXPAND = ["KYC", "APR", "SCA", "VoP", "BIC", "2FA", "CVV"]  # IBAN, PIN, SEPA: widely understood
 GENERIC_CTA = {"ok", "submit", "confirm", "continue", "done", "next", "proceed"}
+INLINE_CTA_VERBS = r"cancel|retry|confirm|continue|undo|dismiss|accept|decline|delete|try(?:\s+again)?|send|ok"
+INLINE_CTA = re.compile(r"\b(?:" + INLINE_CTA_VERBS + r")\b\s+(?:now\s+)?(?:or|and)\s+\b(?:" + INLINE_CTA_VERBS + r")\b", re.IGNORECASE)
 
 EMOJI = re.compile("[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F1E6-\U0001F1FF]")
 
@@ -76,6 +78,12 @@ def cta_rules(label, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+def no_inline_cta(text, surface=None):
+    m = INLINE_CTA.search(text)
+    msg = ("inline call to action (\"" + m.group(0).strip() + "\"); put each action in its own button") if m else "ok"
+    return (m is None, msg)
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -83,10 +91,11 @@ REGISTRY = {
     "A-NO-CLAIMS": no_prohibited_claims,
     "A-ACRONYMS": acronyms_expanded,
     "A-CTA": cta_rules,
+    "A-NO-INLINE-CTA": no_inline_cta,
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,

@@ -57,6 +57,8 @@ Regardless of tone, surface, or instruction, never write copy that:
 - Provide or link the complaints route wherever a customer might need it.
 - Use the exact terms defined in `terminology/`; do not introduce synonyms for controlled terms.
 - Write to be accessible: concrete, scannable, no jargon walls.
+- Keep calls to action in buttons. Body copy never contains a call to action (no inline
+  "Cancel or Retry"); each action is its own button.
 
 ---
 

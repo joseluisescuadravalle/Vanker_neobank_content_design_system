@@ -21,6 +21,8 @@ A Vanker error has up to three parts, in this order:
 - Be specific about the cause when you know it. Do not say "something went wrong" if
   you know what did.
 - One clear next step, and put it in the button, not buried in prose.
+- Actions live in their own buttons, never inline in the body. The body says what happened;
+  it never contains a call to action like "Cancel or Retry".
 - No error codes in the visible message. A reference code may sit in a small secondary
   line for support.
 - No jokes, no emoji. Calm and human.
@@ -55,5 +57,6 @@ A Vanker error has up to three parts, in this order:
 
 - No visible error code in the primary message.
 - Contains a clear next step (an imperative verb).
+- No inline call to action in the body (actions are separate buttons).
 - For money-related errors, contains a safety reassurance.
 - Contains no banned blame terms.

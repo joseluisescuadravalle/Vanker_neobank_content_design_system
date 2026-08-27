@@ -60,3 +60,45 @@ A Vanker error has up to three parts, in this order:
 - No inline call to action in the body (actions are separate buttons).
 - For money-related errors, contains a safety reassurance.
 - Contains no banned blame terms.
+
+## Modal errors (interrupting): content structure
+
+The content model for an error shown in a **modal** that interrupts the person. It is a set
+of slots, each with its own rules.
+
+### Slots
+
+- **Title** (required): one clear, direct sentence saying what happened, never blaming the
+  person. **No ending period.** One line.
+- **Body** (optional): included **only when needed**. When present, it gives more context on
+  what happened and how to solve it. It explains; it **never contains the CTA**.
+- **Actions** (one or two, never more):
+  - **Inform only** (the person can only acknowledge): a single **Close** button. Never
+    "OK".
+  - **Actionable** (there is a fix): a **primary** CTA that leads to the solution the text
+    offers (for example "Retry"), plus a **secondary** CTA to exit ("Cancel"). Stacked,
+    primary on top (see `../components/library/sheet-modal.md`).
+- **Reference code** (optional): for hard errors, a small, discreet support reference line.
+  A tertiary element, not a CTA and not body.
+
+### Rules
+
+- Two CTAs maximum in a modal error. If it needs three or more exits, rethink the error.
+- The action lives in the CTA, never inline in the body.
+
+### Examples
+
+- **Inform only:** Title "We could not load your transactions" / (no body) / **Close**.
+- **Retry:** Title "Your transfer did not go through" / Body (optional) "A technical problem
+  stopped it, and no money has left your account." / **Retry** (primary), **Cancel**
+  (secondary).
+- **Insufficient funds:** Title "You do not have enough to send this payment" / Body "Your
+  current account balance is lower than the amount." / **Add money** (primary), **Cancel**
+  (secondary).
+
+### Eval hooks (per slot)
+
+- Title has no ending period and does not blame the person.
+- Body appears only when it adds context, and never contains a CTA.
+- Inform-only errors use "Close", never "OK".
+- No more than two CTAs.

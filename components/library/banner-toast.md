@@ -87,3 +87,28 @@ disappears. Anything that must persist or needs an action is a banner (or inline
   }
 }
 ```
+
+## Toast: content structure
+
+The content model for a toast (a transient, in-app confirmation). It has one required slot
+and one optional action.
+
+### Slots
+
+- **Message** (required): states what just happened, in **past tense and calm** (never a
+  celebration): "Payment sent", "Space deleted". One short line (guideline about 50
+  characters). **No ending period, no question mark, no exclamation, no emoji.** Maximum
+  clarity and concision.
+- **Action** (optional, single): a single verb ("Undo"), **white and bold** on the dark pill
+  (never the fuchsia accent). Because the toast disappears, the same action is reachable
+  elsewhere.
+
+### Rules
+
+- The toast is never the only place important information lives (it auto-dismisses).
+- Announced politely; it does not steal focus.
+
+### Eval hooks
+
+- Message has no ending period, no "?" or "!", no emoji.
+- One short line (about 50 characters or fewer).

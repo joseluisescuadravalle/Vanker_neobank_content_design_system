@@ -58,7 +58,9 @@ promotional copy; everywhere else Vanker is warm but serious.
 - **Contractions:** used sparingly. Prefer "we will", "you are", "it is" in product,
   transactional, and any money- or security-related copy. A lighter hand with
   contractions is acceptable only in marketing.
-- **Emoji:** none, anywhere. The modern feel comes from clarity and design.
+- **Emoji:** none, with a single exception: 1-2 emoji in the title of a non-critical push
+  notification (never in security, fraud, or money-movement push, and never in a body). See
+  `../patterns/notifications.md`. The modern feel otherwise comes from clarity and design.
 - **Humor:** only in marketing and promotional surfaces, and even there, light and
   occasional. Never in errors, money movement, security, onboarding, or compliance.
 - **Reading level:** plain English aimed at roughly CEFR B1 to B2, for a wide audience

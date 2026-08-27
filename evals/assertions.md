@@ -21,6 +21,10 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-CTA` | Button label: 3 words max (aim for one), no numbers/amounts, no punctuation, no emoji, not a bare generic ("OK", "Confirm") | `../patterns/ctas.md`, `../components/library/button.md` |
 | `A-NO-INLINE-CTA` | Body copy contains no inline call to action ("Cancel or Retry"); actions belong in buttons | `CLAUDE.md`, `../patterns/errors.md` |
 | `A-FIELD-ERROR` | Field validation error: one sentence, ends with a period, no ?/!, not generic | `../patterns/errors.md`, `../components/library/text-field.md` |
+| `A-PUSH-TITLE` | Push title: at most 2 emoji (non-critical push only), about 40 chars | `../patterns/notifications.md` |
+| `A-PUSH-BODY` | Push body: about 120 chars (two lines) | `../patterns/notifications.md` |
+| `A-TOAST` | Toast message: no ending period, no ?/!, no emoji, short (~50 chars) | `../components/library/banner-toast.md` |
+| `A-OPTION` | Dropdown option: a few words, no ending punctuation, no emoji | `../components/library/dropdown.md` |
 
 ## Compliance
 
@@ -44,7 +48,11 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | --- | --- |
 | `cta`, `button` | `A-CTA`, `A-NO-EMOJI` only |
 | `field-error`, `validation` | `A-FIELD-ERROR`, plus the body checks (money format, banned, claims, acronyms) |
-| everything else (error, confirmation, empty-state, notification, onboarding-step, disclosure, risk-warning, security, banner, toast) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
+| `push-title` | `A-PUSH-TITLE` (emoji allowed, non-critical only), money/banned/claims; no `A-NO-EMOJI` |
+| `push-body`, `notification` | `A-PUSH-BODY` plus the body checks (no emoji) |
+| `toast` | `A-TOAST`, `A-NO-EMOJI`, plus money/banned/claims |
+| `dropdown-option`, `option` | `A-OPTION`, plus banned/claims |
+| everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only
 the CTA checks; passing an explicit list overrides the surface.

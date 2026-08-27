@@ -100,6 +100,50 @@ def field_error(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+def push_title(text, surface=None):
+    t = text.strip()
+    problems = []
+    n = len(EMOJI.findall(t))
+    if n > 2:
+        problems.append("too many emoji (" + str(n) + "); max 2 in a push title")
+    if len(t) > 40:
+        problems.append("too long (" + str(len(t)) + " chars); keep the push title to ~40")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def push_body(text, surface=None):
+    t = text.strip()
+    if len(t) > 120:
+        return (False, "too long (" + str(len(t)) + " chars); keep the push body to ~120 (2 lines)")
+    return (True, "ok")
+
+
+def toast_msg(text, surface=None):
+    t = text.strip()
+    problems = []
+    if t.endswith("."):
+        problems.append("no ending period in a toast")
+    if "?" in t or "!" in t:
+        problems.append("no ? or ! in a toast")
+    if len(t) > 50:
+        problems.append("too long (" + str(len(t)) + " chars); keep the toast to ~50")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def option_label(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        problems.append("empty option")
+    if re.search(r"[.,:;!?]$", t):
+        problems.append("no ending punctuation in an option")
+    if EMOJI.search(t):
+        problems.append("no emoji in an option")
+    if len(t.split()) > 4:
+        problems.append("too many words; keep the option to a few")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -109,6 +153,10 @@ REGISTRY = {
     "A-CTA": cta_rules,
     "A-NO-INLINE-CTA": no_inline_cta,
     "A-FIELD-ERROR": field_error,
+    "A-PUSH-TITLE": push_title,
+    "A-PUSH-BODY": push_body,
+    "A-TOAST": toast_msg,
+    "A-OPTION": option_label,
 }
 
 
@@ -118,9 +166,13 @@ FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
+    "push-title": ["A-PUSH-TITLE", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"],
     "error": BODY_CHECKS, "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
     "notification": BODY_CHECKS, "onboarding-step": BODY_CHECKS, "disclosure": BODY_CHECKS,
-    "risk-warning": BODY_CHECKS, "security": BODY_CHECKS, "banner": BODY_CHECKS, "toast": BODY_CHECKS,
+    "risk-warning": BODY_CHECKS, "security": BODY_CHECKS, "banner": BODY_CHECKS,
+    "toast": ["A-TOAST", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "dropdown-option": ["A-OPTION", "A-NO-BANNED", "A-NO-CLAIMS"], "option": ["A-OPTION", "A-NO-BANNED", "A-NO-CLAIMS"],
 }
 
 

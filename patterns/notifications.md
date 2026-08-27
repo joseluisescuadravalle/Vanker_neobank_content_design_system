@@ -1,63 +1,54 @@
-# Notifications
+# Notifications (push)
 
 **Status: normative (rules) + example (samples).**
 
-Push notifications and in-app alerts. They are short and arrive uninvited, so every
-word counts. Tone follows the stakes (see `../voice-and-tone/tone.md`): money and
-security notifications are precise and serious; marketing may show personality.
+A push notification arrives outside the app, in the OS notification tray, and competes for
+attention. It has two slots and **no CTA** (tapping it opens the app).
 
-## Anatomy
+## Slots
 
-- **Title** — the key fact in a few words.
-- **Body** — one concise sentence with the useful detail.
+- **Title** (required): very short, **front-loaded** with the key fact. The OS renders it
+  bold; that is the platform, not our styling. Guideline: about 40 characters.
+- **Body** (required): fits one or two lines when collapsed; commas and an ending period are
+  fine. Front-loaded, with the useful detail (amount in European format). Guideline: about
+  120 characters. **No emoji in the body.**
 
-## Rules
+No CTA: the action is the tap, which opens the app.
 
-- Front-load the key fact. People read the first few words only.
-- Be specific: money notifications state the amount and who is involved.
-- Keep it tight: title around 40 characters or fewer, body around 120 or fewer.
-- No emoji, no pressure, no clickbait ("You will not believe...").
-- Security and fraud notifications are serious and always include a clear action.
-- Marketing notifications may have personality, stay honest, and are easy to ignore.
-- Never dress a money or security alert as marketing.
+## Emoji (the one exception to the no-emoji rule)
 
-## Variables
+- One or two emoji are allowed **only** in the **title** of a **non-critical** push
+  (marketing, celebration, informational).
+- **Never** in a security, fraud, or money-movement push (payment sent or received), and
+  **never** in the body.
+- An emoji is never the only carrier of meaning (a screen reader reads its name); it never
+  replaces a word.
 
-`{amount}`, `{sender}`, `{recipient}`, `{merchant}`, `{balance}`
+## Front-load
+
+Put the key fact in the first few words of both title and body; people read the tray at a
+glance.
+
+## Types
+
+| Type | Emoji in title | Tone |
+| --- | --- | --- |
+| Money in / out | No | Precise |
+| Security / fraud | No | Serious |
+| Low balance | No | Calm |
+| Marketing / celebration / info | Up to 2 | Lighter |
 
 ## Examples
 
-**Money received**
-- Do: Title "Money in" / Body "You received {amount} € from {sender}."
-- Not: "You have got money!"
-
-**Payment sent**
-- Do: Title "Payment sent" / Body "{amount} € is on its way to {recipient}."
-- Not: "Your transfer has been processed successfully."
-
-**Card payment**
-- Do: Title "Card payment" / Body "{amount} € at {merchant}."
-- Not: "A transaction occurred on your account."
-
-**Low balance**
-- Do: Title "Low balance" / Body "Your current account is down to {balance} €."
-- Not: "Uh oh, running low!"
-
-**Security check**
-- Do: Title "Confirm it is you" / Body "We paused a payment that looks unusual. Open the app to review it."
-- Not: "Suspicious activity detected."
-
-**Space target reached**
-- Do: Title "Space funded" / Body "Your Travel space has reached its target."
-- Not: "Goal complete!!!"
-
-**Marketing**
-- Do: Title "New: smarter savings" / Body "Meet the tools that help your money work harder. Take a look."
-- Not: "The savings account that will change your life forever."
+- **Money received:** Title "Money in" / Body "You received 150 € from Ana."
+- **Payment sent:** Title "Payment sent" / Body "150 € is on its way to Luis García."
+- **Security:** Title "Confirm it is you" / Body "We paused a payment that looks unusual. Open the app to review it."
+- **Low balance:** Title "Low balance" / Body "Your current account is down to 12 €."
+- **Marketing:** Title "Smarter savings ✨" / Body "Meet the tools that help your money work harder."
 
 ## Eval hooks
 
-- Money notifications state the amount.
-- Title is short (about 40 characters or fewer).
-- Security notifications include a clear action.
-- No emoji, no pressure or clickbait terms.
+- Title front-loads the key fact; about 40 characters or fewer.
+- Body about 120 characters or fewer (fits two lines); no emoji in the body.
+- Emoji (1-2) only in a non-critical title; never in security, fraud, or money-movement push.
+- Money notifications state the amount in European format.

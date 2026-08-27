@@ -102,3 +102,38 @@ of slots, each with its own rules.
 - Body appears only when it adds context, and never contains a CTA.
 - Inform-only errors use "Close", never "OK".
 - No more than two CTAs.
+
+## Field validation (inline) errors: content structure
+
+The content for a validation error shown **inline, next to the field** (not a modal). It
+does not interrupt and has a single slot: the message. It pairs with the field's error
+state (see `../components/library/text-field.md`).
+
+### The message
+
+- **One sentence**, brief and direct, ending with a period. A comma is fine if a single
+  clear sentence needs one, but **never two sentences**, and never two different messages.
+- **Specific and useful**: it compares what the person typed with what the field expects and
+  gives the hint to fix it. Never generic ("Error", "Review the data").
+- **Guidance, not blame**: state what is expected ("A postal code has 5 digits.") rather
+  than what the person did wrong.
+- Not a question, no exclamation, no humor.
+
+### Presentation and behavior
+
+- Shown in red, **with an icon and announced to screen readers** (color is never the only
+  signal), associated to the field.
+- Appears on blur or when the person pauses typing, and **clears as soon as the input
+  becomes valid**.
+
+### Examples
+
+- Postal code, 4 digits typed: "A postal code has 5 digits."
+- IBAN, wrong length: "An IBAN must contain 24 characters."
+- Email, missing "@": "An email address needs an @ sign."
+
+### Eval hooks
+
+- One sentence, ends with a period, no "?" or "!".
+- Not generic; gives a specific hint.
+- Not conveyed by color alone (text plus icon, associated to the field).

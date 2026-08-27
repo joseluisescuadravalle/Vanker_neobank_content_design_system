@@ -20,6 +20,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | --- | --- | --- |
 | `A-CTA` | Button label: 3 words max (aim for one), no numbers/amounts, no punctuation, no emoji, not a bare generic ("OK", "Confirm") | `../patterns/ctas.md`, `../components/library/button.md` |
 | `A-NO-INLINE-CTA` | Body copy contains no inline call to action ("Cancel or Retry"); actions belong in buttons | `CLAUDE.md`, `../patterns/errors.md` |
+| `A-FIELD-ERROR` | Field validation error: one sentence, ends with a period, no ?/!, not generic | `../patterns/errors.md`, `../components/library/text-field.md` |
 
 ## Compliance
 
@@ -42,6 +43,7 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | Surface | Checks applied |
 | --- | --- |
 | `cta`, `button` | `A-CTA`, `A-NO-EMOJI` only |
+| `field-error`, `validation` | `A-FIELD-ERROR`, plus the body checks (money format, banned, claims, acronyms) |
 | everything else (error, confirmation, empty-state, notification, onboarding-step, disclosure, risk-warning, security, banner, toast) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

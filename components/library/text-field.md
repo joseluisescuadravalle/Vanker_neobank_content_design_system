@@ -26,9 +26,9 @@ lives in the label and helper text, never in a placeholder alone.
   with "(optional)". Do not use asterisks.
 - **Helper text:** one short line, plain and specific ("We will use this to sign you
   in"). Not a place for legal text.
-- **Error text:** replaces the helper text, is specific, and says how to fix it, never
-  blaming the person ("This IBAN (International Bank Account Number) is too short. Please
-  check and enter all 24 characters"). See `../../patterns/errors.md`.
+- **Error text:** one clear sentence with a specific hint, never blaming the person, shown
+  in red with an icon and announced to screen readers, not color alone ("An IBAN must
+  contain 24 characters."). See `../../patterns/errors.md` (field validation errors).
 - **Character limits:** when a limit matters, show a live counter; do not silently
   truncate.
 

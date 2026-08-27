@@ -19,6 +19,7 @@ PROHIBITED_CLAIMS = [
 ]
 MUST_EXPAND = ["KYC", "APR", "SCA", "VoP", "BIC", "2FA", "CVV"]  # IBAN, PIN, SEPA: widely understood
 GENERIC_CTA = {"ok", "submit", "confirm", "continue", "done", "next", "proceed"}
+GENERIC_ERRORS = {"error", "invalid", "wrong", "incorrect", "review the data", "check the data", "review the field"}
 INLINE_CTA_VERBS = r"cancel|retry|confirm|continue|undo|dismiss|accept|decline|delete|try(?:\s+again)?|send|ok"
 INLINE_CTA = re.compile(r"\b(?:" + INLINE_CTA_VERBS + r")\b\s+(?:now\s+)?(?:or|and)\s+\b(?:" + INLINE_CTA_VERBS + r")\b", re.IGNORECASE)
 
@@ -84,6 +85,21 @@ def no_inline_cta(text, surface=None):
     return (m is None, msg)
 
 
+def field_error(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t.endswith("."):
+        problems.append("must end with a period")
+    if "?" in t or "!" in t:
+        problems.append("no ? or ! in a field error")
+    core = re.sub(r"(?<=\d)\.(?=\d)", "", t)
+    if core.count(".") > 1 or ". " in core:
+        problems.append("one sentence only (no two sentences)")
+    if t.lower().rstrip(".").strip() in GENERIC_ERRORS:
+        problems.append("too generic; give a specific hint")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -92,13 +108,16 @@ REGISTRY = {
     "A-ACRONYMS": acronyms_expanded,
     "A-CTA": cta_rules,
     "A-NO-INLINE-CTA": no_inline_cta,
+    "A-FIELD-ERROR": field_error,
 }
 
 
 BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI"]
+FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
+    "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
     "error": BODY_CHECKS, "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
     "notification": BODY_CHECKS, "onboarding-step": BODY_CHECKS, "disclosure": BODY_CHECKS,
     "risk-warning": BODY_CHECKS, "security": BODY_CHECKS, "banner": BODY_CHECKS, "toast": BODY_CHECKS,

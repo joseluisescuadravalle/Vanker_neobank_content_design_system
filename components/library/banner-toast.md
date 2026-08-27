@@ -112,3 +112,40 @@ and one optional action.
 
 - Message has no ending period, no "?" or "!", no emoji.
 - One short line (about 50 characters or fewer).
+
+## Banner: content structure
+
+The content model for a banner (a persistent, in-app message in the layout flow).
+
+### Placement
+
+- **Inline in the layout**, in the flow: it pushes content down and never floats or overlays
+  (that is a toast or a sheet). It stays until the situation is resolved or dismissed.
+- **Screen level** (top of the content, under the header) for something about the whole
+  screen, or **section level** (attached to the card or section it is about).
+
+### Slots
+
+- **Icon** (required): the semantic icon for the type (info / success / warning / error),
+  in its semantic color. Color is never the only signal; the icon and text carry meaning.
+- **Title** (required): the message in one line.
+- **Body** (optional): the plain detail, one line. It **never contains the call to action**.
+- **Action** (optional): a **button** with a verb. If tapping completes the action, it is a
+  button; if it only navigates elsewhere, say so in the label or the body.
+- **Close** (optional): for informational or dismissible banners only. A banner that requires
+  an action does **not** offer a close.
+
+### Colors (by type)
+
+| Type | Background | Icon / accent |
+| --- | --- | --- |
+| Info | `color.info-subtle` | `color.info` |
+| Success | `color.success-subtle` | `color.success` |
+| Warning | `color.warning-subtle` | `color.warning` |
+| Error | `color.error-subtle` | `color.error` |
+
+### Eval hooks
+
+- Meaning is carried by icon and text, never color alone.
+- Title is one line; the body never contains the CTA; the action is a button.
+- A banner that requires an action has no close.

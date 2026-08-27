@@ -63,8 +63,8 @@ def acronyms_expanded(text, surface=None):
 def cta_rules(label, surface=None):
     label = label.strip()
     problems = []
-    if len(label.split()) > 4:
-        problems.append("more than 4 words")
+    if len(label.split()) > 3:
+        problems.append("more than 3 words")
     if EMOJI.search(label):
         problems.append("emoji")
     if re.search(r"[.,:;!?]", label):

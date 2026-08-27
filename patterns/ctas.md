@@ -9,7 +9,7 @@ verb** (or short verb phrase) that names the action that happens on tap. Nothing
 
 - **Action verb.** The label is an action verb describing what happens on tap ("Send",
   "Cancel", "Delete", "Send money now").
-- **Length.** Aim for a single word; **four words maximum**. Include only the words the
+- **Length.** Aim for a single word; **three words maximum**. Include only the words the
   action needs, never filler ("Kindly", "Please").
 - **No numbers or amounts.** Never. The amount belongs on the screen, not on the button.
 - **No punctuation.** No period, comma, colon, exclamation mark, or question mark,
@@ -38,7 +38,7 @@ A CTA is a tight action-verb phrase, so the body-copy checks are **not** run on 
 - **Money format** (a CTA has no amounts at all).
 - **Banned or jargon terms** as a separate rule (the length and action-verb rule already
   rejects filler like "kindly").
-- **Acronym expansion** (an acronym may stay short inside the four-word limit).
+- **Acronym expansion** (an acronym may stay short inside the three-word limit).
 
 Only the CTA rules above apply, plus "no emoji".
 
@@ -53,12 +53,12 @@ Only the CTA rules above apply, plus "no emoji".
 | Dismiss a promo | Not now | Cancel |
 
 Bad CTA: "Kindly utilize your risk-free KYC €150 now". It fails **as a CTA** because it is
-far over four words, contains a number, and carries filler. The reason is the CTA
+far over three words, contains a number, and carries filler. The reason is the CTA
 structure, not "banned term" or "money format".
 
 ## Eval hooks
 
-- Four words or fewer; ideally one.
+- Three words or fewer; ideally one.
 - No numbers or amounts.
 - No punctuation (period, comma, colon, exclamation, question mark); no emoji.
 - Not a bare generic word ("OK", "Continue", ...) as a primary action.

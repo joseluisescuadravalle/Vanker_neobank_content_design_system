@@ -18,7 +18,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 
 | ID | Checks | Source |
 | --- | --- | --- |
-| `A-CTA` | Button label: 4 words max (aim for one), no numbers/amounts, no punctuation, no emoji, not a bare generic ("OK", "Confirm") | `../patterns/ctas.md`, `../components/library/button.md` |
+| `A-CTA` | Button label: 3 words max (aim for one), no numbers/amounts, no punctuation, no emoji, not a bare generic ("OK", "Confirm") | `../patterns/ctas.md`, `../components/library/button.md` |
 
 ## Compliance
 

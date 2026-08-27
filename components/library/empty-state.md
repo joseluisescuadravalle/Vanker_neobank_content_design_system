@@ -11,7 +11,7 @@ retry (see `banner-toast.md` and `../../patterns/errors.md`), not "nothing here"
 
 ## Anatomy
 
-1. **Icon** (optional): a single **illustration** icon (larger, see
+1. **Icon** (required): a single **illustration** icon (larger, see
    `../foundations/iconography.md`), `color.accent` (fuchsia) stroke, standalone, no circle
    (it works as the illustration of the empty state).
 2. **Title:** a short line naming what belongs here or what to do ("Set money aside").

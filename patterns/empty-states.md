@@ -2,52 +2,55 @@
 
 **Status: normative (rules) + example (samples).**
 
-What Vanker says when there is nothing here yet: no transactions, no spaces, no
-results. A low-stakes moment (see `../voice-and-tone/tone.md`, "Onboarding and
-education"), so the tone is warm, encouraging, and simple. No humor, no emoji.
+What Vanker shows when there is legitimately nothing here yet: no transactions, no spaces,
+no results. A low-stakes, warm moment (see `../voice-and-tone/tone.md`). This file is the
+content structure; the component visuals live in `../components/library/empty-state.md`.
 
-## Anatomy
+## Slots
 
-1. **What this is** — what will appear here, or what the feature is for.
-2. **Why it is worth it** — a short reason, when it helps.
-3. **The first step** — one clear action to fill it.
+- **Icon** (required): an illustration icon (large, fuchsia stroke, no circle), decorative
+  and `aria-hidden`. It may later become a fuller illustration.
+- **Title** (required): a short, plain, positive statement. **No ending period**, never a
+  question, no blame, no humor, no emoji. It says what will appear here or what to do, never
+  a bare "No data".
+- **Body** (required): explains what will appear and why it is worth it, in plain language,
+  one or two short sentences. Never generic.
+- **CTA** (optional): **by default there is none.** The exception is a **first-use** empty
+  state, which may carry a **single primary CTA** (a real first action, verb rules from
+  `ctas.md`). No secondary. Never add a CTA to a no-results or all-caught-up state.
 
-## Rules
+## The body and the CTA
 
-- Explain what will show up here. Do not just say "nothing yet".
-- Encourage the first step with one clear action (see `ctas.md`).
-- Never make the person feel behind or at fault.
-- Keep it short and warm. No jokes (humor is marketing only), no emoji.
+- When there **is** a CTA (first use), the body **does not contain the call to action**; the
+  action lives in the CTA.
+- When there is **no** CTA (no-results, all-caught-up), the body may give brief guidance on
+  what to do, since there is no button.
 
-## Variables
+## Variants
 
-`{query}`
+| Variant | CTA | Tone |
+| --- | --- | --- |
+| First use (no data yet) | One primary CTA | Encouraging |
+| No results (search / filter) | None | Neutral, not a failure |
+| All caught up (nothing pending) | None | Positive |
 
-## Examples
+## Tone and accessibility
 
-**No transactions**
-- Do: "Your transactions will show up here. Make your first payment or add money to get started."
-- Not: "No transactions."
+- Warm and encouraging; never make the person feel behind or at fault.
+- The message is real text, never baked into the image; the layout is centered.
 
-**No spaces**
-- Do: "Spaces help you set money aside for what matters. Create your first space to begin."
-- Not: "No spaces yet."
+## Examples (slot format)
 
-**No card**
-- Do: "You do not have a card yet. Add one to start paying with Vanker."
-- Not: "Empty."
-
-**Search, no results**
-- Do: "We could not find anything for \"{query}\". Try another word or check the spelling."
-- Not: "No results."
-
-**Notifications, all read**
-- Do: "You are all caught up. New updates from Vanker will appear here."
-- Not: "Nothing here."
+- **First use:** Icon (savings) / Title "Set money aside" / Body "Spaces help you save for
+  what matters, like a trip or a rainy day." / CTA "Create space".
+- **No results:** Icon (search) / Title "No matches found" / Body "We could not find anything
+  for that search. Check the spelling or try another word." / (no CTA).
+- **All caught up:** Icon (check) / Title "You are all caught up" / Body "New updates from
+  Vanker will appear here." / (no CTA).
 
 ## Eval hooks
 
-- States what will appear here or what the feature is for.
-- Contains a next-step action where one exists.
-- Does not shame the person or imply they are behind.
+- Title has no ending period and is not a question.
+- Body is not generic and, in a first-use state, does not contain the CTA.
+- A CTA appears only in a first-use state; never in no-results or all-caught-up.
 - No emoji, no jokes.

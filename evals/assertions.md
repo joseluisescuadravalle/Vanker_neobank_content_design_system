@@ -18,7 +18,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 
 | ID | Checks | Source |
 | --- | --- | --- |
-| `A-CTA` | Button label: 3 words max, no amount, no emoji, no ending punctuation, not a bare generic ("OK", "Confirm") | `../patterns/ctas.md`, `../components/library/button.md` |
+| `A-CTA` | Button label: 4 words max (aim for one), no numbers/amounts, no punctuation, no emoji, not a bare generic ("OK", "Confirm") | `../patterns/ctas.md`, `../components/library/button.md` |
 
 ## Compliance
 
@@ -31,3 +31,17 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 Add a check as a function in `assertions.py`, register it with a new ID, and reference that
 ID from the golden-set cases. The catalog is meant to grow as the system does; not every
 rule is code-checkable (those live in `rubric.md`).
+
+## Surface → checks (important)
+
+Not every check applies to every surface. A **CTA is not body copy**, so it gets only its
+own rules; the money-format, banned-terms, and acronym-expansion checks do not run on it.
+Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`):
+
+| Surface | Checks applied |
+| --- | --- |
+| `cta`, `button` | `A-CTA`, `A-NO-EMOJI` only |
+| everything else (error, confirmation, empty-state, notification, onboarding-step, disclosure, risk-warning, security, banner, toast) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
+
+The app must select checks by surface. `assertions.run(text, surface="cta")` returns only
+the CTA checks; passing an explicit list overrides the surface.

@@ -63,12 +63,12 @@ def acronyms_expanded(text, surface=None):
 def cta_rules(label, surface=None):
     label = label.strip()
     problems = []
-    if len(label.split()) > 3:
-        problems.append("more than 3 words")
+    if len(label.split()) > 4:
+        problems.append("more than 4 words")
     if EMOJI.search(label):
         problems.append("emoji")
-    if re.search(r"[.!?]$", label):
-        problems.append("ending punctuation")
+    if re.search(r"[.,:;!?]", label):
+        problems.append("punctuation (no . , : ; ! ? in a CTA)")
     if re.search(r"\d.*€|€.*\d|\d", label):
         problems.append("contains a number or amount")
     if label.lower() in GENERIC_CTA:
@@ -86,8 +86,23 @@ REGISTRY = {
 }
 
 
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS"]
+CTA_CHECKS = ["A-CTA", "A-NO-EMOJI"]
+SURFACE_CHECKS = {
+    "cta": CTA_CHECKS, "button": CTA_CHECKS,
+    "error": BODY_CHECKS, "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
+    "notification": BODY_CHECKS, "onboarding-step": BODY_CHECKS, "disclosure": BODY_CHECKS,
+    "risk-warning": BODY_CHECKS, "security": BODY_CHECKS, "banner": BODY_CHECKS, "toast": BODY_CHECKS,
+}
+
+
+def checks_for(surface):
+    """Which assertions apply to a given surface. CTAs get only their own checks."""
+    return SURFACE_CHECKS.get((surface or "").lower(), BODY_CHECKS)
+
+
 def run(text, assertion_ids=None, surface=None):
-    ids = assertion_ids or list(REGISTRY)
+    ids = assertion_ids or (checks_for(surface) if surface else list(REGISTRY))
     results = {}
     for aid in ids:
         fn = REGISTRY.get(aid)
@@ -111,3 +126,6 @@ if __name__ == "__main__":
         out = run(text, ids)
         verdict = "PASS" if all(r["passed"] for r in out.values()) else "FAIL"
         print(f"[{verdict}] {text!r} -> {out}")
+    print("\n-- surface-based: a CTA only gets its own checks --")
+    bad = "Kindly utilize your risk-free KYC €150 now!"
+    print("cta:", run(bad, surface="cta"))

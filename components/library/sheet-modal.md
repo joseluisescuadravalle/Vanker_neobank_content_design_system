@@ -43,7 +43,7 @@ with a scrim and use the `overlay` elevation role.
 ## Content rules
 
 - Titles are short; decision modals use a question ("Delete this space?").
-- The primary button matches the words of the sheet or modal title that names the action ("Confirm payment", "Delete space"); never a bare
+- The primary button matches the words of the sheet or modal title that names the action ("Confirm payment", "Delete"); never a bare
   "OK" or "Confirm". See `../../patterns/ctas.md`.
 - One primary action. The safe way out ("Cancel") is always present.
 - Actions are full-width and stacked (primary on top, "Cancel" below) in both sheets and

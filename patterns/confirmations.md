@@ -45,3 +45,40 @@ Examples:
 - Destructive confirmations name the consequence and whether it can be undone.
 - Post-action confirmations use past tense and include the key detail.
 - No emoji, no exclamation-heavy celebration.
+
+## Confirmation dialog: content structure
+
+For a dialog that asks the person to confirm an action before it happens, especially a
+destructive one. (When the action needs a data summary before confirming, such as a
+payment, use the review sheet described above instead.) It is a set of slots.
+
+### Slots
+
+- **Title** (required): asks the person to confirm the action, **starting with the action
+  verb and naming the object**, as a question ("Delete this space?"). Never vague ("Are you
+  sure?"), never just the verb ("Delete?").
+- **Body** (optional): included **only if the action is irreversible or has consequences**.
+  It states the consequence ("You will not be able to get the data back."). It never
+  repeats the title and never contains a CTA.
+- **Actions** (exactly two, stacked, primary on top):
+  - **Primary:** the action verb from the title ("Delete").
+  - **Secondary:** the way out ("Cancel").
+
+### Rules
+
+- Exactly two CTAs.
+- The primary CTA is the title's verb; the secondary is the exit.
+- A destructive dialog does not dismiss on a scrim tap (see
+  `../components/library/sheet-modal.md`).
+
+### Example
+
+- Title "Delete this space?" / Body (only if irreversible) "You will not be able to get the
+  data back." / **Delete** (primary), **Cancel** (secondary).
+
+### Eval hooks (per slot)
+
+- Title starts with the action verb and is a question, never "Are you sure".
+- Body appears only for irreversible or consequential actions, never repeats the title, and
+  never contains a CTA.
+- Exactly two CTAs; primary uses the title's verb; secondary is the exit.

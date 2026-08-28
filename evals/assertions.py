@@ -15,6 +15,7 @@ BANNED_TERMS = [
     "a small fee", "low fees", "fees may apply",
     "otp", "one-time password", "token",
     "something went wrong", "oops", "unexpected error", "technical difficulties",
+    "please wait", "almost there", "just a moment", "hang tight", "working on it",
 ]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
@@ -368,6 +369,44 @@ def money_accounted(text, surface=None):
     return (True, "ok")
 
 
+PARTICIPLE_RE = re.compile(r"^[A-Z][a-z]+ing\b")
+VAGUE_LOADING = ["loading", "processing", "please wait", "one moment", "wait"]
+
+
+def loading_message(text, surface=None):
+    """A waiting status line: says what is happening, as it happens."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty status message")
+    if EMOJI.search(t):
+        problems.append("no emoji in a status message")
+    if t.endswith("."):
+        problems.append("no ending period on a status line; it is a label, not a sentence")
+    if "!" in t or "?" in t:
+        problems.append("no exclamation or question mark while someone waits")
+    if t.rstrip(".").strip().lower() in VAGUE_LOADING:
+        problems.append("'" + t + "' says nothing; name what is happening ('Checking your details')")
+    elif not PARTICIPLE_RE.match(t):
+        problems.append("start with what we are doing, in the present participle ('Checking your details', 'Sending your payment')")
+    if len(t) > 45:
+        problems.append("too long (" + str(len(t)) + " chars); keep a status line short")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def skeleton_placeholder(text, surface=None):
+    """A skeleton carries no content: no text, and above all no money."""
+    t = text.strip()
+    problems = []
+    if re.search(r"\d", t):
+        problems.append("a skeleton never shows digits: a placeholder amount that resolves into a different one is the worst failure in this system")
+    if "\u20ac" in t:
+        problems.append("a skeleton never shows a currency symbol")
+    if re.search(r"[A-Za-z]", t):
+        problems.append("a skeleton carries no text; it is a grey outline of the layout")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -394,6 +433,8 @@ REGISTRY = {
     "A-NEGATION": spelled_negation,
     "A-SYSTEM-ERROR": system_error,
     "A-MONEY-ACCOUNTED": money_accounted,
+    "A-LOADING": loading_message,
+    "A-SKELETON": skeleton_placeholder,
 }
 
 
@@ -428,6 +469,9 @@ SURFACE_CHECKS = {
     "system-error": BODY_CHECKS + ["A-SYSTEM-ERROR"],
     "system-error-title": ["A-SYSTEM-ERROR", "A-NO-EMOJI", "A-NO-BANNED", "A-NEGATION"],
     "system-error-screen": BODY_CHECKS + ["A-SYSTEM-ERROR", "A-MONEY-ACCOUNTED"],
+    "loading": ["A-LOADING", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "loading-screen": BODY_CHECKS + ["A-MONEY-ACCOUNTED"],
+    "skeleton": ["A-SKELETON"],
 }
 
 

@@ -7,10 +7,11 @@ messages, empty states, confirmations, and notifications. Each pattern states th
 rule and shows labeled examples.
 
 Contents:
-- `ctas.md`, `errors.md`, `system-errors.md`, `empty-states.md`, `confirmations.md`,
-  `notifications.md`, `success.md`, `forms.md`.
+- `ctas.md`, `errors.md`, `system-errors.md`, `loading.md`, `empty-states.md`,
+  `confirmations.md`, `notifications.md`, `success.md`, `forms.md`.
 
 `errors.md` holds the anatomy of an error and the rules for field validation and modal
 errors. `system-errors.md` covers the situations where the problem is ours or the
 network's: offline, our systems failing, maintenance, an expired session, content that no
-longer exists, and a required update.
+longer exists, and a required update. `loading.md` covers the waiting itself: which
+indicator to show, what to say while it runs, and what to say when it runs long.

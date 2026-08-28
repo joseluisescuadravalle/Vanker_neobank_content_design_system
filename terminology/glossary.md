@@ -83,7 +83,9 @@ to avoid.
 
 - Clock times use the 12-hour format with a space and lowercase am/pm: `2:32 pm`,
   `9:00 am`. Transaction times are always shown.
-- Date headers read "Today", "Yesterday", then day month year: `5 May 2026`.
+- Date headers use "Today" only for the current day. Every earlier day shows its
+  concrete date as day month year (`1 September 2026`) — "Yesterday" is not used, so a
+  day that is not today always reads as its actual date.
 
 ## Acronyms
 

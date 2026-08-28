@@ -334,7 +334,8 @@ def masked_contact(text, surface=None):
 
 
 MONEY_OUTCOME = re.compile(r"\b(payment|transfer|money|funds|paid|charged|sent it|debited)\b", re.IGNORECASE)
-NEG_CONTRACTION = re.compile(r"\b\w+n['\u2019]t\b", re.IGNORECASE)
+# Outcome auxiliaries only: "don't" in "we don't charge a fee" is a habit, not an outcome.
+NEG_CONTRACTION = re.compile(r"\b(?:could|did|has|have|had|is|are|was|were|wo|ca|would|should)n['\u2019]t\b", re.IGNORECASE)
 ERROR_CODE = re.compile(r"\b(?:error|code)\s*[:#]?\s*\d{3,}\b|\b[45]\d{2}\s+error\b", re.IGNORECASE)
 REASSURANCE = re.compile(r"money is safe|no money has|money has not|nothing has left|has left your account|on its way|do not know yet|money hasn't", re.IGNORECASE)
 
@@ -459,6 +460,27 @@ def intro_cta(text, surface=None):
     return (False, "'" + t + "' is not a flow-intro button; use 'Start' (primary) or 'Not now' (secondary)")
 
 
+LIMIT_STATEMENT = re.compile(r"we do not|we never|we don['\u2019]t|stays on your phone|stay on your phone", re.IGNORECASE)
+NEEDS_ACCESS = re.compile(r"we need (?:access|your|the)|needs access|allow access|grant (?:us )?access", re.IGNORECASE)
+
+
+def permission_body(text, surface=None):
+    """A permission-priming body: what happens with it, then what we will not do."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty permission body")
+    if NEEDS_ACCESS.search(t):
+        problems.append("no 'we need access' framing; say what the person will do and what it is for")
+    if not LIMIT_STATEMENT.search(t):
+        problems.append("missing the limit sentence: say what Vanker will not do with the permission (this is the sentence that earns it)")
+    if not re.search(r"\bYou\b|\bYou['\u2019]ll\b|\byour\b", t):
+        problems.append("the person is the subject of what happens; write it from their side")
+    if re.search(r"\bat risk\b|\bunsafe\b|\bnot protected\b", t, re.IGNORECASE):
+        problems.append("no fear framing on a permission screen")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -490,6 +512,7 @@ REGISTRY = {
     "A-CARD-HEADLINE": carousel_headline,
     "A-CARD-BODY": carousel_body,
     "A-INTRO-CTA": intro_cta,
+    "A-PERMISSION": permission_body,
 }
 
 
@@ -531,6 +554,8 @@ SURFACE_CHECKS = {
     "carousel-body": ["A-CARD-BODY", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI"],
     "flow-intro-cta": ["A-INTRO-CTA", "A-CTA", "A-NO-EMOJI"],
     "flow-intro-body": BODY_CHECKS,
+    "permission-body": BODY_CHECKS + ["A-PERMISSION"],
+    "permission-heading": ["A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK"],
 }
 
 

@@ -19,6 +19,20 @@ promises it is writing a cheque the tap cannot cash.
 The same test catches a banner button that only navigates ("Verify" when the person lands
 on an explanation, not on verification), and a "Send" that opens a review screen.
 
+**When a label looks like it over-promises, check the heading first.** The heading and the
+CTA are one unit: the heading names the action the person is about to take, and the button
+repeats its verb. This is the rule already used in confirmations ("Delete the selection?" →
+"Delete"), and it resolves most apparent conflicts without an exception.
+
+A permission screen shows it. "Turn on camera" looks like it over-promises under a heading
+that reads "Use your camera to check your ID", because the tap does not use any camera. Under
+the heading "Turn on your camera to check your ID" it is exactly right: turning the camera on
+is what this screen is for, and taking the photo happens on the next one. The fix was the
+heading, not the button.
+
+Where the object does not fit inside three words, the button keeps the verb and drops to a
+pronoun ("Turn it on"), which still agrees with the heading.
+
 **Specificity must be true, not maximal.** Where a specific verb describes the tap, use it
 ("Send money", "Delete space"). Where it would misdescribe it, the plainer verb is the
 correct answer, and a low-commitment "Start" is better content design than an "Activate"
@@ -81,6 +95,7 @@ structure, not "banned term" or "money format".
 ## Eval hooks
 
 - The label names what happens on tap, not the goal of the flow it opens.
+- The label repeats the verb of its heading; where they disagree, the heading is checked first.
 - Three words or fewer; ideally one.
 - No numbers or amounts.
 - No punctuation (period, comma, colon, exclamation, question mark); no emoji.

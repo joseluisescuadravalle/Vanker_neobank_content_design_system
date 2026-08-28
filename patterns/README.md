@@ -8,8 +8,8 @@ rule and shows labeled examples.
 
 Contents:
 - `ctas.md`, `errors.md`, `system-errors.md`, `loading.md`, `welcome-carousel.md`,
-  `flow-intro.md`, `empty-states.md`, `confirmations.md`, `notifications.md`,
-  `success.md`, `forms.md`.
+  `flow-intro.md`, `permissions.md`, `empty-states.md`, `confirmations.md`,
+  `notifications.md`, `success.md`, `forms.md`.
 
 `errors.md` holds the anatomy of an error and the rules for field validation and modal
 errors. `system-errors.md` covers the situations where the problem is ours or the

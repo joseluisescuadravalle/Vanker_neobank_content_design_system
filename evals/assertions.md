@@ -26,6 +26,17 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-TOAST` | Toast message: no ending period, no ?/!, no emoji, short (~50 chars) | `../components/library/banner-toast.md` |
 | `A-OPTION` | Dropdown option: a few words, no ending punctuation, no emoji | `../components/library/dropdown.md` |
 
+## Forms (field text)
+
+| ID | Checks | Source |
+| --- | --- | --- |
+| `A-LABEL-IN` | Label in: short noun, sentence case, no ending period/colon/question mark, aim 1-3 words | `../patterns/forms.md`, `../components/library/text-field.md` |
+| `A-LABEL-OUT` | Label out: descriptive or interrogative, no ending period or colon | `../patterns/forms.md`, `../components/library/text-field.md` |
+| `A-LEGEND` | Legend: short, no ending period or colon, no emoji | `../patterns/forms.md` |
+| `A-HELPER` | Helper text: not a question, ~3 lines, prefers one sentence, no emoji | `../patterns/forms.md`, `../components/library/text-field.md` |
+| `A-CHECKBOX` | Checkbox label: a statement not a question, no emoji | `../components/library/checkbox.md` |
+| `A-RADIO` | Radio option: one line, no ending punctuation, no emoji | `../components/library/radio-group.md` |
+
 ## Compliance
 
 | ID | Checks | Source |
@@ -52,6 +63,13 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `push-body`, `notification` | `A-PUSH-BODY` plus the body checks (no emoji) |
 | `toast` | `A-TOAST`, `A-NO-EMOJI`, plus money/banned/claims |
 | `dropdown-option`, `option` | `A-OPTION`, plus banned/claims |
+| `label-in` | `A-LABEL-IN`, `A-NO-EMOJI`, banned/claims |
+| `label-out` | `A-LABEL-OUT`, `A-NO-EMOJI`, banned/claims, acronyms |
+| `legend` | `A-LEGEND`, `A-NO-EMOJI`, banned/claims |
+| `helper-text` | `A-HELPER`, `A-NO-EMOJI`, money/banned/claims/acronyms, `A-NO-INLINE-CTA` |
+| `placeholder` | `A-NO-EMOJI`, banned/claims (format example only) |
+| `checkbox` | `A-CHECKBOX`, `A-NO-EMOJI`, banned/claims |
+| `radio-option`, `radio` | `A-RADIO`, banned/claims |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

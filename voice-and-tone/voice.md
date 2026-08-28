@@ -45,19 +45,21 @@ off. It puts advanced tools in simple words. Smart, not smug.
 - **Not:** "Our proprietary ML fraud engine flagged an anomalous transaction vector."
 
 ### 4. Calm and trustworthy
-Vanker's register is composed. It uses contractions sparingly and avoids hype,
+Vanker's register is composed. It uses natural contractions and avoids hype,
 exclamation marks, and pressure. It is a bank: people trust it with their money, and
 the tone earns that trust. Personality and light humor appear only in marketing and
 promotional copy; everywhere else Vanker is warm but serious.
-- **Do:** "You have reached the target for your Travel space."
+- **Do:** "You've reached the target for your Travel space."
 - **Not:** "WOW! You totally smashed it!!"
 
 ## Register (how the words are set)
 
 - **Person:** Vanker speaks as "we". It addresses the person as "you".
-- **Contractions:** used sparingly. Prefer "we will", "you are", "it is" in product,
-  transactional, and any money- or security-related copy. A lighter hand with
-  contractions is acceptable only in marketing.
+- **Contractions:** yes. Natural contractions are part of Vanker's warm, plain voice,
+  including negative ones ("don't", "couldn't", "we're", "you'll"), everywhere — not only
+  in marketing. The one guardrail: in critical safety, security, or error instructions,
+  spell out the negative ("do not", "cannot") where a misread of the contraction could
+  cause harm, since "don't" can be misread as "do" by someone scanning.
 - **Emoji:** none, with a single exception: 1-2 emoji in the title of a non-critical push
   notification (never in security, fraud, or money-movement push, and never in a body). See
   `../patterns/notifications.md`. The modern feel otherwise comes from clarity and design.

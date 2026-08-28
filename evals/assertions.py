@@ -144,6 +144,87 @@ def option_label(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+def label_in(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        problems.append("empty label")
+    if re.search(r"[.:!?]$", t):
+        problems.append("no ending period, colon, or question mark on a label in")
+    if EMOJI.search(t):
+        problems.append("no emoji in a label")
+    if len(t.split()) > 4:
+        problems.append("too long for a label in; use a short noun (aim 1-3 words) and move detail to a label out")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def label_out(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        problems.append("empty label")
+    if t.endswith("."):
+        problems.append("no ending period on a label out")
+    if t.endswith(":"):
+        problems.append("no colon on a label out")
+    if EMOJI.search(t):
+        problems.append("no emoji in a label")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def legend(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        problems.append("empty legend")
+    if t.endswith(".") or t.endswith(":"):
+        problems.append("no ending period or colon on a legend")
+    if EMOJI.search(t):
+        problems.append("no emoji in a legend")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def helper_text(text, surface=None):
+    t = text.strip()
+    problems = []
+    if "?" in t:
+        problems.append("helper text is not a question")
+    if EMOJI.search(t):
+        problems.append("no emoji in helper text")
+    if len(t) > 200:
+        problems.append("too long (" + str(len(t)) + " chars); keep helper text to about three lines")
+    core = re.sub(r"(?<=\d)\.(?=\d)", "", t)
+    if len(re.findall(r"\.\s+\S", core)) >= 2:
+        problems.append("avoid several sentences separated by periods; prefer one sentence")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def checkbox_label(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        problems.append("empty checkbox label")
+    if "?" in t:
+        problems.append("a checkbox label is a statement, not a question")
+    if EMOJI.search(t):
+        problems.append("no emoji in a checkbox label")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def radio_option(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        problems.append("empty option")
+    if re.search(r"[.:;!?]$", t):
+        problems.append("no ending punctuation on a radio option")
+    if EMOJI.search(t):
+        problems.append("no emoji in an option")
+    if len(t) > 60:
+        problems.append("too long; keep a radio option to one line")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -157,6 +238,12 @@ REGISTRY = {
     "A-PUSH-BODY": push_body,
     "A-TOAST": toast_msg,
     "A-OPTION": option_label,
+    "A-LABEL-IN": label_in,
+    "A-LABEL-OUT": label_out,
+    "A-LEGEND": legend,
+    "A-HELPER": helper_text,
+    "A-CHECKBOX": checkbox_label,
+    "A-RADIO": radio_option,
 }
 
 
@@ -173,6 +260,13 @@ SURFACE_CHECKS = {
     "risk-warning": BODY_CHECKS, "security": BODY_CHECKS, "banner": BODY_CHECKS,
     "toast": ["A-TOAST", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
     "dropdown-option": ["A-OPTION", "A-NO-BANNED", "A-NO-CLAIMS"], "option": ["A-OPTION", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "label-in": ["A-LABEL-IN", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "label-out": ["A-LABEL-OUT", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS"],
+    "legend": ["A-LEGEND", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "helper-text": ["A-HELPER", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"],
+    "placeholder": ["A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "checkbox": ["A-CHECKBOX", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "radio-option": ["A-RADIO", "A-NO-BANNED", "A-NO-CLAIMS"], "radio": ["A-RADIO", "A-NO-BANNED", "A-NO-CLAIMS"],
 }
 
 

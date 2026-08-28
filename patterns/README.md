@@ -7,4 +7,5 @@ messages, empty states, confirmations, and notifications. Each pattern states th
 rule and shows labeled examples.
 
 Contents (to be added):
-- `ctas.md`, `errors.md`, `empty-states.md`, `confirmations.md`, `notifications.md`.
+- `ctas.md`, `errors.md`, `empty-states.md`, `confirmations.md`, `notifications.md`,
+  `success.md`, `forms.md`.

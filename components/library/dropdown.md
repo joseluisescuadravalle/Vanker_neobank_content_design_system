@@ -3,18 +3,25 @@
 **Status: normative.**
 
 An input for choosing one value from a short, predefined list. Distinct from a *menu*
-dropdown, which triggers actions. It reuses the text field's styling and label convention.
+dropdown, which triggers actions. It reuses the text field's styling and label model (see
+`text-field.md` and `../../patterns/forms.md`).
 
 ## Slots
 
-- **Label** (required, outside the field): a short noun in sentence case that names the
-  data, clear and concise, never a question, **no ending period**. Optional fields add
-  "(optional)". Always visible (see `text-field.md`).
+- **Label** (required): the same label model as the text field. A **label in** names the
+  field ("Document type"); a **label out** is added only when the choice needs a
+  descriptive or interrogative phrase a short label cannot carry. Sentence case, no ending
+  period. Adapt the microcopy to whichever label you use, and do not let it repeat the
+  options. Optional fields add "(optional)".
 - **Prompt** (default): the placeholder shown before a choice, "Choose an option", in muted
-  text (`color.text-tertiary`). It disappears once a value is chosen.
+  text (`color.text-tertiary`). It disappears once a value is chosen and never stands in for
+  the label.
 - **Options** (2 to 5): the predefined choices, in minimal words (1 to 3). They are
   **parallel** (same grammatical form), sentence case, **no ending punctuation**, mutually
-  exclusive, in a logical order (alphabetical, by frequency, or a meaningful order).
+  exclusive, in a logical order (alphabetical, by frequency, or a meaningful order). The
+  options **do not repeat the label's verb**: label "Profession" with options "Employee /
+  Self-employed / Student", not label "What do you do?" with options "I am self-employed /
+  I work for a company / I am a student".
 - **Selected value**: once chosen, it replaces the prompt and shows in `color.text-primary`
   (ink), like an entered value.
 
@@ -24,6 +31,8 @@ dropdown, which triggers actions. It reuses the text field's styling and label c
   searchable select or another pattern (a long dropdown is hard to scan and reach on mobile).
 - Options say the least needed to be clear; no ending punctuation, no emoji.
 - The label is always visible, so the field is identified even before a choice.
+- Do not restate the label in the options, and do not use an empty label ("Choose an
+  option") as the field's only name.
 
 ## States
 
@@ -38,7 +47,7 @@ dropdown, which triggers actions. It reuses the text field's styling and label c
 ## Visual
 
 Reuses the text field: outlined, `radius.md` (12px), 48px tall, with a chevron
-(`icon.md`) indicating it opens. Focus shows the 2px fuchsia ring.
+(`../foundations/iconography.md`) indicating it opens. Focus shows the fuchsia ring.
 
 ## Accessibility
 
@@ -52,9 +61,9 @@ Reuses the text field: outlined, `radius.md` (12px), 48px tall, with a chevron
 ```json
 {
   "select": {
-    "label": { "style": "short noun, sentence case, no period", "always-visible": true },
-    "prompt": { "text": "Choose an option", "color": "color.text-tertiary" },
-    "options": { "max": 5, "words": "1-3", "punctuation": "none", "parallel": true },
+    "label": { "model": "label-in + optional label-out (see text-field)", "style": "short noun, sentence case, no period", "always-visible": true, "no-repeat-in-options": true },
+    "prompt": { "text": "Choose an option", "color": "color.text-tertiary", "never-a-label": true },
+    "options": { "max": 5, "words": "1-3", "punctuation": "none", "parallel": true, "no-verb-repeat": true },
     "selected": { "color": "color.text-primary" },
     "states": ["default", "open", "selected", "disabled", "error"],
     "error": "field-validation (see patterns/errors.md)",

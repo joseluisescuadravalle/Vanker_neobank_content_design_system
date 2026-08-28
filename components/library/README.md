@@ -8,4 +8,20 @@ Individual UI components, each specified for content (using `../../patterns/` an
 Each component file covers: purpose, anatomy, variants, states (default, pressed,
 disabled, loading, error), content rules, and accessibility notes.
 
-Files added as we build them.
+Components in this library:
+
+- `button.md`
+- `text-field.md` — the field label model (label in / label out / legend, placeholder, helper)
+- `dropdown.md` — Select
+- `checkbox.md`
+- `radio-group.md`
+- `card.md`
+- `transaction-row.md`
+- `navigation.md`
+- `sheet-modal.md`
+- `banner-toast.md`
+- `empty-state.md`
+- `onboarding-step.md`
+
+Form-level guidance (the three principles and the field-text hierarchy) lives in
+`../../patterns/forms.md`.

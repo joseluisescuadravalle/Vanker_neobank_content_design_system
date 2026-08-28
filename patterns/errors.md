@@ -26,6 +26,9 @@ A Vanker error has up to three parts, in this order:
 - No error codes in the visible message. A reference code may sit in a small secondary
   line for support.
 - No jokes, no emoji. Calm and human.
+- Contractions are welcome, but in a critical instruction spell out the negative ("do
+  not", "cannot") instead of "don't"/"can't" where a misread could cause harm — an error
+  message is exactly this case. See `../voice-and-tone/voice.md` (Contractions).
 
 ## Variables
 

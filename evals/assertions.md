@@ -55,6 +55,17 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-MASK` | No full email address and no long run of digits in copy: phone numbers, IBANs, and cards are masked, and a code is never echoed back. Amounts are exempt | `../compliance/data-privacy.md`, `../components/library/code-input.md` |
+| `A-NEGATION` | A sentence about whether money moved spells out the negative ("could not"), instead of contracting it | `../voice-and-tone/voice.md`, `../patterns/system-errors.md` |
+| `A-SYSTEM-ERROR` | One slot of a system error: no visible error code, no exclamation mark | `../patterns/system-errors.md` |
+| `A-MONEY-ACCOUNTED` | **Screen level:** an error that mentions money says what happened to it (nothing left, on its way, or outcome not known yet) | `../patterns/system-errors.md`, `../patterns/errors.md` |
+
+`A-NO-BANNED` also rejects the vague-failure phrases: "something went wrong", "oops",
+"unexpected error", "technical difficulties".
+
+**A-MONEY-ACCOUNTED is the first screen-level check in the system.** Every other assertion
+grades one slot; this one grades the title and the body together, because the title states
+the failure and the body carries the reassurance. Running it on a title alone would fail
+every correct screen. Use the `system-error-screen` surface with the slots joined.
 
 `A-NO-BANNED` also rejects "OTP", "one-time password", and "token": in customer copy the
 single-use code is a **code** (see `../terminology/glossary.md`).
@@ -99,6 +110,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `amount-value`, `preset-amount` | `A-AMOUNT-VALUE`, `A-NO-EMOJI`, banned/claims. **Never `A-CTA`**: a preset amount is a value, not a call to action |
 | `amount-label` | `A-AMOUNT-LABEL`, `A-NO-EMOJI`, banned/claims |
 | `code-screen` | The body checks, `A-MASK` included: the destination is masked and the code is never echoed |
+| `system-error-title`, `system-error` | `A-SYSTEM-ERROR` plus the body checks; no code, no exclamation |
+| `system-error-screen` | The body checks plus `A-SYSTEM-ERROR` and `A-MONEY-ACCOUNTED`, run on title and body joined |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

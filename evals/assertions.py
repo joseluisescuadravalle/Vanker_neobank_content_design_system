@@ -14,6 +14,7 @@ BANNED_TERMS = [
     "please be advised", "checking account", "in order to",
     "a small fee", "low fees", "fees may apply",
     "otp", "one-time password", "token",
+    "something went wrong", "oops", "unexpected error", "technical difficulties",
 ]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
@@ -330,6 +331,43 @@ def masked_contact(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+MONEY_OUTCOME = re.compile(r"\b(payment|transfer|money|funds|paid|charged|sent it|debited)\b", re.IGNORECASE)
+NEG_CONTRACTION = re.compile(r"\b\w+n['\u2019]t\b", re.IGNORECASE)
+ERROR_CODE = re.compile(r"\b(?:error|code)\s*[:#]?\s*\d{3,}\b|\b[45]\d{2}\s+error\b", re.IGNORECASE)
+REASSURANCE = re.compile(r"money is safe|no money has|money has not|nothing has left|has left your account|on its way|do not know yet|money hasn't", re.IGNORECASE)
+
+
+def spelled_negation(text, surface=None):
+    """A sentence about whether money moved spells out the negative."""
+    m = NEG_CONTRACTION.search(text)
+    if m and MONEY_OUTCOME.search(text):
+        return (False, "negative contraction ('" + m.group(0) + "') in a sentence about money; spell it out ('could not', 'do not')")
+    return (True, "ok")
+
+
+def system_error(text, surface=None):
+    """One slot of a connectivity or system error: no visible code, no shouting."""
+    problems = []
+    m = ERROR_CODE.search(text)
+    if m:
+        problems.append("visible error code ('" + m.group(0) + "'); use a discreet reference line instead")
+    if "!" in text:
+        problems.append("no exclamation mark in a system error")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def money_accounted(text, surface=None):
+    """Screen-level: an error that interrupts a money action says what happened to the money.
+
+    This runs on the whole screen (title plus body), never on one slot: the title states
+    the failure and the body carries the reassurance, so a title checked alone would always
+    fail.
+    """
+    if MONEY_OUTCOME.search(text) and not REASSURANCE.search(text):
+        return (False, "the screen mentions money but never says what happened to it (no money left, on its way, or outcome not known yet)")
+    return (True, "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -353,12 +391,15 @@ REGISTRY = {
     "A-AMOUNT-VALUE": amount_value,
     "A-AMOUNT-LABEL": amount_label,
     "A-MASK": masked_contact,
+    "A-NEGATION": spelled_negation,
+    "A-SYSTEM-ERROR": system_error,
+    "A-MONEY-ACCOUNTED": money_accounted,
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI"]
-FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK"]
+FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
@@ -384,6 +425,9 @@ SURFACE_CHECKS = {
     "preset-amount": ["A-AMOUNT-VALUE", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "amount-label": ["A-AMOUNT-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "code-screen": BODY_CHECKS, "security": BODY_CHECKS,
+    "system-error": BODY_CHECKS + ["A-SYSTEM-ERROR"],
+    "system-error-title": ["A-SYSTEM-ERROR", "A-NO-EMOJI", "A-NO-BANNED", "A-NEGATION"],
+    "system-error-screen": BODY_CHECKS + ["A-SYSTEM-ERROR", "A-MONEY-ACCOUNTED"],
 }
 
 

@@ -6,6 +6,11 @@ What Vanker says when something goes wrong. Errors are where a bank earns or los
 trust, so tone matters most here (see `../voice-and-tone/tone.md`, "Errors and things
 going wrong").
 
+This file is the anatomy and the two in-product shapes (field validation and modal). When
+the problem is the connection or our systems — offline, a server failure, maintenance, an
+expired session, a missing page, a required update — the surface choice and the copy live
+in `system-errors.md`.
+
 ## Anatomy
 
 A Vanker error has up to three parts, in this order:

@@ -57,9 +57,13 @@ promotional copy; everywhere else Vanker is warm but serious.
 - **Person:** Vanker speaks as "we". It addresses the person as "you".
 - **Contractions:** yes. Natural contractions are part of Vanker's warm, plain voice,
   including negative ones ("don't", "couldn't", "we're", "you'll"), everywhere — not only
-  in marketing. The one guardrail: in critical safety, security, or error instructions,
-  spell out the negative ("do not", "cannot") where a misread of the contraction could
-  cause harm, since "don't" can be misread as "do" by someone scanning.
+  in marketing. The one guardrail: spell out the negative ("do not", "cannot") where a
+  misread of the contraction could cause harm, since "don't" can be misread as "do" by
+  someone scanning. That is two cases, not a whole register: a **security or safety
+  instruction**, and any sentence stating **whether money moved** ("We could not send your
+  payment", "We do not know yet whether it went through"). An error is not automatically
+  one of them: "This page doesn't exist" and "We couldn't find that transaction" keep the
+  contraction. See `../patterns/system-errors.md`.
 - **Emoji:** none, with a single exception: 1-2 emoji in the title of a non-critical push
   notification (never in security, fraud, or money-movement push, and never in a body). See
   `../patterns/notifications.md`. The modern feel otherwise comes from clarity and design.

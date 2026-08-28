@@ -12,7 +12,8 @@ out, and is it settled.
 2. **Name:** the counterparty or merchant (`title`, 600), one line, truncated with an
    ellipsis.
 3. **Meta:** the category and the time, always shown ("Groceries · 2:32 pm"). A status
-   tag may follow when relevant ("Subscription", "Pending").
+   label may follow when relevant ("Pending"), taken from the controlled vocabulary in
+   `status-label.md`.
    `body-sm`, `color.text-secondary`, one line.
 4. **Amount:** trailing, right-aligned, tabular numbers, European format.
 
@@ -30,10 +31,10 @@ Rows are grouped under date headers: "Today", "Yesterday", then a full date
 
 | State | Treatment |
 | --- | --- |
-| Settled | As above |
-| Pending | Amount in `color.text-secondary`; a "Pending" tag (`warning-subtle`) in the meta line |
-| Failed / declined | Amount struck through in `color.text-tertiary`; a "Failed" tag (`error-subtle`) |
-| Scheduled (optional) | Amount muted; a "Scheduled" tag with the due date |
+| Settled | As above; the normal state carries no status label |
+| Pending | Amount in `color.text-secondary`; a `Pending` status label (warning tone) in the meta line |
+| Failed / declined | Amount struck through in `color.text-tertiary`; a `Failed` status label (error tone) |
+| Scheduled (optional) | Amount muted; a `Scheduled` status label; the due date sits in the meta line, never inside the label |
 
 ## Content rules
 

@@ -17,6 +17,7 @@ Components in this library:
 - `radio-group.md`
 - `card.md`
 - `transaction-row.md`
+- `status-label.md` — non-interactive state label with a controlled vocabulary
 - `navigation.md`
 - `sheet-modal.md`
 - `banner-toast.md`

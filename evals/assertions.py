@@ -225,6 +225,55 @@ def radio_option(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+STATUS_VOCABULARY = {
+    "pending", "scheduled", "on hold", "declined", "failed", "canceled", "refunded", "returned",
+    "frozen", "blocked", "not activated", "expired",
+    "in review", "action needed", "verified", "not approved",
+    "upcoming", "paused", "target reached",
+}
+STATUS_BANNED = {
+    "processing": "Pending", "in progress": "Pending", "awaiting": "Pending",
+    "cancelled": "Canceled (American spelling)", "rejected": "Declined (a payment) or Not approved (a verification)",
+    "error": "Failed",
+    "completed": "no label (the normal state carries none)", "complete": "no label (the normal state carries none)",
+    "done": "no label (the normal state carries none)", "successful": "no label (the normal state carries none)",
+    "success": "no label (the normal state carries none)", "settled": "no label (the normal state carries none)",
+    "paid": "no label (the normal state carries none)", "active": "no label (the normal state carries none)",
+    "new": "no label (the normal state carries none)",
+    "unverified": "In review or Action needed", "unconfirmed": "In review or Action needed",
+    "locked": "Frozen (by the customer) or Blocked (by Vanker)", "inactive": "Not activated",
+    "protected": "no label (a compliance claim is not a status)",
+    "insured": "no label (a compliance claim is not a status)",
+    "safe": "no label (a compliance claim is not a status)",
+    "guaranteed": "no label (a compliance claim is not a status)",
+}
+
+
+def status_label(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty status label")
+    if EMOJI.search(t):
+        problems.append("no emoji in a status label")
+    if re.search(r"[.,:;!?]$", t):
+        problems.append("no ending punctuation on a status label")
+    if re.search(r"\d", t):
+        problems.append("no numbers, amounts, dates, or counts inside a status label")
+    if len(t.split()) > 2:
+        problems.append("too long (" + str(len(t.split())) + " words); a status label is one or two words")
+    if t.upper() == t and len(t) > 2:
+        problems.append("no ALL CAPS; use sentence case")
+    elif re.search(r"\s[A-Z]", t):
+        problems.append("sentence case: only the first word is capitalized")
+    low = t.lower()
+    if low in STATUS_BANNED:
+        problems.append("'" + t + "' is not in the controlled vocabulary; use " + STATUS_BANNED[low])
+    elif low not in STATUS_VOCABULARY:
+        problems.append("'" + t + "' is not in the controlled status vocabulary (see components/library/status-label.md)")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -244,6 +293,7 @@ REGISTRY = {
     "A-HELPER": helper_text,
     "A-CHECKBOX": checkbox_label,
     "A-RADIO": radio_option,
+    "A-STATUS": status_label,
 }
 
 
@@ -267,6 +317,10 @@ SURFACE_CHECKS = {
     "placeholder": ["A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "checkbox": ["A-CHECKBOX", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "radio-option": ["A-RADIO", "A-NO-BANNED", "A-NO-CLAIMS"], "radio": ["A-RADIO", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "status-label": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "status": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "badge": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "tag": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
 }
 
 

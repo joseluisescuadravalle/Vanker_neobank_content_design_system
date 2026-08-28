@@ -37,6 +37,12 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-CHECKBOX` | Checkbox label: a statement not a question, no emoji | `../components/library/checkbox.md` |
 | `A-RADIO` | Radio option: one line, no ending punctuation, no emoji | `../components/library/radio-group.md` |
 
+## Status
+
+| ID | Checks | Source |
+| --- | --- | --- |
+| `A-STATUS` | Status label: one or two words from the controlled vocabulary, sentence case, no ending punctuation, no digits, no emoji, no ALL CAPS; flags synonyms ("Processing") and default states that should carry no label ("Completed") | `../components/library/status-label.md` |
+
 ## Compliance
 
 | ID | Checks | Source |
@@ -70,6 +76,7 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `placeholder` | `A-NO-EMOJI`, banned/claims (format example only) |
 | `checkbox` | `A-CHECKBOX`, `A-NO-EMOJI`, banned/claims |
 | `radio-option`, `radio` | `A-RADIO`, banned/claims |
+| `status-label`, `status`, `badge`, `tag` | `A-STATUS`, `A-NO-EMOJI`, banned/claims |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

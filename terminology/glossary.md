@@ -19,7 +19,7 @@ to avoid.
 
 | Term | Use it for | Notes |
 | --- | --- | --- |
-| euro, € | The currency | Symbol before the amount: 150. € |
+| euro, € | The currency | Symbol after the amount, with a space: 150 €. |
 | balance | Total money in an account | |
 | available balance | Money you can spend right now | Use when it differs from balance. |
 | fee | A charge | Always state the exact amount. Never "a small fee". |

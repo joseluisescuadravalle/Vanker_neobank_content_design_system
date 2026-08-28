@@ -65,16 +65,20 @@ this later. It is also the wording that makes it a real choice rather than a sha
 - **Say what happens with their data** where the flow collects something sensitive (an
   identity document, a selfie, a bank connection), in one plain line, linking to the detail
   (see `../compliance/data-privacy.md`).
-- **Say if it can be paused.** "You can finish this later" is worth more than a paragraph
-  of reassurance, and if it cannot be paused, say that instead.
+- **Say a step can be resumed later only where that is not obvious** — in the
+  account-creation flow (step zero), where dropping out has real consequences and the
+  reassurance earns its place. In an in-product flow the person has just chosen to enter
+  (activate biometrics, order a card, set up a direct debit), do not say it: they know
+  they can leave, so "you can finish this later" is filler. If a flow genuinely cannot be
+  resumed, say that instead.
 - **No progress bar on this screen.** There is no progress yet.
 
 ## Example (illustrative)
 
 **Title:** "Sign your payments with your fingerprint"
 
-**Body:** "It takes three steps and about two minutes. You will need your card and the
-phone where you receive our messages. You can finish this later if you need to."
+**Body:** "It takes 3 steps and about 2 minutes. You will need your card and the phone
+where you receive our messages."
 
 **Steps:** "Confirm your identity" · "Register your fingerprint" · "Try it once"
 
@@ -105,7 +109,7 @@ Not this:
     },
     "banned": { "goal-verb-as-primary": true, "fear": true, "invented-duration": true, "progress-bar": true },
     "data-disclosure": "one plain line where the flow collects sensitive data, linked to the detail",
-    "pausable-stated": true
+    "pausable-stated": "account-creation-only"
   }
 }
 ```
@@ -117,5 +121,8 @@ Not this:
 - The body states the number of steps, the duration only if measured, and what the person
   needs at hand.
 - No fear-based framing and no invented duration ("only a second", "in no time").
+- "You can finish this later" appears only in account creation, where dropping out has
+  real consequences; inside a flow the person just chose to enter, it is filler.
+- Step counts and durations are written as digits ("3 steps", "about 2 minutes").
 - The step indicator does not count this screen.
 - Where the flow collects sensitive data, one plain line says what happens with it.

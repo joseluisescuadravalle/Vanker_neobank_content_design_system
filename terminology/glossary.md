@@ -87,6 +87,13 @@ to avoid.
   concrete date as day month year (`1 September 2026`) — "Yesterday" is not used, so a
   day that is not today always reads as its actual date.
 
+## Numbers
+
+- Write numbers as digits in UI body copy and instructions — "3 simple steps", not
+  "three" — because digits are easier to scan. This is separate from the money format
+  (see the euro rules) and does not apply to status labels (which carry no digits) or to
+  CTAs (which forbid numbers).
+
 ## Acronyms
 
 - Expand an acronym on first use, in parentheses: KYC (Know Your Customer).

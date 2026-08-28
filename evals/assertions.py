@@ -481,6 +481,20 @@ def permission_body(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+SPELLED_NUMBER = re.compile(
+    r"\b(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\s+"
+    r"(steps?|minutes?|hours?|days?|weeks?|months?|years?|tries|attempts?|digits?|times?|cards?|payments?|euros?)\b",
+    re.IGNORECASE)
+
+
+def numerals(text, surface=None):
+    """Numbers are digits in body copy and instructions: '3 steps', not 'three steps'."""
+    m = SPELLED_NUMBER.search(text)
+    if m:
+        return (False, "spelled-out number ('" + m.group(0) + "'); write numbers as digits in body copy (see terminology/glossary.md)")
+    return (True, "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -513,12 +527,13 @@ REGISTRY = {
     "A-CARD-BODY": carousel_body,
     "A-INTRO-CTA": intro_cta,
     "A-PERMISSION": permission_body,
+    "A-NUMERALS": numerals,
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI"]
-FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION"]
+FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,

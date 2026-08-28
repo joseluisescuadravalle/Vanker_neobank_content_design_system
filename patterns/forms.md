@@ -5,7 +5,8 @@
 How Vanker asks people for data. Forms are where trust is won or lost in a bank: every
 extra field, every ambiguous label, every dark pattern costs confidence. This file is the
 form-level pattern; the field visuals and per-slot rules live in
-`../components/library/text-field.md`, `dropdown.md`, `checkbox.md`, and `radio-group.md`.
+`../components/library/text-field.md`, `dropdown.md`, `checkbox.md`, `radio-group.md`, and
+`amount-input.md` (any field that takes money).
 
 ## Three principles
 

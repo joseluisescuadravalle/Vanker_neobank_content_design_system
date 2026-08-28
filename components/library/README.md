@@ -18,6 +18,7 @@ Components in this library:
 - `card.md`
 - `transaction-row.md`
 - `status-label.md` — non-interactive state label with a controlled vocabulary
+- `amount-input.md` — the money field (hero and inline), presets, limits, and fees
 - `navigation.md`
 - `sheet-modal.md`
 - `banner-toast.md`

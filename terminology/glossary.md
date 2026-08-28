@@ -70,7 +70,11 @@ to avoid.
   `150 €`, `52,40 €`. Never before the amount.
 - Thousands are separated by a dot, decimals by a comma: `2.540,75 €`.
 - **Show decimals only when the amount has cents.** A round amount shows no decimals
-  (`150 €`, `2.540 €`), never `150,00 €`. With cents, show exactly two (`52,40 €`).
+  (`150 €`, `2.540 €`), never `150,00 €`. With cents, show exactly two (`52,40 €`,
+  `10,10 €`), never one (`10,1 €`). Cents are never present by default.
+- The one exception is an amount a person is **still typing** in an amount input: it shows
+  exactly what was typed (`10,1`) and is normalized on blur. See
+  `../components/library/amount-input.md`.
 - Placeholders follow the same order: `{amount} €`.
 - Amounts always use tabular numbers (see `../components/foundations/typography.md`).
 

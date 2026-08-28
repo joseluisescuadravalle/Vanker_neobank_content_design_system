@@ -10,7 +10,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-NO-EMOJI` | No emoji anywhere | `../voice-and-tone/voice.md` |
-| `A-EURO-FORMAT` | € after the amount; dot thousands, comma decimals; no ",00" on round amounts | `../terminology/glossary.md` |
+| `A-EURO-FORMAT` | € after the amount; dot thousands, comma decimals; no ",00" on round amounts; cents show exactly two decimals, never one | `../terminology/glossary.md` |
 | `A-NO-BANNED` | No banned or jargon terms | `../terminology/banned-terms.md` |
 | `A-ACRONYMS` | Known acronyms are expanded on first use | `../terminology/glossary.md` |
 
@@ -42,6 +42,16 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-STATUS` | Status label: one or two words from the controlled vocabulary, sentence case, no ending punctuation, no digits, no emoji, no ALL CAPS; flags synonyms ("Processing") and default states that should carry no label ("Completed") | `../components/library/status-label.md` |
+
+## Money
+
+| ID | Checks | Source |
+| --- | --- | --- |
+| `A-AMOUNT-VALUE` | A rendered amount or a preset: the figure and `€` only, European format, either no decimals or exactly two, no `,00` on a round amount, no words, no emoji | `../components/library/amount-input.md`, `../terminology/glossary.md` |
+| `A-AMOUNT-LABEL` | The visible label of an amount field: short noun, no currency symbol or word, no digits | `../components/library/amount-input.md` |
+
+`A-NO-BANNED` also covers the vague-fee phrases forbidden by `../compliance/disclosures.md`
+("a small fee", "low fees", "fees may apply"): a fee is an exact amount or the service is free.
 
 ## Compliance
 
@@ -77,6 +87,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `checkbox` | `A-CHECKBOX`, `A-NO-EMOJI`, banned/claims |
 | `radio-option`, `radio` | `A-RADIO`, banned/claims |
 | `status-label`, `status`, `badge`, `tag` | `A-STATUS`, `A-NO-EMOJI`, banned/claims |
+| `amount-value`, `preset-amount` | `A-AMOUNT-VALUE`, `A-NO-EMOJI`, banned/claims. **Never `A-CTA`**: a preset amount is a value, not a call to action |
+| `amount-label` | `A-AMOUNT-LABEL`, `A-NO-EMOJI`, banned/claims |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

@@ -5,7 +5,8 @@
 The core input for typed data. A text field is always led by a **visible, persistent
 label**; guidance lives in the label and helper text, never in a placeholder alone. The
 form-level rules (the three principles, grouping, the field-text hierarchy) are in
-`../../patterns/forms.md`; this file is the component.
+`../../patterns/forms.md`; this file is the component. A field that takes money is not a
+text field with a euro sign: see `amount-input.md`.
 
 ## Slots
 

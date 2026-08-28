@@ -12,6 +12,7 @@ BANNED_TERMS = [
     "revolutionary", "game-changing", "amazing", "incredible", "best-in-class",
     "world-class", "cutting-edge", "seamless", "utilize", "leverage", "kindly",
     "please be advised", "checking account", "in order to",
+    "a small fee", "low fees", "fees may apply",
 ]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
@@ -40,6 +41,8 @@ def euro_format(text, surface=None):
         problems.append("comma used for thousands (use a dot)")
     if re.search(r"\d\.\d{2}\s?€", text):
         problems.append("dot used for decimals (use a comma)")
+    if re.search(r"\d,\d\s?€", text):
+        problems.append("one decimal on a rendered amount (cents show exactly two: '10,10 €')")
     return (not problems, "; ".join(problems) or "ok")
 
 
@@ -274,6 +277,40 @@ def status_label(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+AMOUNT_RE = re.compile(r"^\d{1,3}(?:\.\d{3})*(?:,\d{2})?\s\u20ac$")
+
+
+def amount_value(text, surface=None):
+    """A rendered amount or a preset: the figure and the euro sign, nothing else."""
+    t = text.strip()
+    if not t:
+        return (False, "empty amount")
+    problems = []
+    if EMOJI.search(t):
+        problems.append("no emoji in an amount")
+    if re.search(r"[A-Za-z]", t):
+        problems.append("an amount carries no words (a preset amount is a value, not a call to action)")
+    if not AMOUNT_RE.match(t):
+        problems.append("not the European amount format ('150 \u20ac', '2.540,75 \u20ac'): \u20ac after the amount with a space, dot thousands, comma decimals, at most two decimals")
+    if re.search(r",00\s?\u20ac", t):
+        problems.append("no trailing ',00' on a round amount")
+    if re.search(r"\d,\d\s?\u20ac", t):
+        problems.append("a rendered amount with cents shows exactly two decimals ('10,10 \u20ac', not '10,1 \u20ac'); only what a person is still typing keeps one")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def amount_label(text, surface=None):
+    """The visible label of an amount field: a short noun, no currency, no digits."""
+    t = text.strip()
+    passed, msg = label_in(t)
+    problems = [] if passed else [msg]
+    if "\u20ac" in t or re.search(r"\beuros?\b", t, re.IGNORECASE):
+        problems.append("no currency symbol or currency word in the visible label; the adornment carries it")
+    if re.search(r"\d", t):
+        problems.append("no digits in an amount-field label")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -294,6 +331,8 @@ REGISTRY = {
     "A-CHECKBOX": checkbox_label,
     "A-RADIO": radio_option,
     "A-STATUS": status_label,
+    "A-AMOUNT-VALUE": amount_value,
+    "A-AMOUNT-LABEL": amount_label,
 }
 
 
@@ -321,6 +360,9 @@ SURFACE_CHECKS = {
     "status": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "badge": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "tag": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "amount-value": ["A-AMOUNT-VALUE", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "preset-amount": ["A-AMOUNT-VALUE", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "amount-label": ["A-AMOUNT-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
 }
 
 

@@ -17,8 +17,9 @@ out, and is it settled.
    `body-sm`, `color.text-secondary`, one line.
 4. **Amount:** trailing, right-aligned, tabular numbers, European format.
 
-Rows are grouped under date headers: "Today", "Yesterday", then a full date
-("5 May 2026").
+Rows are grouped under date headers: "Today" for the current day, then the full date
+for every earlier day ("1 September 2026"). "Yesterday" is not used — a day that is not
+today always shows its concrete date (see `../../terminology/glossary.md`).
 
 ## Amount and sign convention
 

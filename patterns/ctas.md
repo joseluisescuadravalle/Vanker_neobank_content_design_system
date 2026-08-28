@@ -5,6 +5,26 @@
 A CTA is a button or link the person taps to trigger an action. Its label is an **action
 verb** (or short verb phrase) that names the action that happens on tap. Nothing else.
 
+## The master rule: name what happens on tap
+
+The label describes **the immediate result of the tap**, not the goal of the process the
+tap begins. This is the rule the others serve, and it is the one most often broken by
+labels that look admirably specific.
+
+On the screen that opens the biometric-signing setup, tapping the primary button does not
+activate anything: it opens the first step. So the label is **"Start"**, never "Activate"
+or "Activate biometrics". The activation happens three screens later, and a button that
+promises it is writing a cheque the tap cannot cash.
+
+The same test catches a banner button that only navigates ("Verify" when the person lands
+on an explanation, not on verification), and a "Send" that opens a review screen.
+
+**Specificity must be true, not maximal.** Where a specific verb describes the tap, use it
+("Send money", "Delete space"). Where it would misdescribe it, the plainer verb is the
+correct answer, and a low-commitment "Start" is better content design than an "Activate"
+that lies. This is also why "Start" is not treated as one of the banned generic labels: it
+is precise about what the tap does.
+
 ## Rules
 
 - **Action verb.** The label is an action verb describing what happens on tap ("Send",
@@ -51,6 +71,8 @@ Only the CTA rules above apply, plus "no emoji".
 | Delete a space (dialog "Delete this space?") | Delete space | Remove |
 | Create a space | Create space | Submit |
 | Dismiss a promo | Not now | Cancel |
+| Open a multi-step setup flow | Start | Activate biometrics |
+| Open a screen that explains verification | Verify identity (only if the tap starts it) | Verify (when it only navigates) |
 
 Bad CTA: "Kindly utilize your risk-free KYC €150 now". It fails **as a CTA** because it is
 far over three words, contains a number, and carries filler. The reason is the CTA
@@ -58,6 +80,7 @@ structure, not "banned term" or "money format".
 
 ## Eval hooks
 
+- The label names what happens on tap, not the goal of the flow it opens.
 - Three words or fewer; ideally one.
 - No numbers or amounts.
 - No punctuation (period, comma, colon, exclamation, question mark); no emoji.

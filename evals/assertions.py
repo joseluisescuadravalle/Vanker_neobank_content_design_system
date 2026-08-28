@@ -16,6 +16,7 @@ BANNED_TERMS = [
     "otp", "one-time password", "token",
     "something went wrong", "oops", "unexpected error", "technical difficulties",
     "please wait", "almost there", "just a moment", "hang tight", "working on it",
+    "the best", "the cheapest", "the fastest", "no strings attached", "free forever",
 ]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
@@ -407,6 +408,57 @@ def skeleton_placeholder(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+INTRO_CTA_ALLOWED = {"start", "not now"}
+GOAL_VERBS = ["activate", "verify", "set up", "enable", "register", "order", "create", "add", "sign up"]
+
+
+def carousel_headline(text, surface=None):
+    """A welcome-card headline: the whole benefit in one line."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty headline")
+    if EMOJI.search(t):
+        problems.append("no emoji in a headline")
+    if re.search(r"[.;:!?]$", t):
+        problems.append("no ending punctuation on a card headline")
+    if len(t.split()) > 6:
+        problems.append("too long (" + str(len(t.split())) + " words); a card headline carries the benefit in about six")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def carousel_body(text, surface=None):
+    """A welcome-card body: it expands the headline and adds nothing new."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (True, "ok")  # the body is optional and usually unnecessary
+    if EMOJI.search(t):
+        problems.append("no emoji in a card body")
+    if t.endswith("."):
+        problems.append("no ending period on a card body")
+    if len(t) > 90:
+        problems.append("too long (" + str(len(t)) + " chars); at most two short lines")
+    core = re.sub(r"(?<=\d)\.(?=\d)", "", t)
+    if len(re.findall(r"\.\s+\S", core)) >= 1:
+        problems.append("more than one sentence; the body expands the headline, it does not add a second idea")
+    if re.search(r"\d", t):
+        problems.append("no figures in a card body: a rate, a price, or a count needs a disclosure this card cannot carry")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def intro_cta(text, surface=None):
+    """The buttons on a flow-intro screen are fixed: Start and Not now."""
+    t = text.strip()
+    low = t.lower()
+    if low in INTRO_CTA_ALLOWED:
+        return (True, "ok")
+    for v in GOAL_VERBS:
+        if low.startswith(v):
+            return (False, "'" + t + "' names the goal of the flow, not what the tap does; the tap opens the first step, so the label is 'Start'")
+    return (False, "'" + t + "' is not a flow-intro button; use 'Start' (primary) or 'Not now' (secondary)")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -435,6 +487,9 @@ REGISTRY = {
     "A-MONEY-ACCOUNTED": money_accounted,
     "A-LOADING": loading_message,
     "A-SKELETON": skeleton_placeholder,
+    "A-CARD-HEADLINE": carousel_headline,
+    "A-CARD-BODY": carousel_body,
+    "A-INTRO-CTA": intro_cta,
 }
 
 
@@ -472,6 +527,10 @@ SURFACE_CHECKS = {
     "loading": ["A-LOADING", "A-NO-BANNED", "A-NO-CLAIMS"],
     "loading-screen": BODY_CHECKS + ["A-MONEY-ACCOUNTED"],
     "skeleton": ["A-SKELETON"],
+    "carousel-headline": ["A-CARD-HEADLINE", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI"],
+    "carousel-body": ["A-CARD-BODY", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI"],
+    "flow-intro-cta": ["A-INTRO-CTA", "A-CTA", "A-NO-EMOJI"],
+    "flow-intro-body": BODY_CHECKS,
 }
 
 

@@ -61,9 +61,18 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-LOADING` | A waiting status line: present participle, short, no ending period, no exclamation, not a bare "Loading" or "Processing" | `../patterns/loading.md` |
 | `A-SKELETON` | A skeleton placeholder carries no text, no digits, and no currency symbol | `../patterns/loading.md` |
 
+## Onboarding
+
+| ID | Checks | Source |
+| --- | --- | --- |
+| `A-CARD-HEADLINE` | Welcome-card headline: one line, about six words, no ending punctuation, no emoji | `../patterns/welcome-carousel.md` |
+| `A-CARD-BODY` | Welcome-card body: at most two short lines, one sentence, no ending period, and no figures (a rate or a price needs a disclosure the card cannot carry) | `../patterns/welcome-carousel.md` |
+| `A-INTRO-CTA` | Flow-intro buttons are "Start" and "Not now"; a goal verb ("Activate biometrics") is rejected because the tap only opens the first step | `../patterns/flow-intro.md`, `../patterns/ctas.md` |
+
 `A-NO-BANNED` also rejects the vague-failure phrases ("something went wrong", "oops",
-"unexpected error", "technical difficulties") and the vague-waiting ones ("please wait",
-"almost there", "just a moment", "hang tight", "working on it").
+"unexpected error", "technical difficulties") the vague-waiting ones ("please wait",
+"almost there", "just a moment", "hang tight", "working on it") and the marketing claims
+("the best", "the cheapest", "the fastest", "free forever", "no strings attached").
 
 **A-MONEY-ACCOUNTED is the first screen-level check in the system.** Every other assertion
 grades one slot; this one grades the title and the body together, because the title states
@@ -118,6 +127,9 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `loading` | `A-LOADING`, banned/claims |
 | `loading-screen` | The body checks plus `A-MONEY-ACCOUNTED`, for a long wait that mentions money |
 | `skeleton` | `A-SKELETON` only: a skeleton has no copy to check, and that is the point |
+| `carousel-headline`, `carousel-body` | Their own check plus banned/claims and no emoji |
+| `flow-intro-cta` | `A-INTRO-CTA` plus the CTA checks |
+| `flow-intro-body` | The body checks |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

@@ -13,6 +13,7 @@ BANNED_TERMS = [
     "world-class", "cutting-edge", "seamless", "utilize", "leverage", "kindly",
     "please be advised", "checking account", "in order to",
     "a small fee", "low fees", "fees may apply",
+    "otp", "one-time password", "token",
 ]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
@@ -311,6 +312,24 @@ def amount_label(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+EMAIL_RE = re.compile(r"[\w.+-]+@[\w-]+\.[A-Za-z]{2,}")
+DIGIT_RUN_RE = re.compile(r"(?<!\d)(?:\+\d{1,3}[ .-]?)?(?:\d[ .-]?){5,}\d(?!\d)")
+
+
+def masked_contact(text, surface=None):
+    """No full contact details or long digit runs in copy: mask them."""
+    problems = []
+    if EMAIL_RE.search(text):
+        problems.append("a full email address; mask it (a\u00b7\u00b7\u00b7@example.com)")
+    for m in DIGIT_RUN_RE.finditer(text):
+        tail = text[m.end():m.end() + 2]
+        if tail.strip().startswith("\u20ac"):
+            continue  # an amount, not a phone number, an IBAN, or a code
+        problems.append("a long run of digits ('" + m.group(0).strip() + "'); mask a phone number, an IBAN, or a card, and never echo a code")
+        break
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -333,20 +352,21 @@ REGISTRY = {
     "A-STATUS": status_label,
     "A-AMOUNT-VALUE": amount_value,
     "A-AMOUNT-LABEL": amount_label,
+    "A-MASK": masked_contact,
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI"]
-FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"]
+FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
     "push-title": ["A-PUSH-TITLE", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
-    "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"],
+    "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK"],
     "error": BODY_CHECKS, "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
     "notification": BODY_CHECKS, "onboarding-step": BODY_CHECKS, "disclosure": BODY_CHECKS,
-    "risk-warning": BODY_CHECKS, "security": BODY_CHECKS, "banner": BODY_CHECKS,
+    "risk-warning": BODY_CHECKS, "banner": BODY_CHECKS,
     "toast": ["A-TOAST", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
     "dropdown-option": ["A-OPTION", "A-NO-BANNED", "A-NO-CLAIMS"], "option": ["A-OPTION", "A-NO-BANNED", "A-NO-CLAIMS"],
     "label-in": ["A-LABEL-IN", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
@@ -363,6 +383,7 @@ SURFACE_CHECKS = {
     "amount-value": ["A-AMOUNT-VALUE", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "preset-amount": ["A-AMOUNT-VALUE", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "amount-label": ["A-AMOUNT-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "code-screen": BODY_CHECKS, "security": BODY_CHECKS,
 }
 
 

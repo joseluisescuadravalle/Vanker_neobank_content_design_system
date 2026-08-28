@@ -50,6 +50,15 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-AMOUNT-VALUE` | A rendered amount or a preset: the figure and `€` only, European format, either no decimals or exactly two, no `,00` on a round amount, no words, no emoji | `../components/library/amount-input.md`, `../terminology/glossary.md` |
 | `A-AMOUNT-LABEL` | The visible label of an amount field: short noun, no currency symbol or word, no digits | `../components/library/amount-input.md` |
 
+## Security and data minimization
+
+| ID | Checks | Source |
+| --- | --- | --- |
+| `A-MASK` | No full email address and no long run of digits in copy: phone numbers, IBANs, and cards are masked, and a code is never echoed back. Amounts are exempt | `../compliance/data-privacy.md`, `../components/library/code-input.md` |
+
+`A-NO-BANNED` also rejects "OTP", "one-time password", and "token": in customer copy the
+single-use code is a **code** (see `../terminology/glossary.md`).
+
 `A-NO-BANNED` also covers the vague-fee phrases forbidden by `../compliance/disclosures.md`
 ("a small fee", "low fees", "fees may apply"): a fee is an exact amount or the service is free.
 
@@ -89,7 +98,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `status-label`, `status`, `badge`, `tag` | `A-STATUS`, `A-NO-EMOJI`, banned/claims |
 | `amount-value`, `preset-amount` | `A-AMOUNT-VALUE`, `A-NO-EMOJI`, banned/claims. **Never `A-CTA`**: a preset amount is a value, not a call to action |
 | `amount-label` | `A-AMOUNT-LABEL`, `A-NO-EMOJI`, banned/claims |
-| everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS` |
+| `code-screen` | The body checks, `A-MASK` included: the destination is masked and the code is never echoed |
+| everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only
 the CTA checks; passing an explicit list overrides the surface.

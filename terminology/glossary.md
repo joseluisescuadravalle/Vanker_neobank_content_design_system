@@ -54,6 +54,7 @@ to avoid.
 | KYC (Know Your Customer) | The identity-check process | Internal-facing; in customer copy prefer "confirm your identity". Always expand. |
 | PIN | The card PIN | Expand on first mention: PIN (Personal Identification Number). |
 | passcode | The app unlock code | |
+| code | The single-use code we send to confirm identity or a payment | Say "code" or "verification code", and "a 6-digit code" where the length helps. Never "OTP", "one-time password", or "token". |
 | two-factor authentication (2FA) | The extra login step | Expand on first mention. |
 
 ## People and address

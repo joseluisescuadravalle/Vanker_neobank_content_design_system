@@ -34,6 +34,7 @@ assertions in `../evals/`.
 | utilize | use | Plainer. |
 | leverage (as a verb) | use, make the most of | Corporate jargon. |
 | provision, disbursement, remittance | plain equivalents (set up, payment, transfer) | Excludes non-experts. |
+| OTP, one-time password, token | code, verification code | Nobody outside the industry calls it that. See `../components/library/code-input.md`. |
 | please be advised, kindly, at your earliest convenience | plain, direct wording | Stuffy and cold. |
 | in order to | to | Wordy. |
 

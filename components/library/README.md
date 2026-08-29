@@ -23,6 +23,7 @@ Components in this library:
 - `code-input.md` — the single-use code field (Strong Customer Authentication, SCA)
 - `tooltip.md` — the weakest surface in the product, and what may never live in it
 - `accordion.md` — collapsible content, and the test for what may collapse
+- `toggle.md` — the only control that applies immediately, and what that rules out
 - `navigation.md`
 - `sheet-modal.md`
 - `banner-toast.md`

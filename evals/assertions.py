@@ -600,6 +600,34 @@ def accordion_header(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+TOGGLE_ACTION_VERBS = ["turn on", "turn off", "enable", "disable", "activate", "deactivate",
+                       "allow", "block", "freeze", "unfreeze", "stop", "start", "switch on", "switch off"]
+
+
+def toggle_label(text, surface=None):
+    """A switch is named by its setting or its state, never by an action verb."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty toggle label")
+    low = t.lower()
+    if EMOJI.search(t):
+        problems.append("no emoji in a toggle label")
+    if re.search(r"[.,:;!?]$", t):
+        problems.append("no ending punctuation on a toggle label")
+    for v in TOGGLE_ACTION_VERBS:
+        if low.startswith(v):
+            problems.append("'" + t + "' is an action verb, so it is a button label; name the setting or the state instead ('Card frozen', not 'Freeze card')")
+            break
+    if re.search(r"^(do not|don['\u2019]t|never)\b", low) or re.search(r"\bno longer\b", low):
+        problems.append("no negative label: 'off' would become a double negative")
+    if re.search(r"\b(on|off)\b$", low):
+        problems.append("no 'On' or 'Off' in the label; the switch position is the state")
+    if len(t.split()) > 4:
+        problems.append("too long (" + str(len(t.split())) + " words); a toggle label is a short noun phrase")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -638,6 +666,7 @@ REGISTRY = {
     "A-COUNTER": counter_text,
     "A-ERROR-SUMMARY": error_summary_title,
     "A-ACCORDION-HEADER": accordion_header,
+    "A-TOGGLE-LABEL": toggle_label,
 }
 
 
@@ -687,6 +716,8 @@ SURFACE_CHECKS = {
     "error-summary-title": ["A-ERROR-SUMMARY", "A-NO-BANNED", "A-NO-EMOJI"],
     "accordion-header": ["A-ACCORDION-HEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-NUMERALS"],
     "accordion-body": BODY_CHECKS,
+    "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "toggle-description": BODY_CHECKS,
 }
 
 

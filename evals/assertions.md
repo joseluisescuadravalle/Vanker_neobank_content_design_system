@@ -70,6 +70,8 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-CARD-BODY` | Welcome-card body: at most two short lines, one sentence, no ending period, and no figures (a rate or a price needs a disclosure the card cannot carry) | `../patterns/welcome-carousel.md` |
 | `A-INTRO-CTA` | Flow-intro buttons are "Start" and "Not now"; a goal verb ("Activate biometrics") is rejected because the tap only opens the first step | `../patterns/flow-intro.md`, `../patterns/ctas.md` |
 | `A-PERMISSION` | Permission-priming body: no "we need access" framing, the person is the subject, and it carries the sentence stating what Vanker will not do with the permission | `../patterns/permissions.md` |
+| `A-TOOLTIP` | Tooltip body: one or two sentences, about 160 characters, ends with a period, and carries no figure, no call to action, and no link | `../components/library/tooltip.md` |
+| `A-TOOLTIP-TRIGGER` | The trigger's accessible name is the question the tooltip answers, never "info" or "?" | `../components/library/tooltip.md` |
 
 `A-NO-BANNED` also rejects the vague-failure phrases ("something went wrong", "oops",
 "unexpected error", "technical difficulties") the vague-waiting ones ("please wait",
@@ -134,6 +136,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `flow-intro-body` | The body checks |
 | `permission-body` | The body checks plus `A-PERMISSION` |
 | `permission-heading` | Banned/claims, no emoji, `A-MASK` |
+| `tooltip` | `A-TOOLTIP`, banned/claims, acronyms, numerals |
+| `tooltip-trigger` | `A-TOOLTIP-TRIGGER`, no emoji, banned |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

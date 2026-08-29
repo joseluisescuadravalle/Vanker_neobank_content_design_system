@@ -20,6 +20,7 @@ Components in this library:
 - `status-label.md` — non-interactive state label with a controlled vocabulary
 - `amount-input.md` — the money field (hero and inline), presets, limits, and fees
 - `code-input.md` — the single-use code field (Strong Customer Authentication, SCA)
+- `tooltip.md` — the weakest surface in the product, and what may never live in it
 - `navigation.md`
 - `sheet-modal.md`
 - `banner-toast.md`

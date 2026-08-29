@@ -495,6 +495,49 @@ def numerals(text, surface=None):
     return (True, "ok")
 
 
+TOOLTIP_CTA = re.compile(r"\b(tap|click|press|go to|open|add|send|start|choose|select) (here|now|it|to)\b", re.IGNORECASE)
+LINK_HINT = re.compile(r"\bhttps?://|\bread (?:the|our|more)\b|\blearn more\b|\bsee (?:the )?(?:full|terms)\b|\]\(", re.IGNORECASE)
+
+
+def tooltip_body(text, surface=None):
+    """A tooltip: one or two sentences that define a term, and nothing that must be seen."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty tooltip")
+    if EMOJI.search(t):
+        problems.append("no emoji in a tooltip")
+    if not t.endswith("."):
+        problems.append("a tooltip is complete sentences and ends with a period")
+    if len(t) > 160:
+        problems.append("too long (" + str(len(t)) + " chars); over two lines it is a sheet, not a tooltip")
+    core = re.sub(r"(?<=\d)\.(?=\d)", "", t)
+    if len(re.findall(r"\.\s+\S", core)) >= 2:
+        problems.append("more than two sentences; that is a sheet")
+    if "\u20ac" in t or re.search(r"\d\s?%", t) or re.search(r"\d", t):
+        problems.append("no figures in a tooltip: an amount, a rate, or a limit that affects a decision must be visible on the screen")
+    if TOOLTIP_CTA.search(t):
+        problems.append("no call to action in a tooltip")
+    if LINK_HINT.search(t):
+        problems.append("a tooltip carries no link; if a link is needed it is a sheet")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def tooltip_trigger(text, surface=None):
+    """The trigger's accessible name is the question the panel answers."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty trigger name")
+    if t.lower().strip("?") in {"info", "information", "help", "?", "more info"}:
+        problems.append("'" + t + "' is not an accessible name; use the question the tooltip answers ('What is a BIC?')")
+    elif not t.endswith("?"):
+        problems.append("the trigger name is a question ('What is a BIC?')")
+    if EMOJI.search(t):
+        problems.append("no emoji in a trigger name")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -528,6 +571,8 @@ REGISTRY = {
     "A-INTRO-CTA": intro_cta,
     "A-PERMISSION": permission_body,
     "A-NUMERALS": numerals,
+    "A-TOOLTIP": tooltip_body,
+    "A-TOOLTIP-TRIGGER": tooltip_trigger,
 }
 
 
@@ -571,6 +616,8 @@ SURFACE_CHECKS = {
     "flow-intro-body": BODY_CHECKS,
     "permission-body": BODY_CHECKS + ["A-PERMISSION"],
     "permission-heading": ["A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK"],
+    "tooltip": ["A-TOOLTIP", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NUMERALS"],
+    "tooltip-trigger": ["A-TOOLTIP-TRIGGER", "A-NO-EMOJI", "A-NO-BANNED"],
 }
 
 

@@ -43,8 +43,8 @@ text field with a euro sign: see `amount-input.md`.
 - **Error text:** one clear sentence with a specific hint, never blaming the person, shown
   in red with an icon and announced to screen readers, not color alone ("An IBAN must
   contain 24 characters."). See `../../patterns/errors.md` (field validation errors).
-- **Character limits:** when a limit matters, show a live counter; do not silently
-  truncate.
+- **Character limits:** a plain form field does not show a counter. Counters belong to
+  free-text composition with a real limit (see `textarea.md`). Never silently truncate.
 - **No confirmation fields:** do not duplicate a field to confirm it (password, email);
   use a show/hide toggle instead.
 
@@ -56,7 +56,8 @@ text field with a euro sign: see `amount-input.md`.
 | Focus | Border `color.accent`, 3px fuchsia focus ring; label in floats up |
 | Filled | Label in floated (small) above the value in `color.text-primary` |
 | Error | Border `color.error`, trailing error icon, message in `color.error-text`, `aria-invalid` |
-| Disabled | `color.surface-subtle` fill, `color.text-tertiary` text, not editable |
+| Valid | Only on a verifiable identifier (card number, IBAN): a check icon, no text, announced politely |
+| Disabled | `color.surface-subtle` fill, `color.text-tertiary` text, not editable; the reason is written next to the field |
 | Read-only | Value shown, no strong border, not editable (distinct from disabled) |
 
 Field height 48px, radius `radius.md` (12px), horizontal padding `space.3`/`space.4`,
@@ -107,7 +108,8 @@ in: they do different jobs (one names the field, one shows the format) and do no
       "focus":    { "border": "color.accent", "ring": "focus.ring", "label": "floated" },
       "filled":   { "label": "floated", "value": "color.text-primary" },
       "error":    { "border": "color.error", "text": "color.error-text", "aria-invalid": true },
-      "disabled": { "bg": "color.surface-subtle", "text": "color.text-tertiary" }
+      "valid":    { "scope": "verifiable-identifiers-only", "icon": true, "text": false, "announce": "polite", "overclaim": false },
+      "disabled": { "bg": "color.surface-subtle", "text": "color.text-tertiary", "reason-in-layout": true }
     },
     "a11y": { "label-for-id": true, "label-persistent": true, "error-describedby": true, "min-target": 44 }
   }

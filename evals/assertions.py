@@ -156,6 +156,10 @@ def label_in(text, surface=None):
     problems = []
     if not t:
         problems.append("empty label")
+    if "*" in t:
+        problems.append("no asterisk: required is the default and carries no marker; only optional fields say '(optional)'")
+    if re.search(r"\(required\)", t, re.IGNORECASE):
+        problems.append("required fields carry no marker; only optional ones say '(optional)'")
     if re.search(r"[.:!?]$", t):
         problems.append("no ending period, colon, or question mark on a label in")
     if EMOJI.search(t):
@@ -538,6 +542,38 @@ def tooltip_trigger(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+COUNTER_RE = re.compile(r"^\d+ characters? left$")
+
+
+def counter_text(text, surface=None):
+    """A character counter says what is left, in words."""
+    t = text.strip()
+    if COUNTER_RE.match(t):
+        return (True, "ok")
+    if re.match(r"^\d+\s*/\s*\d+$", t):
+        return (False, "'" + t + "' is a ratio; a counter says the room that is left ('22 characters left')")
+    return (False, "'" + t + "' is not a counter; use '{n} characters left'")
+
+
+def error_summary_title(text, surface=None):
+    """The title above a failed submit: what to do, no blame, no count."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty summary title")
+    if t.endswith("."):
+        problems.append("no ending period on the summary title")
+    if EMOJI.search(t):
+        problems.append("no emoji")
+    if re.search(r"\berrors?\b|\bproblems?\b|\bfailed\b|\binvalid\b", t, re.IGNORECASE):
+        problems.append("do not name it an error or a problem; say what to do ('Check these before you continue')")
+    if re.search(r"\byou (?:did|have|entered|forgot|missed)\b", t, re.IGNORECASE):
+        problems.append("no blame in the summary title")
+    if re.search(r"\d", t):
+        problems.append("no count in the title: it stops being true as the person fixes them")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -573,6 +609,8 @@ REGISTRY = {
     "A-NUMERALS": numerals,
     "A-TOOLTIP": tooltip_body,
     "A-TOOLTIP-TRIGGER": tooltip_trigger,
+    "A-COUNTER": counter_text,
+    "A-ERROR-SUMMARY": error_summary_title,
 }
 
 
@@ -618,6 +656,8 @@ SURFACE_CHECKS = {
     "permission-heading": ["A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK"],
     "tooltip": ["A-TOOLTIP", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NUMERALS"],
     "tooltip-trigger": ["A-TOOLTIP-TRIGGER", "A-NO-EMOJI", "A-NO-BANNED"],
+    "counter": ["A-COUNTER"],
+    "error-summary-title": ["A-ERROR-SUMMARY", "A-NO-BANNED", "A-NO-EMOJI"],
 }
 
 

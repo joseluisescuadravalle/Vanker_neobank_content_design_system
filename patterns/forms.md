@@ -113,6 +113,80 @@ placeholder never carries information the person must keep to complete the task,
 follows voice and tone. Treat this as a scoped exception, not a licence to move field
 guidance back into placeholders.
 
+## Required and optional
+
+Fields are **required by default**. Nothing marks a required field — no asterisk, no
+"(required)", no red dot — because in a form where most fields are required, marking them
+adds noise to every line to inform about none of them.
+
+- The **optional** ones carry `(optional)` right after the label in, in a lighter weight,
+  inside the label's accessible name.
+- No introductory line explaining the convention. If a form needs to explain how it marks
+  its fields, the marking is wrong.
+
+### When a required-field error appears
+
+**On submit.** Moving to the next field is not submitting: someone walking through a form
+to see what it asks before filling it in would collect a screen of red without having done
+anything wrong, and people navigating by keyboard or screen reader move focus in ways that
+would fire it constantly. Empty and untouched is not an error yet.
+
+**On blur, only when the person entered something and left it wrong** — a half-typed IBAN,
+an incomplete date. That is a real problem the person can see, and telling them early
+saves a trip back.
+
+In a multi-step flow with one or two fields per screen, **advancing is submitting**: the
+error fires there, which is the same moment the person expects it.
+
+## The error summary (on submit)
+
+When a submit fails validation, the errors do **not** only appear beside their fields: a
+summary appears at the top of the form, above everything, and the focus moves to it. This
+is what makes a long form usable for someone who cannot see the whole page at once, and
+`../compliance/accessibility.md` requires it.
+
+- **Title:** "Check these before you continue". No count in the title (it avoids the
+  singular-plural awkwardness and stays true as the person fixes them), no blame, no
+  "Error".
+- **List:** one item per error, in the order the fields appear on the screen. Each item is
+  a **link** that moves focus to its field.
+- **The summary repeats the inline message verbatim.** It never rewords it: a person who
+  reads "An IBAN must contain 24 characters." in the summary must find that exact sentence
+  at the field, not a variant of it. Two wordings for one problem reads as two problems.
+- **It disappears when the last error is fixed**, and it is not re-announced on every
+  keystroke.
+- Announced as an alert when it appears; focus lands on the title, which is focusable for
+  this purpose only.
+- Never a modal, never a toast: a summary that can be dismissed is not a summary.
+
+## Disabled fields
+
+A disabled field explains itself **in the layout, next to it**, never only by being grey
+and never in a tooltip (a disabled control does not reliably receive taps, so the
+explanation would never open — see `../components/library/tooltip.md`).
+
+- Prefer not disabling at all: an enabled field with a clear error explains more than a
+  grey box.
+- Where a field is disabled because something else must happen first, say what: "Choose an
+  account first."
+- Read-only is not disabled: a read-only value is shown without a field affordance, and it
+  needs no explanation.
+
+## The valid state
+
+Most fields show nothing when they are correct: not being wrong is the normal state, and a
+green tick on every line is visual noise.
+
+The exception is a **verifiable identifier** — a card number, an IBAN, a document number —
+where the person cannot tell by looking whether what they typed is right, and a machine
+can. There the field shows a check icon, with **no text**, and announces the result
+politely for screen readers ("IBAN format accepted").
+
+**The wording never overclaims.** A format check confirms the format, not the world: an
+IBAN whose structure is valid may still belong to nobody. Whether an account exists and
+whose name is on it is Verification of Payee, and it is a separate confirmation in the
+transfer flow (see `../compliance/security-payments.md`), never a green tick on a field.
+
 ## Choices (dropdown, radio, checkbox)
 
 - **Dropdown** — choose one value from a short, predefined list (2 to 5). Options are
@@ -142,4 +216,12 @@ guidance back into placeholders.
 - Legend: short, no ending period or colon; does not restate the group's labels.
 - Helper text: not a question, about three lines, prefers one sentence, no call to action.
 - Placeholder: on a form field, a format example only, never essential information; a guide-phrase placeholder is allowed only on search / marketing surfaces (see the exception above).
+- Required fields carry no marker; only optional ones say "(optional)". No asterisks.
+- A required-field error appears on submit, not when the person moves to the next field.
+- A failed submit shows a summary at the top, focused, listing every error in field order,
+  repeating each inline message verbatim, with each item linking to its field.
+- A disabled field's reason is written next to it, never only in its appearance and never
+  in a tooltip.
+- A valid state appears only on verifiable identifiers, as an icon with no text, and never
+  claims more than the check actually proved.
 - No duplicated confirmation fields (password, email).

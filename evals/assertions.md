@@ -77,6 +77,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-ACCORDION-HEADER` | An accordion header names its content: up to about eight words, no ending period, no count, and never "More information", "Details", "Read more" or "Info" | `../components/library/accordion.md` |
 | `A-TOGGLE-LABEL` | A toggle label is a noun phrase or a state, never an action verb ("Freeze card"), never a negative, and never carries "On" or "Off" | `../components/library/toggle.md` |
 | `A-ENUMERATION` | No copy states or implies whether an account, email, or phone number exists | `../patterns/auth.md` |
+| `A-REVERSIBILITY` | A card action says in its own copy whether it can be undone | `../patterns/cards.md` |
 
 `A-NO-BANNED` also rejects the vague-failure phrases ("something went wrong", "oops",
 "unexpected error", "technical difficulties") the vague-waiting ones ("please wait",
@@ -153,6 +154,7 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `toggle-description` | The body checks |
 | `auth` | The body checks plus `A-ENUMERATION` |
 | `auth-error` | The field-error checks plus `A-ENUMERATION` |
+| `card-action` | The body checks plus `A-REVERSIBILITY` |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

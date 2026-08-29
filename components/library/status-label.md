@@ -39,6 +39,8 @@ the count badge only.
    transaction, an active card, and a verified account show nothing. If every object is
    labeled, the label stops meaning anything.
 2. **Closed vocabulary, one term per state.** Use the exact term from the tables below.
+   The one-or-two-word limit guards invented labels; a term already in the vocabulary has
+   had its length decided (`On its way` is three words and is the right copy).
    Never introduce a synonym ("Processing", "In progress", "Rejected"), and never adapt a
    term per screen.
 3. **The word carries the meaning; color only reinforces it.** The tone is derived from the
@@ -85,6 +87,7 @@ Normative. The tone column is fixed; it is not a per-screen decision.
 | — | — | Active and usable | Yes: no label |
 | `Frozen` | info | Paused by the customer, reversible in the app |  |
 | `Blocked` | error | Blocked by Vanker for security; needs contact |  |
+| `On its way` | info | Sent to the person and still travelling |  |
 | `Not activated` | warning | Delivered, waiting for activation |  |
 | `Expired` | neutral | Past its expiry date |  |
 | `Canceled` | neutral | Permanently canceled |  |
@@ -220,7 +223,7 @@ Normative pairs (the label alone, and what accompanies it):
     "max-per-object": 1,
     "vocabulary": {
       "transaction": ["Pending", "Scheduled", "On hold", "Declined", "Failed", "Canceled", "Refunded", "Returned"],
-      "card": ["Frozen", "Blocked", "Not activated", "Expired", "Canceled"],
+      "card": ["On its way", "Frozen", "Blocked", "Not activated", "Expired", "Canceled"],
       "verification": ["In review", "Action needed", "Verified", "Expired", "Not approved"],
       "recurring-payment": ["Upcoming", "Paused", "Canceled", "Failed"],
       "space": ["Target reached", "Paused"]
@@ -228,7 +231,7 @@ Normative pairs (the label alone, and what accompanies it):
     "tone-map": {
       "Pending": "warning", "Scheduled": "info", "On hold": "warning", "Declined": "error",
       "Failed": "error", "Canceled": "neutral", "Refunded": "success", "Returned": "neutral",
-      "Frozen": "info", "Blocked": "error", "Not activated": "warning", "Expired": "neutral",
+      "On its way": "info", "Frozen": "info", "Blocked": "error", "Not activated": "warning", "Expired": "neutral",
       "In review": "info", "Action needed": "warning", "Verified": "success", "Not approved": "error",
       "Upcoming": "info", "Paused": "neutral", "Target reached": "success"
     },

@@ -239,7 +239,7 @@ def radio_option(text, surface=None):
 
 STATUS_VOCABULARY = {
     "pending", "scheduled", "on hold", "declined", "failed", "canceled", "refunded", "returned",
-    "frozen", "blocked", "not activated", "expired",
+    "frozen", "blocked", "not activated", "expired", "on its way",
     "in review", "action needed", "verified", "not approved",
     "upcoming", "paused", "target reached",
 }
@@ -272,8 +272,10 @@ def status_label(text, surface=None):
         problems.append("no ending punctuation on a status label")
     if re.search(r"\d", t):
         problems.append("no numbers, amounts, dates, or counts inside a status label")
-    if len(t.split()) > 2:
-        problems.append("too long (" + str(len(t.split())) + " words); a status label is one or two words")
+    # The word cap guards invented labels; a term in the controlled vocabulary has already
+    # been decided ("On its way" is three words and is the right copy).
+    if t.lower() not in STATUS_VOCABULARY and len(t.split()) > 2:
+        problems.append("too long (" + str(len(t.split())) + " words); a status label outside the controlled vocabulary is one or two words")
     if t.upper() == t and len(t) > 2:
         problems.append("no ALL CAPS; use sentence case")
     elif re.search(r"\s[A-Z]", t):
@@ -645,6 +647,20 @@ def no_enumeration(text, surface=None):
     return (True, "ok")
 
 
+REVERSIBLE = re.compile(r"any time|anytime|whenever you want|you can (?:un|undo|change|switch)", re.IGNORECASE)
+IRREVERSIBLE = re.compile(r"for good|permanently|cannot be undone|can['\u2019]t be undone|will stop working|no longer work", re.IGNORECASE)
+
+
+def reversibility(text, surface=None):
+    """A card action says, in its own copy, whether it can be undone."""
+    t = text.strip()
+    if not t:
+        return (False, "empty card action copy")
+    if REVERSIBLE.search(t) or IRREVERSIBLE.search(t):
+        return (True, "ok")
+    return (False, "does not say whether this can be undone; state it in the same copy as the action ('You can unfreeze it any time', 'This card will stop working for good')")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -685,6 +701,7 @@ REGISTRY = {
     "A-ACCORDION-HEADER": accordion_header,
     "A-TOGGLE-LABEL": toggle_label,
     "A-ENUMERATION": no_enumeration,
+    "A-REVERSIBILITY": reversibility,
 }
 
 
@@ -738,6 +755,7 @@ SURFACE_CHECKS = {
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],
     "auth-error": FIELD_CHECKS + ["A-ENUMERATION"],
+    "card-action": BODY_CHECKS + ["A-REVERSIBILITY"],
 }
 
 

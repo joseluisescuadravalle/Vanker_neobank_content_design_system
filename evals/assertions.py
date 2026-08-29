@@ -26,6 +26,10 @@ PROHIBITED_CLAIMS = [
 MUST_EXPAND = ["KYC", "APR", "SCA", "VoP", "BIC", "2FA", "CVV"]  # IBAN, PIN, SEPA: widely understood
 GENERIC_CTA = {"ok", "submit", "confirm", "continue", "done", "next", "proceed"}
 GENERIC_ERRORS = {"error", "invalid", "wrong", "incorrect", "review the data", "check the data", "review the field"}
+GENERIC_REQUIRED = ["this is required", "this field is required", "required field",
+                    "mandatory field", "this data is necessary", "field is mandatory"]
+# A field error states a fact; it does not order someone who has not done anything wrong.
+IMPERATIVE_OPENER = re.compile(r"^(enter|add|type|fill|provide|input|write|complete|insert)\b", re.IGNORECASE)
 INLINE_CTA_VERBS = r"cancel|retry|confirm|continue|undo|dismiss|accept|decline|delete|try(?:\s+again)?|send|ok"
 INLINE_CTA = re.compile(r"\b(?:" + INLINE_CTA_VERBS + r")\b\s+(?:now\s+)?(?:or|and)\s+\b(?:" + INLINE_CTA_VERBS + r")\b", re.IGNORECASE)
 
@@ -103,8 +107,15 @@ def field_error(text, surface=None):
     core = re.sub(r"(?<=\d)\.(?=\d)", "", t)
     if core.count(".") > 1 or ". " in core:
         problems.append("one sentence only (no two sentences)")
-    if t.lower().rstrip(".").strip() in GENERIC_ERRORS:
+    low = t.lower().rstrip(".").strip()
+    if low in GENERIC_ERRORS:
         problems.append("too generic; give a specific hint")
+    for g in GENERIC_REQUIRED:
+        if g in low:
+            problems.append("'" + t + "' is the same sentence for every field; in an error summary six of these are indistinguishable. Name what is missing ('Your street is missing.')")
+            break
+    if IMPERATIVE_OPENER.match(t):
+        problems.append("a field error states a fact, it does not give an order: 'Your street is missing.' rather than 'Enter your street.'")
     return (not problems, "; ".join(problems) or "ok")
 
 

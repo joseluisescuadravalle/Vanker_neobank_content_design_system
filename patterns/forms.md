@@ -138,6 +138,20 @@ saves a trip back.
 In a multi-step flow with one or two fields per screen, **advancing is submitting**: the
 error fires there, which is the same moment the person expects it.
 
+### What a required-field error says
+
+**"Your street is missing."** Not "Enter your street." and not "This is required."
+
+- The imperative gives an order to someone who has done nothing wrong: they simply have not
+  reached the field yet.
+- The generic sentence destroys the error summary. Each item there is a link, and six links
+  reading "This is required" are unusable by eye and identical to a screen reader.
+- Naming the field keeps both: the message is warm because it states a fact rather than
+  commanding, and it stays specific enough to be scanned, linked, and announced.
+
+Where the field has a value that is wrong, the message switches families and states what is
+expected instead ("An IBAN must contain 24 characters."). See `errors.md`.
+
 ## The error summary (on submit)
 
 When a submit fails validation, the errors do **not** only appear beside their fields: a
@@ -218,6 +232,8 @@ transfer flow (see `../compliance/security-payments.md`), never a green tick on 
 - Placeholder: on a form field, a format example only, never essential information; a guide-phrase placeholder is allowed only on search / marketing surfaces (see the exception above).
 - Required fields carry no marker; only optional ones say "(optional)". No asterisks.
 - A required-field error appears on submit, not when the person moves to the next field.
+- A required-field error names what is missing ("Your street is missing."), never an order
+  ("Enter your street.") and never the same generic sentence for every field.
 - A failed submit shows a summary at the top, focused, listing every error in field order,
   repeating each inline message verbatim, with each item linking to its field.
 - A disabled field's reason is written next to it, never only in its appearance and never

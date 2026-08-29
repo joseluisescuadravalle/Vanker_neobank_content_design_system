@@ -125,6 +125,18 @@ state (see `../components/library/text-field.md`).
   gives the hint to fix it. Never generic ("Error", "Review the data").
 - **Guidance, not blame**: state what is expected ("A postal code has 5 digits.") rather
   than what the person did wrong.
+- **A fact, not an order.** Someone who has not filled a field in yet has done nothing
+  wrong, and an imperative treats them as if they had. There are two families, and between
+  them they cover every field error:
+
+  | What happened | What the message does | Example |
+  | --- | --- | --- |
+  | The field is empty | **States what is missing** | "Your street is missing." |
+  | There is a value, but it is wrong | **States what is expected** | "An IBAN must contain 24 characters." |
+
+  Never "Enter your street." (an order), and never "This is required." (the same sentence
+  for every field: in an error summary, six of them are indistinguishable, and for someone
+  using a screen reader the six links are literally identical). See `forms.md`.
 - Not a question, no exclamation, no humor.
 
 ### Presentation and behavior
@@ -143,5 +155,7 @@ state (see `../components/library/text-field.md`).
 ### Eval hooks
 
 - One sentence, ends with a period, no "?" or "!".
-- Not generic; gives a specific hint.
+- Not generic; gives a specific hint. "This is required" fails: it is the same sentence for
+  every field.
+- States a fact rather than giving an order: what is missing, or what is expected.
 - Not conveyed by color alone (text plus icon, associated to the field).

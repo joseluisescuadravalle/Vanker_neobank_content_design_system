@@ -117,7 +117,8 @@ per `../../voice-and-tone/voice.md`.
 
 | Case | Message (normative) |
 | --- | --- |
-| Amount is zero or empty | "Enter an amount greater than zero." |
+| Amount is empty | "The amount is missing." |
+| Amount is zero | "The amount must be more than zero." |
 | More than the available balance | "That is more than the 1.240,50 € available in your current account." |
 | Below the minimum | "The smallest amount you can send is 1 €." |
 | Over the per-transaction limit | "You cannot send more than 3.000 € in one transfer." |
@@ -208,7 +209,8 @@ per `../../voice-and-tone/voice.md`.
       "on-keystroke": false,
       "prefer-enabled-action-with-error": true,
       "messages": {
-        "zero": "Enter an amount greater than zero.",
+        "empty": "The amount is missing.",
+        "zero": "The amount must be more than zero.",
         "over-balance": "That is more than the {available} € available in your current account.",
         "below-minimum": "The smallest amount you can send is {min} €.",
         "over-transaction-limit": "You cannot send more than {limit} € in one transfer.",

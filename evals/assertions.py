@@ -17,6 +17,7 @@ BANNED_TERMS = [
     "something went wrong", "oops", "unexpected error", "technical difficulties",
     "please wait", "almost there", "just a moment", "hang tight", "working on it",
     "the best", "the cheapest", "the fastest", "no strings attached", "free forever",
+    "you entered the wrong", "you failed to", "you forgot to", "invalid",
 ]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
@@ -628,6 +629,22 @@ def toggle_label(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+ENUMERATION = re.compile(
+    r"no account (?:with|for|found)|account (?:does not|doesn['\u2019]t) exist|not registered|"
+    r"user not found|no user|we (?:could not|couldn['\u2019]t) find (?:an? )?(?:account|user|email)|"
+    r"(?:email|address|phone number) (?:is )?(?:not recognized|not recognised|unknown)|"
+    r"(?:that|this) email is not|already (?:registered|in use|has an account)",
+    re.IGNORECASE)
+
+
+def no_enumeration(text, surface=None):
+    """Never reveal whether an account exists: it turns a login screen into a lookup tool."""
+    m = ENUMERATION.search(text)
+    if m:
+        return (False, "reveals whether an account exists ('" + m.group(0).strip() + "'); say the same thing either way ('If there is an account for that email, we have sent it a link.')")
+    return (True, "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -667,6 +684,7 @@ REGISTRY = {
     "A-ERROR-SUMMARY": error_summary_title,
     "A-ACCORDION-HEADER": accordion_header,
     "A-TOGGLE-LABEL": toggle_label,
+    "A-ENUMERATION": no_enumeration,
 }
 
 
@@ -718,6 +736,8 @@ SURFACE_CHECKS = {
     "accordion-body": BODY_CHECKS,
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
+    "auth": BODY_CHECKS + ["A-ENUMERATION"],
+    "auth-error": FIELD_CHECKS + ["A-ENUMERATION"],
 }
 
 

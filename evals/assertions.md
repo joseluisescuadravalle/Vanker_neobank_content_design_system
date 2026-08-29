@@ -74,6 +74,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-TOOLTIP-TRIGGER` | The trigger's accessible name is the question the tooltip answers, never "info" or "?" | `../components/library/tooltip.md` |
 | `A-COUNTER` | A character counter reads "{n} characters left", never a ratio | `../components/library/textarea.md` |
 | `A-ERROR-SUMMARY` | The title above a failed submit says what to do, with no blame, no "error", and no count | `../patterns/forms.md` |
+| `A-ACCORDION-HEADER` | An accordion header names its content: up to about eight words, no ending period, no count, and never "More information", "Details", "Read more" or "Info" | `../components/library/accordion.md` |
 
 `A-NO-BANNED` also rejects the vague-failure phrases ("something went wrong", "oops",
 "unexpected error", "technical difficulties") the vague-waiting ones ("please wait",
@@ -142,6 +143,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `tooltip-trigger` | `A-TOOLTIP-TRIGGER`, no emoji, banned |
 | `counter` | `A-COUNTER` only |
 | `error-summary-title` | `A-ERROR-SUMMARY`, banned, no emoji |
+| `accordion-header` | `A-ACCORDION-HEADER`, banned/claims, numerals |
+| `accordion-body` | The body checks |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

@@ -22,6 +22,7 @@ Components in this library:
 - `amount-input.md` — the money field (hero and inline), presets, limits, and fees
 - `code-input.md` — the single-use code field (Strong Customer Authentication, SCA)
 - `tooltip.md` — the weakest surface in the product, and what may never live in it
+- `accordion.md` — collapsible content, and the test for what may collapse
 - `navigation.md`
 - `sheet-modal.md`
 - `banner-toast.md`

@@ -574,6 +574,32 @@ def error_summary_title(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+EMPTY_HEADERS = {
+    "more information", "more info", "details", "more details", "other", "others",
+    "read more", "learn more", "info", "information", "additional information", "misc",
+}
+
+
+def accordion_header(text, surface=None):
+    """An accordion header predicts its content, or nobody opens it."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty header")
+    if EMOJI.search(t):
+        problems.append("no emoji in an accordion header")
+    low = t.lower().rstrip("?.").strip()
+    if low in EMPTY_HEADERS:
+        problems.append("'" + t + "' describes the act of opening, not the content; name what is inside")
+    if t.endswith("."):
+        problems.append("no ending period on a header; a question takes a question mark, a noun phrase takes nothing")
+    if len(t.split()) > 8:
+        problems.append("too long (" + str(len(t.split())) + " words); a header is one line on a phone")
+    if re.match(r"^\d", t):
+        problems.append("no count in a header ('3 things you should know')")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -611,6 +637,7 @@ REGISTRY = {
     "A-TOOLTIP-TRIGGER": tooltip_trigger,
     "A-COUNTER": counter_text,
     "A-ERROR-SUMMARY": error_summary_title,
+    "A-ACCORDION-HEADER": accordion_header,
 }
 
 
@@ -658,6 +685,8 @@ SURFACE_CHECKS = {
     "tooltip-trigger": ["A-TOOLTIP-TRIGGER", "A-NO-EMOJI", "A-NO-BANNED"],
     "counter": ["A-COUNTER"],
     "error-summary-title": ["A-ERROR-SUMMARY", "A-NO-BANNED", "A-NO-EMOJI"],
+    "accordion-header": ["A-ACCORDION-HEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-NUMERALS"],
+    "accordion-body": BODY_CHECKS,
 }
 
 

@@ -139,7 +139,9 @@ def build(limit=None, ids=None):
         if ids and c["id"] not in ids:
             continue
         cand = c.get("context", {}).get("candidate")
-        if not cand:
+        # An empty string is a candidate: a decorative image's alt is deliberately "".
+        # Only a missing candidate means the case still needs a model to generate one.
+        if cand is None:
             skipped.append((c["id"], "no candidate yet"))
             continue
         res = assertions.run(cand, c.get("must_pass"), surface=c.get("surface"))

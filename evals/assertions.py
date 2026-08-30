@@ -949,6 +949,37 @@ def inclusive(text, surface=None):
     return (False, msg + " (see voice-and-tone/inclusive-language.md)")
 
 
+ALT_PREFIX = re.compile(r"^\s*(?:an?\s+)?(?:image|picture|photo|photograph|icon|graphic|illustration|screenshot)\s+(?:of|showing)\b", re.IGNORECASE)
+FILE_NAME = re.compile(r"\b[\w-]+\.(?:png|jpe?g|svg|gif|webp|pdf)\b", re.IGNORECASE)
+GENERIC_ALT = {"chart", "graph", "image", "icon", "photo", "picture", "illustration", "logo", "graphic"}
+
+
+def alt_text(text, surface=None):
+    """Alt text answers what the person would miss, not what is in the picture.
+
+    An empty string is a valid, deliberate answer: a decorative image takes alt="". That is
+    why this check accepts it, and why the decorative case has its own surface.
+    """
+    t = text.strip()
+    if t == "":
+        return (True, "ok (decorative)")
+    problems = []
+    m = ALT_PREFIX.search(t)
+    if m:
+        problems.append("no '" + m.group(0).strip() + "' prefix: the screen reader already announces that it is an image, so the prefix spends the first seconds saying nothing")
+    if FILE_NAME.search(t):
+        problems.append("a file name is not alt text")
+    if t.lower().rstrip(".") in GENERIC_ALT:
+        problems.append("'" + t + "' says nothing; name what the person would miss")
+    if EMOJI.search(t):
+        problems.append("no emoji in alt text")
+    if len(t) > 125:
+        problems.append("too long (" + str(len(t)) + " chars); over about 125 the description is content and belongs on the screen where everyone can read it")
+    if "\u20ac" in t:
+        problems.append("an amount in alt text: money is real text on the screen, never only in an image or its description")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -999,6 +1030,7 @@ REGISTRY = {
     "A-LINK-TEXT": link_text,
     "A-DATE": dates_and_figures,
     "A-INCLUSIVE": inclusive,
+    "A-ALT": alt_text,
 }
 
 
@@ -1049,6 +1081,7 @@ SURFACE_CHECKS = {
     "accordion-header": ["A-ACCORDION-HEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-NUMERALS"],
     "accordion-body": BODY_CHECKS,
     "link": ["A-LINK-TEXT", "A-NO-BANNED", "A-NO-CLAIMS", "A-CASE", "A-PUNCTUATION"],
+    "alt-text": ["A-ALT", "A-CASE", "A-PUNCTUATION", "A-MASK"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

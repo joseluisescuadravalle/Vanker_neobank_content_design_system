@@ -19,6 +19,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-LINK-TEXT` | Link text names its destination: "here", "click here", "read more", "learn more" and a bare URL all fail | `../patterns/links.md` |
 | `A-DATE` | No numeric, ordinal, or month-first dates; no "Yesterday" or "Tomorrow"; no abbreviated figures or "(s)" plurals; no vague timing | `../terminology/numbers-and-dates.md` |
 | `A-INCLUSIVE` | No label for a person where an event should be described, no assumed gender, age or ability, no disability as metaphor, no blacklist/whitelist | `../voice-and-tone/inclusive-language.md` |
+| `A-ALT` | Alt text: no "image of" prefix, no file name, no generic one-worder, about 125 characters, no amount. An empty string passes: decorative is a deliberate answer | `../patterns/alt-text.md` |
 
 ## Voice and patterns
 
@@ -192,6 +193,7 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `accordion-header` | `A-ACCORDION-HEADER`, banned/claims, numerals |
 | `accordion-body` | The body checks |
 | `link` | `A-LINK-TEXT`, banned/claims, case, punctuation |
+| `alt-text` | `A-ALT`, case, punctuation, `A-MASK`. An empty candidate is the decorative case and passes |
 | `toggle-label` | `A-TOGGLE-LABEL`, no emoji, banned/claims |
 | `toggle-description` | The body checks |
 | `auth` | The body checks plus `A-ENUMERATION` |

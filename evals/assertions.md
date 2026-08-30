@@ -25,6 +25,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-SEARCH-PLACEHOLDER` | Names the scope; a bare "Search" fails, since it is the field's only naming | `../patterns/search.md` |
 | `A-NO-RESULTS` | Nothing found is an empty state: no bare "No results found", no error or apology language, no blaming the spelling | `../patterns/search.md` |
 | `A-DATE-UNAVAILABLE` | A day that cannot be used states why and what happens instead; nothing moves silently | `../components/library/date-field.md` |
+| `A-LOCALIZABLE` | Named variables rather than positional ones, no variable glued into a word, and no reference to a position on the screen | `../terminology/localization.md` |
 
 ## Voice and patterns
 
@@ -151,7 +152,7 @@ rule is code-checkable (those live in `rubric.md`).
 
 ## Checks that apply to every surface
 
-`A-NO-BANNED`, `A-NO-CLAIMS` and `A-INCLUSIVE` are appended to **every** surface list
+`A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE` and `A-LOCALIZABLE` are appended to **every** surface list
 automatically. Surface lists are hand-written, so a cross-cutting check added later would
 otherwise reach only the surfaces someone remembered to update — which is exactly how the
 inclusive-language check first missed `helper-text`.

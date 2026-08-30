@@ -77,6 +77,10 @@ If a string touches money, risk, legal terms, deposit protection, or personal da
 ## 5. Output conventions
 
 - **Language / locale:** English (en). All Vanker-facing content is written in English.
+  Strings are still built to be translatable, and that is not a future concern: a sentence
+  assembled at runtime from fragments is invisible to every check in `evals/`. Never
+  concatenate; one string is one complete sentence with named variables inside it. See
+  `terminology/localization.md`.
 - Label output as **normative** (a rule to follow) or **example** (illustrative) so it is never
   mistaken for the other.
 - Follow the voice defined in `voice-and-tone/` for everything not constrained by the rules above.

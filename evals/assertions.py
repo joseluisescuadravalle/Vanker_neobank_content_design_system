@@ -1071,6 +1071,28 @@ def date_unavailable(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+POSITIONAL_VAR = re.compile(r"%[sd]\b|\{\d+\}|\$\d\b")
+SCREEN_POSITION = re.compile(
+    r"\b(?:button|icon|link|field|switch|tab|menu)\s+(?:on the\s+)?(?:right|left|below|above)\b"
+    r"|\bon the (?:right|left)\b|\btap (?:the )?(?:icon|button) (?:below|above|to the (?:right|left))\b",
+    re.IGNORECASE)
+
+
+def localizable(text, surface=None):
+    """A string is built so it can be checked now and translated later."""
+    t = text.strip()
+    problems = []
+    m = POSITIONAL_VAR.search(t)
+    if m:
+        problems.append("positional placeholder ('" + m.group(0) + "'); use a named variable ({amount}, {recipient}), because a translator has to be able to move it")
+    m = SCREEN_POSITION.search(t)
+    if m:
+        problems.append("refers to a position on the screen ('" + m.group(0).strip() + "'); layouts mirror in right-to-left languages, reflow on other sizes, and a screen reader user has no left. Name the thing instead")
+    if re.search(r"\{[a-z_]+\}[a-z]", t, re.IGNORECASE):
+        problems.append("a variable glued into a word; plural rules differ by language, so use a plural-aware string")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -1127,6 +1149,7 @@ REGISTRY = {
     "A-SEARCH-PLACEHOLDER": search_placeholder,
     "A-NO-RESULTS": no_results,
     "A-DATE-UNAVAILABLE": date_unavailable,
+    "A-LOCALIZABLE": localizable,
 }
 
 
@@ -1198,7 +1221,7 @@ SURFACE_CHECKS = {
 # a prohibited claim, or a word that labels a person. Surface lists are hand-written, so a
 # cross-cutting check added later would otherwise reach only the surfaces someone remembered
 # to update. This adds them everywhere, once.
-UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE"]
+UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE", "A-LOCALIZABLE"]
 for _surface, _checks in list(SURFACE_CHECKS.items()):
     SURFACE_CHECKS[_surface] = _checks + [c for c in UNIVERSAL if c not in _checks]
 

@@ -771,6 +771,59 @@ def paragraphs(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+LATIN_ABBR = re.compile(r"\b(?:e\.g\.|i\.e\.|etc\.)", re.IGNORECASE)
+HYPHEN_RANGE = re.compile(r"(?<=\d)\s?-\s?(?=\d)")
+DASHES = re.compile(r"[\u2014\u2013]")
+ELLIPSIS = re.compile(r"\u2026|\.\.\.")
+TITLE_CASE_OK = {"Vanker", "Spaces", "IBAN", "SEPA", "PIN", "BIC", "KYC", "APR", "CVV", "SCA", "VoP"}
+
+
+def punctuation(text, surface=None):
+    """The marks Vanker does not use, wherever the copy appears."""
+    t = text.strip()
+    problems = []
+    if "!" in t:
+        problems.append("no exclamation mark in customer copy")
+    if ";" in t:
+        problems.append("no semicolon; use two sentences or a comma")
+    if DASHES.search(t):
+        problems.append("no em or en dash in product copy; use a comma, a full stop, or parentheses")
+    if ELLIPSIS.search(t):
+        problems.append("no ellipsis in copy; the only one a person should see is a value the system truncates")
+    m = LATIN_ABBR.search(t)
+    if m:
+        problems.append("no Latin abbreviation ('" + m.group(0) + "'); write 'for example' or 'that is'")
+    if HYPHEN_RANGE.search(t):
+        problems.append("a range takes 'to', never a hyphen between figures: in a bank a hyphen next to money reads as a minus sign")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def case(text, surface=None):
+    """Sentence case: only Title Case and typed ALL CAPS are detectable with confidence.
+
+    Three sources of false positives are excluded, each found by sweeping the golden set:
+    a word that starts a sentence, the same proper noun repeated ("Luis M. Garcia"), and a
+    format placeholder, which is uppercase by definition.
+    """
+    t = text.strip()
+    problems = []
+    # A word is only suspicious when it is mid-sentence: not the first word, and not the
+    # one after a full stop, a question mark, or an opening quote.
+    tokens = re.findall(r"([.!?\u201c\u2018\"']?)\s*([A-Za-z\u00c0-\u017f']+)", t)
+    caps = []
+    for i, (prev, w) in enumerate(tokens):
+        if i == 0 or prev:
+            continue
+        if w[:1].isupper() and w not in TITLE_CASE_OK and not w.isupper():
+            caps.append(w)
+    if len(set(caps)) >= 3:
+        problems.append("Title Case ('" + " ".join(sorted(set(caps))[:3]) + "...'); Vanker writes in sentence case")
+    letters = [c for c in t if c.isalpha()]
+    if (surface or "").lower() != "placeholder" and len(letters) > 3 and all(c.isupper() for c in letters):
+        problems.append("ALL CAPS typed into the string; if the design needs uppercase, the style applies it")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -816,12 +869,14 @@ REGISTRY = {
     "A-SUBJECT": email_subject,
     "A-PREHEADER": email_preheader,
     "A-PARAGRAPHS": paragraphs,
+    "A-PUNCTUATION": punctuation,
+    "A-CASE": case,
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS"]
-CTA_CHECKS = ["A-CTA", "A-NO-EMOJI"]
-FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE"]
+CTA_CHECKS = ["A-CTA", "A-NO-EMOJI", "A-CASE"]
+FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,

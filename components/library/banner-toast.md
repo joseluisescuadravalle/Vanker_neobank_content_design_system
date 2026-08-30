@@ -21,8 +21,11 @@ disappears. Anything that must persist or needs an action is a banner (or inline
 - **Style:** a graphite, white-text `shadow.lg` pill that **hugs its content** and is
   centered above the tab bar, not full width.
 - **Anatomy:** an optional status icon, one short line, and at most one action ("Undo").
-- **Action style:** the action is white (`color.on-primary`), emphasized in bold. Never the
-  fuchsia accent, which reads poorly on the dark surface.
+- **Action style:** the action is white (`color.on-primary`), **bold and underlined**, so it
+  reads clearly as a tappable link on the dark surface. Never the fuchsia accent, which
+  reads poorly there. Weight and color alone are not an affordance: on a graphite surface
+  where the message is already white, bold is the only difference, and WCAG 1.4.1 (Use of
+  Color) is not met by a bolder shade of the same white.
 - **Layout:** the icon and message read as one centered unit; an action sits directly after
   the message with a small gap, never pushed to the far edge. A long message caps the width
   and wraps.
@@ -55,6 +58,8 @@ disappears. Anything that must persist or needs an action is a banner (or inline
 - Error banners are specific and say how to fix it, never blaming the person (see
   `../../patterns/errors.md`).
 - Never rely on color alone; the icon and text always carry the meaning.
+- A text action carries a shape as well as a color: the toast action is underlined, so it is
+  recognizable as an action without seeing the difference in weight.
 
 ## Accessibility
 
@@ -72,7 +77,7 @@ disappears. Anything that must persist or needs an action is a banner (or inline
 {
   "toast": {
     "style": { "bg": "color.primary", "text": "color.on-primary", "shadow": "shadow.lg" },
-    "action": { "color": "color.on-primary", "weight": "bold" },
+    "action": { "color": "color.on-primary", "weight": "bold", "underline": true },
     "layout": "content-width, centered above tab bar",
     "timing": { "auto-dismiss-s": 4, "with-action-s": 6, "concurrent": 1 },
     "action-max": 1,

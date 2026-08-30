@@ -14,6 +14,8 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-NO-BANNED` | No banned or jargon terms, matched on **word boundaries** so "reach" is not "ACH" and "provisional" is not "provision". Also covers login-as-a-verb and, surface-aware, `&` in body copy | `../terminology/banned-terms.md` |
 | `A-ACRONYMS` | Known acronyms are expanded on first use | `../terminology/glossary.md` |
 | `A-NUMERALS` | Numbers are digits in body copy and instructions ("3 steps", not "three steps") | `../terminology/glossary.md` |
+| `A-PUNCTUATION` | No exclamation mark, semicolon, em or en dash, ellipsis, or Latin abbreviation, and a range takes "to" rather than a hyphen between figures | `../terminology/capitalization-and-punctuation.md` |
+| `A-CASE` | No Title Case and no ALL CAPS typed into a string | `../terminology/capitalization-and-punctuation.md` |
 
 ## Voice and patterns
 
@@ -111,6 +113,13 @@ single-use code is a **code** (see `../terminology/glossary.md`).
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-NO-CLAIMS` | No prohibited claims ("guaranteed", "risk-free", etc.) | `../compliance/principles.md`, `../compliance/risk-warnings.md` |
+
+## Rules that are documented but not checked
+
+`../terminology/capitalization-and-punctuation.md` names two rules that are deliberately not
+implemented: curly quotes, and sentence case beyond Title Case detection. Both would produce
+more noise than findings, and a noisy check teaches people to ignore it. They are listed
+there so nobody assumes they are covered.
 
 ## Keeping the term list honest
 

@@ -7,7 +7,7 @@ messages, empty states, confirmations, and notifications. Each pattern states th
 rule and shows labeled examples.
 
 Contents:
-- `ctas.md`, `errors.md`, `system-errors.md`, `loading.md`, `welcome-carousel.md`,
+- `ctas.md`, `links.md`, `errors.md`, `system-errors.md`, `loading.md`, `welcome-carousel.md`,
   `flow-intro.md`, `permissions.md`, `auth.md`, `cards.md`, `empty-states.md`,
   `confirmations.md`,
   `notifications.md`, `emails.md`, `success.md`, `forms.md`.

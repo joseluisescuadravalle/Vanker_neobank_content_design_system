@@ -16,6 +16,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-NUMERALS` | Numbers are digits in body copy and instructions ("3 steps", not "three steps") | `../terminology/glossary.md` |
 | `A-PUNCTUATION` | No exclamation mark, semicolon, em or en dash, ellipsis, or Latin abbreviation, and a range takes "to" rather than a hyphen between figures | `../terminology/capitalization-and-punctuation.md` |
 | `A-CASE` | No Title Case and no ALL CAPS typed into a string | `../terminology/capitalization-and-punctuation.md` |
+| `A-LINK-TEXT` | Link text names its destination: "here", "click here", "read more", "learn more" and a bare URL all fail | `../patterns/links.md` |
 
 ## Voice and patterns
 
@@ -177,6 +178,7 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `error-summary-title` | `A-ERROR-SUMMARY`, banned, no emoji |
 | `accordion-header` | `A-ACCORDION-HEADER`, banned/claims, numerals |
 | `accordion-body` | The body checks |
+| `link` | `A-LINK-TEXT`, banned/claims, case, punctuation |
 | `toggle-label` | `A-TOGGLE-LABEL`, no emoji, banned/claims |
 | `toggle-description` | The body checks |
 | `auth` | The body checks plus `A-ENUMERATION` |

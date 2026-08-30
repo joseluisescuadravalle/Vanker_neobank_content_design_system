@@ -824,6 +824,32 @@ def case(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+EMPTY_LINKS = {"here", "click here", "tap here", "read more", "learn more", "more",
+               "more info", "more information", "this link", "link", "click", "see more",
+               "find out more", "details"}
+BARE_URL = re.compile(r"https?://|www\.", re.IGNORECASE)
+
+
+def link_text(text, surface=None):
+    """A link names its destination: a screen reader user reads it out of context."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty link text")
+    low = t.lower().rstrip(".").strip()
+    if low in EMPTY_LINKS:
+        problems.append("'" + t + "' names nothing; a screen reader user pulls up a list of the links on the screen, with no sentence around them. Name the destination ('Read the privacy policy')")
+    if BARE_URL.search(t):
+        problems.append("a bare URL as link text; name the destination instead, which is also how a person tells our email from a fake")
+    if re.search(r"[.,;:]$", t):
+        problems.append("the trailing punctuation is outside the link")
+    if EMOJI.search(t):
+        problems.append("no emoji in link text")
+    if len(t.split()) > 5:
+        problems.append("too long (" + str(len(t.split())) + " words); link the shortest phrase that names the destination")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -871,6 +897,7 @@ REGISTRY = {
     "A-PARAGRAPHS": paragraphs,
     "A-PUNCTUATION": punctuation,
     "A-CASE": case,
+    "A-LINK-TEXT": link_text,
 }
 
 
@@ -920,6 +947,7 @@ SURFACE_CHECKS = {
     "error-summary-title": ["A-ERROR-SUMMARY", "A-NO-BANNED", "A-NO-EMOJI"],
     "accordion-header": ["A-ACCORDION-HEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-NUMERALS"],
     "accordion-body": BODY_CHECKS,
+    "link": ["A-LINK-TEXT", "A-NO-BANNED", "A-NO-CLAIMS", "A-CASE", "A-PUNCTUATION"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

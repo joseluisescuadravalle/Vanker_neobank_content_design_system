@@ -58,6 +58,12 @@ is precise about what the tap does.
   payment" -> "Confirm payment".
 - **Case.** Sentence case.
 
+## Button or link
+
+A button changes something; a link takes the person somewhere. A button that only navigates
+overstates its weight, and a link that changes something breaks the expectation that links
+are safe and reversible. See `links.md`.
+
 ## Primary vs secondary
 
 - **Primary:** the action, a specific verb. Generic words ("OK", "Submit", "Continue",

@@ -33,7 +33,7 @@ it does not belong in a tooltip.
 | --- | --- | --- |
 | Needed to complete the field or the action | **Helper text** (`text-field.md`, `../../patterns/forms.md`) | Always |
 | A clarification of one term, useful but optional | **Tooltip** | On request |
-| Longer than two lines, or with structure, steps, or a link | **Sheet** (`sheet-modal.md`), opened by a "Learn more" link | On request |
+| Longer than two lines, or with structure, steps, or a link | **Sheet** (`sheet-modal.md`), opened by a link that names it ("Read the fee information") | On request |
 
 The middle tier is narrow on purpose. **A tooltip that needs a link, a list, or a second
 paragraph is a sheet that has not admitted it yet.**

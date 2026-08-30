@@ -72,3 +72,10 @@ Reuses the text field: outlined, `radius.md` (12px), 48px tall, with a chevron
   }
 }
 ```
+
+## Eval hooks
+
+- At most 5 options; more than that is a different component.
+- Options are parallel, one to three words, with no ending punctuation and no emoji.
+- The prompt is not the label: the field keeps a visible, persistent label.
+- The label model is the one in `text-field.md` (label in, and a label out only when needed).

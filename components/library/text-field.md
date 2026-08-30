@@ -115,3 +115,12 @@ in: they do different jobs (one names the field, one shows the format) and do no
   }
 }
 ```
+
+## Eval hooks
+
+- Every field keeps a visible, persistent label; a placeholder never stands in for it.
+- Required fields carry no marker; only optional ones say "(optional)", never an asterisk.
+- The placeholder is a format example only, outside the search and marketing exception.
+- An error follows the two families: what is missing, or what is expected.
+- The floated label meets AA contrast and respects `prefers-reduced-motion`.
+- The valid state appears only on verifiable identifiers, as an icon with no text.

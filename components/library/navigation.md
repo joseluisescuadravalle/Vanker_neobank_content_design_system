@@ -70,3 +70,11 @@ The header of the current screen.
   }
 }
 ```
+
+## Eval hooks
+
+- Three to five destinations, each labelled with a single noun in sentence case.
+- The active tab is marked programmatically (`aria-current`), never by colour alone.
+- The screen title names the screen, in sentence case, with no ending period.
+- The back control has a real label, never a bare icon.
+- A count badge on a tab follows `count-badge.md` and is part of the tab's accessible name.

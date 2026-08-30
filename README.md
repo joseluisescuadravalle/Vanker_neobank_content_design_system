@@ -56,3 +56,9 @@ _(links pending — to be added as sources are confirmed)_
 
 Work in progress. Structure and content are evolving; expect breaking changes to file layout
 until a first stable version is tagged.
+
+## Adding to this system
+
+`CONTRIBUTING.md` is the guide: where a new piece goes, the shape every file follows,
+how a rule becomes a check, and the traps this system has already walked into.
+`evals/check_structure.py` enforces the shape.

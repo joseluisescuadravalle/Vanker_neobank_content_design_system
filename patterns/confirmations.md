@@ -39,6 +39,22 @@ Examples:
 - Do: "Your Travel space is set up. You can add money to it whenever you like."
 - Not: "Done."
 
+## Machine-readable spec
+
+```json
+{
+  "confirmations": {
+    "pre-action": {
+      "required-when": ["irreversible", "moves money", "lowers protection"],
+      "title": { "starts-with-the-action-verb": true, "form": "question", "ending-period": false },
+      "body": { "required-when": "irreversible or with consequences", "states-reversibility": true },
+      "actions": { "count": 2, "layout": "stacked", "primary-on-top": true, "primary-mirrors-the-title-verb": true }
+    },
+    "post-action": { "surface": "toast or full screen", "tense": "past", "celebration": "restrained" }
+  }
+}
+```
+
 ## Eval hooks
 
 - Pre-action money confirmations state amount, recipient, timing, and fee (or "no fee").

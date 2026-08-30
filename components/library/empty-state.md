@@ -71,3 +71,12 @@ Centered, with generous vertical spacing (`space.8`).
   }
 }
 ```
+
+## Eval hooks
+
+- The title is a short, plain statement with no ending period, and it is never an error.
+- The body says what will appear here and why it is worth it.
+- There is no call to action except on first use.
+- The illustration is decorative and carries an empty alt (`../../patterns/alt-text.md`).
+- A no-results empty state follows `../../patterns/search.md`: it names what was searched
+  and the scope.

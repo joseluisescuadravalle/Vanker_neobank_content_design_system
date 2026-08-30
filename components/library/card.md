@@ -92,3 +92,12 @@ When the whole card is tappable (it navigates or opens something):
   }
 }
 ```
+
+## Eval hooks
+
+- The account label is a short noun in sentence case; the balance is in European format with
+  tabular numbers.
+- The IBAN is masked to its last digits and never shown in full.
+- A Space card shows both amounts as text ("600 € of 1.000 €"), never only a bar.
+- An interactive card is a single focus stop with one accessible name that combines its parts.
+- A card carries no status label for the normal state.

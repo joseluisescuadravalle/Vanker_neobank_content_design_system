@@ -25,4 +25,11 @@ Every "Eval hooks" block across the system (in `../patterns/`, `../components/`,
 
 - `python run_golden.py` runs the deterministic layer over the golden set.
 - `python terms_sync.py` checks that `../terminology/banned-terms.md` and `assertions.py`
-  still agree. Run both after any change to either.
+  still agree.
+- `python run_golden.py --strict` audits the gap between what a case declares and what its
+  surface would apply.
+- `python check_structure.py` checks that every component and pattern file carries the shape
+  described in `../CONTRIBUTING.md`.
+- `python judge.py build` and `python judge.py score <run>` exercise the second layer.
+
+Run all of them after any change.

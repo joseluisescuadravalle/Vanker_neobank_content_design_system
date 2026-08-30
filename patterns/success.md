@@ -36,7 +36,26 @@ go next? Full-screen success. Otherwise, a toast.
 - Contained celebration (see `../voice-and-tone/tone.md`). No emoji (the tick is a drawn icon).
 - Exactly one primary among the continue options; the others are lower emphasis.
 
-### Eval hooks
+### Machine-readable spec
+
+```json
+{
+  "success": {
+    "surface-by-stakes": { "routine-in-flow": "toast", "end-of-an-important-flow": "full screen" },
+    "toast": { "tense": "past", "ending-period": false, "max-chars": 50 },
+    "full-screen": {
+      "mark": { "icon": true, "colour-alone": false },
+      "title": { "confirms-the-action": true, "ending-period": false, "celebration": "restrained" },
+      "body": { "optional": true, "omit-if-empty": true },
+      "continue": { "options": [2, 4], "each-a-cta": true }
+    },
+    "confetti-on-money": false,
+    "never-before-confirmed": true
+  }
+}
+```
+
+## Eval hooks
 
 - Title has no ending period.
 - Continue options are CTAs (verb, 3 words max); exactly one is primary.

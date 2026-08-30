@@ -43,10 +43,28 @@ content structure; the component visuals live in `../components/library/empty-st
 
 - **First use:** Icon (savings) / Title "Set money aside" / Body "Spaces help you save for
   what matters, like a trip or a rainy day." / CTA "Create space".
-- **No results:** Icon (search) / Title "No matches found" / Body "We could not find anything
+- **No results:** Icon (search) / Title "No transactions match \u201cana\u201d" / Body "We could not find anything
   for that search. Check the spelling or try another word." / (no CTA).
 - **All caught up:** Icon (check) / Title "You are all caught up" / Body "New updates from
   Vanker will appear here." / (no CTA).
+
+## Machine-readable spec
+
+```json
+{
+  "empty-state": {
+    "slots": {
+      "icon": { "required": true, "decorative": true, "alt": "" },
+      "title": { "required": true, "ending-period": false, "is-an-error": false },
+      "body": { "required": true, "says-what-will-appear": true },
+      "cta": { "required": false, "only-on": "first use" }
+    },
+    "variants": ["first use", "no results", "all caught up"],
+    "no-results-follows": "patterns/search.md",
+    "shame": false
+  }
+}
+```
 
 ## Eval hooks
 

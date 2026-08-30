@@ -71,6 +71,24 @@ A push is read by whoever is looking at the phone, not only by its owner.
 - **The same event tells the same story here, in email, and in the app** — the same amount
   format, the same state vocabulary, the same name. See `emails.md`.
 
+## Machine-readable spec
+
+```json
+{
+  "push": {
+    "slots": { "title": { "max-chars": 40, "front-loaded": true, "emoji": [0, 2] }, "body": { "max-chars": 120, "emoji": false } },
+    "cta": false,
+    "emoji-allowed-in": "non-critical title only",
+    "emoji-never-in": ["security", "fraud", "money movement", "any body"],
+    "lock-screen": { "amount": true, "counterparty": true, "balance": false, "card-details": false, "code": "only in a push that carries nothing else" },
+    "tap-opens": "the thing it is about",
+    "timing": { "money-and-security": "any hour", "everything-else": "respects quiet hours" },
+    "one-event-one-notification": true,
+    "matches-email-and-in-app": true
+  }
+}
+```
+
 ## Eval hooks
 
 - Title front-loads the key fact; about 40 characters or fewer.

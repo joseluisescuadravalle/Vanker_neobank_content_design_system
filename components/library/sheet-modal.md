@@ -82,3 +82,15 @@ with a scrim and use the `overlay` elevation role.
   }
 }
 ```
+
+## Eval hooks
+
+- Actions are stacked, primary on top, and there are never more than two.
+- A dialog title asks the question, starting with the action verb, and takes no ending period.
+- A destructive action names its consequence and whether it can be undone
+  (`../../patterns/cards.md`, `../../patterns/confirmations.md`).
+- Confirmation content is summarized as rows before confirming, with amounts in European
+  format.
+- Dismissing never loses what the person typed.
+- The body holds at most three paragraphs, one fact each
+  (`../foundations/typography.md`).

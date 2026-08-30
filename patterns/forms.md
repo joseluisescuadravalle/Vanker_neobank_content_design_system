@@ -224,6 +224,26 @@ transfer flow (see `../compliance/security-payments.md`), never a green tick on 
   legal wording is adapted to plain language without changing its meaning, and anything
   touching money, risk, or personal data follows `../compliance/`.
 
+## Machine-readable spec
+
+```json
+{
+  "forms": {
+    "principles": ["ask the minimum", "one thing per field", "group related fields"],
+    "field-text-hierarchy": ["label-in", "label-out", "legend", "helper", "placeholder"],
+    "label-in": { "required": true, "persistent": true },
+    "placeholder": { "use": "format-example-only", "guide-phrase-exception": ["search", "marketing"] },
+    "required": { "marker": "none", "optional-marker": "(optional)", "asterisk": false },
+    "required-error-fires-on": ["submit"],
+    "blur-error-when": "the person entered something and left it wrong",
+    "error-summary": { "title": "Check these before you continue", "count-in-title": false, "repeats-inline-message-verbatim": true, "focus-moves-to-it": true, "dismissible": false },
+    "disabled": { "reason-in-layout": true, "reason-in-tooltip": false },
+    "valid-state": { "scope": "verifiable identifiers", "text": false, "overclaim": false },
+    "no-confirmation-fields": true
+  }
+}
+```
+
 ## Eval hooks
 
 - Every input has a visible label in; no field is named by a placeholder alone.

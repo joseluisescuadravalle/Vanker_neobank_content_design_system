@@ -66,3 +66,11 @@ The tone is patient and plain (see `../../voice-and-tone/tone.md`, "Onboarding")
   }
 }
 ```
+
+## Eval hooks
+
+- The step explains why it is being asked, in plain language, never a bare acronym.
+- Acronyms are expanded on first use ("confirm your identity" rather than "KYC").
+- A time estimate appears only when it is measured, and as a range.
+- The progress indicator does not count the intro screen (`../../patterns/flow-intro.md`).
+- The step never asks for something it does not need yet.

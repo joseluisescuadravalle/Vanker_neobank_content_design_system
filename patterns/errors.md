@@ -63,6 +63,25 @@ A Vanker error has up to three parts, in this order:
 - Do: "Something did not work on our side, and your money is safe. Please try again. If it keeps happening, contact us and mention {support_ref}."
 - Not: "Unexpected error occurred."
 
+## Machine-readable spec
+
+```json
+{
+  "errors": {
+    "anatomy": ["what happened", "reassurance", "what to do next"],
+    "shapes": {
+      "field-validation": { "sentences": 1, "ends-with-period": true, "families": ["what is missing", "what is expected"], "imperative": false, "generic": false },
+      "modal": { "title": { "ending-period": false, "blame": false }, "body": { "optional": true, "cta-inside": false, "max-paragraphs": 3 }, "actions": { "max": 2, "inform-only": "Close" } }
+    },
+    "visible-error-code": false,
+    "reference-line": "allowed, tertiary",
+    "money-reassurance-required-when": "money could be affected",
+    "blame": false,
+    "spell-out-negation-when": ["money-outcome", "security-instruction"]
+  }
+}
+```
+
 ## Eval hooks
 
 - No visible error code in the primary message.

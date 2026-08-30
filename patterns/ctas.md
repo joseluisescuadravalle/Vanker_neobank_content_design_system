@@ -98,6 +98,27 @@ Bad CTA: "Kindly utilize your risk-free KYC €150 now". It fails **as a CTA** b
 far over three words, contains a number, and carries filler. The reason is the CTA
 structure, not "banned term" or "money format".
 
+## Machine-readable spec
+
+```json
+{
+  "cta": {
+    "names-what-happens-on-tap": true,
+    "agrees-with-its-heading": true,
+    "max-words": 3,
+    "case": "sentence",
+    "punctuation": false,
+    "numbers": false,
+    "emoji": false,
+    "acronyms-expanded": false,
+    "generic-as-primary": ["OK", "Submit", "Continue", "Confirm", "Done", "Next", "Proceed"],
+    "secondary": ["Cancel", "Back", "Not now"],
+    "one-primary-per-screen": true,
+    "body-copy-checks-apply": false
+  }
+}
+```
+
 ## Eval hooks
 
 - The label names what happens on tap, not the goal of the flow it opens.

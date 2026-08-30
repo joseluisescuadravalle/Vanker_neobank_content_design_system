@@ -84,3 +84,12 @@ foundations already define.
   }
 }
 ```
+
+## Eval hooks
+
+- The label is an action verb, three words at most, with no punctuation, number, or emoji.
+- The label names what happens on tap, and agrees with the heading it sits under.
+- One primary action per screen; a button that only navigates is a link (`../../patterns/links.md`).
+- While in flight, the label is the button's own verb conjugated ("Send money" becomes
+  "Sending money"), and the button is not operable.
+- An icon-only button carries its function as its accessible name, never the shape.

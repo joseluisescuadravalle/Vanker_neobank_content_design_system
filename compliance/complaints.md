@@ -13,8 +13,8 @@ or obstruct a complaint.
 
 ## Timelines (PSD for payment complaints)
 
-- Send a final response to a payment-services complaint within **15 business days**, or,
-  in exceptional cases beyond Vanker's control, within **35 business days**, explaining
+- Send a final response to a payment-services complaint within **15 working days**, or,
+  in exceptional cases beyond Vanker's control, within **35 working days**, explaining
   the delay.
 - State the timeframe to the person up front.
 
@@ -30,6 +30,8 @@ or obstruct a complaint.
 
 - Calm, respectful, and on the person's side, even when declining a claim (see
   `../voice-and-tone/tone.md`).
+
+The copy for these screens is in `../patterns/complaints.md`.
 
 ## Eval hooks
 

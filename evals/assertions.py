@@ -807,6 +807,11 @@ def case(text, surface=None):
     """
     t = text.strip()
     problems = []
+    # An acronym expansion is Title Case by definition, and this system *requires* it
+    # ("Alternative Dispute Resolution (ADR)", "Know Your Customer (KYC)"). Remove those
+    # spans before counting, in both orders.
+    t = re.sub(r"(?:[A-Z][\w'-]+\s+){1,5}\([A-Z]{2,}\)", " ", t)
+    t = re.sub(r"\b[A-Z]{2,}\s+\((?:[A-Z][\w'-]+\s*){1,5}\)", " ", t)
     # A word is only suspicious when it is mid-sentence: not the first word, and not the
     # one after a full stop, a question mark, or an opening quote.
     tokens = re.findall(r"([.!?\u201c\u2018\"']?)\s*([A-Za-z\u00c0-\u017f']+)", t)
@@ -1126,6 +1131,28 @@ def fx_disclosure(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+DEFENSIVE = re.compile(r"as per (?:our )?terms|per our terms|you agreed to|as stated in (?:our|the) terms|unfortunately|as a gesture of goodwill", re.IGNORECASE)
+HAS_REFERENCE = re.compile(r"\breference\b|\bref\b", re.IGNORECASE)
+HAS_TIMEFRAME = re.compile(r"\bwithin\b|\bby \d|\bworking days\b", re.IGNORECASE)
+
+
+def complaint(text, surface=None):
+    """A complaint is answered, not defended."""
+    t = text.strip()
+    if not t:
+        return (False, "empty complaint copy")
+    problems = []
+    m = DEFENSIVE.search(t)
+    if m:
+        problems.append("defensive language ('" + m.group(0).strip() + "'); a complaint answered defensively is a complaint that escalates")
+    if (surface or "").lower() == "complaint-acknowledgement":
+        if not HAS_REFERENCE.search(t):
+            problems.append("no reference; it is given on the screen, not promised in an email that may not arrive")
+        if not HAS_TIMEFRAME.search(t):
+            problems.append("does not say when the answer will come; the timeframe is stated up front, not on request")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -1185,6 +1212,7 @@ REGISTRY = {
     "A-LOCALIZABLE": localizable,
     "A-CATEGORY-GUESS": category_guess,
     "A-FX": fx_disclosure,
+    "A-COMPLAINT": complaint,
 }
 
 
@@ -1244,6 +1272,8 @@ SURFACE_CHECKS = {
     "category": ["A-CATEGORY-GUESS", "A-CASE", "A-PUNCTUATION", "A-NO-BANNED"],
     "chart-copy": BODY_CHECKS + ["A-CATEGORY-GUESS"],
     "fx-quote": BODY_CHECKS + ["A-FX"],
+    "complaint-acknowledgement": BODY_CHECKS + ["A-COMPLAINT"],
+    "complaint-answer": BODY_CHECKS + ["A-COMPLAINT"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

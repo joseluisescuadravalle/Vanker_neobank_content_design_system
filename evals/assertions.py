@@ -1107,6 +1107,25 @@ def category_guess(text, surface=None):
     return (True, "ok")
 
 
+FX_RATE = re.compile(r"1\s?\u20ac\s?=|\bexchange rate\b|\brate of\b", re.IGNORECASE)
+FX_MARKUP = re.compile(r"markup|\bECB\b|reference rate", re.IGNORECASE)
+FX_FREE_CLAIM = re.compile(r"0\s?%\s?commission|no commission|commission[- ]free|no hidden fees|zero commission", re.IGNORECASE)
+
+
+def fx_disclosure(text, surface=None):
+    """A rate is not a disclosure: the cost hides inside it."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty exchange copy")
+    m = FX_FREE_CLAIM.search(t)
+    if m:
+        problems.append("'" + m.group(0) + "': advertising the absence of a fee while the cost sits in the spread is the dark pattern this pattern exists to prevent")
+    if FX_RATE.search(t) and not FX_MARKUP.search(t):
+        problems.append("a rate without the markup over the ECB reference rate; a rate reads as a fact about the world, not as our margin, and nobody converts a spread into euros in their head")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -1165,6 +1184,7 @@ REGISTRY = {
     "A-DATE-UNAVAILABLE": date_unavailable,
     "A-LOCALIZABLE": localizable,
     "A-CATEGORY-GUESS": category_guess,
+    "A-FX": fx_disclosure,
 }
 
 
@@ -1223,6 +1243,7 @@ SURFACE_CHECKS = {
     "date-unavailable": ["A-DATE-UNAVAILABLE", "A-DATE", "A-NO-BANNED", "A-PUNCTUATION", "A-CASE"],
     "category": ["A-CATEGORY-GUESS", "A-CASE", "A-PUNCTUATION", "A-NO-BANNED"],
     "chart-copy": BODY_CHECKS + ["A-CATEGORY-GUESS"],
+    "fx-quote": BODY_CHECKS + ["A-FX"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

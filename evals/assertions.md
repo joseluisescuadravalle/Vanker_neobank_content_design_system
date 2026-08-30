@@ -27,6 +27,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-DATE-UNAVAILABLE` | A day that cannot be used states why and what happens instead; nothing moves silently | `../components/library/date-field.md` |
 | `A-LOCALIZABLE` | Named variables rather than positional ones, no variable glued into a word, and no reference to a position on the screen | `../terminology/localization.md` |
 | `A-CATEGORY-GUESS` | Copy that states an automatic category carries the way to correct it in the same breath | `../patterns/charts.md` |
+| `A-FX` | A rate is shown with its markup over the ECB reference rate, and no "0% commission" claim where the cost sits in the spread | `../patterns/currency-exchange.md`, `../compliance/disclosures.md` |
 
 ## Voice and patterns
 
@@ -208,6 +209,7 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `date-unavailable` | `A-DATE-UNAVAILABLE`, `A-DATE`, banned, punctuation, case |
 | `category` | `A-CATEGORY-GUESS`, case, punctuation, banned |
 | `chart-copy` | The body checks plus `A-CATEGORY-GUESS` |
+| `fx-quote` | The body checks plus `A-FX` |
 | `toggle-label` | `A-TOGGLE-LABEL`, no emoji, banned/claims |
 | `toggle-description` | The body checks |
 | `auth` | The body checks plus `A-ENUMERATION` |

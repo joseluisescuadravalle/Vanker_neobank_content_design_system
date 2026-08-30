@@ -11,7 +11,7 @@ Contents:
   `flow-intro.md`, `permissions.md`, `auth.md`, `cards.md`, `empty-states.md`,
   `confirmations.md`,
   `notifications.md`, `emails.md`, `success.md`, `forms.md`, `search.md`, `charts.md`,
-  `alt-text.md`.
+  `currency-exchange.md`, `alt-text.md`.
 
 `errors.md` holds the anatomy of an error and the rules for field validation and modal
 errors. `system-errors.md` covers the situations where the problem is ours or the

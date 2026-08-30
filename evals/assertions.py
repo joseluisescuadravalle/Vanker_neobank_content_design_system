@@ -1054,6 +1054,23 @@ def no_results(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+UNAVAILABLE_REASON = re.compile(r"\bbecause\b|\bso\b|\bclosed\b|\bholiday\b|\bweekend\b|\bafter\b|\bnot a working day\b", re.IGNORECASE)
+UNAVAILABLE_OUTCOME = re.compile(r"will arrive|arrives|instead|next working day|goes out|will be sent", re.IGNORECASE)
+
+
+def date_unavailable(text, surface=None):
+    """A date that cannot be used says why, and what happens instead. It never moves silently."""
+    t = text.strip()
+    if not t:
+        return (False, "empty message; a day the person cannot use needs a reason, not a grey square")
+    problems = []
+    if not UNAVAILABLE_REASON.search(t):
+        problems.append("does not say why this day cannot be used ('Banks are closed on weekends')")
+    if not UNAVAILABLE_OUTCOME.search(t):
+        problems.append("does not say what happens instead; a date that changes without saying so is a payment arriving on a day nobody expects")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -1109,6 +1126,7 @@ REGISTRY = {
     "A-CHIP": chip_label,
     "A-SEARCH-PLACEHOLDER": search_placeholder,
     "A-NO-RESULTS": no_results,
+    "A-DATE-UNAVAILABLE": date_unavailable,
 }
 
 
@@ -1164,6 +1182,7 @@ SURFACE_CHECKS = {
     "chip": ["A-CHIP", "A-CASE"],
     "search-placeholder": ["A-SEARCH-PLACEHOLDER", "A-CASE", "A-PUNCTUATION"],
     "no-results": ["A-NO-RESULTS", "A-CASE", "A-PUNCTUATION", "A-NO-INLINE-CTA"],
+    "date-unavailable": ["A-DATE-UNAVAILABLE", "A-DATE", "A-NO-BANNED", "A-PUNCTUATION", "A-CASE"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

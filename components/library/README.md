@@ -13,6 +13,7 @@ Components in this library:
 - `button.md`
 - `text-field.md` — the field label model (label in / label out / legend, placeholder, helper)
 - `textarea.md` — composed free text, and the only place a character counter belongs
+- `date-field.md` — a date they know is typed, a date they choose is picked
 - `dropdown.md` — Select
 - `checkbox.md`
 - `radio-group.md`

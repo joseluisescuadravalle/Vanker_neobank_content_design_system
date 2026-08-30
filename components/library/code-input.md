@@ -41,6 +41,11 @@ Six separate inputs are the common pattern and they break in four places at once
 Rule: **never move focus automatically between digit slots**, because there is nothing to
 move focus between.
 
+The general rule, which `date-field.md` applies in the other direction: **split the field
+when each part is a distinct value with a name of its own, and keep one field when the
+parts are meaningless fragments of a single value.** The third digit of a code means
+nothing alone; a month does.
+
 ## Slots
 
 - **Heading** (required): what to do, in a person's words. "Enter the code we sent you".

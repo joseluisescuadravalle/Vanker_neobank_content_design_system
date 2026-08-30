@@ -24,6 +24,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-CHIP` | A chip label names the value, never the act: no leading verb, up to three words, no ending punctuation | `../components/library/chip.md` |
 | `A-SEARCH-PLACEHOLDER` | Names the scope; a bare "Search" fails, since it is the field's only naming | `../patterns/search.md` |
 | `A-NO-RESULTS` | Nothing found is an empty state: no bare "No results found", no error or apology language, no blaming the spelling | `../patterns/search.md` |
+| `A-DATE-UNAVAILABLE` | A day that cannot be used states why and what happens instead; nothing moves silently | `../components/library/date-field.md` |
 
 ## Voice and patterns
 
@@ -202,6 +203,7 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `chip` | `A-CHIP`, case |
 | `search-placeholder` | `A-SEARCH-PLACEHOLDER`, case, punctuation |
 | `no-results` | `A-NO-RESULTS`, case, punctuation, no inline CTA |
+| `date-unavailable` | `A-DATE-UNAVAILABLE`, `A-DATE`, banned, punctuation, case |
 | `toggle-label` | `A-TOGGLE-LABEL`, no emoji, banned/claims |
 | `toggle-description` | The body checks |
 | `auth` | The body checks plus `A-ENUMERATION` |

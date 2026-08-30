@@ -9,17 +9,38 @@ Run `python assertions.py` to see the checks on a few samples.
 import re
 
 BANNED_TERMS = [
+    # Hype and marketing inflation
     "revolutionary", "game-changing", "amazing", "incredible", "best-in-class",
-    "world-class", "cutting-edge", "seamless", "utilize", "leverage", "kindly",
-    "please be advised", "checking account", "in order to",
-    "a small fee", "low fees", "fees may apply",
-    "otp", "one-time password", "token",
-    "something went wrong", "oops", "unexpected error", "technical difficulties",
-    "please wait", "almost there", "just a moment", "hang tight", "working on it",
+    "world-class", "cutting-edge", "seamless", "effortless",
+    # Unevidenced marketing claims
     "the best", "the cheapest", "the fastest", "no strings attached", "free forever",
-    "you entered the wrong", "you failed to", "you forgot to", "invalid",
-    "urgent", "act now", "last chance", "hurry", "miss out", "final notice",
+    # Pressure
+    "hurry", "act now", "last chance", "miss out", "urgent", "final notice",
+    # Blame
+    "you failed to", "you entered the wrong", "you forgot to", "invalid",
+    # Jargon and corporate filler
+    "utilize", "leverage", "provision", "disbursement", "remittance",
+    "otp", "one-time password", "token",
+    "please be advised", "kindly", "at your earliest convenience", "in order to",
+    # Vague failure
+    "something went wrong", "oops", "unexpected error", "technical difficulties",
+    # Vague waiting
+    "please wait", "almost there", "just a moment", "hang tight", "working on it",
+    # Vague money
+    "a small fee", "low fees", "fees may apply",
+    # American English baseline
+    "optimise", "colour", "personalise", "cancelled", "e-mail",
+    # Vocabulary that does not fit the market
+    "checking account", "routing number", "ach", "sort code",
 ]
+# Rules from banned-terms.md that a word list cannot express, each with its own logic below.
+LOGIN_AS_VERB = re.compile(r"\b(?:to|please|can|could|must|cannot|will|and|or)\s+login\b|\blogin\s+(?:to|with|using|now|here)\b", re.IGNORECASE)
+# An ampersand is allowed in a tight label, never in body copy.
+AMPERSAND_OK = {"cta", "button", "label-in", "label-out", "status-label", "status", "badge",
+                "tag", "toggle-label", "option", "dropdown-option", "preset-amount",
+                "accordion-header", "flow-intro-cta", "counter"}
+BANNED_RE = [(t, re.compile(r"\b" + re.escape(t).replace(r"\ ", r"\s+") + r"s?\b", re.IGNORECASE))
+             for t in BANNED_TERMS]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
     "can't lose", "cannot lose", "beat the market", "guaranteed approval",
@@ -57,8 +78,12 @@ def euro_format(text, surface=None):
 
 
 def no_banned_terms(text, surface=None):
-    low = text.lower()
-    hits = [t for t in BANNED_TERMS if t in low]
+    """Word-boundary matching, so 'reach' is not 'ACH' and 'provisional' is not 'provision'."""
+    hits = [t for t, rx in BANNED_RE if rx.search(text)]
+    if LOGIN_AS_VERB.search(text):
+        hits.append("login (as a verb; 'log in' is the verb, 'login' only a noun)")
+    if "&" in text and (surface or "").lower() not in AMPERSAND_OK:
+        hits.append("& in body copy (use 'and'; the ampersand is for tight labels only)")
     return (not hits, ("banned: " + ", ".join(hits)) if hits else "ok")
 
 

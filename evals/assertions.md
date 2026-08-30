@@ -11,7 +11,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | --- | --- | --- |
 | `A-NO-EMOJI` | No emoji anywhere | `../voice-and-tone/voice.md` |
 | `A-EURO-FORMAT` | € after the amount; dot thousands, comma decimals; no ",00" on round amounts; cents show exactly two decimals, never one | `../terminology/glossary.md` |
-| `A-NO-BANNED` | No banned or jargon terms | `../terminology/banned-terms.md` |
+| `A-NO-BANNED` | No banned or jargon terms, matched on **word boundaries** so "reach" is not "ACH" and "provisional" is not "provision". Also covers login-as-a-verb and, surface-aware, `&` in body copy | `../terminology/banned-terms.md` |
 | `A-ACRONYMS` | Known acronyms are expanded on first use | `../terminology/glossary.md` |
 | `A-NUMERALS` | Numbers are digits in body copy and instructions ("3 steps", not "three steps") | `../terminology/glossary.md` |
 
@@ -111,6 +111,15 @@ single-use code is a **code** (see `../terminology/glossary.md`).
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-NO-CLAIMS` | No prohibited claims ("guaranteed", "risk-free", etc.) | `../compliance/principles.md`, `../compliance/risk-warnings.md` |
+
+## Keeping the term list honest
+
+`../terminology/banned-terms.md` is the source of truth and `assertions.py` implements it.
+They drifted twice without anyone noticing, in both directions, and each gap was found by
+accident when a bad string passed a check.
+
+`python terms_sync.py` compares the two and fails on any difference. Run it whenever either
+file changes, alongside `run_golden.py`.
 
 ## Extending
 

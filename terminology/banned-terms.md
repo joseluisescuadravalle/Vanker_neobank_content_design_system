@@ -20,12 +20,13 @@ assertions in `../evals/`.
 | Avoid | Use instead | Why |
 | --- | --- | --- |
 | hurry, act now, last chance, do not miss out | a plain, honest deadline if one truly exists | Vanker never pressures a money decision. |
+| urgent, final notice | state the date plainly and give the real route | Urgency is the grammar of fraud, and a bank that uses it teaches people to trust the fakes. See `../patterns/emails.md`. |
 
 ## Blame
 
 | Avoid | Use instead | Why |
 | --- | --- | --- |
-| you failed to, you entered the wrong, invalid | neutral phrasing ("that did not work", "please check...") | Never blame the person. |
+| you failed to, you entered the wrong, you forgot to, invalid | neutral phrasing ("that did not work", "that code was not right") | Never blame the person. |
 
 ## Jargon and corporate filler
 
@@ -37,6 +38,23 @@ assertions in `../evals/`.
 | OTP, one-time password, token | code, verification code | Nobody outside the industry calls it that. See `../components/library/code-input.md`. |
 | please be advised, kindly, at your earliest convenience | plain, direct wording | Stuffy and cold. |
 | in order to | to | Wordy. |
+
+## Vague where the person needs a fact
+
+Added by the patterns; each replaces something the person actually needs.
+
+| Avoid | Use instead | Why |
+| --- | --- | --- |
+| something went wrong, oops, unexpected error, technical difficulties | say what happened and whose side it is on | We almost always know more than that. See `../patterns/system-errors.md`. |
+| please wait, almost there, just a moment, hang tight, working on it | say what is happening ("Checking your details") | Asking for patience instead of giving information. See `../patterns/loading.md`. |
+| a small fee, low fees, fees may apply | the exact amount, or "free" | A fee is exact or the service is free. See `../compliance/disclosures.md`. |
+
+## Claims a regulated bank cannot evidence
+
+| Avoid | Use instead | Why |
+| --- | --- | --- |
+| the best, the cheapest, the fastest | say what it actually does | Unevidenced superlatives, and the highest-exposure copy in the app is the pre-login carousel. See `../patterns/welcome-carousel.md`. |
+| free forever, no strings attached | state the condition, or do not say it | A bare free claim is a hidden condition. |
 
 ## Spelling and formatting (American English)
 
@@ -58,3 +76,21 @@ assertions in `../evals/`.
 
 - Expand every acronym on first use (see `glossary.md`).
 - Never use emoji (see `../voice-and-tone/voice.md`).
+
+## Keeping this file and the checks in sync
+
+This file is the source of truth; `../evals/assertions.py` implements it. They drifted twice
+without anyone noticing, in both directions: rules documented here that were never checked,
+and terms added by a pattern that were never written down here.
+
+`python terms_sync.py` (from `../evals/`) compares the two and fails on any difference. Run
+it whenever either file changes.
+
+Three rules here cannot be a word in a list, so the checker implements them with their own
+logic and the sync script knows to skip them:
+
+| Rule | How it is checked |
+| --- | --- |
+| login / log-in as a verb | A pattern around the word, since "login" is legitimate as a noun |
+| `&` in body copy | Surface-aware: allowed in a tight label, never in body copy |
+| Acronym expansion | `A-ACRONYMS`, its own check |

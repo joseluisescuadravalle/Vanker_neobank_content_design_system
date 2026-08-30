@@ -20,3 +20,9 @@ piece of copy generated with this system stay **on-brand and compliant**?
 Every "Eval hooks" block across the system (in `../patterns/`, `../components/`, and
 `../compliance/`) is a source of checks. `assertions.md` collects the deterministic ones;
 `rubric.md` covers the ones that need judgment.
+
+## Running the checks
+
+- `python run_golden.py` runs the deterministic layer over the golden set.
+- `python terms_sync.py` checks that `../terminology/banned-terms.md` and `assertions.py`
+  still agree. Run both after any change to either.

@@ -78,13 +78,17 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-TOGGLE-LABEL` | A toggle label is a noun phrase or a state, never an action verb ("Freeze card"), never a negative, and never carries "On" or "Off" | `../components/library/toggle.md` |
 | `A-ENUMERATION` | No copy states or implies whether an account, email, or phone number exists | `../patterns/auth.md` |
 | `A-REVERSIBILITY` | A card action says in its own copy whether it can be undone | `../patterns/cards.md` |
+| `A-CREDENTIALS` | Outside the app (email, push), nothing asks for a passcode, PIN, card details, or a code | `../patterns/emails.md`, `../compliance/security-payments.md` |
+| `A-SUBJECT` | Transactional subject: front-loaded, about 50 characters, no emoji, no question bait, no ALL CAPS, no fake "Re:" | `../patterns/emails.md` |
+| `A-PREHEADER` | Preheader adds information, is never empty and never "View in browser" | `../patterns/emails.md` |
 
 `A-NO-BANNED` also rejects the vague-failure phrases ("something went wrong", "oops",
 "unexpected error", "technical difficulties") the vague-waiting ones ("please wait",
 "almost there", "just a moment", "hang tight", "working on it"), the marketing claims
-("the best", "the cheapest", "the fastest", "free forever", "no strings attached") and the
+("the best", "the cheapest", "the fastest", "free forever", "no strings attached") the
 blame phrases from `../terminology/banned-terms.md` ("you entered the wrong", "you failed
-to", "you forgot to", "invalid").
+to", "you forgot to", "invalid") and the pressure words ("urgent", "act now", "last
+chance", "hurry", "miss out", "final notice"), which are the grammar of fraud.
 
 **A-MONEY-ACCOUNTED is the first screen-level check in the system.** Every other assertion
 grades one slot; this one grades the title and the body together, because the title states
@@ -155,6 +159,9 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `auth` | The body checks plus `A-ENUMERATION` |
 | `auth-error` | The field-error checks plus `A-ENUMERATION` |
 | `card-action` | The body checks plus `A-REVERSIBILITY` |
+| `email-subject` | `A-SUBJECT`, banned/claims, `A-MASK`, money format, `A-CREDENTIALS` |
+| `email-preheader` | `A-PREHEADER`, banned/claims, `A-MASK`, money format |
+| `email-body` | The body checks plus `A-CREDENTIALS` |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

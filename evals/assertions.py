@@ -18,6 +18,7 @@ BANNED_TERMS = [
     "please wait", "almost there", "just a moment", "hang tight", "working on it",
     "the best", "the cheapest", "the fastest", "no strings attached", "free forever",
     "you entered the wrong", "you failed to", "you forgot to", "invalid",
+    "urgent", "act now", "last chance", "hurry", "miss out", "final notice",
 ]
 PROHIBITED_CLAIMS = [
     "guaranteed return", "guaranteed returns", "risk-free", "risk free", "no risk",
@@ -672,6 +673,55 @@ def reversibility(text, surface=None):
     return (False, "does not say whether this can be undone; state it in the same copy as the action ('You can unfreeze it any time', 'This card will stop working for good')")
 
 
+CREDENTIAL_ASK = re.compile(
+    r"(?:enter|type|confirm|verify|send us|give us|share|reply with|provide)\s+(?:your\s+)?"
+    r"(?:passcode|pin|password|card (?:number|details)|cvv|security code|one-time code|code)",
+    re.IGNORECASE)
+QUESTION_BAIT = re.compile(r"\?\s*$")
+
+
+def no_credential_ask(text, surface=None):
+    """Outside the app, Vanker never asks for a secret."""
+    m = CREDENTIAL_ASK.search(text)
+    if m:
+        return (False, "asks for a secret outside the app ('" + m.group(0).strip() + "'); Vanker never asks for a passcode, PIN, card details, or a code by email or message")
+    return (True, "ok")
+
+
+def email_subject(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty subject")
+    if EMOJI.search(t):
+        problems.append("no emoji in a transactional subject")
+    if len(t) > 60:
+        problems.append("too long (" + str(len(t)) + " chars); a subject is about 50 and is read on a lock screen")
+    if t.upper() == t and len(t) > 3:
+        problems.append("no ALL CAPS in a subject")
+    if QUESTION_BAIT.search(t):
+        problems.append("no question bait in a subject; state the event")
+    if re.match(r"^(re|fwd|fw)\s*:", t, re.IGNORECASE):
+        problems.append("never imitate a reply or a forward")
+    if t.endswith("."):
+        problems.append("no ending period on a subject")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def email_preheader(text, surface=None):
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty preheader; it fills itself with the first words of the HTML")
+    if t.lower() in {"view in browser", "view this email in your browser", "open in browser"}:
+        problems.append("'" + t + "' wastes the line; add information the subject does not carry")
+    if len(t) > 90:
+        problems.append("too long (" + str(len(t)) + " chars); the inbox cuts it")
+    if EMOJI.search(t):
+        problems.append("no emoji in a transactional preheader")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -713,6 +763,9 @@ REGISTRY = {
     "A-TOGGLE-LABEL": toggle_label,
     "A-ENUMERATION": no_enumeration,
     "A-REVERSIBILITY": reversibility,
+    "A-CREDENTIALS": no_credential_ask,
+    "A-SUBJECT": email_subject,
+    "A-PREHEADER": email_preheader,
 }
 
 
@@ -723,7 +776,7 @@ SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
     "push-title": ["A-PUSH-TITLE", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
-    "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK"],
+    "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-CREDENTIALS"],
     "error": BODY_CHECKS, "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
     "notification": BODY_CHECKS, "onboarding-step": BODY_CHECKS, "disclosure": BODY_CHECKS,
     "risk-warning": BODY_CHECKS, "banner": BODY_CHECKS,
@@ -767,6 +820,9 @@ SURFACE_CHECKS = {
     "auth": BODY_CHECKS + ["A-ENUMERATION"],
     "auth-error": FIELD_CHECKS + ["A-ENUMERATION"],
     "card-action": BODY_CHECKS + ["A-REVERSIBILITY"],
+    "email-subject": ["A-SUBJECT", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT", "A-CREDENTIALS"],
+    "email-preheader": ["A-PREHEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT"],
+    "email-body": BODY_CHECKS + ["A-CREDENTIALS"],
 }
 
 

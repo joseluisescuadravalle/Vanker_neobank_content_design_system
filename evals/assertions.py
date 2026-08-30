@@ -1018,6 +1018,42 @@ def chip_label(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+BARE_SEARCH = {"search", "search…", "search...", "search here", "type to search", "what are you looking for?"}
+NO_RESULT_GENERIC = {"no results", "no results found", "nothing found", "no matches",
+                     "no matches found", "0 results", "sorry, no results"}
+BLAMES_SPELLING = re.compile(r"check your spelling|did you spell|spelled correctly|typo", re.IGNORECASE)
+
+
+def search_placeholder(text, surface=None):
+    """The placeholder is the only naming a search field gets: it names the scope."""
+    t = text.strip()
+    if not t:
+        return (False, "empty placeholder; a search field has no visible label, so this is its only naming")
+    if t.lower().rstrip(".") in BARE_SEARCH:
+        return (False, "'" + t + "' wastes the one chance to say what can be found here; name the scope ('Search transactions')")
+    if EMOJI.search(t):
+        return (False, "no emoji in a search placeholder")
+    return (True, "ok")
+
+
+def no_results(text, surface=None):
+    """Nothing found is an empty state: it says what was searched, where, and the way out."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty no-results message")
+    low = t.lower().rstrip(".")
+    if low in NO_RESULT_GENERIC:
+        problems.append("'" + t + "' answers nothing and offers nothing; name what was searched and the scope")
+    if BLAMES_SPELLING.search(t):
+        problems.append("no blaming the spelling; the query is echoed so the person can see it for themselves")
+    if "!" in t:
+        problems.append("no exclamation mark; nothing has gone wrong here")
+    if re.search(r"\berror\b|\bsorry\b|\boops\b", t, re.IGNORECASE):
+        problems.append("nothing found is not an error and needs no apology")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -1071,6 +1107,8 @@ REGISTRY = {
     "A-ALT": alt_text,
     "A-BADGE": count_badge,
     "A-CHIP": chip_label,
+    "A-SEARCH-PLACEHOLDER": search_placeholder,
+    "A-NO-RESULTS": no_results,
 }
 
 
@@ -1124,6 +1162,8 @@ SURFACE_CHECKS = {
     "alt-text": ["A-ALT", "A-CASE", "A-PUNCTUATION", "A-MASK"],
     "count-badge": ["A-BADGE"],
     "chip": ["A-CHIP", "A-CASE"],
+    "search-placeholder": ["A-SEARCH-PLACEHOLDER", "A-CASE", "A-PUNCTUATION"],
+    "no-results": ["A-NO-RESULTS", "A-CASE", "A-PUNCTUATION", "A-NO-INLINE-CTA"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

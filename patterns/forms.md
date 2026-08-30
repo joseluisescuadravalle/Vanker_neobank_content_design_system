@@ -98,6 +98,9 @@ placeholder may be a **guide phrase** — a conversational prompt or an example 
 the action — because there is no data-integrity risk if it vanishes and the field is
 self-evidently a search or compose box.
 
+The search side of this exception is specified in full in `search.md`, including the rule
+that the field still needs an accessible name even though it has no visible label.
+
 Where this exception applies (search bars, global search, compose boxes, marketing landing
 inputs), a guide-phrase placeholder may:
 

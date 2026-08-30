@@ -22,6 +22,8 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-ALT` | Alt text: no "image of" prefix, no file name, no generic one-worder, about 125 characters, no amount. An empty string passes: decorative is a deliberate answer | `../patterns/alt-text.md` |
 | `A-BADGE` | A count badge carries digits and an optional `+`, never a word, a currency, an amount, or a zero | `../components/library/count-badge.md` |
 | `A-CHIP` | A chip label names the value, never the act: no leading verb, up to three words, no ending punctuation | `../components/library/chip.md` |
+| `A-SEARCH-PLACEHOLDER` | Names the scope; a bare "Search" fails, since it is the field's only naming | `../patterns/search.md` |
+| `A-NO-RESULTS` | Nothing found is an empty state: no bare "No results found", no error or apology language, no blaming the spelling | `../patterns/search.md` |
 
 ## Voice and patterns
 
@@ -198,6 +200,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `alt-text` | `A-ALT`, case, punctuation, `A-MASK`. An empty candidate is the decorative case and passes |
 | `count-badge` | `A-BADGE` only |
 | `chip` | `A-CHIP`, case |
+| `search-placeholder` | `A-SEARCH-PLACEHOLDER`, case, punctuation |
+| `no-results` | `A-NO-RESULTS`, case, punctuation, no inline CTA |
 | `toggle-label` | `A-TOGGLE-LABEL`, no emoji, banned/claims |
 | `toggle-description` | The body checks |
 | `auth` | The body checks plus `A-ENUMERATION` |

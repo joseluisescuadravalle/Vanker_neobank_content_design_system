@@ -10,7 +10,7 @@ Contents:
 - `ctas.md`, `links.md`, `errors.md`, `system-errors.md`, `loading.md`, `welcome-carousel.md`,
   `flow-intro.md`, `permissions.md`, `auth.md`, `cards.md`, `empty-states.md`,
   `confirmations.md`,
-  `notifications.md`, `emails.md`, `success.md`, `forms.md`, `alt-text.md`.
+  `notifications.md`, `emails.md`, `success.md`, `forms.md`, `search.md`, `alt-text.md`.
 
 `errors.md` holds the anatomy of an error and the rules for field validation and modal
 errors. `system-errors.md` covers the situations where the problem is ours or the

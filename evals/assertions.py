@@ -889,6 +889,66 @@ def dates_and_figures(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+# Kept separate from BANNED_TERMS because it has its own source file and its own message.
+# See voice-and-tone/inclusive-language.md; terms_sync.py audits the other list, not this one.
+NOT_INCLUSIVE = {
+    # Money difficulty: a label for a person instead of a description of an event
+    "defaulter": "name the event ('This direct debit was returned')",
+    "delinquent": "name the event, never the person",
+    "bad credit": "describe what happened, not what they are",
+    "deadbeat": "never",
+    "the unbanked": "describe the situation",
+    "the poor": "describe the situation",
+    "you overspent": "state what happened without moralizing",
+    # Gender
+    "he/she": "singular 'they'",
+    "he or she": "singular 'they'",
+    "him or her": "singular 'they'",
+    "his or her": "singular 'their'",
+    "(s)he": "singular 'they'",
+    "manpower": "workforce",
+    "spokesman": "spokesperson",
+    "salesman": "salesperson",
+    "businessman": "businessperson",
+    "chairman": "chair",
+    "housewife": "never",
+    # Age
+    "the elderly": "age is a figure when a rule needs it",
+    "elderly": "age is a figure when a rule needs it",
+    "seniors": "age is a figure when a rule needs it",
+    "digital natives": "never tie ability to age",
+    # Disability
+    "suffers from": "never",
+    "confined to": "never",
+    "wheelchair-bound": "never",
+    "special needs": "name the feature, not the person",
+    "normal users": "there is no other kind",
+    "visually impaired users": "name the feature ('Larger text')",
+    "blind spot": "no disability as metaphor",
+    "tone deaf": "no disability as metaphor",
+    "insane": "no disability as metaphor",
+    "crazy": "no disability as metaphor",
+    # History
+    "blacklist": "blocked list",
+    "whitelist": "allowed list",
+    "grandfathered": "kept on the old terms",
+    # Origin
+    "foreign name": "a name is never treated as unusual",
+    "non-national": "name the rule instead",
+}
+INCLUSIVE_RE = [(t, re.compile(r"\b" + re.escape(t).replace(r"\ ", r"\s+") + r"s?\b", re.IGNORECASE))
+                for t in NOT_INCLUSIVE]
+
+
+def inclusive(text, surface=None):
+    """Describe the situation, never label the person."""
+    hits = [t for t, rx in INCLUSIVE_RE if rx.search(text)]
+    if not hits:
+        return (True, "ok")
+    msg = "; ".join("'" + h + "' -> " + NOT_INCLUSIVE[h] for h in hits)
+    return (False, msg + " (see voice-and-tone/inclusive-language.md)")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -938,12 +998,13 @@ REGISTRY = {
     "A-CASE": case,
     "A-LINK-TEXT": link_text,
     "A-DATE": dates_and_figures,
+    "A-INCLUSIVE": inclusive,
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE", "A-INCLUSIVE"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI", "A-CASE"]
-FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE"]
+FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE", "A-INCLUSIVE"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
@@ -997,6 +1058,15 @@ SURFACE_CHECKS = {
     "email-preheader": ["A-PREHEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT"],
     "email-body": BODY_CHECKS + ["A-CREDENTIALS"] + ["A-PARAGRAPHS"],
 }
+
+
+# Some rules apply to every string there is: nothing Vanker writes may carry a banned term,
+# a prohibited claim, or a word that labels a person. Surface lists are hand-written, so a
+# cross-cutting check added later would otherwise reach only the surfaces someone remembered
+# to update. This adds them everywhere, once.
+UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE"]
+for _surface, _checks in list(SURFACE_CHECKS.items()):
+    SURFACE_CHECKS[_surface] = _checks + [c for c in UNIVERSAL if c not in _checks]
 
 
 def checks_for(surface):

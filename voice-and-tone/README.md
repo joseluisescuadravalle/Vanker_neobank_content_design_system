@@ -9,7 +9,8 @@ reassuring in an error, restrained in a celebration).
 An AI agent reads this layer after `compliance/` and `terminology/`, and uses it
 for everything the rules above do not constrain.
 
-Contents (to be added):
+Contents:
 - `voice.md` — brand personality and voice principles.
 - `tone.md` — tone modulation by context and emotional state.
-- `examples.md` — labeled before/after examples (illustrative, non-binding).
+- `inclusive-language.md` — who Vanker is talking to, and how it avoids deciding who they
+  are. Its governing rule: describe the situation, never label the person.

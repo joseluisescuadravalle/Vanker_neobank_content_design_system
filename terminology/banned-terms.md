@@ -77,6 +77,13 @@ Added by the patterns; each replaces something the person actually needs.
 - Expand every acronym on first use (see `glossary.md`).
 - Never use emoji (see `../voice-and-tone/voice.md`).
 
+## Not in this file
+
+Inclusive language has its own file and its own check: see
+`../voice-and-tone/inclusive-language.md` and `A-INCLUSIVE`. It is kept separate because
+each of its terms carries a replacement and a reason that belong with the rule, not in a
+flat list of words to avoid.
+
 ## Keeping this file and the checks in sync
 
 This file is the source of truth; `../evals/assertions.py` implements it. They drifted twice

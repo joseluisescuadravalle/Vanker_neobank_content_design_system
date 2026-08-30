@@ -17,10 +17,17 @@ these dimensions, using this repository as the reference. Score each dimension 0
 
 ## Scoring
 
-- **Overall pass** requires: every applicable dimension >= 1, **Compliance = 2**, and a
-  total of at least 12 of 14 (for surfaces where all dimensions apply).
-- Compliance and Tone fit are never allowed to be 0 on a pass. A single 0 on either is an
-  automatic fail, however good the rest.
+**Not every dimension applies to every surface.** A button has no compliance content of
+its own, and a status label has no tone to speak of. Score those `na`; they are left out of
+the total rather than counted as a pass.
+
+- **Overall pass** requires all three:
+  1. every applicable dimension is at least 1,
+  2. Compliance and Tone fit are never 0,
+  3. the total is at least **85% of the maximum available** for the applicable dimensions.
+- The percentage replaces the old "12 of 14", which silently failed every surface where a
+  dimension did not apply: a perfect CTA scored 10 of a possible 10 and was marked down
+  against a maximum it could never reach.
 
 ## Use
 

@@ -18,6 +18,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-CASE` | No Title Case and no ALL CAPS typed into a string | `../terminology/capitalization-and-punctuation.md` |
 | `A-LINK-TEXT` | Link text names its destination: "here", "click here", "read more", "learn more" and a bare URL all fail | `../patterns/links.md` |
 | `A-DATE` | No numeric, ordinal, or month-first dates; no "Yesterday" or "Tomorrow"; no abbreviated figures or "(s)" plurals; no vague timing | `../terminology/numbers-and-dates.md` |
+| `A-INCLUSIVE` | No label for a person where an event should be described, no assumed gender, age or ability, no disability as metaphor, no blacklist/whitelist | `../voice-and-tone/inclusive-language.md` |
 
 ## Voice and patterns
 
@@ -132,11 +133,22 @@ accident when a bad string passed a check.
 `python terms_sync.py` compares the two and fails on any difference. Run it whenever either
 file changes, alongside `run_golden.py`.
 
+The inclusive-language list is deliberately **not** part of that sync: it has its own source
+file (`../voice-and-tone/inclusive-language.md`), its own check, and its own replacement
+message per term, because "use this instead" is the whole point of that list.
+
 ## Extending
 
 Add a check as a function in `assertions.py`, register it with a new ID, and reference that
 ID from the golden-set cases. The catalog is meant to grow as the system does; not every
 rule is code-checkable (those live in `rubric.md`).
+
+## Checks that apply to every surface
+
+`A-NO-BANNED`, `A-NO-CLAIMS` and `A-INCLUSIVE` are appended to **every** surface list
+automatically. Surface lists are hand-written, so a cross-cutting check added later would
+otherwise reach only the surfaces someone remembered to update — which is exactly how the
+inclusive-language check first missed `helper-text`.
 
 ## Surface → checks (important)
 

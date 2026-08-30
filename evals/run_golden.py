@@ -16,8 +16,37 @@ def load():
         return [json.loads(line) for line in fh if line.strip()]
 
 
+def audit_declared_vs_applicable(cases):
+    """Report cases that declare fewer checks than their surface would apply.
+
+    The golden set runs the assertions each case declares in `must_pass`, so a check added
+    to a surface later never re-tests older cases. That gap hid a real defect (a tooltip
+    using an unexpanded acronym) until the judge found it. This makes it visible.
+    """
+    gaps = 0
+    for c in cases:
+        cand = c.get("context", {}).get("candidate")
+        if cand is None or c.get("expect_fail"):
+            continue
+        applicable = assertions.checks_for(c.get("surface"))
+        declared = set(c.get("must_pass") or [])
+        undeclared = [a for a in applicable if a not in declared]
+        if not undeclared:
+            continue
+        res = assertions.run(cand, undeclared, surface=c.get("surface"))
+        failing = {k: v["message"] for k, v in res.items() if not v["passed"]}
+        if failing:
+            gaps += 1
+            print(f"{'GAP':>22}  {c['id']}: would fail undeclared {failing}")
+    print(f"\nDeclared-vs-applicable audit: {gaps} case(s) hiding a real failure.")
+    return gaps
+
+
 def main():
+    import sys
     cases = load()
+    if "--strict" in sys.argv:
+        return audit_declared_vs_applicable(cases)
     run = skipped = ok = 0
     for c in cases:
         cand = c.get("context", {}).get("candidate")

@@ -110,8 +110,9 @@ There is no title, no icon inside the panel, no button, and no second tooltip.
 
 ## Content examples
 
-- ✅ Trigger "What is a BIC?" · Panel "A BIC identifies a bank internationally, the way an
-  IBAN identifies an account. Most euro transfers do not need one."
+- ✅ Trigger "What is a BIC?" · Panel "A BIC (Bank Identifier Code) identifies a bank
+  internationally, the way an IBAN identifies an account. Most euro transfers do not need
+  one."
 - ✅ Trigger "What is a virtual card?" · Panel "A card that only exists in the app. You can
   use it online and delete it whenever you want."
 - ❌ "There is a 2 € fee for this transfer." (a fee must be visible)

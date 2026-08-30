@@ -33,6 +33,29 @@ Generate (model + this system as context) -> assert (code) -> judge (model + rub
 if it fails, fix the **system** (the rule, not the single output) -> re-run the golden set.
 The point of evals is to improve the system, not to patch one string.
 
+## Running the judge
+
+The second layer is a model reading the system and scoring one candidate at a time.
+
+1. **`python judge.py build`** writes one filled prompt per case into `judge-batch/`. Each
+   prompt carries the rubric, the surface, the task, the candidate, and **only the part of
+   the system that governs that surface** — a judge given the whole repository grades
+   against the wrong rules.
+2. It **skips two kinds of case**: those with no approved candidate yet, and those the
+   deterministic layer already rejected. The cheap gate runs first; the judge is for what
+   code cannot see.
+3. It **never includes the case's `expected` note.** That note is the human's answer key,
+   and a judge that reads it is marking its own homework.
+4. A judge model answers each prompt with the JSON verdict. The verdicts, one per line, go
+   into `judge-runs/<date>-<model>.jsonl`.
+5. **`python judge.py score judge-runs/<file>.jsonl`** aggregates them and compares each
+   verdict with what the case expected, including `expect_judge_fail` cases, which code
+   passes and the judge must reject.
+
+**A judge that agrees with everything is worth nothing.** The golden set carries planted
+cases that are impeccably formed and still wrong, precisely so a run that passes everything
+is a signal that the judge, not the copy, is broken.
+
 ## Metrics
 
 - Assertion pass rate, per assertion and per surface.

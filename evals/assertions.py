@@ -722,6 +722,30 @@ def email_preheader(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+def _sentences(par):
+    core = re.sub(r"(?<=\d)\.(?=\d)", "", par.strip())
+    return [x for x in re.split(r"(?<=[.!?])\s+", core) if x.strip()]
+
+
+def paragraphs(text, surface=None):
+    """One fact, one paragraph. The first check that looks at the shape of a block."""
+    t = text.strip()
+    if not t:
+        return (False, "empty block")
+    pars = [p for p in re.split(r"\n\s*\n", t) if p.strip()]
+    problems = []
+    if len(pars) > 3:
+        problems.append(str(len(pars)) + " paragraphs; a modal or sheet body holds at most 3. If it needs more, it is a screen")
+    for i, par in enumerate(pars, 1):
+        sents = _sentences(par)
+        n = len(sents)
+        if n >= 3:
+            problems.append("paragraph " + str(i) + " stacks " + str(n) + " facts into one block; give each its own paragraph")
+        elif n == 2 and len(par.strip()) > 120:
+            problems.append("paragraph " + str(i) + " runs to " + str(len(par.strip())) + " chars over two sentences; two are allowed only when tightly linked and both short")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -766,6 +790,7 @@ REGISTRY = {
     "A-CREDENTIALS": no_credential_ask,
     "A-SUBJECT": email_subject,
     "A-PREHEADER": email_preheader,
+    "A-PARAGRAPHS": paragraphs,
 }
 
 
@@ -777,7 +802,7 @@ SURFACE_CHECKS = {
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
     "push-title": ["A-PUSH-TITLE", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
     "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-CREDENTIALS"],
-    "error": BODY_CHECKS, "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
+    "error": BODY_CHECKS + ["A-PARAGRAPHS"], "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
     "notification": BODY_CHECKS, "onboarding-step": BODY_CHECKS, "disclosure": BODY_CHECKS,
     "risk-warning": BODY_CHECKS, "banner": BODY_CHECKS,
     "toast": ["A-TOAST", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
@@ -799,15 +824,15 @@ SURFACE_CHECKS = {
     "code-screen": BODY_CHECKS, "security": BODY_CHECKS,
     "system-error": BODY_CHECKS + ["A-SYSTEM-ERROR"],
     "system-error-title": ["A-SYSTEM-ERROR", "A-NO-EMOJI", "A-NO-BANNED", "A-NEGATION"],
-    "system-error-screen": BODY_CHECKS + ["A-SYSTEM-ERROR", "A-MONEY-ACCOUNTED"],
+    "system-error-screen": BODY_CHECKS + ["A-SYSTEM-ERROR", "A-MONEY-ACCOUNTED"] + ["A-PARAGRAPHS"],
     "loading": ["A-LOADING", "A-NO-BANNED", "A-NO-CLAIMS"],
-    "loading-screen": BODY_CHECKS + ["A-MONEY-ACCOUNTED"],
+    "loading-screen": BODY_CHECKS + ["A-MONEY-ACCOUNTED"] + ["A-PARAGRAPHS"],
     "skeleton": ["A-SKELETON"],
     "carousel-headline": ["A-CARD-HEADLINE", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI"],
     "carousel-body": ["A-CARD-BODY", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI"],
     "flow-intro-cta": ["A-INTRO-CTA", "A-CTA", "A-NO-EMOJI"],
-    "flow-intro-body": BODY_CHECKS,
-    "permission-body": BODY_CHECKS + ["A-PERMISSION"],
+    "flow-intro-body": BODY_CHECKS + ["A-PARAGRAPHS"],
+    "permission-body": BODY_CHECKS + ["A-PERMISSION"] + ["A-PARAGRAPHS"],
     "permission-heading": ["A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK"],
     "tooltip": ["A-TOOLTIP", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NUMERALS"],
     "tooltip-trigger": ["A-TOOLTIP-TRIGGER", "A-NO-EMOJI", "A-NO-BANNED"],
@@ -819,10 +844,10 @@ SURFACE_CHECKS = {
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],
     "auth-error": FIELD_CHECKS + ["A-ENUMERATION"],
-    "card-action": BODY_CHECKS + ["A-REVERSIBILITY"],
+    "card-action": BODY_CHECKS + ["A-REVERSIBILITY"] + ["A-PARAGRAPHS"],
     "email-subject": ["A-SUBJECT", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT", "A-CREDENTIALS"],
     "email-preheader": ["A-PREHEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT"],
-    "email-body": BODY_CHECKS + ["A-CREDENTIALS"],
+    "email-body": BODY_CHECKS + ["A-CREDENTIALS"] + ["A-PARAGRAPHS"],
 }
 
 

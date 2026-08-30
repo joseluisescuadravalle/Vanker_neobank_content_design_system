@@ -79,7 +79,9 @@ of slots, each with its own rules.
 - **Title** (required): one clear, direct sentence saying what happened, never blaming the
   person. **No ending period.** One line.
 - **Body** (optional): included **only when needed**. When present, it gives more context on
-  what happened and how to solve it. It explains; it **never contains the CTA**.
+  what happened and how to solve it. It explains; it **never contains the CTA**. One fact per
+  paragraph, at most three paragraphs, left aligned from three lines
+  (see `../components/foundations/typography.md`).
 - **Actions** (one or two, never more):
   - **Inform only** (the person can only acknowledge): a single **Close** button. Never
     "OK".

@@ -37,9 +37,19 @@ Rules that follow, and they are absolute:
 
 The most stressed moment in the product. The first line is not a form.
 
-- **Reassure about the money before anything else**: "Your money is safe."
-- Then the consequence, in plain words: "This card will stop working for good, and we will
-  send you a new one."
+**One fact per paragraph**, never one block of four lines (see
+`../components/foundations/typography.md`):
+
+> **Report this card?**
+>
+> Your money is safe.
+>
+> This card will stop working for good, and we'll send you a new one.
+>
+> The replacement is free and usually arrives in 3 to 5 working days.
+
+- **Reassure about the money before anything else**, in its own paragraph.
+- Then the consequence, in plain words.
 - Then the cost, exactly, or the fact that there is none (see
   `../compliance/disclosures.md`), and the delivery time as a measured range, never "soon".
 - Buttons: "Report card" (primary), "Cancel" (secondary).

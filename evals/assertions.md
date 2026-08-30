@@ -81,6 +81,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-CREDENTIALS` | Outside the app (email, push), nothing asks for a passcode, PIN, card details, or a code | `../patterns/emails.md`, `../compliance/security-payments.md` |
 | `A-SUBJECT` | Transactional subject: front-loaded, about 50 characters, no emoji, no question bait, no ALL CAPS, no fake "Re:" | `../patterns/emails.md` |
 | `A-PREHEADER` | Preheader adds information, is never empty and never "View in browser" | `../patterns/emails.md` |
+| `A-PARAGRAPHS` | **Block level:** one fact per paragraph (two sentences only when short and linked), at most three paragraphs in a modal body | `../components/foundations/typography.md` |
 
 `A-NO-BANNED` also rejects the vague-failure phrases ("something went wrong", "oops",
 "unexpected error", "technical difficulties") the vague-waiting ones ("please wait",
@@ -89,6 +90,10 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 blame phrases from `../terminology/banned-terms.md` ("you entered the wrong", "you failed
 to", "you forgot to", "invalid") and the pressure words ("urgent", "act now", "last
 chance", "hurry", "miss out", "final notice"), which are the grammar of fraud.
+
+`A-PARAGRAPHS` is the first check that grades the **shape of a block** rather than the
+words in it: it reads the paragraph breaks in the candidate, so a candidate for a modal or
+sheet body must carry its real line breaks.
 
 **A-MONEY-ACCOUNTED is the first screen-level check in the system.** Every other assertion
 grades one slot; this one grades the title and the body together, because the title states

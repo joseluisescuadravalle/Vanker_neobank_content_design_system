@@ -63,6 +63,53 @@ stay comfortable for all ages.
   layouts grow.
 - Personality never comes at the cost of legibility (see the marketing/product split).
 
+## Setting text: alignment
+
+Alignment is decided by the **number of lines and the job of the block**, never by taste.
+
+| Block | Alignment |
+| --- | --- |
+| One or two lines, in a symmetric composition (success screen, empty state, full-screen moment, a short modal title) | **Centered allowed** |
+| **Three lines or more** | **Left. No exception** |
+| Anything inside a reading flow: forms, lists, details, transaction rows, emails | **Left** |
+| Figures in a column (amounts, dates) | **Right**, with tabular numbers |
+| Anything | **Never justified** |
+
+**Why the line count decides it.** At every line break the eye jumps back to the start of
+the next line. Left-aligned, that point is always at the same horizontal position and the
+eye lands without searching. Centered, the start of each line shifts with the length of the
+one above, so the eye has to find it before it can read it. On one or two lines that cost is
+invisible; from the third it is real and it accumulates. Justified text adds uneven word
+spacing on top, which is why WCAG 2.1 (1.4.8) rules it out and why dyslexia style guidance
+asks for a ragged right edge.
+
+## Setting text: blocks
+
+**One fact, one paragraph.**
+
+A body that stacks three separate facts into one block forces the person to read all of it
+to find the one that matters to them. Splitting it costs nothing and changes how heavy it
+looks:
+
+> **Report this card?**
+>
+> Your money is safe.
+>
+> This card will stop working for good, and we'll send you a new one.
+>
+> The replacement is free and usually arrives in 3 to 5 working days.
+
+Same words, three paragraphs, half the weight.
+
+- **One sentence per paragraph.** Two are allowed only when they are tightly linked and both
+  short; if the pair runs long, it is two paragraphs.
+- **At most three paragraphs in the body of a modal or a sheet.** If it needs four, it is a
+  screen, not a modal (see `../library/sheet-modal.md`).
+- **Not bullets.** In a modal, a bulleted list reads as terms and conditions, and it chills
+  exactly the moment that needs warmth. Bullets belong to reference content, not to a
+  message.
+- The separation is vertical space (`space.2`), not a blank line of text and not a rule.
+
 ## Machine-readable tokens
 
 ```json
@@ -86,7 +133,21 @@ stay comfortable for all ages.
       "overline":   { "size": 12, "line": 16, "weight": 600, "tracking": "+0.06em" },
       "button":     { "size": 16, "line": 20, "weight": 600, "tracking": "normal" }
     },
-    "numbers": { "tabular": true }
+    "numbers": { "tabular": true },
+    "alignment": {
+      "centered-allowed-up-to-lines": 2,
+      "left-from-lines": 3,
+      "reading-flow": "left",
+      "figures-in-a-column": "right",
+      "justified": false
+    },
+    "blocks": {
+      "sentences-per-paragraph": 1,
+      "two-allowed-when": "tightly linked and both short",
+      "max-paragraphs-in-a-modal-body": 3,
+      "bullets-in-a-modal": false,
+      "separator": "space.2"
+    }
   }
 }
 ```

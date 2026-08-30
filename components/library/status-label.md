@@ -14,8 +14,8 @@ copy.
 
 | Not this | What it is | Where it lives |
 | --- | --- | --- |
-| Count badge | The number or dot on a navigation icon ("3") | Not specified yet |
-| Chip | An interactive control: filter, choice, or removable input | Not specified yet |
+| Count badge | The number or dot on a navigation icon ("3") | `count-badge.md` |
+| Chip | An interactive control: filter, choice, or removable input | `chip.md` |
 | Banner, toast | A message about an event that just happened | `banner-toast.md` |
 | Button | An action | `button.md`, `../../patterns/ctas.md` |
 

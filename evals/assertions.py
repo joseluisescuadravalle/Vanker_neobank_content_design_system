@@ -980,6 +980,44 @@ def alt_text(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+BADGE_RE = re.compile(r"^\d{1,3}\+?$")
+CHIP_VERBS = ["filter", "show", "sort", "select", "choose", "apply", "clear", "see", "view", "add", "remove"]
+
+
+def count_badge(text, surface=None):
+    """A badge carries a count and nothing else."""
+    t = text.strip()
+    if not t:
+        return (False, "empty badge; nothing to clear means no badge, not an empty circle")
+    if t == "0":
+        return (False, "no badge shows zero: nothing to clear means no badge")
+    if not BADGE_RE.match(t):
+        return (False, "'" + t + "' is not a count; a badge carries digits and an optional '+' (9+, 99+), never a word, a currency, or an amount")
+    if len(t.rstrip("+")) > 2 and not t.endswith("+"):
+        return (False, "'" + t + "' is not capped; use 9+ on an icon or 99+ in a row rather than a full number in a circle")
+    return (True, "ok")
+
+
+def chip_label(text, surface=None):
+    """A chip names the value it carries, never the act of choosing it."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty chip label")
+    low = t.lower()
+    if EMOJI.search(t):
+        problems.append("no emoji in a chip label")
+    if re.search(r"[.,:;!?]$", t):
+        problems.append("no ending punctuation on a chip label")
+    for v in CHIP_VERBS:
+        if low.startswith(v + " ") or low == v:
+            problems.append("'" + t + "' names the act, not the value; a verb makes it look like a button ('Date', not 'Filter by date')")
+            break
+    if len(t.split()) > 3:
+        problems.append("too long (" + str(len(t.split())) + " words); a chip carries a value in up to three")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -1031,6 +1069,8 @@ REGISTRY = {
     "A-DATE": dates_and_figures,
     "A-INCLUSIVE": inclusive,
     "A-ALT": alt_text,
+    "A-BADGE": count_badge,
+    "A-CHIP": chip_label,
 }
 
 
@@ -1082,6 +1122,8 @@ SURFACE_CHECKS = {
     "accordion-body": BODY_CHECKS,
     "link": ["A-LINK-TEXT", "A-NO-BANNED", "A-NO-CLAIMS", "A-CASE", "A-PUNCTUATION"],
     "alt-text": ["A-ALT", "A-CASE", "A-PUNCTUATION", "A-MASK"],
+    "count-badge": ["A-BADGE"],
+    "chip": ["A-CHIP", "A-CASE"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

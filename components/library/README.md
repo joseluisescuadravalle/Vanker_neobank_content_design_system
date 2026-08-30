@@ -19,6 +19,8 @@ Components in this library:
 - `card.md`
 - `transaction-row.md`
 - `status-label.md` — non-interactive state label with a controlled vocabulary
+- `count-badge.md` — the number on an icon, and why a badge is a debt
+- `chip.md` — the interactive twin of the status label: filter, choice, and input
 - `amount-input.md` — the money field (hero and inline), presets, limits, and fees
 - `code-input.md` — the single-use code field (Strong Customer Authentication, SCA)
 - `tooltip.md` — the weakest surface in the product, and what may never live in it

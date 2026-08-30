@@ -9,5 +9,6 @@ Customer)). Every other layer must use these terms exactly.
 Contents:
 - `glossary.md` — approved terms and definitions, the money and date formats.
 - `banned-terms.md` — terms to avoid and what to use instead.
+- `numbers-and-dates.md` — figures, dates, times, durations, and masked identifiers.
 - `capitalization-and-punctuation.md` — sentence case, the ending period by element, and
   the rest of the marks.

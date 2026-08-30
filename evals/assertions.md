@@ -17,6 +17,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-PUNCTUATION` | No exclamation mark, semicolon, em or en dash, ellipsis, or Latin abbreviation, and a range takes "to" rather than a hyphen between figures | `../terminology/capitalization-and-punctuation.md` |
 | `A-CASE` | No Title Case and no ALL CAPS typed into a string | `../terminology/capitalization-and-punctuation.md` |
 | `A-LINK-TEXT` | Link text names its destination: "here", "click here", "read more", "learn more" and a bare URL all fail | `../patterns/links.md` |
+| `A-DATE` | No numeric, ordinal, or month-first dates; no "Yesterday" or "Tomorrow"; no abbreviated figures or "(s)" plurals; no vague timing | `../terminology/numbers-and-dates.md` |
 
 ## Voice and patterns
 

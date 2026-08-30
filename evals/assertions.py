@@ -850,6 +850,45 @@ def link_text(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+MONTHS = "January|February|March|April|May|June|July|August|September|October|November|December"
+NUMERIC_DATE = re.compile(r"\b\d{1,2}/\d{1,2}/\d{2,4}\b")
+ORDINAL_DATE = re.compile(r"\b\d{1,2}(?:st|nd|rd|th)\s+(?:" + MONTHS + r")\b", re.IGNORECASE)
+MONTH_FIRST = re.compile(r"\b(?:" + MONTHS + r")\s+\d{1,2}\b")
+ABBREV_FIGURE = re.compile(r"\b\d+(?:[.,]\d+)?\s?(?:k|m|bn|M)\b")
+PAREN_PLURAL = re.compile(r"\w+\(s\)")
+RELATIVE_DAY = re.compile(r"\b(?:yesterday|tomorrow)\b", re.IGNORECASE)
+VAGUE_TIMING = re.compile(r"\bshortly\b|\bin a moment\b|\bin no time\b|(?<!as )\bsoon\b(?! as)", re.IGNORECASE)
+
+
+def dates_and_figures(text, surface=None):
+    """Dates, times and figures, in the one convention the product uses."""
+    t = text.strip()
+    problems = []
+    if (surface or "").lower() in {"placeholder", "counter"}:
+        return (True, "ok")
+    if NUMERIC_DATE.search(t):
+        problems.append("no numeric dates in copy: 03/04/2026 is 3 April to a European reader and 4 March to an American one. Write '3 April 2026'")
+    m = ORDINAL_DATE.search(t)
+    if m:
+        problems.append("no ordinal in a date ('" + m.group(0) + "'); write '1 September'")
+    m = MONTH_FIRST.search(t)
+    if m:
+        problems.append("month-first date ('" + m.group(0) + "'); the format is day month year")
+    m = RELATIVE_DAY.search(t)
+    if m:
+        problems.append("'" + m.group(0) + "' is not used; only 'Today' is relative, every other day shows its date")
+    m = ABBREV_FIGURE.search(t)
+    if m:
+        problems.append("no abbreviated figures ('" + m.group(0) + "'); a person's money is never shorthand")
+    m = PAREN_PLURAL.search(t)
+    if m:
+        problems.append("no '(s)' plural ('" + m.group(0) + "'); write the sentence so it works for one and for several")
+    m = VAGUE_TIMING.search(t)
+    if m:
+        problems.append("vague timing ('" + m.group(0) + "'); give a measured range or say nothing")
+    return (not problems, "; ".join(problems) or "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -898,12 +937,13 @@ REGISTRY = {
     "A-PUNCTUATION": punctuation,
     "A-CASE": case,
     "A-LINK-TEXT": link_text,
+    "A-DATE": dates_and_figures,
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI", "A-CASE"]
-FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE"]
+FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,

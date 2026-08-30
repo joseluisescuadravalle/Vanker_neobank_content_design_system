@@ -89,6 +89,9 @@ to avoid.
 
 ## Numbers
 
+The full rules for figures, dates, times, and durations are in
+`numbers-and-dates.md`. The essentials:
+
 - Write numbers as digits in UI body copy and instructions — "3 simple steps", not
   "three" — because digits are easier to scan. This is separate from the money format
   (see the euro rules) and does not apply to status labels (which carry no digits) or to

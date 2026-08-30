@@ -1093,6 +1093,20 @@ def localizable(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+CATEGORY_CLAIM = re.compile(r"\b(?:sorted|categori[sz]ed|classified|filed|grouped)\b|\bwe (?:put|placed) this\b", re.IGNORECASE)
+CATEGORY_CORRECTION = re.compile(r"change (?:the )?categor|not right|wrong categor|correct it|change it|recategori", re.IGNORECASE)
+
+
+def category_guess(text, surface=None):
+    """An automatic category is inference, and a person will act on it as if it were checked."""
+    t = text.strip()
+    if not t:
+        return (False, "empty category copy")
+    if CATEGORY_CLAIM.search(t) and not CATEGORY_CORRECTION.search(t):
+        return (False, "states a category without a way to correct it; categorization is a guess, and someone will act on 'you spent 400 \u20ac on eating out' as though we had checked it. Offer the correction in the same copy ('We sorted this as Groceries. Change category.')")
+    return (True, "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
@@ -1150,6 +1164,7 @@ REGISTRY = {
     "A-NO-RESULTS": no_results,
     "A-DATE-UNAVAILABLE": date_unavailable,
     "A-LOCALIZABLE": localizable,
+    "A-CATEGORY-GUESS": category_guess,
 }
 
 
@@ -1206,6 +1221,8 @@ SURFACE_CHECKS = {
     "search-placeholder": ["A-SEARCH-PLACEHOLDER", "A-CASE", "A-PUNCTUATION"],
     "no-results": ["A-NO-RESULTS", "A-CASE", "A-PUNCTUATION", "A-NO-INLINE-CTA"],
     "date-unavailable": ["A-DATE-UNAVAILABLE", "A-DATE", "A-NO-BANNED", "A-PUNCTUATION", "A-CASE"],
+    "category": ["A-CATEGORY-GUESS", "A-CASE", "A-PUNCTUATION", "A-NO-BANNED"],
+    "chart-copy": BODY_CHECKS + ["A-CATEGORY-GUESS"],
     "toggle-label": ["A-TOGGLE-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "toggle-description": BODY_CHECKS,
     "auth": BODY_CHECKS + ["A-ENUMERATION"],

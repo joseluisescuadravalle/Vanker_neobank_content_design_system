@@ -30,6 +30,9 @@ Every "Eval hooks" block across the system (in `../patterns/`, `../components/`,
   surface would apply.
 - `python check_structure.py` checks that every component and pattern file carries the shape
   described in `../CONTRIBUTING.md`.
+- `python check_examples.py` runs the surface-agnostic checks over the **approved examples in
+  the documentation**, which the golden set never sees: a rule added in August can contradict
+  an example written in July, and nobody re-reads 40 files.
 - `python judge.py build` and `python judge.py score <run>` exercise the second layer.
 
 Run all of them after any change.

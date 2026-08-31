@@ -72,6 +72,23 @@ Added by the patterns; each replaces something the person actually needs.
 | checking account | current account | Vanker is a euro-area bank. |
 | routing number, ACH, sort code | IBAN, SEPA | Wrong market. |
 
+## Noises
+
+An interjection is a sound, not information. It adds nothing a person can act on, and in a
+screen about money it reads as a nervous laugh: the copy sounds like it is apologizing for
+news it has not yet given. A written-out noise also breaks every downstream surface (a
+screen reader says it out loud, a translator has nothing to translate, a subject line wastes
+its first characters on it).
+
+| Avoid | Use instead | Why |
+| --- | --- | --- |
+| oh, ooh, aah, ugh, huh, aha, phew, yikes | nothing, or the fact itself | Filler dressed as empathy. Say what happened. |
+| yeah, yay, wow, hey, woohoo, hurray, hooray | plain confirmation ("Money sent") | Enthusiasm the person does not share, in a product that holds their salary. |
+
+A letter repeated three times or more ("Oooh", "Retryyyy") is checked separately by
+`A-REPEATED-CHARS`, because it is a shape rather than a word: it catches both the noise and
+the typo, including ones nobody thought to list.
+
 ## Always
 
 - Expand every acronym on first use (see `glossary.md`).
@@ -101,3 +118,5 @@ logic and the sync script knows to skip them:
 | login / log-in as a verb | A pattern around the word, since "login" is legitimate as a noun |
 | `&` in body copy | Surface-aware: allowed in a tight label, never in body copy |
 | Acronym expansion | `A-ACRONYMS`, its own check |
+| A letter repeated 3+ times | `A-REPEATED-CHARS`, a shape not a word. Format placeholders (`DD/MM/YYYY`), hex colors and URLs are exempt by shape |
+| One button, one action | `A-CTA` rejects `or`, `and` and `then` in a label |

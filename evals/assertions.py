@@ -32,6 +32,9 @@ BANNED_TERMS = [
     "optimise", "colour", "personalise", "cancelled", "e-mail",
     # Vocabulary that does not fit the market
     "checking account", "routing number", "ach", "sort code",
+    # Noises. An interjection carries no information and no bank makes a sound.
+    "oh", "ooh", "aah", "yeah", "yay", "wow", "hey", "ugh", "huh", "aha",
+    "woohoo", "hurray", "hooray", "phew", "yikes",
 ]
 # Rules from banned-terms.md that a word list cannot express, each with its own logic below.
 LOGIN_AS_VERB = re.compile(r"\b(?:to|please|can|could|must|cannot|will|and|or)\s+login\b|\blogin\s+(?:to|with|using|now|here)\b", re.IGNORECASE)
@@ -114,6 +117,8 @@ def cta_rules(label, surface=None):
         problems.append("contains a number or amount")
     if label.lower() in GENERIC_CTA:
         problems.append("generic label '" + label + "'")
+    if re.search(r"\b(?:or|and|then)\b", label, re.IGNORECASE):
+        problems.append("two actions in one label ('" + label + "'); one button does one thing")
     return (not problems, "; ".join(problems) or "ok")
 
 
@@ -1153,10 +1158,33 @@ def complaint(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+# A letter repeated three times or more is either a typo ("Retryyyy") or a written-out noise
+# ("Oooh"). Neither belongs in a bank. Format placeholders (DD/MM/YYYY), hex colors and URLs
+# repeat characters legitimately, so they are excluded by shape rather than one by one. An
+# all-caps noise ("OOOH") falls through this exemption and is caught by A-NO-BANNED instead.
+# Case-insensitive so that "Oooh" (capital O, then two lowercase) is caught like "ooo".
+REPEATED_CHARS = re.compile(r"([A-Za-z\u00c0-\u017f])\1{2,}", re.IGNORECASE)
+REPEAT_EXEMPT = re.compile(r"^(?:#[0-9A-Fa-f]{3,8}|(?:https?://|www\.)\S+|[A-Z0-9/#_-]+)$")
+
+
+def repeated_chars(text, surface=None):
+    for tok in re.finditer(r"\S+", text or ""):
+        raw = tok.group(0)
+        m = REPEATED_CHARS.search(raw)
+        if not m:
+            continue
+        word = raw.strip('.,;:!?"\'()[]\u201c\u201d\u2018\u2019')
+        if REPEAT_EXEMPT.match(word):
+            continue
+        return (False, "'" + word + "' repeats a letter three times or more: a typo, or a noise a bank does not make")
+    return (True, "ok")
+
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
     "A-EURO-FORMAT": euro_format,
     "A-NO-BANNED": no_banned_terms,
+    "A-REPEATED-CHARS": repeated_chars,
     "A-NO-CLAIMS": no_prohibited_claims,
     "A-ACRONYMS": acronyms_expanded,
     "A-CTA": cta_rules,
@@ -1289,7 +1317,7 @@ SURFACE_CHECKS = {
 # a prohibited claim, or a word that labels a person. Surface lists are hand-written, so a
 # cross-cutting check added later would otherwise reach only the surfaces someone remembered
 # to update. This adds them everywhere, once.
-UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE", "A-LOCALIZABLE"]
+UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE", "A-LOCALIZABLE", "A-REPEATED-CHARS"]
 for _surface, _checks in list(SURFACE_CHECKS.items()):
     SURFACE_CHECKS[_surface] = _checks + [c for c in UNIVERSAL if c not in _checks]
 

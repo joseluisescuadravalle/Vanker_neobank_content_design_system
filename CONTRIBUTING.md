@@ -93,8 +93,8 @@ Then, mechanically:
 3. Add two rows to `evals/assertions.md`: one in the check table, one in the surface table.
 4. Add golden cases: **at least one that passes and one that must fail per new rule**, and
    an `expect_judge_fail` case for any rule code cannot see.
-5. Run all three: `python run_golden.py`, `python run_golden.py --strict`,
-   `python terms_sync.py`.
+5. Run all five: `python run_golden.py`, `python run_golden.py --strict`,
+   `python terms_sync.py`, `python check_structure.py`, `python check_examples.py`.
 6. **Sweep the existing candidates against the new check**, not only the new cases.
 7. Update the folder's `README.md` and the handoff note.
 
@@ -111,6 +111,8 @@ check.
 | The document and the code drift | Fourteen documented terms were never checked; nineteen checked terms were never documented | `terms_sync.py` |
 | The runner dropped the surface | Every surface-aware check was being evaluated blind | Fixed in `run_golden.py` |
 | The judge marking its own homework | The case's `expected` note is the answer key | `judge.py` never puts it in the prompt |
+| A new rule invalidates old examples | The golden set only holds copy someone chose to put in it, so approved examples in the docs kept contradicting rules written after them | `check_examples.py` |
+| A green deterministic run reads as "the copy is good" | Four fields with "Oooh", "Yeah", "Retryyyy" and "Cancel or die" all showed PASS; three were shapes the code should have caught, the fourth needs the judge | `A-REPEATED-CHARS`, the CTA one-action rule, and the honest label in `assertions.md` |
 
 ## 6. Checklist
 
@@ -122,7 +124,7 @@ check.
 - [ ] New checks are registered, surfaced, and documented in `assertions.md`.
 - [ ] Golden cases: at least one pass and one fail per rule.
 - [ ] `run_golden.py`, `run_golden.py --strict` and `terms_sync.py` all clean.
-- [ ] `check_structure.py` clean.
+- [ ] `check_structure.py` and `check_examples.py` clean.
 - [ ] Existing candidates swept against the new checks.
 - [ ] Rules you chose not to check are written down as such.
 - [ ] The folder README and the handoff note are updated.

@@ -12,6 +12,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-NO-EMOJI` | No emoji anywhere | `../voice-and-tone/voice.md` |
 | `A-EURO-FORMAT` | € after the amount; dot thousands, comma decimals; no ",00" on round amounts; cents show exactly two decimals, never one | `../terminology/glossary.md` |
 | `A-NO-BANNED` | No banned or jargon terms, matched on **word boundaries** so "reach" is not "ACH" and "provisional" is not "provision". Also covers login-as-a-verb and, surface-aware, `&` in body copy | `../terminology/banned-terms.md` |
+| `A-REPEATED-CHARS` | No letter repeated three times or more ("Oooh", "Retryyyy"): a typo, or a noise written out. Format placeholders (`DD/MM/YYYY`), hex colors and URLs are exempt by shape | `../terminology/banned-terms.md` |
 | `A-ACRONYMS` | Known acronyms are expanded on first use | `../terminology/glossary.md` |
 | `A-NUMERALS` | Numbers are digits in body copy and instructions ("3 steps", not "three steps") | `../terminology/glossary.md` |
 | `A-PUNCTUATION` | No exclamation mark, semicolon, em or en dash, ellipsis, or Latin abbreviation, and a range takes "to" rather than a hyphen between figures | `../terminology/capitalization-and-punctuation.md` |
@@ -34,7 +35,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 
 | ID | Checks | Source |
 | --- | --- | --- |
-| `A-CTA` | Button label: 3 words max (aim for one), no numbers/amounts, no punctuation, no emoji, not a bare generic ("OK", "Confirm") | `../patterns/ctas.md`, `../components/library/button.md` |
+| `A-CTA` | Button label: 3 words max (aim for one), no numbers/amounts, no punctuation, no emoji, not a bare generic ("OK", "Confirm"), and one action per label (no "or", "and", "then") | `../patterns/ctas.md`, `../components/library/button.md` |
 | `A-NO-INLINE-CTA` | Body copy contains no inline call to action ("Cancel or Retry"); actions belong in buttons | `CLAUDE.md`, `../patterns/errors.md` |
 | `A-FIELD-ERROR` | Field validation error: one sentence, ends with a period, no ?/!, not generic | `../patterns/errors.md`, `../components/library/text-field.md` |
 | `A-PUSH-TITLE` | Push title: at most 2 emoji (non-critical push only), about 40 chars | `../patterns/notifications.md` |
@@ -147,6 +148,27 @@ The inclusive-language list is deliberately **not** part of that sync: it has it
 file (`../voice-and-tone/inclusive-language.md`), its own check, and its own replacement
 message per term, because "use this instead" is the whole point of that list.
 
+## What a PASS means (and what it does not)
+
+A green result from this file means one thing: **no rule in the catalog was broken**. It is
+not a statement that the copy is good, and it is not a statement that the copy makes sense.
+
+The distinction has a practical edge, found by breaking four fields on purpose:
+
+| Broken copy | Caught by | Why |
+| --- | --- | --- |
+| "Retryyyy" | `A-REPEATED-CHARS` | A shape. Code sees it without understanding it. |
+| "Oooh." | `A-REPEATED-CHARS`, `A-NO-BANNED` | Same shape, plus a listed word. |
+| "Yeah." | `A-NO-BANNED` | A listed word. |
+| "Cancel or die" | `A-CTA` | Two actions in one label is a shape too. |
+| "We have sent your money." on a screen where nothing was sent | **nothing here** | The sentence is well formed. Only the judge, holding the intent, can see that it is false. |
+
+Three of those four are shapes, and a shape is exactly what deterministic code is for. The
+fourth is not, and no list of words will ever reach it. That is the boundary between the two
+layers, and it is why an interface that shows **PASS** after running only this file is
+over-claiming: the honest label is "no rule broken", with the judge verdict reported
+separately, or "not evaluated" when the judge has not run.
+
 ## Extending
 
 Add a check as a function in `assertions.py`, register it with a new ID, and reference that
@@ -155,7 +177,7 @@ rule is code-checkable (those live in `rubric.md`).
 
 ## Checks that apply to every surface
 
-`A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE` and `A-LOCALIZABLE` are appended to **every** surface list
+`A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE` and `A-REPEATED-CHARS` are appended to **every** surface list
 automatically. Surface lists are hand-written, so a cross-cutting check added later would
 otherwise reach only the surfaces someone remembered to update — which is exactly how the
 inclusive-language check first missed `helper-text`.

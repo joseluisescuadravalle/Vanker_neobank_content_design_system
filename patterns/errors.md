@@ -52,7 +52,9 @@ A Vanker error has up to three parts, in this order:
 - Not: "Transaction declined: insufficient funds."
 
 **Connection problem**
-- Do: "We could not reach our systems just now. Your money is safe. Please try again in a moment."
+- Do: "We could not reach our systems just now. Your money is safe." with a "Retry"
+  button. The way back is the button, and a vague "in a moment" promises a timing we
+  have not measured.
 - Not: "Network error. Retry."
 
 **Wrong passcode**

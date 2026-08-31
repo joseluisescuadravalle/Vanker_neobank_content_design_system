@@ -80,7 +80,7 @@ inline progress indicator and the switch is not operable.
 ## When it fails
 
 - The switch **returns to its previous position**, and the row says why in one line, in
-  place: "We couldn't turn this on just now. Please try again in a moment."
+  place: "We could not turn this on just now."
 - It never snaps back silently, and it never leaves the person believing a security setting
   is on when it is not.
 - If the failure touches money or security, the message follows `../../patterns/errors.md`

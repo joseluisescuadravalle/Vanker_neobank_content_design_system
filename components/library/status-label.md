@@ -199,7 +199,8 @@ pressable. What changes is the status it carries.
 
 Normative pairs (the label alone, and what accompanies it):
 
-- ✅ `Pending` in a transaction row, with "It should arrive by tomorrow" in the detail view.
+- ✅ `Pending` in a transaction row, with "It should arrive on 5 September" in the detail
+  view.
 - ✅ `Action needed` on the verification card, with a button labeled "Confirm identity".
 - ✅ `Not approved`, with the reason and a link to the complaints route.
 - ❌ "Pending 2 days" (a duration inside the label).

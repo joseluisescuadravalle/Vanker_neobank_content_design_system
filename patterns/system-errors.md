@@ -172,7 +172,10 @@ a feature:
 - No visible error code in the message; a reference line, when present, is a separate,
   discreet element.
 - The copy names the side the problem is on, and does not blame the person's connection for
-  our failure.
+  our failure. Checked by `A-ATTRIBUTION`, at screen level: the title states the failure and
+  the body carries the attribution, so a title alone proves nothing. Only screens that report
+  a failure are asked; an expired session, maintenance and a missing page are not failures
+  and have no side to name.
 - "Something went wrong", "Oops", and "unexpected error" do not appear.
 - The actions offered can actually work: no Retry on maintenance, no modal for offline.
 - No emoji, no exclamation marks, no jokes.

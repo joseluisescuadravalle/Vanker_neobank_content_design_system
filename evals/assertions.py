@@ -403,8 +403,8 @@ def system_error(text, surface=None):
     m = ERROR_CODE.search(text)
     if m:
         problems.append("visible error code ('" + m.group(0) + "'); use a discreet reference line instead")
-    if "!" in text:
-        problems.append("no exclamation mark in a system error")
+    # The exclamation mark is not repeated here: A-PUNCTUATION already rejects it on every
+    # surface this check runs on, and two names for one character read as two defects.
     return (not problems, "; ".join(problems) or "ok")
 
 
@@ -417,6 +417,41 @@ def money_accounted(text, surface=None):
     """
     if MONEY_OUTCOME.search(text) and not REASSURANCE.search(text):
         return (False, "the screen mentions money but never says what happened to it (no money left, on its way, or outcome not known yet)")
+    return (True, "ok")
+
+
+# Rule 2 of system-errors.md: say whose side the problem is on. The system fixes the ways
+# of saying it (own it, or name the device), so the presence of an attribution is a shape.
+# What it cannot check is whether the attribution is TRUE, which is the judge's job.
+FAILURE = re.compile(
+    r"could not|couldn't|did not work|didn't work|failed|stopped it|technical problem|"
+    r"went wrong|did not go through|didn't go through|unable to|we lost|was not sent",
+    re.IGNORECASE,
+)
+ATTRIBUTION = re.compile(
+    r"on our side|our systems|our end|we could not|we couldn't|we cannot|we can't|"
+    r"your phone|your device|your connection|your network|offline|"
+    r"maintenance|your session|we are making|we're making",
+    re.IGNORECASE,
+)
+
+
+def attribution(text, surface=None):
+    """Screen-level: a screen that reports a FAILURE names the side it happened on.
+
+    Screen-level for the same reason as A-MONEY-ACCOUNTED: the title states the failure and
+    the body carries the attribution, so a title checked alone would always fail. Found by
+    the judge, on the app's own worked example ("A technical problem stopped it"), which
+    named no side at all and passed every check there was.
+
+    Only failures are asked to attribute. An expired session, planned maintenance and a page
+    that does not exist are not failures and have no side to name, which the --strict audit
+    pointed out the moment this check was written too broadly.
+    """
+    if not FAILURE.search(text or ""):
+        return (True, "ok")
+    if not ATTRIBUTION.search(text or ""):
+        return (False, "the screen never says whose side the problem is on (our systems, or the device); see rule 2 of patterns/system-errors.md")
     return (True, "ok")
 
 
@@ -1076,8 +1111,6 @@ def no_results(text, surface=None):
         problems.append("'" + t + "' answers nothing and offers nothing; name what was searched and the scope")
     if BLAMES_SPELLING.search(t):
         problems.append("no blaming the spelling; the query is echoed so the person can see it for themselves")
-    if "!" in t:
-        problems.append("no exclamation mark; nothing has gone wrong here")
     if re.search(r"\berror\b|\bsorry\b|\boops\b", t, re.IGNORECASE):
         problems.append("nothing found is not an error and needs no apology")
     return (not problems, "; ".join(problems) or "ok")
@@ -1226,6 +1259,7 @@ REGISTRY = {
     "A-NEGATION": spelled_negation,
     "A-SYSTEM-ERROR": system_error,
     "A-MONEY-ACCOUNTED": money_accounted,
+    "A-ATTRIBUTION": attribution,
     "A-LOADING": loading_message,
     "A-SKELETON": skeleton_placeholder,
     "A-CARD-HEADLINE": carousel_headline,
@@ -1292,8 +1326,8 @@ SURFACE_CHECKS = {
     "amount-label": ["A-AMOUNT-LABEL", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "code-screen": BODY_CHECKS, "security": BODY_CHECKS,
     "system-error": BODY_CHECKS + ["A-SYSTEM-ERROR"],
-    "system-error-title": ["A-SYSTEM-ERROR", "A-NO-EMOJI", "A-NO-BANNED", "A-NEGATION"],
-    "system-error-screen": BODY_CHECKS + ["A-SYSTEM-ERROR", "A-MONEY-ACCOUNTED"] + ["A-PARAGRAPHS"],
+    "system-error-title": ["A-SYSTEM-ERROR", "A-NO-EMOJI", "A-NO-BANNED", "A-NEGATION", "A-PUNCTUATION"],
+    "system-error-screen": BODY_CHECKS + ["A-SYSTEM-ERROR", "A-MONEY-ACCOUNTED", "A-ATTRIBUTION"] + ["A-PARAGRAPHS"],
     "loading": ["A-LOADING", "A-NO-BANNED", "A-NO-CLAIMS"],
     "loading-screen": BODY_CHECKS + ["A-MONEY-ACCOUNTED"] + ["A-PARAGRAPHS"],
     "skeleton": ["A-SKELETON"],

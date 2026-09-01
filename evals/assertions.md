@@ -12,6 +12,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-NO-EMOJI` | No emoji anywhere | `../voice-and-tone/voice.md` |
 | `A-EURO-FORMAT` | € after the amount; dot thousands, comma decimals; no ",00" on round amounts; cents show exactly two decimals, never one | `../terminology/glossary.md` |
 | `A-NO-BANNED` | No banned or jargon terms, matched on **word boundaries** so "reach" is not "ACH" and "provisional" is not "provision". Also covers login-as-a-verb and, surface-aware, `&` in body copy | `../terminology/banned-terms.md` |
+| `A-ATTRIBUTION` | Screen level. A screen reporting a failure names the side it is on (our systems, or the device). A session expiry, maintenance or a missing page is not a failure and is not asked | `../patterns/system-errors.md` |
 | `A-REPEATED-CHARS` | No letter repeated three times or more ("Oooh", "Retryyyy"): a typo, or a noise written out. Format placeholders (`DD/MM/YYYY`), hex colors and URLs are exempt by shape | `../terminology/banned-terms.md` |
 | `A-ACRONYMS` | Known acronyms are expanded on first use | `../terminology/glossary.md` |
 | `A-NUMERALS` | Numbers are digits in body copy and instructions ("3 steps", not "three steps") | `../terminology/glossary.md` |
@@ -98,6 +99,11 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-SUBJECT` | Transactional subject: front-loaded, about 50 characters, no emoji, no question bait, no ALL CAPS, no fake "Re:" | `../patterns/emails.md` |
 | `A-PREHEADER` | Preheader adds information, is never empty and never "View in browser" | `../patterns/emails.md` |
 | `A-PARAGRAPHS` | **Block level:** one fact per paragraph (two sentences only when short and linked), at most three paragraphs in a modal body | `../components/foundations/typography.md` |
+
+One character, one complaint. `A-SYSTEM-ERROR` and `A-NO-RESULTS` used to re-check the
+exclamation mark that `A-PUNCTUATION` already rejects, so the panel printed the same defect
+twice under two names. The clause was removed from both, and `system-error-title` gained
+`A-PUNCTUATION`, which its hand-written surface list had simply never included.
 
 `A-NO-BANNED` also rejects the vague-failure phrases ("something went wrong", "oops",
 "unexpected error", "technical difficulties") the vague-waiting ones ("please wait",

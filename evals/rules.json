@@ -7,6 +7,7 @@
     "A-ALT",
     "A-AMOUNT-LABEL",
     "A-AMOUNT-VALUE",
+    "A-ATTRIBUTION",
     "A-BADGE",
     "A-CARD-BODY",
     "A-CARD-HEADLINE",
@@ -880,6 +881,7 @@
       "A-INCLUSIVE",
       "A-SYSTEM-ERROR",
       "A-MONEY-ACCOUNTED",
+      "A-ATTRIBUTION",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS"
@@ -889,6 +891,7 @@
       "A-NO-EMOJI",
       "A-NO-BANNED",
       "A-NEGATION",
+      "A-PUNCTUATION",
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",

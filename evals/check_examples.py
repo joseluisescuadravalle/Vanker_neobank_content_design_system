@@ -60,6 +60,69 @@ def allowed(text):
     return False
 
 
+SPELLING_SECTION = "## Spelling and formatting"
+
+
+def spelling_terms():
+    """The American-English baseline as (wrong, right) pairs, read from banned-terms.md.
+
+    The pair matters: a line that carries the wrong spelling AND its correction is a rule
+    citing itself ("| Cancelled | `Canceled` | American spelling baseline. |"), not a
+    document breaking the rule.
+    """
+    doc = os.path.join(ROOT, "terminology", "banned-terms.md")
+    pairs, inside = [], False
+    for line in io.open(doc, encoding="utf-8"):
+        if line.startswith("## "):
+            inside = line.startswith(SPELLING_SECTION)
+            continue
+        if not inside or not line.startswith("| ") or line.startswith("| ---") or line.startswith("| Avoid"):
+            continue
+        cells = line.split("|")
+        wrong = [re.sub(r"\(.*?\)", "", t).strip(" .`").lower() for t in cells[1].split(",")]
+        right = [re.sub(r"\(.*?\)", "", t).strip(" .`").lower() for t in cells[2].split(",")]
+        for i, w in enumerate(wrong):
+            if not w or " " in w or "/" in w:
+                continue
+            pairs.append((w, right[i] if i < len(right) else ""))
+    return pairs
+
+
+def spelling_sweep():
+    """The docs' own prose, not only the copy they quote.
+
+    Found by hand, which is the point: six files wrote "colour" in their own rules and in
+    their JSON keys, in a system whose baseline is American English. No gate looked, because
+    check_examples only reads quoted strings and terms_sync only compares two lists. A rule
+    the documentation breaks while stating it is a rule nobody will follow.
+    """
+    # A spelling is wrong in every inflection: "personalise", "personalised", "personalising".
+    tail = r"(?:s|d|ed|ing)?\b"
+    rx = [(w, re.compile(r"\b" + re.escape(w) + tail, re.IGNORECASE),
+           re.compile(r"\b" + re.escape(r) + tail, re.IGNORECASE) if r else None)
+          for w, r in spelling_terms()]
+    skip = {os.path.join("terminology", "banned-terms.md")}
+    seen = set()
+    findings = 0
+    for d in DIRS + ["."]:
+        base = os.path.join(ROOT, d)
+        for root, dirs, files in os.walk(base):
+            dirs[:] = [x for x in dirs if x not in {"_handoff", ".git", "evals"}]
+            for f in sorted(files):
+                if not f.endswith(".md"):
+                    continue
+                rel = os.path.relpath(os.path.join(root, f), ROOT)
+                if rel in skip or rel in seen:
+                    continue
+                seen.add(rel)
+                for n, line in enumerate(io.open(os.path.join(root, f), encoding="utf-8"), 1):
+                    for t, wrong_re, right_re in rx:
+                        if wrong_re.search(line) and not (right_re and right_re.search(line)):
+                            findings += 1
+                            print("%s:%d  [spelling] '%s' in the documentation's own prose" % (rel, n, t))
+    return findings
+
+
 def main():
     findings = 0
     checked = 0
@@ -105,6 +168,7 @@ def main():
                                 findings += 1
                                 print("%s:%d  [%s] %s" % (rel, n, cid, msg))
                                 print('          "%s"' % text)
+    findings += spelling_sweep()
     print("")
     if findings:
         print("%d approved example(s) contradict a current rule, out of %d checked."

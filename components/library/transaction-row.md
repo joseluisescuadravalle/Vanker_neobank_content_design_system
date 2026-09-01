@@ -84,7 +84,7 @@ today always shows its concrete date (see `../../terminology/glossary.md`).
 
 ## Eval hooks
 
-- The sign carries the direction of the money; colour never carries it alone.
+- The sign carries the direction of the money; color never carries it alone.
 - Amounts are in European format with tabular numbers, and are never truncated.
 - The row is a single focus stop with one accessible name combining its parts.
 - The settled state carries no status label; only exceptions are labelled

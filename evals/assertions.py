@@ -1210,6 +1210,25 @@ def complaint(text, surface=None):
     return (not problems, "; ".join(problems) or "ok")
 
 
+# WCAG 1.4.1, and the most common content accessibility failure there is: copy that points
+# at something by its color. A color word alone is fine ("your graphite card"); what fails
+# is color used to LOCATE or IDENTIFY, which is why the pattern needs the locator around it.
+COLORS = r"red|green|blue|yellow|orange|purple|pink|grey|gray|black|white|fuchsia|amber"
+COLOR_ALONE = re.compile(
+    r"\b(?:marked|highlighted|shown|displayed|in|coloured|colored)\s+in\s+(?:" + COLORS + r")\b"
+    r"|\bthe\s+(?:" + COLORS + r")\s+(?:button|link|field|box|text|message|icon|area|row|dot|label|bar|line)\b"
+    r"|\b(?:" + COLORS + r")\s+(?:fields|buttons|links|items|rows|entries)\b",
+    re.IGNORECASE,
+)
+
+
+def color_alone(text, surface=None):
+    m = COLOR_ALONE.search(text or "")
+    if m:
+        return (False, "'" + m.group(0) + "' points at something by its color; a person who cannot see the screen, cannot see that color, or is reading it in sunlight gets nothing. Name the thing (WCAG 1.4.1)")
+    return (True, "ok")
+
+
 # A letter repeated three times or more is either a typo ("Retryyyy") or a written-out noise
 # ("Oooh"). Neither belongs in a bank. Format placeholders (DD/MM/YYYY), hex colors and URLs
 # repeat characters legitimately, so they are excluded by shape rather than one by one. An
@@ -1237,6 +1256,7 @@ REGISTRY = {
     "A-EURO-FORMAT": euro_format,
     "A-NO-BANNED": no_banned_terms,
     "A-REPEATED-CHARS": repeated_chars,
+    "A-COLOR-ALONE": color_alone,
     "A-NO-CLAIMS": no_prohibited_claims,
     "A-ACRONYMS": acronyms_expanded,
     "A-CTA": cta_rules,
@@ -1370,7 +1390,7 @@ SURFACE_CHECKS = {
 # a prohibited claim, or a word that labels a person. Surface lists are hand-written, so a
 # cross-cutting check added later would otherwise reach only the surfaces someone remembered
 # to update. This adds them everywhere, once.
-UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE", "A-LOCALIZABLE", "A-REPEATED-CHARS"]
+UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE", "A-LOCALIZABLE", "A-REPEATED-CHARS", "A-COLOR-ALONE"]
 for _surface, _checks in list(SURFACE_CHECKS.items()):
     SURFACE_CHECKS[_surface] = _checks + [c for c in UNIVERSAL if c not in _checks]
 

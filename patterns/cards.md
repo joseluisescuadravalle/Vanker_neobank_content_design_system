@@ -25,7 +25,7 @@ Rules that follow, and they are absolute:
 
 1. **Every one of these actions states its reversibility in the copy**, in the same breath
    as the action. "You can unfreeze it any time." / "This card will stop working for good."
-   Never leave it to the button colour or to a warning icon.
+   Never leave it to the button color or to a warning icon.
 2. **An irreversible action never looks or reads like a reversible one.** Freezing is a
    switch; reporting and cancelling are actions with a confirmation
    (`confirmations.md`), never switches (see `../components/library/toggle.md`).

@@ -41,7 +41,7 @@ setting that applies immediately, see `toggle.md`).
 
 ## Behavior
 
-- **Selected state is a fill and a check, never colour alone**: `color.accent-subtle`
+- **Selected state is a fill and a check, never color alone**: `color.accent-subtle`
   background with `color.text-primary`, plus a check mark (see
   `../foundations/color.md`).
 - **Chips are never the only route to something.** A row of chips scrolls sideways and the
@@ -75,7 +75,7 @@ setting that applies immediately, see `toggle.md`).
       "figures": "allowed, because the figure is the value",
       "parallel-within-row": true
     },
-    "selected": { "fill": "color.accent-subtle", "check": true, "colour-alone": false },
+    "selected": { "fill": "color.accent-subtle", "check": true, "color-alone": false },
     "sole-route": false,
     "applied-filters-stated-in-text": true,
     "submits-or-navigates": false,

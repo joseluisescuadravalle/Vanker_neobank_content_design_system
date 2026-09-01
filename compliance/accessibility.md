@@ -22,6 +22,12 @@ services must meet **EN 301 549 / WCAG 2.1 Level AA**.
 - Publish an accessibility statement describing conformance, known limitations, and a
   way for people to report accessibility problems, and act on those reports.
 
+## Where the content rules live
+
+This file is the legal anchor. What to actually type is in `../patterns/accessibility.md`:
+the rules that belong to whoever writes the copy, the read-it-aloud test, and the worked
+examples. Read that one to write; read this one to know why it is not optional.
+
 ## Relationship to the design system
 
 Most of this is already built into the foundations and the component library (each

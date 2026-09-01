@@ -112,7 +112,7 @@ checked.
     },
     "copy": { "grades": false, "incomplete-period-labeled": true, "baseline-named": true, "exclamation": false },
     "sparse-data": { "below-points": 5, "show": "numbers", "no-data": "empty state" },
-    "colour": { "categorical-from": "foundations/color.md", "semantic-as-category": false, "colour-alone": false },
+    "color": { "categorical-from": "foundations/color.md", "semantic-as-category": false, "color-alone": false },
     "a11y": { "text-alternative": "the data", "sole-route": false, "series-contrast": 3.0, "hover-required": false }
   }
 }
@@ -127,4 +127,4 @@ checked.
 - The copy reports and never grades; an incomplete period is labeled; every comparison names
   its baseline.
 - Fewer than about five points are shown as numbers, and no data is an empty state.
-- No semantic colour is used as a category, and no series depends on colour alone.
+- No semantic color is used as a category, and no series depends on color alone.

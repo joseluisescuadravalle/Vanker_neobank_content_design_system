@@ -44,7 +44,7 @@ go next? Full-screen success. Otherwise, a toast.
     "surface-by-stakes": { "routine-in-flow": "toast", "end-of-an-important-flow": "full screen" },
     "toast": { "tense": "past", "ending-period": false, "max-chars": 50 },
     "full-screen": {
-      "mark": { "icon": true, "colour-alone": false },
+      "mark": { "icon": true, "color-alone": false },
       "title": { "confirms-the-action": true, "ending-period": false, "celebration": "restrained" },
       "body": { "optional": true, "omit-if-empty": true },
       "continue": { "options": [2, 4], "each-a-cta": true }

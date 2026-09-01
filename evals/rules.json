@@ -15,6 +15,7 @@
     "A-CATEGORY-GUESS",
     "A-CHECKBOX",
     "A-CHIP",
+    "A-COLOR-ALONE",
     "A-COMPLAINT",
     "A-COUNTER",
     "A-CREDENTIALS",
@@ -69,7 +70,8 @@
     "A-NO-CLAIMS",
     "A-INCLUSIVE",
     "A-LOCALIZABLE",
-    "A-REPEATED-CHARS"
+    "A-REPEATED-CHARS",
+    "A-COLOR-ALONE"
   ],
   "surfaces": {
     "accordion-body": [
@@ -87,7 +89,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "accordion-header": [
       "A-ACCORDION-HEADER",
@@ -96,7 +99,8 @@
       "A-NUMERALS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "alt-text": [
       "A-ALT",
@@ -107,7 +111,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "amount-label": [
       "A-AMOUNT-LABEL",
@@ -116,7 +121,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "amount-value": [
       "A-AMOUNT-VALUE",
@@ -125,7 +131,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "auth": [
       "A-NO-EMOJI",
@@ -143,7 +150,8 @@
       "A-INCLUSIVE",
       "A-ENUMERATION",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "auth-error": [
       "A-FIELD-ERROR",
@@ -162,7 +170,8 @@
       "A-INCLUSIVE",
       "A-ENUMERATION",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "badge": [
       "A-STATUS",
@@ -171,7 +180,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "banner": [
       "A-NO-EMOJI",
@@ -188,7 +198,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "button": [
       "A-CTA",
@@ -198,7 +209,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "card-action": [
       "A-NO-EMOJI",
@@ -217,7 +229,8 @@
       "A-REVERSIBILITY",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "carousel-body": [
       "A-CARD-BODY",
@@ -226,7 +239,8 @@
       "A-NO-EMOJI",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "carousel-headline": [
       "A-CARD-HEADLINE",
@@ -235,7 +249,8 @@
       "A-NO-EMOJI",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "category": [
       "A-CATEGORY-GUESS",
@@ -245,7 +260,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "chart-copy": [
       "A-NO-EMOJI",
@@ -263,7 +279,8 @@
       "A-INCLUSIVE",
       "A-CATEGORY-GUESS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "checkbox": [
       "A-CHECKBOX",
@@ -272,7 +289,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "chip": [
       "A-CHIP",
@@ -281,7 +299,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "code-screen": [
       "A-NO-EMOJI",
@@ -298,7 +317,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "complaint-acknowledgement": [
       "A-NO-EMOJI",
@@ -316,7 +336,8 @@
       "A-INCLUSIVE",
       "A-COMPLAINT",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "complaint-answer": [
       "A-NO-EMOJI",
@@ -334,7 +355,8 @@
       "A-INCLUSIVE",
       "A-COMPLAINT",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "confirmation": [
       "A-NO-EMOJI",
@@ -351,7 +373,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "count-badge": [
       "A-BADGE",
@@ -359,7 +382,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "counter": [
       "A-COUNTER",
@@ -367,7 +391,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "cta": [
       "A-CTA",
@@ -377,7 +402,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "date-unavailable": [
       "A-DATE-UNAVAILABLE",
@@ -388,7 +414,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "disclosure": [
       "A-NO-EMOJI",
@@ -405,7 +432,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "dropdown-option": [
       "A-OPTION",
@@ -413,7 +441,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "email-body": [
       "A-NO-EMOJI",
@@ -432,7 +461,8 @@
       "A-CREDENTIALS",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "email-preheader": [
       "A-PREHEADER",
@@ -442,7 +472,8 @@
       "A-EURO-FORMAT",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "email-subject": [
       "A-SUBJECT",
@@ -453,7 +484,8 @@
       "A-CREDENTIALS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "empty-state": [
       "A-NO-EMOJI",
@@ -470,7 +502,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "error": [
       "A-NO-EMOJI",
@@ -488,7 +521,8 @@
       "A-INCLUSIVE",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "error-summary-title": [
       "A-ERROR-SUMMARY",
@@ -497,7 +531,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "field-error": [
       "A-FIELD-ERROR",
@@ -515,7 +550,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "flow-intro-body": [
       "A-NO-EMOJI",
@@ -533,7 +569,8 @@
       "A-INCLUSIVE",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "flow-intro-cta": [
       "A-INTRO-CTA",
@@ -543,7 +580,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "fx-quote": [
       "A-NO-EMOJI",
@@ -561,7 +599,8 @@
       "A-INCLUSIVE",
       "A-FX",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "helper-text": [
       "A-HELPER",
@@ -573,7 +612,8 @@
       "A-NO-INLINE-CTA",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "label-in": [
       "A-LABEL-IN",
@@ -582,7 +622,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "label-out": [
       "A-LABEL-OUT",
@@ -592,7 +633,8 @@
       "A-ACRONYMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "legend": [
       "A-LEGEND",
@@ -601,7 +643,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "link": [
       "A-LINK-TEXT",
@@ -611,7 +654,8 @@
       "A-PUNCTUATION",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "loading": [
       "A-LOADING",
@@ -619,7 +663,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "loading-screen": [
       "A-NO-EMOJI",
@@ -638,7 +683,8 @@
       "A-MONEY-ACCOUNTED",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "no-results": [
       "A-NO-RESULTS",
@@ -649,7 +695,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "notification": [
       "A-NO-EMOJI",
@@ -666,7 +713,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "onboarding-step": [
       "A-NO-EMOJI",
@@ -683,7 +731,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "option": [
       "A-OPTION",
@@ -691,7 +740,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "permission-body": [
       "A-NO-EMOJI",
@@ -710,7 +760,8 @@
       "A-PERMISSION",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "permission-heading": [
       "A-NO-EMOJI",
@@ -719,7 +770,8 @@
       "A-MASK",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "placeholder": [
       "A-NO-EMOJI",
@@ -727,7 +779,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "preset-amount": [
       "A-AMOUNT-VALUE",
@@ -736,7 +789,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "push-body": [
       "A-PUSH-BODY",
@@ -750,7 +804,8 @@
       "A-CREDENTIALS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "push-title": [
       "A-PUSH-TITLE",
@@ -759,7 +814,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "radio": [
       "A-RADIO",
@@ -767,7 +823,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "radio-option": [
       "A-RADIO",
@@ -775,7 +832,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "risk-warning": [
       "A-NO-EMOJI",
@@ -792,7 +850,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "search-placeholder": [
       "A-SEARCH-PLACEHOLDER",
@@ -802,7 +861,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "security": [
       "A-NO-EMOJI",
@@ -819,7 +879,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "skeleton": [
       "A-SKELETON",
@@ -827,7 +888,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "status": [
       "A-STATUS",
@@ -836,7 +898,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "status-label": [
       "A-STATUS",
@@ -845,7 +908,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "system-error": [
       "A-NO-EMOJI",
@@ -863,7 +927,8 @@
       "A-INCLUSIVE",
       "A-SYSTEM-ERROR",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "system-error-screen": [
       "A-NO-EMOJI",
@@ -884,7 +949,8 @@
       "A-ATTRIBUTION",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "system-error-title": [
       "A-SYSTEM-ERROR",
@@ -895,7 +961,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "tag": [
       "A-STATUS",
@@ -904,7 +971,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "toast": [
       "A-TOAST",
@@ -914,7 +982,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "toggle-description": [
       "A-NO-EMOJI",
@@ -931,7 +1000,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "toggle-label": [
       "A-TOGGLE-LABEL",
@@ -940,7 +1010,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "tooltip": [
       "A-TOOLTIP",
@@ -950,7 +1021,8 @@
       "A-NUMERALS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "tooltip-trigger": [
       "A-TOOLTIP-TRIGGER",
@@ -959,7 +1031,8 @@
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ],
     "validation": [
       "A-FIELD-ERROR",
@@ -977,7 +1050,8 @@
       "A-DATE",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
-      "A-REPEATED-CHARS"
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE"
     ]
   },
   "lists": {

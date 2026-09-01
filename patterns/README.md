@@ -11,13 +11,17 @@ Contents:
   `flow-intro.md`, `permissions.md`, `auth.md`, `cards.md`, `empty-states.md`,
   `confirmations.md`,
   `notifications.md`, `emails.md`, `success.md`, `forms.md`, `search.md`, `charts.md`,
-  `currency-exchange.md`, `complaints.md`, `alt-text.md`.
+  `currency-exchange.md`, `complaints.md`, `alt-text.md`, `accessibility.md`.
 
 `errors.md` holds the anatomy of an error and the rules for field validation and modal
 errors. `system-errors.md` covers the situations where the problem is ours or the
 network's: offline, our systems failing, maintenance, an expired session, content that no
 longer exists, and a required update. `loading.md` covers the waiting itself: which
 indicator to show, what to say while it runs, and what to say when it runs long.
+
+`accessibility.md` is cross-cutting rather than a surface: what a screen reader says, what
+survives without color, and the read-it-aloud test. It is the content half of
+`../compliance/accessibility.md`, which carries the legal frame.
 
 Two patterns are often lumped together as "onboarding" and must not be:
 `welcome-carousel.md` is the pre-login argument (marketing voice, highest regulatory

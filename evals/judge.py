@@ -1,7 +1,13 @@
 """The LLM-as-judge layer: build the prompts, then score the verdicts.
 
-    python judge.py build [--limit N] [--ids a,b,c]
+    python judge.py generate [--ids a,b,c]
+    python judge.py build [--limit N] [--ids a,b,c] [--candidates generation-runs/<file>.jsonl]
     python judge.py score judge-runs/<file>.jsonl
+
+Some golden cases carry no candidate at all: they are a task, and a model has to WRITE the
+copy before anything can be judged. `generate` writes those prompts into generation-batch/;
+the model's answers, one JSON object per line, go into a generation run file, which `build`
+then reads with --candidates.
 
 `build` writes one filled prompt per case into judge-batch/, following judge-prompt.md.
 A judge model answers each one with the JSON verdict, and those verdicts, one per line,
@@ -10,8 +16,11 @@ what the case expected.
 
 Two things this deliberately does NOT do:
 
-- It never puts the case's `expected` note into the prompt. That note is the human's
-  answer key; giving it to the judge is asking it to mark its own homework.
+- It never puts the case's `expected` note into the prompt, in either direction. That note
+  is the human's answer key: giving it to the judge is asking it to mark its own homework,
+  and giving it to the generator is dictating the answer it is supposed to find.
+- The generator and the judge should not be the same run. A model that just wrote the copy
+  is not a neutral reviewer of it, so each run file records which model produced it.
 - It never sends a candidate that the deterministic layer already rejected. The cheap
   gate runs first (see approach.md); the judge is for what code cannot see.
 """
@@ -23,6 +32,7 @@ import assertions
 
 CASES = "golden-set/cases.jsonl"
 OUT = "judge-batch"
+GEN_OUT = "generation-batch"
 
 # The reference a judge needs is the part of the system that governs the surface, not the
 # whole repository: a judge with too much context grades on the wrong rules.
@@ -113,6 +123,48 @@ Return JSON only:
 """
 
 
+GEN_TEMPLATE = """You are a content designer writing for Vanker, a fictional euro-area
+neobank. Write the copy for one surface, following the content design system below. The
+system is authoritative: where it gives a rule, a format, or a term, use it exactly.
+
+SYSTEM REFERENCE (authoritative):
+{reference}
+
+SURFACE: {surface}
+TASK: {task}
+CONTEXT: {context}
+
+Write only the copy, in the slots the surface calls for. No commentary, no alternatives,
+no explanation of your choices.
+
+Return JSON only:
+{{"id": "{case_id}", "candidate": "<the copy, slots separated by \\n>"}}
+"""
+
+
+def generate(ids=None):
+    """Prompts for the cases that have no candidate yet: a task, waiting for a model."""
+    os.makedirs(GEN_OUT, exist_ok=True)
+    built = 0
+    for c in load_cases():
+        if c.get("context", {}).get("candidate") is not None:
+            continue
+        if ids and c["id"] not in ids:
+            continue
+        ctx = {k: v for k, v in c.get("context", {}).items() if k != "candidate"}
+        text = GEN_TEMPLATE.format(reference=reference_for(c.get("surface")),
+                                   surface=c.get("surface"), task=c.get("task", ""),
+                                   context=json.dumps(ctx, ensure_ascii=False) or "{}",
+                                   case_id=c["id"])
+        with open(os.path.join(GEN_OUT, c["id"].replace("/", "_") + ".txt"), "w", encoding="utf-8") as fh:
+            fh.write(text)
+        built += 1
+    print("built %d generation prompt(s) in %s/" % (built, GEN_OUT))
+    print("A model answers each one with {\"id\": ..., \"candidate\": ...}, one per line, into")
+    print("generation-runs/<date>-<model>.jsonl. Then: python judge.py build --candidates <that file>")
+    return 0
+
+
 def load_cases():
     with open(CASES, encoding="utf-8") as fh:
         return [json.loads(line) for line in fh if line.strip()]
@@ -129,8 +181,21 @@ def reference_for(surface):
     return "\n\n".join(out)
 
 
-def build(limit=None, ids=None):
+def load_generated(path):
+    """Candidates written by a model for the cases that ship without one."""
+    if not path:
+        return {}
+    out = {}
+    for line in open(path, encoding="utf-8"):
+        if line.strip():
+            row = json.loads(line)
+            out[row["id"]] = row["candidate"]
+    return out
+
+
+def build(limit=None, ids=None, candidates=None):
     os.makedirs(OUT, exist_ok=True)
+    generated = load_generated(candidates)
     rubric = open(os.path.join(os.path.dirname(__file__) or ".", "rubric.md"), encoding="utf-8").read()
     built, skipped = 0, []
     for c in load_cases():
@@ -139,10 +204,12 @@ def build(limit=None, ids=None):
         if ids and c["id"] not in ids:
             continue
         cand = c.get("context", {}).get("candidate")
+        if cand is None:
+            cand = generated.get(c["id"])
         # An empty string is a candidate: a decorative image's alt is deliberately "".
         # Only a missing candidate means the case still needs a model to generate one.
         if cand is None:
-            skipped.append((c["id"], "no candidate yet"))
+            skipped.append((c["id"], "no candidate yet (run: python judge.py generate)"))
             continue
         res = assertions.run(cand, c.get("must_pass"), surface=c.get("surface"))
         if res and not all(v["passed"] for v in res.values()):
@@ -198,15 +265,18 @@ def score(path):
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "build"
-    if cmd == "build":
+    if cmd in ("build", "generate"):
         ids = None
         limit = None
+        candidates = None
         for i, arg in enumerate(sys.argv):
             if arg == "--ids":
                 ids = set(sys.argv[i + 1].split(","))
             if arg == "--limit":
                 limit = int(sys.argv[i + 1])
-        sys.exit(build(limit, ids))
+            if arg == "--candidates":
+                candidates = sys.argv[i + 1]
+        sys.exit(generate(ids) if cmd == "generate" else build(limit, ids, candidates))
     elif cmd == "score":
         sys.exit(score(sys.argv[2]))
     else:

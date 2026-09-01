@@ -2,7 +2,9 @@
 Run the golden set through the deterministic assertion layer.
 
 Cases that carry an approved `context.candidate` are checked now (regression).
-Cases without one need a model to generate a candidate first, and are skipped here.
+Cases without one need a model to generate a candidate first, and are skipped here unless
+a generation run is passed in: `python run_golden.py --candidates generation-runs/<f>.jsonl`
+gates the generated copy with the same checks, before any judge sees it.
 A case with `expect_fail: true` is a negative test: it is OK precisely when it FAILS.
 """
 import json
@@ -14,6 +16,17 @@ CASES = "golden-set/cases.jsonl"
 def load():
     with open(CASES, encoding="utf-8") as fh:
         return [json.loads(line) for line in fh if line.strip()]
+
+
+def load_generated(argv):
+    """Candidates a model wrote for the cases that ship without one."""
+    if "--candidates" not in argv:
+        return {}
+    path = argv[argv.index("--candidates") + 1]
+    with open(path, encoding="utf-8") as fh:
+        rows = [json.loads(l) for l in fh if l.strip()]
+    print("generated candidates from %s (%d)\n" % (path, len(rows)))
+    return {r["id"]: r["candidate"] for r in rows}
 
 
 def audit_declared_vs_applicable(cases):
@@ -47,9 +60,12 @@ def main():
     cases = load()
     if "--strict" in sys.argv:
         return audit_declared_vs_applicable(cases)
+    generated = load_generated(sys.argv)
     run = skipped = ok = 0
     for c in cases:
         cand = c.get("context", {}).get("candidate")
+        if cand is None:
+            cand = generated.get(c["id"])
         if cand is None:
             skipped += 1
             print(f"skip  {c['id']}  (needs a model to generate)")
@@ -62,7 +78,8 @@ def main():
         case_ok = (not passed) if c.get("expect_fail") else passed
         if case_ok:
             ok += 1
-            tag = "PASS (correctly caught)" if c.get("expect_fail") else "PASS"
+            tag = ("PASS (correctly caught)" if c.get("expect_fail")
+                   else ("PASS (generated)" if c["id"] in generated else "PASS"))
             print(f"{tag:>22}  {c['id']}")
         else:
             bad = {k: v["message"] for k, v in res.items() if not v["passed"]}

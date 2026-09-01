@@ -8,3 +8,4 @@ Thumbs.db
 *.swp
 __pycache__/
 evals/judge-batch/
+evals/generation-batch/

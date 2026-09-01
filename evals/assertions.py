@@ -781,6 +781,19 @@ HYPHEN_RANGE = re.compile(r"(?<=\d)\s?-\s?(?=\d)")
 DASHES = re.compile(r"[\u2014\u2013]")
 ELLIPSIS = re.compile(r"\u2026|\.\.\.")
 TITLE_CASE_OK = {"Vanker", "Spaces", "IBAN", "SEPA", "PIN", "BIC", "KYC", "APR", "CVV", "SCA", "VoP"}
+# Named entities this system requires by name, plus the months. They are capitalized because
+# that is their name, not because a sentence was title-cased, and the compliance files oblige
+# the copy to use them verbatim ("named by the Deposit Guarantee Scheme").
+PROPER_NOUNS = [
+    "Deposit Guarantee Scheme", "Depositor Information Sheet", "European Central Bank",
+    "European Union", "Single Euro Payments Area", "Instant Payments Regulation",
+    "Know Your Customer", "Verification of Payee", "Alternative Dispute Resolution",
+    "Payment Services Regulation", "Payment Services Directive", "Annual Percentage Rate",
+    "European Accessibility Act", "Web Content Accessibility Guidelines",
+    "January", "February", "March", "April", "May", "June", "July", "August",
+    "September", "October", "November", "December",
+]
+PROPER_NOUN_RE = re.compile("|".join(re.escape(n) for n in sorted(PROPER_NOUNS, key=len, reverse=True)))
 
 
 def punctuation(text, surface=None):
@@ -806,12 +819,15 @@ def punctuation(text, surface=None):
 def case(text, surface=None):
     """Sentence case: only Title Case and typed ALL CAPS are detectable with confidence.
 
-    Three sources of false positives are excluded, each found by sweeping the golden set:
-    a word that starts a sentence, the same proper noun repeated ("Luis M. Garcia"), and a
-    format placeholder, which is uppercase by definition.
+    Five sources of false positives are excluded, each found by sweeping the golden set or
+    by generating copy against it: a word that starts a sentence, the same proper noun
+    repeated ("Luis M. Garcia"), a format placeholder (uppercase by definition), an acronym
+    expansion (Title Case by definition, and required by this system), and a named entity
+    the compliance files oblige us to write in full ("Deposit Guarantee Scheme").
     """
     t = text.strip()
     problems = []
+    t = PROPER_NOUN_RE.sub(" ", t)
     # An acronym expansion is Title Case by definition, and this system *requires* it
     # ("Alternative Dispute Resolution (ADR)", "Know Your Customer (KYC)"). Remove those
     # spans before counting, in both orders.
@@ -819,13 +835,16 @@ def case(text, surface=None):
     t = re.sub(r"\b[A-Z]{2,}\s+\((?:[A-Z][\w'-]+\s*){1,5}\)", " ", t)
     # A word is only suspicious when it is mid-sentence: not the first word, and not the
     # one after a full stop, a question mark, or an opening quote.
-    tokens = re.findall(r"([.!?\u201c\u2018\"']?)\s*([A-Za-z\u00c0-\u017f']+)", t)
+    # A slot break is a sentence break: a title and a body arrive in one string, and the
+    # body's first word is no more Title Case than the title's is.
     caps = []
-    for i, (prev, w) in enumerate(tokens):
-        if i == 0 or prev:
-            continue
-        if w[:1].isupper() and w not in TITLE_CASE_OK and not w.isupper():
-            caps.append(w)
+    for line in t.splitlines():
+        tokens = re.findall(r"([.!?\u201c\u2018\"']?)\s*([A-Za-z\u00c0-\u017f']+)", line)
+        for i, (prev, w) in enumerate(tokens):
+            if i == 0 or prev:
+                continue
+            if w[:1].isupper() and w not in TITLE_CASE_OK and not w.isupper():
+                caps.append(w)
     if len(set(caps)) >= 3:
         problems.append("Title Case ('" + " ".join(sorted(set(caps))[:3]) + "...'); Vanker writes in sentence case")
     letters = [c for c in t if c.isalpha()]

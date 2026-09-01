@@ -111,6 +111,8 @@ check.
 | The document and the code drift | Fourteen documented terms were never checked; nineteen checked terms were never documented | `terms_sync.py` |
 | The runner dropped the surface | Every surface-aware check was being evaluated blind | Fixed in `run_golden.py` |
 | The judge marking its own homework | The case's `expected` note is the answer key | `judge.py` never puts it in the prompt |
+| The generator reads the answer key | Three of the four generation cases had their answer written verbatim in the reference the generator receives, so they measured retrieval, not writing | A generation case whose answer is nowhere in the docs (`notification.subscription-price-up`) |
+| The generator grades itself | The same model wrote the copy and scored it | Every run file records its model; the generator and the judge are different runs |
 | A new rule invalidates old examples | The golden set only holds copy someone chose to put in it, so approved examples in the docs kept contradicting rules written after them | `check_examples.py` |
 | A green deterministic run reads as "the copy is good" | Four fields with "Oooh", "Yeah", "Retryyyy" and "Cancel or die" all showed PASS; three were shapes the code should have caught, the fourth needs the judge | `A-REPEATED-CHARS`, the CTA one-action rule, and the honest label in `assertions.md` |
 

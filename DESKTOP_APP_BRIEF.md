@@ -84,9 +84,19 @@ The app is a **read-only client** over the content system repo.
 
 - **Data source:** a local clone of the repo (the app reads its files), or the GitHub raw
   files. Prefer a local folder path the user points at.
-- **Linter:** port `assertions.py` to TypeScript so the app is self-contained (no Python
-  runtime to bundle), OR call the Python file as a sidecar. Porting is cleaner; keep the
-  word lists in sync with `terminology/` (or read them from the repo).
+- **Linter:** port the *logic* of `assertions.py` to TypeScript so the app is
+  self-contained (no Python runtime to bundle), but **never re-type the rules**. Read
+  `evals/rules.json` at runtime: it is generated from `assertions.py` and holds every word
+  list, surface map and pattern the checker needs.
+
+  This is not a preference, it is a scar. The first port copied the lists into TypeScript,
+  the repo then gained the interjections ("yeah", "ooh"), the repeated-letter rule and the
+  CTA one-action rule, and the app kept showing **PASS** for "Oooh" and "Cancel or die" for
+  days. Two implementations of the same rule diverge the moment one changes, silently.
+
+  `python evals/export_rules.py --check` fails when `rules.json` is stale, so the repo side
+  cannot forget. The app side owes only what `rules.json` lists under `code_only`: the money
+  grammar, the Title Case scan, the surface shapes. Anything else it hardcodes is a bug.
 - **Generator (later):** the app sends `CLAUDE.md` + the surface's pattern + the relevant
   compliance file to a model, and formats the returned template's variables in code (the
   euro format and data injection are done by code, never by the model).
@@ -105,8 +115,12 @@ The app is a **read-only client** over the content system repo.
 
 - Money shown or generated uses the **European format** (`150 €`, `2.540,75 €`, no `,00`
   on round amounts). Do the formatting in code.
-- The checker's rules come from the repo (`terminology/`, the Eval hooks, `assertions.py`),
-  not from new rules invented in the app.
+- The checker's rules come from the repo, at runtime, through `evals/rules.json`. Not from
+  rules invented in the app, and not from a copy of the lists pasted into the app's source.
+- The checker's verdict is labeled for what it actually proved. A green deterministic run
+  means **"No rule broken"**, never "PASS" and never "correct": the copy can be well formed
+  and false, and only the judge layer can see that. Show the judge verdict separately, or
+  "Not evaluated" when it has not run (see `evals/assertions.md`, "What a PASS means").
 - Compliance text is **illustrative** (see `DISCLAIMER.md`); the app must not present it as
   verified legal wording.
 - Respect the system's own accessibility rules in the app's UI (it would be odd to build an

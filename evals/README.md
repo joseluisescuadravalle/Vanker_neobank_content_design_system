@@ -30,6 +30,10 @@ Every "Eval hooks" block across the system (in `../patterns/`, `../components/`,
   surface would apply.
 - `python check_structure.py` checks that every component and pattern file carries the shape
   described in `../CONTRIBUTING.md`.
+- `python export_rules.py --check` fails when `rules.json` is stale. That file is the
+  machine-readable export of every rule that is data (word lists, surface map, patterns),
+  and the desktop app's copy checker reads it instead of holding its own copy. A rule added
+  here that never reaches `rules.json` is a rule the app does not enforce.
 - `python check_examples.py` runs the surface-agnostic checks over the **approved examples in
   the documentation**, which the golden set never sees: a rule added in August can contradict
   an example written in July, and nobody re-reads 40 files.

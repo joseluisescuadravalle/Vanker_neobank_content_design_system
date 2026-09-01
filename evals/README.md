@@ -39,11 +39,23 @@ Every "Eval hooks" block across the system (in `../patterns/`, `../components/`,
 - `python judge.py build --candidates generation-runs/<file>.jsonl` then judges them
   alongside the rest, and `python judge.py score <run>` aggregates the verdicts.
 
+**One case never gets a candidate.** `statements.none-yet` is the permanent generation
+slot: if every case carries approved copy, `judge.py generate` has nothing to do and the
+whole generation path rots without a single test going red. Approved copy for that screen,
+if it is ever needed, goes in a separate case with its own id.
+
 **The generator and the judge must not be the same run.** A model that just wrote the copy
 is not a neutral reviewer of it, and a model that helped write the system has already read
 the answer. `generation-runs/2026-09-01-claude-opus.jsonl` is exactly that case and says so
 in every line: it proves the pipeline runs end to end, it does not measure how well a model
 writes Vanker copy. For a real number, generate in a fresh session with a model that has
 only the reference, and judge with a different one.
+
+That run exists: `generation-runs/2026-09-01-blind-generation.jsonl` and
+`judge-runs/2026-09-01-blind-judge.jsonl`. Two separate fresh contexts, each given one
+prompt file and told not to open the golden set. The copy passed the deterministic gate and
+the judge scored it 2 on every applicable dimension. Blind on context, not on model: both
+runs are the same model family, so it measures whether the system alone is enough to write
+and to grade, not whether a different vendor would agree.
 
 Run all of them after any change.

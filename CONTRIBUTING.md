@@ -93,9 +93,10 @@ Then, mechanically:
 3. Add two rows to `evals/assertions.md`: one in the check table, one in the surface table.
 4. Add golden cases: **at least one that passes and one that must fail per new rule**, and
    an `expect_judge_fail` case for any rule code cannot see.
-5. Run all six: `python run_golden.py`, `python run_golden.py --strict`,
+5. Run all seven: `python run_golden.py`, `python run_golden.py --strict`,
    `python terms_sync.py`, `python check_structure.py`, `python check_examples.py`,
-   `python export_rules.py` (then `--check`).
+   `python export_rules.py` (then `--check`), and `python build_skill.py` (then
+   `--check`), so the Claude skill in `skill/` carries the change too.
 6. **Sweep the existing candidates against the new check**, not only the new cases.
 7. Update the folder's `README.md` and the handoff note.
 
@@ -113,6 +114,7 @@ check.
 | The runner dropped the surface | Every surface-aware check was being evaluated blind | Fixed in `run_golden.py` |
 | The judge marking its own homework | The case's `expected` note is the answer key | `judge.py` never puts it in the prompt |
 | A second implementation holds its own copy of the rules | The desktop app's TypeScript linter had the word lists pasted in, so three new rules never reached it and it kept passing "Oooh" and "Cancel or die" | `rules.json` plus `export_rules.py --check` |
+| The skill is a third copy | The Claude skill in `skill/` carries the documents and the checker as files, and a skill built once and forgotten would teach an agent last month's rules | `build_skill.py --check`, which hashes every copied file against its source |
 | The generator reads the answer key | Three of the four generation cases had their answer written verbatim in the reference the generator receives, so they measured retrieval, not writing | A generation case whose answer is nowhere in the docs (`notification.subscription-price-up`) |
 | The generator grades itself | The same model wrote the copy and scored it | Every run file records its model; the generator and the judge are different runs |
 | A new rule invalidates old examples | The golden set only holds copy someone chose to put in it, so approved examples in the docs kept contradicting rules written after them | `check_examples.py` |
@@ -130,6 +132,8 @@ check.
 - [ ] `run_golden.py`, `run_golden.py --strict` and `terms_sync.py` all clean.
 - [ ] `check_structure.py` and `check_examples.py` clean.
 - [ ] `export_rules.py` re-run and `--check` clean, so the app's checker gets the new rule.
+- [ ] `build_skill.py` re-run and `--check` clean, so the skill's references and checker
+      match the source. A new surface needs an owner in `SURFACE_OWNERS` or the build refuses.
 - [ ] Existing candidates swept against the new checks.
 - [ ] Rules you chose not to check are written down as such.
 - [ ] The folder README and the handoff note are updated.

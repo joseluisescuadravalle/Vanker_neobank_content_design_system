@@ -104,3 +104,14 @@ El profesor le pidió presentar el proyecto. Hay guión terminado en inglés, un
   again in a few minutes.`, CTAs `Retry` y `Close`.
   La gracia: el título dice que falló y el cuerpo dice que va en camino. La misma frase que
   hace pasar el check es la que hace fallar el juicio.
+
+## Añadido 03/09/2026 (etapa 38): la skill de Claude existe
+
+- `skill/vanker-content-design/`: SKILL.md escrito a mano; `references/` y `scripts/` los
+  genera `evals/build_skill.py` desde el repo (séptima puerta: `build_skill.py --check`).
+  `--package` produce `skill/vanker-content-design.skill`, que se instala desde un chat.
+- Cualquier cambio en documentos o en `assertions.py` obliga a `python build_skill.py --package`
+  y a reinstalar la skill; si no, la instalada enseña las reglas del mes pasado.
+- Hueco detectado en la prueba: no hay surface de título para notificación in-app; el agente
+  usó `push-title`. Pendiente decidir si se añade a `SURFACE_CHECKS`.
+- Regla del repo de la app: sin cambios. Si la app quiere una puerta "07 Skill", va al handoff.

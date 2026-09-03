@@ -37,6 +37,11 @@ Every "Eval hooks" block across the system (in `../patterns/`, `../components/`,
 - `python check_examples.py` runs the surface-agnostic checks over the **approved examples in
   the documentation**, which the golden set never sees: a rule added in August can contradict
   an example written in July, and nobody re-reads 40 files.
+- `python build_skill.py --check` fails when the Claude skill in `../skill/` is stale. The
+  skill is the system loaded as instructions (write with the rules) rather than applied as a
+  judge (check afterwards): its `references/` are a copy of the documents and its
+  `scripts/` a copy of `assertions.py` and `rules.json`, all written by `build_skill.py`,
+  never by hand. A surface without an owning file in `SURFACE_OWNERS` stops the build.
 - `python judge.py generate` writes the prompts for the cases that ship **without** a
   candidate: those are a task, not a sample, and a model has to write the copy first. Its
   answers go into `generation-runs/<date>-<model>.jsonl`.

@@ -43,6 +43,8 @@ _(to be completed as the system grows)_
 - `components/` — component-level content specs.
 - `terminology/` — glossary and controlled vocabulary.
 - `compliance/` — regulatory guardrail layer.
+- `skill/`: the system packaged as a Claude skill, generated from the folders above by
+  `evals/build_skill.py`. Install it to write with the rules instead of being judged by them.
 
 ## Sources & references
 

@@ -115,3 +115,16 @@ El profesor le pidió presentar el proyecto. Hay guión terminado en inglés, un
 - Hueco detectado en la prueba: no hay surface de título para notificación in-app; el agente
   usó `push-title`. Pendiente decidir si se añade a `SURFACE_CHECKS`.
 - Regla del repo de la app: sin cambios. Si la app quiere una puerta "07 Skill", va al handoff.
+
+## Añadido 03/09/2026 (etapa 39): Figma
+
+- Archivo Figma «Vanker Design System» (clave `9sr6gsJLZ2eHV4XBfH8D27`, borradores de José Luis),
+  creado por el conector de Figma desde este chat. Variables (Primitives, Color con modos
+  Light/Dark, Spacing, Radius), 15 estilos de texto, 4 sombras, todo desde `components/foundations/`.
+- Componentes construidos: Button (30 variantes), Text field (5), Status label (10), Banner (4),
+  Toast, Sheet / Modal (2), Empty state (3). Cada uno en su página, con propiedades de texto.
+  Pendientes: los otros 15 de `components/library/` y una librería de iconos (los iconos actuales
+  son marcadores de posición).
+- `skill/vanker-figma-surfaces/`: la skill que monta una surface en Figma desde un prompt, pidiendo
+  el copy a `vanker-content-design`. Busca los componentes por nombre, nunca por id.
+- Primera surface de demo en la página Surfaces: el modal de pago rechazado (demo 2 del guion).

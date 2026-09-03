@@ -43,8 +43,10 @@ _(to be completed as the system grows)_
 - `components/` — component-level content specs.
 - `terminology/` — glossary and controlled vocabulary.
 - `compliance/` — regulatory guardrail layer.
-- `skill/`: the system packaged as a Claude skill, generated from the folders above by
-  `evals/build_skill.py`. Install it to write with the rules instead of being judged by them.
+- `skill/`: the system packaged as Claude skills. `vanker-content-design` is the system
+  itself, generated from the folders above by `evals/build_skill.py`: install it to write
+  with the rules instead of being judged by them. `vanker-figma-surfaces` builds a surface
+  in the Vanker Design System Figma file from a prompt, taking its copy from the first.
 
 ## Sources & references
 

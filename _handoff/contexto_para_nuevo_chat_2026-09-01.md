@@ -142,3 +142,16 @@ El profesor le pidió presentar el proyecto. Hay guión terminado en inglés, un
 - Limitación conocida de Figma: una propiedad de texto tiene un solo valor por defecto para
   todo el set, así que las variantes muestran el mismo texto de ejemplo; las instancias lo
   cambian. Las claves de propiedad se leen en tiempo de ejecución, nunca se recuerdan.
+
+## Añadido 04/09/2026 (etapa 41): revisión editorial dentro de la skill
+
+- `vanker-content-design` lleva ahora la capa de juez: `scripts/editorial_review.py` genera el
+  prompt de revisión (ficheros por surface desde `references/owners.json`, rúbrica, JSON de
+  salida) y `SKILL.md` exige revisor con contexto limpio (subagente) o, si no hay, revisión en
+  el mismo run etiquetada «same run». Última línea de la entrega: `Editorial review: pass, 13 of 14, independent`.
+- `build_skill.py` copia además `evals/rubric.md` y `evals/judge-prompt.md`, y genera `owners.json`.
+- Prueba con subagente (sheet de confirmación de 2.500 €): pasó, 13 de 14, en el mismo run
+  (los subagentes de Cowork no tienen herramienta Agent). Destapó una contradicción del sistema:
+  el glosario pedía expandir SEPA e IBAN y el código, los ejemplos y el golden no; el glosario se
+  alineó con la práctica.
+- `check_copy.py` y `editorial_review.py` ignoran la línea `Editorial review:` al parsear.

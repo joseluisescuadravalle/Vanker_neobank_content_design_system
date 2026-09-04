@@ -140,8 +140,53 @@ costs you a rerun, not a customer.
    the thing it does the thing the body promised? Would a person who cannot see the
    screen, or who is reading it at a bus stop with 1% battery, know what to do? A screen
    that passes the checks and fails this read-back is not finished.
-7. **Deliver** in the format below. Add the rules you applied only if the user asks or is
-   learning the system; otherwise the copy speaks for itself.
+7. **Get the editorial review.** The read-back is your own; the editorial review is
+   someone else's, and the difference is the point. See "Editorial review" below. Copy
+   that fails it is fixed and reviewed again, at most twice, before delivery.
+8. **Deliver** in the format below, with the review verdict on its last line. Add the
+   rules you applied only if the user asks or is learning the system; otherwise the copy
+   speaks for itself.
+
+## Editorial review (the judge layer)
+
+The system has two layers of evaluation and this skill carries both. The checks are the
+cheap gate: they catch shape and run in a second. The editorial review is the judge of
+`evals/`: seven dimensions (voice, tone fit, clarity, terminology, pattern fit, compliance,
+accessibility) scored 0 to 2 against `references/evals/rubric.md`, with a pass rule that
+does not let compliance or tone fail. It exists because a green run means "no rule
+broken", not "the copy is good", and because the person who wrote a screen is the worst
+judge of whether it reads as one thing.
+
+The rule the repository lives by: **the writer and the reviewer are not the same run.**
+A model that just wrote the copy is not a neutral reviewer of it. So:
+
+1. Build the prompt. It lists the files that govern the surfaces (never the whole system)
+   and the copy, and nothing of your reasoning:
+
+   ```bash
+   python3 scripts/editorial_review.py --file screen.txt --task "<the request, in one line>" > review-prompt.md
+   ```
+
+2. Hand it to a reviewer with a clean context. If you can spawn a subagent (an `Agent` or
+   `Task` tool is available), give it only `review-prompt.md` and the path to the skill's
+   `references/` folder, and tell it to answer with the JSON and nothing else. Do not give
+   it the conversation, your notes, or the checker output. Its verdict is **independent**.
+3. If you cannot spawn one, do the review yourself as a separate step: read
+   `review-prompt.md` as if you had not written the copy, read the listed files again,
+   score strictly, and label the verdict **same run** in the delivery, because the reader
+   deserves to know the reviewer was not neutral.
+4. Act on the verdict. `pass: false` means the copy goes back to step 4 with the `fix`
+   applied, then through the checks again, then through the review again. Two rounds at
+   most; if it still fails, deliver the best version and say which dimension failed and
+   why, rather than sanding the copy until a reviewer stops objecting.
+5. Report it. The last line of the delivery is the verdict, in this form:
+   `Editorial review: pass, 13 of 14, independent` or
+   `Editorial review: fail, 9 of 12, same run (tone_fit 0: jokey in an error)`.
+
+What the review is not: it is not a second opinion on style. A reviewer that objects to a
+sentence the system requires verbatim is wrong, and you say so in the delivery instead of
+changing the sentence. And it does not replace the checks: never send it copy the checker
+rejected. The cheap gate runs first, always.
 
 ## Delivery format
 
@@ -166,7 +211,12 @@ One fact per paragraph, and a blank line between paragraphs: the checks read the
 the block, not only its words.
 
 Mark anything the safety rule caught inline: `[NEEDS COMPLIANCE REVIEW]`. Label a string
-as **example** when it is illustrative rather than proposed copy.
+as **example** when it is illustrative rather than proposed copy. Close with the verdict
+line from the editorial review:
+
+```
+Editorial review: pass, 14 of 14, independent
+```
 
 ## What the checks cannot see (and you must)
 
@@ -200,5 +250,9 @@ author is in the room.
   `evals/build_skill.py`. Do not edit them here; edit the source and rebuild.
 - `scripts/check_copy.py`: the deterministic checks (62 as of this build), same code as
   `evals/assertions.py` in the repository, with `rules.json` beside it.
+- `scripts/editorial_review.py`: writes the editorial review prompt for a delivery-format
+  file, choosing the reference files by surface from `references/owners.json`.
+- `references/evals/rubric.md` and `references/evals/judge-prompt.md`: the judge layer,
+  copied from the repository.
 - `references/MANIFEST.json`: the hash of every copied file, so the repository's seventh
   gate (`build_skill.py --check`) can tell when this skill has drifted from the source.

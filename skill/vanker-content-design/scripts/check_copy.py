@@ -28,7 +28,7 @@ SLOT = re.compile(r"^([A-Za-z0-9_-]+)\s*\(([A-Za-z0-9_-]+)\)\s*:\s?(.*)$")
 def parse(text):
     slots = []
     for line in text.splitlines():
-        if line.startswith("Screen:"):
+        if line.startswith("Screen:") or line.startswith("Editorial review:"):
             continue
         m = SLOT.match(line)
         if m:

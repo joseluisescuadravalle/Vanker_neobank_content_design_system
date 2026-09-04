@@ -107,6 +107,8 @@ A string whose surface is not listed runs the body checks: `A-NO-EMOJI`, `A-EURO
 
 ## Every file, with its thesis
 
+- `evals/rubric.md`: For the qualities that code cannot check. A judge model scores a candidate string against these dimensions, using this repository as the reference. Score each dimension 0, 1, or 2.
+- `evals/judge-prompt.md`: The prompt template for the LLM-as-judge. Fill the bracketed slots per case. The judge must return structured output, not prose, so results can be aggregated.
 - `terminology/localization.md`: Vanker ships in English today. This file is not about translating it; it is about **how a string is built**, and those rules matter now, in one language, for a reason that has nothing to do with translation.
 - `voice-and-tone/inclusive-language.md`: Who Vanker is talking to, and how it avoids deciding who they are. `voice.md` is how the brand sounds; this is who it sounds like it is talking to.
 - `compliance/accessibility.md`: Accessibility is a **legal requirement**, not a nicety. Under the European Accessibility Act (Directive EU 2019/882), in force from **28 June 2025**, Vanker's digital banking services must meet **EN 301 549 / WCAG 2.1 Le

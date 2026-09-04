@@ -23,9 +23,9 @@ to avoid.
 | balance | Total money in an account | |
 | available balance | Money you can spend right now | Use when it differs from balance. |
 | fee | A charge | Always state the exact amount. Never "a small fee". |
-| SEPA transfer | A euro bank transfer | Expand on first mention: SEPA (Single Euro Payments Area). |
+| SEPA transfer | A euro bank transfer | No expansion needed in product copy: SEPA is on every euro-area statement, and `A-ACRONYMS` does not require it. Expand as SEPA (Single Euro Payments Area) only where a person meets it for the first time, such as the welcome carousel. |
 | SEPA Direct Debit | A recurring pull payment | |
-| IBAN | The account number used for transfers | Expand on first mention: IBAN (International Bank Account Number). |
+| IBAN | The account number used for transfers | No expansion needed in product copy, for the same reason as SEPA; expand only where a person meets it for the first time. |
 | BIC | The bank identifier | Expand on first mention: BIC (Bank Identifier Code). |
 
 ## Accounts and cards

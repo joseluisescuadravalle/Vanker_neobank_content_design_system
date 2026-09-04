@@ -49,15 +49,30 @@ someone rebuilds the library. Read their property keys from
 | --- | --- | --- | --- |
 | `cta`, `button` | `Button` (page Button) | Style: Primary, Accent, Secondary, Tertiary, Destructive; Size: Large, Medium; State: Default, Pressed, Disabled | Label |
 | `error`, `confirmation`, `card-action`, `system-error-screen` in a dialog | `Sheet / Modal` (page Sheet & Modal) | Type: Sheet, Modal | Title, Body; nested Button instances `primary` and `cancel` carry their own Label |
-| `banner` | `Banner` (page Banner & Toast) | Variant: Info, Success, Warning, Error | Title, Description, Show description, Action label, Show action |
+| `banner` | `Banner` (page Banner & Toast) | Variant: Info, Success, Warning, Error | Title, Description, Show description, Show action; nested Button instance `action` carries its Label |
 | `toast` | `Toast` (page Banner & Toast) | none | Message, Action, Show action |
 | `empty-state`, `no-results` | `Empty state` (page Empty state) | Kind: First use, No results, All caught up | Title, Description, Show action; nested Button `primary-action` |
 | `label-in`, `helper-text`, `field-error` | `Text field` (page Text field) | State: Empty, Focus, Filled, Error, Disabled | Label, Value, Helper, Show helper |
 | `status-label`, `status`, `badge` | `Status label` (page Status label) | Tone: Neutral, Info, Success, Warning, Error; Indicator: None, Dot | Label |
+| `checkbox` | `Checkbox` (page Checkbox) | State: Unchecked, Checked, Error, Disabled | Label |
+| `radio-option`, `legend` | `Radio option` and `Radio group` (page Radio group) | Option State: Unselected, Selected, Error, Disabled | Option: Label; Group: Legend, with three nested `option-N` instances (add or remove to change the count) |
+| `toggle-label`, `toggle-description` | `Toggle` (page Toggle) | State: Off, On, Disabled | Label, Description, Show description |
+| `chip`, `preset-amount` | `Chip` (page Chip) | Kind: Filter, Input; Selected: Off, On | Label |
+| `dropdown-option`, `option` (the field itself) | `Dropdown` (page Dropdown) | State: Default, Selected, Error, Disabled | Label, Value, Helper, Show helper |
+| account or space summary | `Card` (page Card) | Variant: Account, Space | Title, Value (Account only), Subtext |
+| transaction list item, `category` | `Transaction row` (page Transaction row) | Direction: Incoming, Outgoing; State: Settled, Pending, Failed, Scheduled | Name, Meta, Amount (include the sign: `+150 €` or `−150 €` with U+2212) |
+| tab bar, app bar | `Tab bar` and `App bar` (page Navigation) | Tab bar Active: Home, Cards, Spaces, Profile; App bar Variant: Standard, Large title | App bar: Title, Show back |
+| `amount-value`, `amount-label`, `fx-quote` context | `Amount input` (page Amount input) | Variant: Hero, Inline; State: Default, Error | Question or label, Value, Context line; Hero has three nested Chip `preset` instances |
+| `code-screen`, `auth`, `auth-error` | `Code input` (page Code input) | State: Default, Error | Heading, Destination, Message; nested Button `resend` |
+| `date-unavailable`, date parts | `Date field` (page Date field) | State: Default, Filled, Error | Legend, Echo or error |
+| `counter`, free text | `Textarea` (page Textarea) | State: Empty, Filled, Near limit, Error | Label, Value, Helper, Counter |
+| `accordion-header`, `accordion-body` | `Accordion` (page Accordion) | State: Closed, Open | Header, Panel |
+| `tooltip`, `tooltip-trigger` | `Tooltip` and `Tooltip trigger` (page Tooltip) | none | Tooltip: Body |
+| `count-badge` | `Count badge` (page Count badge) | Kind: Count, Dot | Count |
+| `onboarding-step`, `flow-intro-body` | `Onboarding step` (page Onboarding step) | none, full screen 375 × 812 | Step label, Title, Description, Show back, Show secondary; nested Buttons `primary` and `secondary`; `content` slot for step-specific controls |
 
-Not built yet (say so if the surface needs them): card, transaction row, navigation,
-onboarding step, checkbox, radio group, toggle, chip, accordion, tooltip, amount input,
-code input, date field, dropdown, textarea, count badge, icons.
+Not built yet (say so if the surface needs them): an iconography library. Every icon in
+the file is a placeholder (a circle or a simple vector); do not draw new icons on a surface.
 
 ## How to build a surface
 
@@ -66,8 +81,10 @@ code input, date field, dropdown, textarea, count badge, icons.
 2. **Choose the container.** A full screen is a 375 × 812 frame named
    `Surface / <what it is>`, filled with `color/background`, corner radius 40, clipping
    content. A dialog sits on that frame above a `scrim` rectangle (fill `color/primary`,
-   node opacity 0.4). A single component (a banner, a toast) can be placed alone on a
-   375-wide frame.
+   node opacity 0.4). A single component (a banner, a toast, a field) goes alone on a
+   375-wide auto-layout frame named the same way, filled with `color/background`, padded
+   with `space/4`, hugging its height. Place new surfaces to the right of the last one,
+   with 100 px between them, and the `Prompt` caption above at the same x.
 3. **Find the components.** One read-only `use_figma` that returns, for each component
    set you need, its id, its variant names and its property keys:
 
@@ -107,6 +124,15 @@ JSON block and the rules in `components/library/<name>.md`, following the
 radius and padding bound to a variable, text on a text style, a TEXT property for every
 slot the content skill can write, a description on the set that names the source file, and
 a documentation frame on the page. Then add it to the map above and rerun the surface.
+
+## When the library is wrong
+
+If an instance clips its text, shows a hardcoded fill, or cannot take the copy the content
+skill produced, the defect is in the component, not in the surface. Fix it on the
+component's page (the variants, not the instance), rerun the surface, and say what you
+fixed in the answer. Overriding it on the instance hides the defect for the next person.
+The one exception is a task that explicitly forbids touching the library: then override
+the instance and report the defect as a finding.
 
 ## What not to do
 

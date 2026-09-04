@@ -128,3 +128,17 @@ El profesor le pidió presentar el proyecto. Hay guión terminado en inglés, un
 - `skill/vanker-figma-surfaces/`: la skill que monta una surface en Figma desde un prompt, pidiendo
   el copy a `vanker-content-design`. Busca los componentes por nombre, nunca por id.
 - Primera surface de demo en la página Surfaces: el modal de pago rechazado (demo 2 del guion).
+
+## Añadido 04/09/2026 (etapa 40): librería Figma completa
+
+- Los 22 componentes de `components/library/` existen en Figma, cada uno en su página con
+  variantes, propiedades de texto y descripción que cita su fichero fuente. Iconos: siguen
+  siendo marcadores; la librería de iconos es lo único que falta.
+- Prueba de extremo a extremo de `vanker-figma-surfaces` con un subagente limpio (banner de
+  caducidad del documento): funcionó y destapó tres defectos del Banner (altura fija, rellenos
+  blancos sueltos, acción como texto). Corregidos en la librería; la acción del banner es ahora
+  un Button anidado. Regla nueva en la skill: un defecto se arregla en el componente, no en la
+  instancia.
+- Limitación conocida de Figma: una propiedad de texto tiene un solo valor por defecto para
+  todo el set, así que las variantes muestran el mismo texto de ejemplo; las instancias lo
+  cambian. Las claves de propiedad se leen en tiempo de ejecución, nunca se recuerdan.

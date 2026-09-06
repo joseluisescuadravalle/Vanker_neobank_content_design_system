@@ -34,7 +34,7 @@ Money set aside toward a target (see `../../terminology/glossary.md`).
   ellipsis. The icon is an outline icon or a user-chosen emoji.
 - **Progress:** a track (`color.surface-subtle`) with a fuchsia fill (`color.accent`)
   showing saved vs target.
-- **Amounts:** always shown as text ("600 € of 1.000 €"), saved amount bold in
+- **Amounts:** always shown as text ("600 € of 1.000 €"), saved amount bold in
   `text-primary`, target in `text-secondary`. Never rely on the bar alone.
 - **States:** in progress; funded (`color.success-text` with a check, "Fully funded");
   empty (0 of target, with an "Add money" affordance).
@@ -98,6 +98,6 @@ When the whole card is tappable (it navigates or opens something):
 - The account label is a short noun in sentence case; the balance is in European format with
   tabular numbers.
 - The IBAN is masked to its last digits and never shown in full.
-- A Space card shows both amounts as text ("600 € of 1.000 €"), never only a bar.
+- A Space card shows both amounts as text ("600 € of 1.000 €"), never only a bar.
 - An interactive card is a single focus stop with one accessible name that combines its parts.
 - A card carries no status label for the normal state.

@@ -86,7 +86,7 @@ Only the CTA rules above apply, plus "no emoji".
 
 | Context | Do | Avoid |
 | --- | --- | --- |
-| Send a payment | Send money | Send 150 € |
+| Send a payment | Send money | Send 150 € |
 | Confirm a payment (sheet "Confirm payment") | Confirm payment | OK |
 | Delete a space (dialog "Delete this space?") | Delete space | Remove |
 | Create a space | Create space | Submit |

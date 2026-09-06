@@ -88,10 +88,10 @@ nothing alone; a month does.
 When the code authorizes a payment, Strong Customer Authentication requires the code to be
 tied to that specific amount and payee, and the person must see both while they confirm.
 
-- The screen shows the amount and the payee next to the field: "Confirming 150 € to Ana
+- The screen shows the amount and the payee next to the field: "Confirming 150 € to Ana
   Ruiz."
-- The amount follows the money format (`../../terminology/glossary.md`), so `150 €`, not
-  `150,00 €`.
+- The amount follows the money format (`../../terminology/glossary.md`), so `150 €`, not
+  `150,00 €`.
 - If the amount or the payee changes, the code is void and a new one is sent. Say so:
   "The amount changed, so we sent you a new code."
 

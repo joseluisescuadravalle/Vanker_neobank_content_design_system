@@ -115,7 +115,7 @@ There is no title, no icon inside the panel, no button, and no second tooltip.
   one."
 - ✅ Trigger "What is a virtual card?" · Panel "A card that only exists in the app. You can
   use it online and delete it whenever you want."
-- ❌ "There is a 2 € fee for this transfer." (a fee must be visible)
+- ❌ "There is a 2 € fee for this transfer." (a fee must be visible)
 - ❌ "Tap here to add money to your space." (a call to action)
 - ❌ "Read the full terms" with a link (that is a sheet)
 - ❌ A tooltip on a greyed-out button explaining why it is greyed out.

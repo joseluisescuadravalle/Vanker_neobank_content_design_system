@@ -13,7 +13,7 @@ this file is what the screens say.
 
 Everywhere else in this product, a cost is a fee: an amount, stated exactly, before the
 person commits. Here the cost can be hidden inside a number that looks like a fact about
-the world. A rate of `1 € = 1,0745 USD` reads as the price of the dollar, not as our
+the world. A rate of `1 € = 1,0745 USD` reads as the price of the dollar, not as our
 margin, and nobody converts a spread into euros in their head.
 
 So this pattern has one job:
@@ -26,9 +26,9 @@ Not one of them replaces another:
 
 | | Example |
 | --- | --- |
-| **The rate we are using** | "1 € = 1,0745 USD" |
+| **The rate we are using** | "1 € = 1,0745 USD" |
 | **The markup over the ECB reference rate** | "Our markup: 0,5% over the ECB rate" |
-| **What it costs, in euros** | "This conversion costs you 0,54 €" |
+| **What it costs, in euros** | "This conversion costs you 0,54 €" |
 
 - **A rate alone is not a disclosure.** A screen showing only the rate has told the person
   nothing they can act on.
@@ -41,7 +41,7 @@ Not one of them replaces another:
 
 ## Both sides of the exchange
 
-- **Show what is sent and what arrives**: "You send 100 €" and "Ana receives 107,45 USD".
+- **Show what is sent and what arrives**: "You send 100 €" and "Ana receives 107,45 USD".
 - **Say when the received amount is an estimate, and why.** Where an intermediary or the
   receiving bank can deduct, the final amount is not ours to promise: "Ana receives about
   107,45 USD. Their bank may deduct a fee we cannot see."
@@ -75,7 +75,7 @@ Not one of them replaces another:
 
 - The conversion happens when the payment settles, so the amount can differ from the one
   shown at the terminal. Say so where the person will see both: "Converted when the payment
-  settled, at 1 € = 1,0745 USD."
+  settled, at 1 € = 1,0745 USD."
 - Where the merchant offered to convert instead (dynamic currency conversion), the copy
   names it plainly and states that paying in the local currency is usually cheaper. This is
   information, not advice about their money.
@@ -84,17 +84,17 @@ Not one of them replaces another:
 
 **Before confirming**
 
-> You send 100 €
+> You send 100 €
 >
 > Ana receives about 107,45 USD
 >
-> 1 € = 1,0745 USD. Our markup: 0,5% over the ECB rate.
+> 1 € = 1,0745 USD. Our markup: 0,5% over the ECB rate.
 >
-> This conversion costs you 0,54 €. Their bank may deduct a fee we cannot see.
+> This conversion costs you 0,54 €. Their bank may deduct a fee we cannot see.
 
 **Not this**
 
-- "1 € = 1,0745 USD" alone.
+- "1 € = 1,0745 USD" alone.
 - "0% commission on your first transfer."
 - "Ana receives 107,45 USD" where an intermediary can deduct.
 - A rate that refreshes under the person's finger.

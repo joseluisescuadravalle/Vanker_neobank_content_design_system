@@ -69,6 +69,10 @@ def euro_format(text, surface=None):
     problems = []
     if re.search(r"€\s?\d", text):
         problems.append("€ before the amount (use 'amount €')")
+    if re.search(r"(\d|\})[ \t]€", text):
+        problems.append("a normal space between the amount and €; use a no-break space (U+00A0) so the euro sign never wraps to the next line on its own")
+    if re.search(r"(\d|\})€", text):
+        problems.append("no space between the amount and € (use a no-break space: '150\u00a0€')")
     if re.search(r"\d,00\s?€", text):
         problems.append("trailing ',00' on a round amount")
     if re.search(r"\d{1,3},\d{3}\b\s?€", text):
@@ -76,7 +80,7 @@ def euro_format(text, surface=None):
     if re.search(r"\d\.\d{2}\s?€", text):
         problems.append("dot used for decimals (use a comma)")
     if re.search(r"\d,\d\s?€", text):
-        problems.append("one decimal on a rendered amount (cents show exactly two: '10,10 €')")
+        problems.append("one decimal on a rendered amount (cents show exactly two: '10,10 €')")
     return (not problems, "; ".join(problems) or "ok")
 
 
@@ -1414,12 +1418,12 @@ def run(text, assertion_ids=None, surface=None):
 if __name__ == "__main__":
     samples = [
         ("Send money", ["A-CTA"]),
-        ("Send 150,00 €", ["A-CTA", "A-EURO-FORMAT"]),
-        ("You received 150 € from Ana", ["A-NO-EMOJI", "A-EURO-FORMAT"]),
+        ("Send 150,00 €", ["A-CTA", "A-EURO-FORMAT"]),
+        ("You received 150 € from Ana", ["A-NO-EMOJI", "A-EURO-FORMAT"]),
         ("Payment sent \U0001F389", ["A-NO-EMOJI"]),
         ("Guaranteed returns on your savings", ["A-NO-CLAIMS"]),
         ("Complete KYC to continue", ["A-ACRONYMS"]),
-        ("Your balance is 2,540.00 €", ["A-EURO-FORMAT"]),
+        ("Your balance is 2,540.00 €", ["A-EURO-FORMAT"]),
     ]
     for text, ids in samples:
         out = run(text, ids)

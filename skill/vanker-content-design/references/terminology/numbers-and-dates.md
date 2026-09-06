@@ -8,7 +8,7 @@ How Vanker writes every figure that is not money. The money format itself lives 
 
 ## The rule that surprises people
 
-Vanker writes **English text with European numbers**. `2.540,75 €`, `1 September 2026`,
+Vanker writes **English text with European numbers**. `2.540,75 €`, `1 September 2026`,
 `0,5%`. This is deliberate, not an oversight: the product is written in English for a
 euro-area audience, and the figures follow the convention its customers read on their bank
 statements, their invoices, and their card terminals. An agent that "corrects" the numbers
@@ -28,7 +28,7 @@ to American convention is introducing a bug, not fixing one.
 - **Counts agree with their noun**: "1 payment", "2 payments". Never "1 payment(s)" and
   never "payment(s)": if the count can be one, the sentence handles both.
 - **Zero is a fact, not an absence**: "No payments yet" reads better than "0 payments", but
-  a figure that is genuinely zero is shown as `0 €`, never hidden or left blank.
+  a figure that is genuinely zero is shown as `0 €`, never hidden or left blank.
 - **Ordinals stay out of dates** ("1 September", not "1st September") and are fine in steps
   ("Step 2 of 3").
 - **Masked identifiers** keep their last digits and nothing else: `···· 4321`, `+34 ··· ···

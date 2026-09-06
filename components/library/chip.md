@@ -34,7 +34,7 @@ setting that applies immediately, see `toggle.md`).
 - **Never a verb.** A verb makes it look like a button, and tapping a chip must never
   navigate or submit (see `../../patterns/ctas.md`).
 - One to three words, sentence case, no ending punctuation, no emoji.
-- **A figure is allowed when the figure is the value**: "Over 100 €", "Last 30 days". This
+- **A figure is allowed when the figure is the value**: "Over 100 €", "Last 30 days". This
   is the one control in the system where an amount belongs, because the amount is what the
   person is choosing, not what they are being asked to do.
 - Parallel within a row: all nouns, or all ranges. Never mixed.

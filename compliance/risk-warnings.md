@@ -14,7 +14,7 @@ Never write, for any product:
 
 ## Deposits and savings
 
-- Everyday deposits are protected up to 100.000 € by the Deposit Guarantee Scheme (see
+- Everyday deposits are protected up to 100.000 € by the Deposit Guarantee Scheme (see
   `disclosures.md`). Do not imply returns or growth that a current account or Space does
   not provide.
 

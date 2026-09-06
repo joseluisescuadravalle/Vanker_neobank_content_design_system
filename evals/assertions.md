@@ -10,7 +10,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-NO-EMOJI` | No emoji anywhere | `../voice-and-tone/voice.md` |
-| `A-EURO-FORMAT` | € after the amount; dot thousands, comma decimals; no ",00" on round amounts; cents show exactly two decimals, never one | `../terminology/glossary.md` |
+| `A-EURO-FORMAT` | € after the amount, joined to it by a no-break space (U+00A0) so the sign never wraps alone; dot thousands, comma decimals; no ",00" on round amounts; cents show exactly two decimals, never one | `../terminology/glossary.md` |
 | `A-NO-BANNED` | No banned or jargon terms, matched on **word boundaries** so "reach" is not "ACH" and "provisional" is not "provision". Also covers login-as-a-verb and, surface-aware, `&` in body copy | `../terminology/banned-terms.md` |
 | `A-COLOR-ALONE` | No string points at something by its color ("marked in red", "the green button"). A color as an attribute of a product ("graphite card") is not a locator and passes | `../patterns/accessibility.md` |
 | `A-ATTRIBUTION` | Screen level. A screen reporting a failure names the side it is on (our systems, or the device). A session expiry, maintenance or a missing page is not a failure and is not asked | `../patterns/system-errors.md` |

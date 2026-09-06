@@ -79,7 +79,7 @@ The most stressed moment in the product. The first line is not a form.
 
 ## Limits
 
-- A limit is stated with its exact amount and its period: "You can spend up to 1.500 € a
+- A limit is stated with its exact amount and its period: "You can spend up to 1.500 € a
   day with this card."
 - **Raising a limit lowers protection**, so it is authenticated before it applies, and the
   switch or field does not move until that succeeds (`../components/library/toggle.md`).

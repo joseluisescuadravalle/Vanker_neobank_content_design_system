@@ -52,7 +52,7 @@ frozen"**, not "Freeze card". It also keeps one vocabulary across the product, b
 
 One line under the label, when the consequence is not obvious from the name.
 
-- It says **what changes**, in the present ("Payments over 50 € will ask for your face"),
+- It says **what changes**, in the present ("Payments over 50 € will ask for your face"),
   not what to do.
 - **Any cost, limit, or condition goes here, visible**, never behind a tooltip or an
   accordion (see `tooltip.md`).

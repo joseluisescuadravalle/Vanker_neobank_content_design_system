@@ -39,7 +39,7 @@ makes the copy checkable at all, and translation is the second thing they buy.
   plural-aware, with a form per rule, not a letter glued on.
 - **A variable never spans a sentence boundary**, and never contains markup.
 - **Formatting belongs to the formatter, not to the string.** The string carries
-  `{amount} €`; how a number is grouped, and where the symbol sits, comes from the locale
+  `{amount} €`; how a number is grouped, and where the symbol sits, comes from the locale
   (see `numbers-and-dates.md`, which is the euro-area English rendering, not a universal
   one).
 

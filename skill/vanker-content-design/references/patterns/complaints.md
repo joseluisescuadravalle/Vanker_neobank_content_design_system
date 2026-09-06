@@ -94,7 +94,7 @@ The person may be frightened, out of money, or right. Often more than one.
 
 **An answer that is no**
 
-> We are not refunding the 40 € fee, because it was charged for a same-day transfer you
+> We are not refunding the 40 € fee, because it was charged for a same-day transfer you
 > confirmed on 2 September.
 >
 > If you are not happy with this, you can take it to the Alternative Dispute Resolution

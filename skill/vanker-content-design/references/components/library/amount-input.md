@@ -42,25 +42,25 @@ Both share every content rule below. Only the presentation of the question diffe
    accepted. The value is never silently rounded, truncated, or reordered.
 2. **Cents are never there by default.** The field never starts with `,00`, never appends
    `,00` to a round amount, and never pre-fills a decimal part. Decimals appear only when
-   the amount has cents or the person types them: `150 €`, `10,50 €`.
+   the amount has cents or the person types them: `150 €`, `10,50 €`.
    - **While typing, show exactly what was typed.** A person mid-keystroke at `10,1` sees
      `10,1`; the field does not jump in to complete or pad the decimals, and does not move
      the caret.
    - **Once rendered, an amount with cents shows exactly two decimals.** On blur, on the
-     confirmation screen, in a transaction row, in a statement: `10,10 €`, not `10,1 €`. A
-     round amount still shows none: `150 €`, never `150,00 €`.
+     confirmation screen, in a transaction row, in a statement: `10,10 €`, not `10,1 €`. A
+     round amount still shows none: `150 €`, never `150,00 €`.
 3. **Accept both `,` and `.` as the decimal separator, and render a comma.** Numeric
    keypads on phones offer one or the other depending on the device and locale. Typing
-   `52.40` is a keyboard, not a mistake: it must produce `52,40 €`, never an error. A second
+   `52.40` is a keyboard, not a mistake: it must produce `52,40 €`, never an error. A second
    separator is simply not accepted as a character.
 4. **The currency symbol is never typed.** If a pasted value carries `€`, `EUR`, or spaces,
    the field strips them and keeps the number.
-5. **Never auto-scale a typed number.** "50" means 50 €, never 0,50 €. A field that turns
+5. **Never auto-scale a typed number.** "50" means 50 €, never 0,50 €. A field that turns
    keystrokes into cents from the right is a trap in a bank.
 6. **Money is never truncated.** If the amount outgrows the width, the type size steps down
    (no smaller than 24px in the hero variant); the digits are never clipped or replaced by
    an ellipsis.
-7. **The empty hero field shows `0 €`,** not a placeholder, so the format is visible before
+7. **The empty hero field shows `0 €`,** not a placeholder, so the format is visible before
    the first keystroke. The inline field starts empty with its label in.
 8. **`inputmode="decimal"`**, not `numeric`: the person needs a separator.
 
@@ -74,7 +74,7 @@ Both share every content rule below. Only the presentation of the question diffe
 - **The context line states cost, limit, and timing before the person commits**, never
   after (see `../../compliance/principles.md`). One line, one fact, in this order of
   priority when only one fits: a blocking limit, then the fee, then the balance.
-- **Fees are exact or free.** "This transfer is free." / "There is a 2 € fee for same-day
+- **Fees are exact or free.** "This transfer is free." / "There is a 2 € fee for same-day
   delivery." Never "a small fee", "low fees", or "fees may apply" (see
   `../../compliance/disclosures.md`).
 - **A currency conversion states the markup over the European Central Bank (ECB) reference
@@ -86,7 +86,7 @@ Both share every content rule below. Only the presentation of the question diffe
 
 Two to four suggested amounts beside or under the field, so a person can skip typing.
 
-- A preset carries **an amount and nothing else**: `20 €`, `50 €`, `100 €`. No verb, no
+- A preset carries **an amount and nothing else**: `20 €`, `50 €`, `100 €`. No verb, no
   "Add", no "+", no emoji.
 - **A preset is not a call to action.** The button rules (a verb, no digits) do not apply to
   it, and must not be applied to it: it is a value selector whose whole content is a number.
@@ -101,11 +101,11 @@ Two to four suggested amounts beside or under the field, so a person can skip ty
 
 | Situation | Where it goes | Example (normative form) |
 | --- | --- | --- |
-| Available balance matters | Context line | "You have 1.240,50 € available." |
-| A fee applies | Context line, before confirming | "There is a 2 € fee for same-day delivery." |
+| Available balance matters | Context line | "You have 1.240,50 € available." |
+| A fee applies | Context line, before confirming | "There is a 2 € fee for same-day delivery." |
 | No fee | Context line | "This transfer is free." |
-| A per-transaction or daily limit exists | Context line, from the start, not on failure | "You can send up to 3.000 € a day." |
-| A currency conversion applies | Context line | "Exchange rate: 1 € = 1,08 USD. Our markup: 0,5% over the ECB rate." |
+| A per-transaction or daily limit exists | Context line, from the start, not on failure | "You can send up to 3.000 € a day." |
+| A currency conversion applies | Context line | "Exchange rate: 1 € = 1,08 USD. Our markup: 0,5% over the ECB rate." |
 
 A limit the person can hit is stated **before** they type, not only when they exceed it.
 
@@ -119,10 +119,10 @@ per `../../voice-and-tone/voice.md`.
 | --- | --- |
 | Amount is empty | "The amount is missing." |
 | Amount is zero | "The amount must be more than zero." |
-| More than the available balance | "That is more than the 1.240,50 € available in your current account." |
-| Below the minimum | "The smallest amount you can send is 1 €." |
-| Over the per-transaction limit | "You cannot send more than 3.000 € in one transfer." |
-| Over the remaining daily limit | "Today you can still send up to 450 €." |
+| More than the available balance | "That is more than the 1.240,50 € available in your current account." |
+| Below the minimum | "The smallest amount you can send is 1 €." |
+| Over the per-transaction limit | "You cannot send more than 3.000 € in one transfer." |
+| Over the remaining daily limit | "Today you can still send up to 450 €." |
 | More than two decimals | "Amounts take at most two decimals." |
 
 - Validate **on submit or on blur**, never on every keystroke: an error that appears while
@@ -135,7 +135,7 @@ per `../../voice-and-tone/voice.md`.
 
 | State | Treatment |
 | --- | --- |
-| Empty | Hero: `0 €` in `color.text-tertiary`. Inline: label in centered, per `text-field.md` |
+| Empty | Hero: `0 €` in `color.text-tertiary`. Inline: label in centered, per `text-field.md` |
 | Focus | Caret after the digits; border `color.accent` and focus ring (inline) |
 | Filled | Value in `color.text-primary`, tabular numbers, `€` in `color.text-secondary` |
 | Over limit | Value in `color.error-text`, error message below, `aria-invalid`; never color alone |
@@ -168,12 +168,12 @@ per `../../voice-and-tone/voice.md`.
 
 ## Content examples
 
-- ✅ Question: "How much do you want to send?" · Context: "You have 1.240,50 € available."
-- ✅ Preset: `50 €`
-- ✅ Error: "That is more than the 1.240,50 € available in your current account."
+- ✅ Question: "How much do you want to send?" · Context: "You have 1.240,50 € available."
+- ✅ Preset: `50 €`
+- ✅ Error: "That is more than the 1.240,50 € available in your current account."
 - ❌ "Amount (€)" as a visible label (the adornment already shows the currency).
-- ❌ "Add 50 €" as a preset (a verb turns a value into an action).
-- ❌ "€50", "50,00 €", or "10,1 €" as a rendered amount (wrong money format).
+- ❌ "Add 50 €" as a preset (a verb turns a value into an action).
+- ❌ "€50", "50,00 €", or "10,1 €" as a rendered amount (wrong money format).
 - ❌ "A small fee may apply." (a fee is exact or the service is free).
 - ❌ An error shown on the second keystroke of an amount still being typed.
 
@@ -199,7 +199,7 @@ per `../../voice-and-tone/voice.md`.
       "thousands-separator": ".",
       "strips-on-paste": ["€", "EUR", " "],
       "auto-scale-to-cents": false,
-      "empty-hero-value": "0 €",
+      "empty-hero-value": "0 €",
       "default-cents": false,
       "normalize-decimals-on": "blur",
       "min-type-size-hero": 24
@@ -211,10 +211,10 @@ per `../../voice-and-tone/voice.md`.
       "messages": {
         "empty": "The amount is missing.",
         "zero": "The amount must be more than zero.",
-        "over-balance": "That is more than the {available} € available in your current account.",
-        "below-minimum": "The smallest amount you can send is {min} €.",
-        "over-transaction-limit": "You cannot send more than {limit} € in one transfer.",
-        "over-daily-limit": "Today you can still send up to {remaining} €.",
+        "over-balance": "That is more than the {available} € available in your current account.",
+        "below-minimum": "The smallest amount you can send is {min} €.",
+        "over-transaction-limit": "You cannot send more than {limit} € in one transfer.",
+        "over-daily-limit": "Today you can still send up to {remaining} €.",
         "too-many-decimals": "Amounts take at most two decimals."
       }
     },
@@ -244,7 +244,7 @@ per `../../voice-and-tone/voice.md`.
 - A preset amount is never evaluated as a call to action, and a call to action never carries
   an amount.
 - Every rendered amount uses the European format: `€` after the amount, dot thousands, comma
-  decimals, and either no decimals (a round amount) or exactly two (`10,10 €`). Cents are
+  decimals, and either no decimals (a round amount) or exactly two (`10,10 €`). Cents are
   never added by default, and `,00` never appears.
 - A fee is stated as an exact amount or as "free"; "a small fee", "low fees", and "fees may
   apply" fail.

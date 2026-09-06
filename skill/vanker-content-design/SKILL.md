@@ -54,9 +54,11 @@ without it. Omission beats an unverified claim.
 These are the rules people get wrong most often. Each is enforced by a check, so a slip
 costs you a rerun, not a customer.
 
-- **English text, European figures.** Money: `150 €`, `2.540,75 €`, `10,10 €`. The symbol
-  goes after the amount with a space, thousands take a dot, decimals a comma, and a round
-  amount has no `,00`. Percentages: `0,5%`, always with what they apply to and over what
+- **English text, European figures.** Money: `150 €`, `2.540,75 €`, `10,10 €`. The symbol
+  goes after the amount with a **no-break space (U+00A0)**, so a line never ends in the
+  figure and starts with `€`; thousands take a dot, decimals a comma, and a round
+  amount has no `,00`. A normal space fails the check: type U+00A0 (Option+Space on a Mac)
+  or write `\u00a0` in code. Percentages: `0,5%`, always with what they apply to and over what
   period. An agent that "fixes" these to American convention is introducing a bug.
 - **Dates** are day month year, written out: `4 September 2026`. Never numeric, never
   ordinal, never month-first. Only "Today" is relative; anything with a consequence gets an
@@ -80,7 +82,7 @@ costs you a rerun, not a customer.
   British spellings, and vocabulary from other markets ("checking account", "routing
   number"). No letter repeated three times ("Oooh", "Retryyyy").
 - **Calls to action** are verbs, three words at most, no punctuation, no figures, never a
-  bare "OK", "Submit", or "Continue" when a specific verb exists ("Send 150 €" belongs in
+  bare "OK", "Submit", or "Continue" when a specific verb exists ("Send 150 €" belongs in
   the body or the amount, the button says "Send").
 - **Contractions are welcome** ("you're", "we'll"), except that a negative about money
   is spelled out: "did not go through", "could not complete", never "didn't" or

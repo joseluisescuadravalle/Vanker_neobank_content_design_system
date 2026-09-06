@@ -18,7 +18,7 @@ experience, on-brand and compliant.
 
 Brand in one line: graphite `#111827` + fuchsia `#DB2777`; Plus Jakarta Sans (product) and
 Space Grotesk (marketing); flat, rounded (12px), calm motion; English copy, euro-area
-money format (`150 €`, `2.540,75 €`).
+money format (`150 €`, `2.540,75 €`).
 
 ## 2. What is in the repo (the app's data)
 
@@ -113,7 +113,7 @@ The app is a **read-only client** over the content system repo.
 
 ## 8. Constraints the app must honor
 
-- Money shown or generated uses the **European format** (`150 €`, `2.540,75 €`, no `,00`
+- Money shown or generated uses the **European format** (`150 €`, `2.540,75 €`, no `,00`
   on round amounts). Do the formatting in code.
 - The checker's rules come from the repo, at runtime, through `evals/rules.json`. Not from
   rules invented in the app, and not from a copy of the lists pasted into the app's source.

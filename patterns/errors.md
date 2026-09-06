@@ -46,7 +46,7 @@ A Vanker error has up to three parts, in this order:
 - Not: "Payment error. Invalid input. Code 402."
 
 **Insufficient funds**
-- Do: "You do not have enough in your current account to send {amount} €." with buttons
+- Do: "You do not have enough in your current account to send {amount} €." with buttons
   "Add money" (primary) and "Cancel". The body says what happened; the way out is a
   button, and one fact is one paragraph.
 - Not: "Transaction declined: insufficient funds."

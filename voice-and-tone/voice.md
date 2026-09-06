@@ -73,7 +73,7 @@ promotional copy; everywhere else Vanker is warm but serious.
   of all ages. Short sentences. One idea per sentence where possible.
 - **Acronyms:** expanded on first use, except widely-understood ones (IBAN, PIN, SEPA).
   See `../terminology/glossary.md`.
-- **Numbers, money, time:** always concrete and specific ("3 to 5 working days", "a 2 €
+- **Numbers, money, time:** always concrete and specific ("3 to 5 working days", "a 2 €
   fee"), never vague ("shortly", "a small fee").
 
 ## Anti-voice (what Vanker is not)

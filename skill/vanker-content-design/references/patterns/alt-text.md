@@ -103,7 +103,7 @@ Not this:
 - "Image of a graph showing spending"
 - "empty-state-illustration-2.png"
 - "Chart" (says nothing)
-- "Your balance is 2.540,75 €" as the only place that figure exists
+- "Your balance is 2.540,75 €" as the only place that figure exists
 
 ## Machine-readable spec
 

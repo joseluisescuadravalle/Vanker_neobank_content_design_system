@@ -111,7 +111,7 @@ so it has to be honest.
 - **Mirror the real layout**: the same rows, the same number of lines, the same rhythm. A
   skeleton that does not match what arrives is a small betrayal repeated on every load.
 - **Never put content inside a skeleton.** No text, and above all **no digits, no amounts,
-  no currency**. A shimmering `1.234,56 €` that resolves into a different number is the
+  no currency**. A shimmering `1.234,56 €` that resolves into a different number is the
   worst thing this system could ship.
 - **Three to five rows is enough.** Do not fill the viewport with placeholder rows.
 - **The shimmer respects `prefers-reduced-motion`**: replace the sweep with a static tint
@@ -173,7 +173,7 @@ The spinner is never fuchsia on a dark surface (see `../components/foundations/c
 - ❌ "Loading..."
 - ❌ "Almost there!"
 - ❌ "Hang tight, we are crunching the numbers"
-- ❌ A skeleton row showing `1.234,56 €`
+- ❌ A skeleton row showing `1.234,56 €`
 - ❌ "Sending your payment" when the button said "Send money"
 - ❌ "Please keep this screen open while we send it." (a money order never depends on it)
 - ❌ "Sent" before the transfer is confirmed

@@ -40,10 +40,10 @@ glance.
 
 ## Examples
 
-- **Money received:** Title "Money in" / Body "You received 150 € from Ana."
-- **Payment sent:** Title "Payment sent" / Body "150 € is on its way to Luis García."
+- **Money received:** Title "Money in" / Body "You received 150 € from Ana."
+- **Payment sent:** Title "Payment sent" / Body "150 € is on its way to Luis García."
 - **Security:** Title "Confirm it is you" / Body "We paused a payment that looks unusual. Open the app to review it."
-- **Low balance:** Title "Low balance" / Body "Your current account is down to 12 €."
+- **Low balance:** Title "Low balance" / Body "Your current account is down to 12 €."
 - **Marketing:** Title "Smarter savings ✨" / Body "Meet the tools that help your money work harder."
 
 ## The lock screen
@@ -52,8 +52,8 @@ A push is read by whoever is looking at the phone, not only by its owner.
 
 - The amount and the counterparty may appear: people expect a bank to tell them, and hiding
   them makes the notification useless.
-- **The balance never appears.** "You received 150 €" is fine; "Your balance is now
-  2.540,75 €" is not.
+- **The balance never appears.** "You received 150 €" is fine; "Your balance is now
+  2.540,75 €" is not.
 - Card details never appear, and no identifier appears unmasked (see `A-MASK`).
 - A one-time code may appear, because the notification **is** the channel for it, but that
   push carries nothing else, is never grouped with others, and the code never appears again

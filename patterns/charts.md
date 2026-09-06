@@ -26,7 +26,7 @@ That is the difference from charting anything else, and every rule below comes f
 
 ## What a chart may not do
 
-- **Never truncate an axis.** A bar chart whose scale starts at 400 € turns a 5% change
+- **Never truncate an axis.** A bar chart whose scale starts at 400 € turns a 5% change
   into a cliff. In a bank that is not a design shortcut, it is a misrepresentation of
   someone's finances.
 - **Never group without a way in.** Collapsing the tail into "Other" is allowed only if
@@ -41,7 +41,7 @@ That is the difference from charting anything else, and every rule below comes f
 ## Categories are a guess, and they are labeled as one
 
 Automatic categorization is inference. It is usually right and it is sometimes badly wrong,
-and a person will act on "you spent 400 € on eating out" as though it were a fact we
+and a person will act on "you spent 400 € on eating out" as though it were a fact we
 checked.
 
 - **Present a category as our reading, with a way to correct it**: "We sorted this as

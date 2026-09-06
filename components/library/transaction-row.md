@@ -23,9 +23,9 @@ today always shows its concrete date (see `../../terminology/glossary.md`).
 
 ## Amount and sign convention
 
-- **Incoming:** a leading plus and `color.success-text` (green): `+150 €`.
+- **Incoming:** a leading plus and `color.success-text` (green): `+150 €`.
 - **Outgoing:** a leading minus sign (the real minus, not a hyphen) and
-  `color.text-primary`: `−52,40 €`.
+  `color.text-primary`: `−52,40 €`.
 - The sign carries the meaning; color never carries it alone.
 
 ## States

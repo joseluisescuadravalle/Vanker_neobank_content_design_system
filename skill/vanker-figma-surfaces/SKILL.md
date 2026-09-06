@@ -60,7 +60,7 @@ someone rebuilds the library. Read their property keys from
 | `chip`, `preset-amount` | `Chip` (page Chip) | Kind: Filter, Input; Selected: Off, On | Label |
 | `dropdown-option`, `option` (the field itself) | `Dropdown` (page Dropdown) | State: Default, Selected, Error, Disabled | Label, Value, Helper, Show helper |
 | account or space summary | `Card` (page Card) | Variant: Account, Space | Title, Value (Account only), Subtext |
-| transaction list item, `category` | `Transaction row` (page Transaction row) | Direction: Incoming, Outgoing; State: Settled, Pending, Failed, Scheduled | Name, Meta, Amount (include the sign: `+150 €` or `−150 €` with U+2212) |
+| transaction list item, `category` | `Transaction row` (page Transaction row) | Direction: Incoming, Outgoing; State: Settled, Pending, Failed, Scheduled | Name, Meta, Amount (include the sign: `+150 €` or `−150 €` with U+2212) |
 | tab bar, app bar | `Tab bar` and `App bar` (page Navigation) | Tab bar Active: Home, Cards, Spaces, Profile; App bar Variant: Standard, Large title | App bar: Title, Show back |
 | `amount-value`, `amount-label`, `fx-quote` context | `Amount input` (page Amount input) | Variant: Hero, Inline; State: Default, Error | Question or label, Value, Context line; Hero has three nested Chip `preset` instances |
 | `code-screen`, `auth`, `auth-error` | `Code input` (page Code input) | State: Default, Error | Heading, Destination, Message; nested Button `resend` |

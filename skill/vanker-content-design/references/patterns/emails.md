@@ -16,11 +16,11 @@ seconds of each other and any difference reads as a second event, or as a fake.
 
 | Surface | Payment sent to Luis García |
 | --- | --- |
-| Push | Title "Payment sent" · Body "150 € is on its way to Luis García." |
-| Email | Subject "Payment sent to Luis García" · Preheader "150 €, arriving today" |
+| Push | Title "Payment sent" · Body "150 € is on its way to Luis García." |
+| Email | Subject "Payment sent to Luis García" · Preheader "150 €, arriving today" |
 | In app | The transaction row, with no status label once it settles |
 
-- **The same amount, in the same format** (`150 €`, never `150,00 €` in one and `150 €` in
+- **The same amount, in the same format** (`150 €`, never `150,00 €` in one and `150 €` in
   another).
 - **The same name for the state**, from the controlled vocabulary in
   `../components/library/status-label.md`. If the app says `Pending`, the email does not
@@ -101,8 +101,8 @@ compliance problem (`../compliance/data-privacy.md`).
 **Payment sent**
 
 - Subject: "Payment sent to Luis García"
-- Preheader: "150 €, arriving today"
-- First line: "Your payment of 150 € to Luis García is on its way."
+- Preheader: "150 €, arriving today"
+- First line: "Your payment of 150 € to Luis García is on its way."
 
 **New device logged in** (security)
 

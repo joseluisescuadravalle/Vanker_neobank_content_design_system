@@ -28,7 +28,7 @@ The test is the same one the tooltip uses, one notch softer: **if the person nev
 it, can they still decide correctly?** If not, it is not collapsible.
 
 The reconciliation that makes this workable in a bank: **the total is visible, the
-breakdown may collapse.** "You pay 3 € to send this transfer" stays on the screen; "How
+breakdown may collapse.** "You pay 3 € to send this transfer" stays on the screen; "How
 this is calculated" can be an accordion.
 
 ## Headers
@@ -88,7 +88,7 @@ never open it or open all of them, and both are failures.
 - ✅ "What happens if I close my account"
 - ❌ "More information" (describes opening, not content)
 - ❌ "Details"
-- ❌ An accordion holding the only mention of a 2 € fee on the transfer screen.
+- ❌ An accordion holding the only mention of a 2 € fee on the transfer screen.
 - ❌ A collapsed risk warning.
 
 ## Machine-readable spec

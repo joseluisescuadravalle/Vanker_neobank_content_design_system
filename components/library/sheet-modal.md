@@ -31,7 +31,7 @@ with a scrim and use the `overlay` elevation role.
 - **Shape:** centered card at `radius.xl` (20px), `overlay` shadow.
 - **Motion:** fades and scales in from 0.96 over `motion.duration.base`.
 - **Destructive content:** name the consequence and whether it can be undone ("Deleting
-  Travel will move its 600 € back to your current account. This cannot be undone").
+  Travel will move its 600 € back to your current account. This cannot be undone").
 
 ## Dismissal and safety
 

@@ -1,0 +1,7 @@
+Screen: same screen, title pasted into the body (wrong)
+
+title (system-error-title): Your session has ended
+body (system-error-screen): Your session has ended. We signed you out after 10 minutes without activity, to keep your account safe. No money has left your account.
+
+We’ve kept your 250 € transfer to Marta Ruiz, so you won’t need to type it again.
+primary (cta): Sign in

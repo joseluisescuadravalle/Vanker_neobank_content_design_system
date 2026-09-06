@@ -142,5 +142,7 @@ the instance and report the defect as a finding.
   content skill again before placing it.
 - No em dashes, exclamation marks, emoji or Title Case in any string, even in captions and
   layer names that read as copy.
+- No normalizing the copy. The space between an amount and € is a no-break space (U+00A0)
+  and stays one when pasted; a normal space lets the euro sign wrap alone on a narrow modal.
 - No detaching instances. If a component does not fit, the component is wrong: fix it on
   its page.

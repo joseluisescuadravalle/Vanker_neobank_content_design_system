@@ -73,7 +73,12 @@ a lie).
    The test is not "is this an error?" but "if the reader's eye skips the `n't`, do they walk
    away believing the opposite about their money?" A payment that did not go through read as
    one that did is the exact harm this rule exists for.
-9. **Do not appear too fast.** A connection blip is not an error. Wait about two seconds
+9. **Four facts in a three-paragraph body are merged, not cut and not stacked.** A system
+   error often has more to say than the slot holds: what happened, whose side, the money,
+   what to do. When it does not fit, join the two facts that belong together into one
+   compound sentence, keep the fixed money sentence intact inside it, and never drop a
+   fact or add a paragraph. The rule and the reason are in `errors.md` (Rules).
+10. **Do not appear too fast.** A connection blip is not an error. Wait about two seconds
    before showing the offline banner, and remove it as soon as the connection is back,
    without a success toast.
 

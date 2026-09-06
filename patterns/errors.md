@@ -34,6 +34,15 @@ A Vanker error has up to three parts, in this order:
 - Contractions are welcome, but in a critical instruction spell out the negative ("do
   not", "cannot") instead of "don't"/"can't" where a misread could cause harm — an error
   message is exactly this case. See `../voice-and-tone/voice.md` (Contractions).
+- **When the facts do not fit the slot, merge them; never split them into more blocks and
+  never drop one.** A modal body holds at most three paragraphs and a paragraph holds one
+  fact. When a screen has four facts to tell, the answer is not a fourth paragraph and it
+  is not leaving one out: it is one compound sentence that joins the two facts that belong
+  together ("The card network rejected the payment on our side, and no money has left your
+  account."), written in voice and tone, with any fixed formula kept intact inside it. The
+  reason: the limit exists so the screen is read, and a fact that is cut to meet it is a
+  fact the person needed. The fixed sentences about money (see
+  `system-errors.md`, rule 1) can be joined to a neighbor, never paraphrased.
 
 ## Variables
 
@@ -91,6 +100,9 @@ A Vanker error has up to three parts, in this order:
 - No inline call to action in the body (actions are separate buttons).
 - For money-related errors, contains a safety reassurance.
 - Contains no banned blame terms.
+- The body never exceeds the slot's paragraph limit, and no fact is dropped to meet it:
+  facts are merged into compound sentences (`A-PARAGRAPHS` checks the shape; the merge is
+  for the editorial review).
 
 ## Modal errors (interrupting): content structure
 

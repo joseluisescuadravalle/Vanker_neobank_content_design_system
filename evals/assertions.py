@@ -393,11 +393,35 @@ ERROR_CODE = re.compile(r"\b(?:error|code)\s*[:#]?\s*\d{3,}\b|\b[45]\d{2}\s+erro
 REASSURANCE = re.compile(r"money is safe|no money has|money has not|nothing has left|has left your account|on its way|do not know yet|money hasn't", re.IGNORECASE)
 
 
+# The verbs that say whether money moved. A negated one of these is the misreading that
+# costs money ("didn't go through" read as "did go through").
+# Generic verbs (take, move, complete, leave) stay out: "we can't take the photo" is not
+# about money, and the money nouns in MONEY_OUTCOME already cover "we couldn't complete
+# your payment".
+MONEY_VERB = re.compile(
+    r"\b(?:go|went|gone|get|got)\s+through\b|\b(?:send|sent|arrive[sd]?|charge[sd]?|debit(?:ed)?|"
+    r"refund(?:ed)?|receive[sd]?|pay|paid)\b|\bleft\s+your\s+account\b",
+    re.IGNORECASE,
+)
+# A clause ends at punctuation or at a conjunction that opens a new one. Scoping the check
+# to the clause is what lets "We've kept your transfer, so you won't need to type it
+# again" pass: the contraction negates typing, not the transfer.
+CLAUSE_SPLIT = re.compile(r"[,;:.!?]|\s+(?:so|but|and|because|if|while|unless|although|once|until|when)\s+", re.IGNORECASE)
+
+
 def spelled_negation(text, surface=None):
-    """A sentence about whether money moved spells out the negative."""
-    m = NEG_CONTRACTION.search(text)
-    if m and MONEY_OUTCOME.search(text):
-        return (False, "negative contraction ('" + m.group(0) + "') in a sentence about money; spell it out ('could not', 'do not')")
+    """A clause about whether money moved spells out the negative.
+
+    The contraction and the money must be in the same CLAUSE, not merely the same string
+    or sentence, and that clause must carry a money noun or a money-outcome verb. "Your
+    payment didn't go through" fails (the negated verb is the one that moves the money);
+    "we've kept your 250 € transfer, so you won't need to type it again" passes (the
+    negated verb is about typing).
+    """
+    for clause in CLAUSE_SPLIT.split(text or ""):
+        m = NEG_CONTRACTION.search(clause)
+        if m and (MONEY_OUTCOME.search(clause) or MONEY_VERB.search(clause)):
+            return (False, "negative contraction ('" + m.group(0) + "') in a clause about money moving; spell it out ('could not', 'did not')")
     return (True, "ok")
 
 
@@ -1424,6 +1448,10 @@ if __name__ == "__main__":
         ("Guaranteed returns on your savings", ["A-NO-CLAIMS"]),
         ("Complete KYC to continue", ["A-ACRONYMS"]),
         ("Your balance is 2,540.00 €", ["A-EURO-FORMAT"]),
+        # A-NEGATION is clause-scoped: the first passes, the next two fail.
+        ("We\u2019ve kept your 250\u00a0\u20ac transfer to Marta Ruiz, so you won\u2019t need to type it again.", ["A-NEGATION"]),
+        ("Your payment didn\u2019t go through.", ["A-NEGATION"]),
+        ("We couldn\u2019t send your payment.", ["A-NEGATION"]),
     ]
     for text, ids in samples:
         out = run(text, ids)

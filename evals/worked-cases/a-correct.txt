@@ -1,0 +1,7 @@
+Screen: session expired while a transfer was being typed (correct)
+
+title (system-error-title): Your session has ended
+body (system-error-screen): We signed you out after 10 minutes without activity, to keep your account safe.
+
+No money has left your account, and we’ve kept your 250 € transfer to Marta Ruiz, so you won’t need to type it again.
+primary (cta): Sign in

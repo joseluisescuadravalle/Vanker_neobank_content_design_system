@@ -74,7 +74,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-MASK` | No full email address and no long run of digits in copy: phone numbers, IBANs, and cards are masked, and a code is never echoed back. Amounts are exempt | `../compliance/data-privacy.md`, `../components/library/code-input.md` |
-| `A-NEGATION` | A sentence about whether money moved spells out the negative ("could not"), instead of contracting it | `../voice-and-tone/voice.md`, `../patterns/system-errors.md` |
+| `A-NEGATION` | A **clause** about whether money moved spells out the negative ("could not"), instead of contracting it. Scoped to the clause, and the clause must carry a money noun or a money-outcome verb: "your payment didn't go through" fails, "we've kept your transfer, so you won't need to type it again" passes | `../voice-and-tone/voice.md`, `../patterns/system-errors.md` |
 | `A-SYSTEM-ERROR` | One slot of a system error: no visible error code, no exclamation mark | `../patterns/system-errors.md` |
 | `A-MONEY-ACCOUNTED` | **Screen level:** an error that mentions money says what happened to it (nothing left, on its way, or outcome not known yet) | `../patterns/system-errors.md`, `../patterns/errors.md` |
 | `A-LOADING` | A waiting status line: present participle, short, no ending period, no exclamation, not a bare "Loading" or "Processing" | `../patterns/loading.md` |

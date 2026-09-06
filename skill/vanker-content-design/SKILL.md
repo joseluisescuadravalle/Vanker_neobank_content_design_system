@@ -176,14 +176,39 @@ A model that just wrote the copy is not a neutral reviewer of it. So:
 3. If you cannot spawn one, do the review yourself as a separate step: read
    `review-prompt.md` as if you had not written the copy, read the listed files again,
    score strictly, and label the verdict **same run** in the delivery, because the reader
-   deserves to know the reviewer was not neutral.
+   deserves to know the reviewer was not neutral. A same-run reviewer forgives its own
+   voice, so before scoring it fills a **voice checklist per slot**, with the answers
+   written down, not implied. For every slot:
+
+   - **Subject.** Who does each sentence say is acting: the person ("you"), Vanker ("we"),
+     or a thing ("the payment", "the network")? Write it. A sentence whose subject is a
+     thing when a person or Vanker did something is hiding the actor.
+   - **"We" and "you".** Does Vanker say "we" wherever Vanker acts or decides, and "you"
+     wherever the person does? Write yes or the sentence that breaks it.
+   - **Passive voice and nominalization.** Any "was rejected", "has been sent", "is
+     required", or a verb turned into a noun ("the rejection of", "verification of your
+     identity", "completion")? Write each one and its active rewrite, then apply it, unless
+     the passive is a fixed sentence the system requires verbatim.
+   - **Stakes.** Is the tone the one `tone.md` sets for this moment (calm and precise for
+     money and errors, warmer for success and first use)? Write which register and why.
+
+   The checklist goes into the review JSON as `"voice_checklist": { "<slot>": { "subject":
+   ..., "we_you": ..., "passive": [...], "stakes": ... } }`. A checklist with any passive
+   left unapplied, or any "we" missing where Vanker acted, caps `voice` at 1.
 4. Act on the verdict. `pass: false` means the copy goes back to step 4 with the `fix`
    applied, then through the checks again, then through the review again. Two rounds at
    most; if it still fails, deliver the best version and say which dimension failed and
    why, rather than sanding the copy until a reviewer stops objecting.
 5. Report it. The last line of the delivery is the verdict, in this form:
    `Editorial review: pass, 13 of 14, independent` or
-   `Editorial review: fail, 9 of 12, same run (tone_fit 0: jokey in an error)`.
+   `Editorial review: fail, 9 of 12, same run (tone_fit 0: jokey in an error)`. A same-run
+   verdict is followed by the voice checklist, one line per slot, so the reader can see
+   what the reviewer actually checked rather than take the score on trust.
+
+When the copy does not fit its slot (a modal body has at most three paragraphs, one fact
+each) the answer is never a fourth paragraph and never a dropped fact: merge the two facts
+that belong together into one compound sentence, in voice and tone, keeping any fixed
+sentence intact inside it. The rule is in `references/patterns/errors.md` (Rules).
 
 What the review is not: it is not a second opinion on style. A reviewer that objects to a
 sentence the system requires verbatim is wrong, and you say so in the delivery instead of

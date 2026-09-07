@@ -52,6 +52,12 @@ def build():
             "emoji": "[\\u{1F300}-\\u{1FAFF}\\u{2600}-\\u{27BF}\\u{1F1E6}-\\u{1F1FF}]",
         },
         "cta": {"max_words": 3, "no_punctuation": ".,:;!?", "no_digits": True},
+        "sentence": {
+            "_": "A-PARAGRAPHS, sentence level: one fact per sentence. Fail past max_words, or with more than max_joins matches of join_pattern.",
+            "max_words": assertions.SENTENCE_MAX_WORDS,
+            "max_joins": assertions.SENTENCE_MAX_JOINS,
+            "join_pattern": ",\\s+(?:and|so|but)\\b|;",
+        },
         "code_only": [
             "A-EURO-FORMAT: the money grammar (dot thousands, comma decimals, no ',00', exactly two decimals with cents)",
             "A-CASE: the Title Case scan, with its six exemptions",

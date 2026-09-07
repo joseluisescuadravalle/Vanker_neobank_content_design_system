@@ -9,7 +9,7 @@ these dimensions, using this repository as the reference. Score each dimension 0
 | --- | --- | --- | --- |
 | **Voice** | Off-brand (hype, cold, or slangy) | Mostly on-brand, slips once | Sounds like Vanker: fresh, clear, calm |
 | **Tone fit** | Wrong for the moment (jokey in an error) | Slightly off | Right tone for the stakes (see `../voice-and-tone/tone.md`) |
-| **Clarity** | Confusing or jargon-heavy | Understandable with effort | Plain, first-read clear, short sentences |
+| **Clarity** | Confusing or jargon-heavy, or the body restates the title | Understandable with effort; a sentence carries more than one fact | Plain, first-read clear, one fact per sentence, the body adds to the title instead of repeating it |
 | **Terminology** | Wrong or invented terms | Minor slip | Uses the controlled vocabulary and format exactly |
 | **Pattern fit** | Ignores the pattern | Partial | Follows the pattern (anatomy, rules) for the surface |
 | **Compliance** | Missing or wrong required content | Present but weak or buried | Adequate and clear (see `../compliance/`) |

@@ -205,10 +205,12 @@ A model that just wrote the copy is not a neutral reviewer of it. So:
    verdict is followed by the voice checklist, one line per slot, so the reader can see
    what the reviewer actually checked rather than take the score on trust.
 
-When the copy does not fit its slot (a modal body has at most three paragraphs, one fact
-each) the answer is never a fourth paragraph and never a dropped fact: merge the two facts
-that belong together into one compound sentence, in voice and tone, keeping any fixed
-sentence intact inside it. The rule is in `references/patterns/errors.md` (Rules).
+One fact per sentence: no sentence past 25 words, none chaining three clauses (the checker
+fails both). The one exception: when a modal body would need a fourth paragraph, merge the
+two facts that belong together into a single two-clause sentence, in voice and tone, with
+any fixed sentence intact inside it; never a fourth paragraph, never a dropped fact. And
+the body never repeats the title: it adds why, the money, and what to do. Both rules and
+their reasons are in `references/patterns/errors.md` (Rules).
 
 What the review is not: it is not a second opinion on style. A reviewer that objects to a
 sentence the system requires verbatim is wrong, and you say so in the delivery instead of

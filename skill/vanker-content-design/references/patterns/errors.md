@@ -34,15 +34,23 @@ A Vanker error has up to three parts, in this order:
 - Contractions are welcome, but in a critical instruction spell out the negative ("do
   not", "cannot") instead of "don't"/"can't" where a misread could cause harm — an error
   message is exactly this case. See `../voice-and-tone/voice.md` (Contractions).
-- **When the facts do not fit the slot, merge them; never split them into more blocks and
-  never drop one.** A modal body holds at most three paragraphs and a paragraph holds one
-  fact. When a screen has four facts to tell, the answer is not a fourth paragraph and it
-  is not leaving one out: it is one compound sentence that joins the two facts that belong
-  together ("The card network rejected the payment on our side, and no money has left your
-  account."), written in voice and tone, with any fixed formula kept intact inside it. The
-  reason: the limit exists so the screen is read, and a fact that is cut to meet it is a
-  fact the person needed. The fixed sentences about money (see
-  `system-errors.md`, rule 1) can be joined to a neighbor, never paraphrased.
+- **One fact per sentence.** A sentence does not chain three clauses: two joined once
+  (", and", ", so", ", but") is the most it carries, and a sentence past 25 words is not
+  read on a phone. `A-PARAGRAPHS` checks both. The reason: a reader in trouble reads the
+  first clause and acts; whatever came after the second comma did not reach them.
+- **The exception: merge two related facts into a two-clause sentence only when the slot
+  would otherwise need a fourth paragraph.** A modal body holds three paragraphs, one fact
+  each. When a screen has four facts to tell, the answer is not a fourth paragraph and it
+  is not dropping one: it is one sentence that joins the two facts that belong together
+  ("The card network rejected the payment on our side, and no money has left your
+  account."), written in voice and tone, with any fixed formula kept intact inside it.
+  This is a way out, not a style: three facts that fit in three paragraphs stay in three
+  paragraphs. The fixed sentences about money (see `system-errors.md`, rule 1) can be
+  joined to a neighbor, never paraphrased.
+- **The body never repeats the title.** The title says what happened; the body adds why,
+  the money, and what to do. A first body sentence that restates the title is a wasted
+  paragraph and, on a modal, one of only three. Code cannot check this reliably (word
+  overlap is a weak signal), so it is the editorial review's job, under Clarity.
 
 ## Variables
 
@@ -100,9 +108,11 @@ A Vanker error has up to three parts, in this order:
 - No inline call to action in the body (actions are separate buttons).
 - For money-related errors, contains a safety reassurance.
 - Contains no banned blame terms.
-- The body never exceeds the slot's paragraph limit, and no fact is dropped to meet it:
-  facts are merged into compound sentences (`A-PARAGRAPHS` checks the shape; the merge is
-  for the editorial review).
+- No sentence chains three clauses or runs past 25 words (`A-PARAGRAPHS`).
+- The body never exceeds the slot's paragraph limit and no fact is dropped to meet it; the
+  two-clause merge is used only when a fourth paragraph would otherwise be needed
+  (editorial review).
+- The body does not restate the title (editorial review, Clarity).
 
 ## Modal errors (interrupting): content structure
 

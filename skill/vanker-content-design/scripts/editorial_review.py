@@ -77,7 +77,7 @@ def main(argv):
         lines.append("%s (%s): %s" % (s, sf, t))
     lines.append("```")
     lines.append("")
-    lines.append("Read the screen as one thing before scoring: does the title agree with the body, is it clear whose side the problem is on, is the money accounted for, does each button do what the body promised, would a person who cannot see the screen know what to do.")
+    lines.append("Read the screen as one thing before scoring: does the title agree with the body, is it clear whose side the problem is on, is the money accounted for, does each button do what the body promised, does the body add to the title rather than restate it (a restated title costs a Clarity point), would a person who cannot see the screen know what to do.")
     lines.append("")
     lines.append("Score each dimension 0, 1 or 2 using references/evals/rubric.md: voice, tone_fit, clarity, terminology, pattern_fit, compliance, accessibility. Score a dimension \"na\" when it does not apply to these surfaces (a lone button has no compliance content). Default to the lower score when unsure. Judge only against the system as given; do not invent rules.")
     lines.append("")

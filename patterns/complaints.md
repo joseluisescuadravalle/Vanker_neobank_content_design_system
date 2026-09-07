@@ -98,7 +98,7 @@ The person may be frightened, out of money, or right. Often more than one.
 > confirmed on 2 September.
 >
 > If you are not happy with this, you can take it to the Alternative Dispute Resolution
-> (ADR) body for free, and we will help you do it.
+> (ADR) body for free, with our help.
 
 **Not this**
 

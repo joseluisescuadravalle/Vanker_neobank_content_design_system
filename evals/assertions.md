@@ -99,7 +99,7 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 | `A-CREDENTIALS` | Outside the app (email, push), nothing asks for a passcode, PIN, card details, or a code | `../patterns/emails.md`, `../compliance/security-payments.md` |
 | `A-SUBJECT` | Transactional subject: front-loaded, about 50 characters, no emoji, no question bait, no ALL CAPS, no fake "Re:" | `../patterns/emails.md` |
 | `A-PREHEADER` | Preheader adds information, is never empty and never "View in browser" | `../patterns/emails.md` |
-| `A-PARAGRAPHS` | **Block level:** one fact per paragraph (two sentences only when short and linked), at most three paragraphs in a modal body | `../components/foundations/typography.md` |
+| `A-PARAGRAPHS` | **Block level:** one fact per paragraph (two sentences only when short and linked), at most three paragraphs in a modal body. Also one fact per sentence: no sentence past 25 words or chaining three clauses (more than two ", and / , so / , but" joins or a semicolon) | `../components/foundations/typography.md` |
 
 One character, one complaint. `A-SYSTEM-ERROR` and `A-NO-RESULTS` used to re-check the
 exclamation mark that `A-PUNCTUATION` already rejects, so the panel printed the same defect
@@ -136,6 +136,8 @@ single-use code is a **code** (see `../terminology/glossary.md`).
 | `A-NO-CLAIMS` | No prohibited claims ("guaranteed", "risk-free", etc.) | `../compliance/principles.md`, `../compliance/risk-warnings.md` |
 
 ## Rules that are documented but not checked
+
+- The body never repeats the title (`../patterns/errors.md`). Word overlap is too weak a signal to check in code; the editorial review scores it under Clarity.
 
 `../terminology/capitalization-and-punctuation.md` names two rules that are deliberately not
 implemented: curly quotes, and sentence case beyond Title Case detection. Both would produce

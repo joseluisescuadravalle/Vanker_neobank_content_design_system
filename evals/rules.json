@@ -1286,6 +1286,12 @@
     "no_punctuation": ".,:;!?",
     "no_digits": true
   },
+  "sentence": {
+    "_": "A-PARAGRAPHS, sentence level: one fact per sentence. Fail past max_words, or with more than max_joins matches of join_pattern.",
+    "max_words": 25,
+    "max_joins": 2,
+    "join_pattern": ",\\s+(?:and|so|but)\\b|;"
+  },
   "code_only": [
     "A-EURO-FORMAT: the money grammar (dot thousands, comma decimals, no ',00', exactly two decimals with cents)",
     "A-CASE: the Title Case scan, with its six exemptions",

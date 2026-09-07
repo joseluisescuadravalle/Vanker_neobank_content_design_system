@@ -83,3 +83,20 @@ Editorial, no code: C4 is now an exception, not a principle ("merge two related 
 two-clause sentence only when the slot would otherwise need a fourth paragraph"), and the
 body never repeats the title; both in `patterns/errors.md`, the second also in the Clarity
 row of `evals/rubric.md`. If the app shows rubric text, the Clarity cell changed.
+
+## Correction, 7 September: three clauses fail, and the modal content model
+
+`max_joins` in `rules.json` (`sentence`) is now **1**: a sentence with two joins has three
+clauses and fails. Read the value from `rules.json` rather than hardcoding it; the pattern
+and `max_words` (25) are unchanged. The negative golden case `syserr.three-clause-chain`
+is now José Luis's sentence: "Something did not work on our side when we tried to send
+your 150 €, and no money has left your account, so to continue we need you to confirm your
+identity." (fails on words and on clauses). `syserr.two-clause-merge` still passes (one
+join). Once this is ported and the four sentence cases pass, retire the app's provisional
+gate for long sentences: the rule lives in `A-PARAGRAPHS` now.
+
+`patterns/errors.md` has the modal content model rewritten: title = what happened and its
+impact, the only required slot; body optional, adds what the title does not say, one fact
+per sentence and per paragraph, one to three paragraphs, never repeats the title (Clarity
+in the rubric); actions = the exits, at most two. The JSON block under `shapes.modal`
+carries it as data if the app renders slot rules.

@@ -34,9 +34,9 @@ A Vanker error has up to three parts, in this order:
 - Contractions are welcome, but in a critical instruction spell out the negative ("do
   not", "cannot") instead of "don't"/"can't" where a misread could cause harm — an error
   message is exactly this case. See `../voice-and-tone/voice.md` (Contractions).
-- **One fact per sentence.** A sentence does not chain three clauses: two joined once
+- **One fact per sentence.** A sentence never has three clauses: two joined once
   (", and", ", so", ", but") is the most it carries, and a sentence past 25 words is not
-  read on a phone. `A-PARAGRAPHS` checks both. The reason: a reader in trouble reads the
+  read on a phone. `A-PARAGRAPHS` fails both with "one fact per sentence". The reason: a reader in trouble reads the
   first clause and acts; whatever came after the second comma did not reach them.
 - **The exception: merge two related facts into a two-clause sentence only when the slot
   would otherwise need a fourth paragraph.** A modal body holds three paragraphs, one fact
@@ -90,7 +90,11 @@ A Vanker error has up to three parts, in this order:
     "anatomy": ["what happened", "reassurance", "what to do next"],
     "shapes": {
       "field-validation": { "sentences": 1, "ends-with-period": true, "families": ["what is missing", "what is expected"], "imperative": false, "generic": false },
-      "modal": { "title": { "ending-period": false, "blame": false }, "body": { "optional": true, "cta-inside": false, "max-paragraphs": 3 }, "actions": { "max": 2, "inform-only": "Close" } }
+      "modal": {
+        "title": { "required": true, "carries-impact": true, "ending-period": false, "blame": false, "lines": 1 },
+        "body": { "optional": true, "adds-what-title-lacks": true, "repeats-title": false, "cta-inside": false, "paragraphs": [1, 3], "facts-per-paragraph": 1, "facts-per-sentence": 1, "sentence": { "max-words": 25, "max-clauses": 2, "two-clause-merge-only-when": "a fourth paragraph would otherwise be needed" } },
+        "actions": { "role": "exits", "max": 2, "inform-only": "Close" }
+      }
     },
     "visible-error-code": false,
     "reference-line": "allowed, tertiary",
@@ -121,13 +125,16 @@ of slots, each with its own rules.
 
 ### Slots
 
-- **Title** (required): one clear, direct sentence saying what happened, never blaming the
-  person. **No ending period.** One line.
-- **Body** (optional): included **only when needed**. When present, it gives more context on
-  what happened and how to solve it. It explains; it **never contains the CTA**. One fact per
-  paragraph, at most three paragraphs, left aligned from three lines
-  (see `../components/foundations/typography.md`).
-- **Actions** (one or two, never more):
+- **Title** (required, and the only required slot): what happened and what it means for the
+  person, in one clear sentence that never blames them. **No ending period.** One line. A
+  title that carries the impact ("We could not complete your payment") can stand alone;
+  a title that only names an event ("Payment rejected") cannot.
+- **Body** (optional): only when it adds what the title does not say: why, whose side, what
+  happened to the money, what to do. One fact per sentence and one fact per paragraph, one
+  to three paragraphs, left aligned from three lines (see
+  `../components/foundations/typography.md`). It **never repeats the title** (the editorial
+  review scores that under Clarity) and it **never contains the CTA**.
+- **Actions** (the exits, one or two, never more):
   - **Inform only** (the person can only acknowledge): a single **Close** button. Never
     "OK".
   - **Actionable** (there is a fix): a **primary** CTA that leads to the solution the text
@@ -154,7 +161,9 @@ of slots, each with its own rules.
 ### Eval hooks (per slot)
 
 - Title has no ending period and does not blame the person.
-- Body appears only when it adds context, and never contains a CTA.
+- Body appears only when it adds what the title does not say, never restates the title,
+  and never contains a CTA.
+- One fact per sentence and per paragraph in the body (`A-PARAGRAPHS`).
 - Inform-only errors use "Close", never "OK".
 - No more than two CTAs.
 

@@ -821,12 +821,12 @@ def _sentences(par):
 
 
 # One fact per sentence. A sentence that chains clauses with ", and", ", so", ", but" or a
-# semicolon is three facts wearing one full stop, and a sentence past 25 words is not read
-# on a phone. Two joins (three clauses) are allowed: that is the merge errors.md permits
-# when the alternative is a fourth paragraph. Three joins are not.
+# semicolon is several facts wearing one full stop, and a sentence past 25 words is not
+# read on a phone. One join (two clauses) is allowed: that is the merge errors.md permits
+# when the alternative is a fourth paragraph. Two joins make three clauses, and fail.
 SENTENCE_JOIN = re.compile(r",\s+(?:and|so|but)\b|;", re.IGNORECASE)
 SENTENCE_MAX_WORDS = 25
-SENTENCE_MAX_JOINS = 2
+SENTENCE_MAX_JOINS = 1
 
 
 def _long_or_chained(sent):
@@ -835,7 +835,7 @@ def _long_or_chained(sent):
     if words > SENTENCE_MAX_WORDS:
         return "runs to " + str(words) + " words (max " + str(SENTENCE_MAX_WORDS) + "); split it, one fact per sentence"
     if joins > SENTENCE_MAX_JOINS:
-        return "chains " + str(joins + 1) + " clauses; a sentence carries one fact, or two joined once when the slot would otherwise need a fourth paragraph"
+        return "chains " + str(joins + 1) + " clauses; one fact per sentence, or two clauses joined once when the slot would otherwise need a fourth paragraph"
     return None
 
 

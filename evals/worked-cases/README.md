@@ -43,10 +43,10 @@ body (system-error-screen)    FAIL  1 of 20 checks
 
 ## What the checker does not see here (C4, C5)
 
-The correct screen has four facts (signed out, why, money, draft kept) in a two-paragraph
-body: the second paragraph joins two facts with "and" instead of adding a third paragraph
-or dropping one. That merge is the editorial rule added in `../../patterns/errors.md`
-(Rules) and referred to from `system-errors.md` rule 9, and the voice checklist that a
+The correct screen has four facts (signed out, why, money, draft kept) in a three-paragraph
+body: the fourth fact rides on the third as a second clause ("so you won't need to type it
+again") instead of a fourth paragraph. That two-clause merge is the exception in
+`../../patterns/errors.md` (Rules), referred to from `system-errors.md` rule 9, and the voice checklist that a
 same-run editorial review must fill (`SKILL.md`, Editorial review, step 3) is what would
 catch a body that hides the actor ("access was blocked") where this one says "we signed
 you out".

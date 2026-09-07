@@ -36,7 +36,7 @@
     "patterns/currency-exchange.md": "d5d094a48a57e952fdf7b45a1d69c0c44f3a7c24709bf26230d02e67a8b5a8ad",
     "patterns/emails.md": "5222d7b8824a4b93923f3b1fdbb8cfd845955d9a9a9cf749047a8a9170204513",
     "patterns/empty-states.md": "e6827dd60639cabc1068b93218486d42fd0b15ff4d0a1c43018da86167209b5b",
-    "patterns/errors.md": "e2bfc7514ff35006801d4f32a527249559629ed1d9e4662b12ece436e099e32b",
+    "patterns/errors.md": "0f50944c3ca24458e17ce8310a5fd6e21e6dd892a76e5d48f77047b82bc8f45f",
     "patterns/flow-intro.md": "217963787c85eba17dd71957f7e2961347fb2b92b3b6b76e5116be3064c951f8",
     "patterns/forms.md": "8c1ad14a3a2d0a1fb89b85a11b32ddeaaf5ea36c35e8a041e8b3b8521be50d99",
     "patterns/links.md": "2089a734031602b589f6024ebdc640387ba59715e03afa54a164724a7ef079f2",
@@ -72,7 +72,7 @@
     "components/library/transaction-row.md": "51e9d7d3814786ce06415dee940f780abd833cb805a4b73fc0e33cb863573be2"
   },
   "scripts": {
-    "assertions.py": "0ec9680c7c1b29cd757a4830270008db09250bcbcee5c105e9bbd964de5bbd01",
-    "rules.json": "70b09e6485bd25ad57a067eeab2f1f9df60522356ae6f497542822391dba9ae2"
+    "assertions.py": "a6de5165e35726fd31bda31259e33b5e3c55811e7a210da921ebfca620aad92b",
+    "rules.json": "f8a33ae8bdf4c58609e2be3a2a2fffaed43c104577a8df56b01a279d01c623fa"
   }
 }

@@ -67,6 +67,7 @@ universal checks: `A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, 
 | `loading-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-MONEY-ACCOUNTED`, `A-PARAGRAPHS` | `patterns/loading.md` |
 | `no-results` | `A-NO-RESULTS`, `A-CASE`, `A-PUNCTUATION`, `A-NO-INLINE-CTA` | `patterns/search.md`, `patterns/empty-states.md` |
 | `notification` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `patterns/notifications.md` |
+| `notification-title` | `A-NOTIFICATION-TITLE`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-MASK`, `A-CASE` | `patterns/notifications.md` |
 | `offer-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-DECLINE-PRESENT` | `patterns/offers.md`, `compliance/dark-patterns.md` |
 | `onboarding-step` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `components/library/onboarding-step.md`, `patterns/flow-intro.md` |
 | `option` | `A-OPTION` | `components/library/dropdown.md` |
@@ -84,6 +85,9 @@ universal checks: `A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, 
 | `skeleton` | `A-SKELETON` | `patterns/loading.md` |
 | `status` | `A-STATUS`, `A-NO-EMOJI` | `components/library/status-label.md` |
 | `status-label` | `A-STATUS`, `A-NO-EMOJI` | `components/library/status-label.md` |
+| `success-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `patterns/success.md` |
+| `success-option` | `A-CTA`, `A-NO-EMOJI`, `A-CASE` | `patterns/success.md`, `patterns/ctas.md` |
+| `success-title` | `A-SUCCESS-TITLE`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NEGATION`, `A-CASE`, `A-MASK` | `patterns/success.md` |
 | `system-error` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-SYSTEM-ERROR` | `patterns/system-errors.md` |
 | `system-error-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-SYSTEM-ERROR`, `A-MONEY-ACCOUNTED`, `A-ATTRIBUTION`, `A-PARAGRAPHS` | `patterns/system-errors.md`, `components/library/empty-state.md` |
 | `system-error-title` | `A-SYSTEM-ERROR`, `A-NO-EMOJI`, `A-NEGATION`, `A-PUNCTUATION` | `patterns/system-errors.md` |

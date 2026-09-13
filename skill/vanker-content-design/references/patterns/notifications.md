@@ -71,6 +71,21 @@ A push is read by whoever is looking at the phone, not only by its owner.
 - **The same event tells the same story here, in email, and in the app** — the same amount
   format, the same state vocabulary, the same name. See `emails.md`.
 
+## The in-app notification
+
+The same event, seen later inside the app (a list item in the notifications view). It is
+not a push: nobody is glancing at a tray, and the OS is not rendering it.
+
+- **Title** (required, surface `notification-title`): the same key fact as the push title,
+  front-loaded, about 40 characters, no ending period. **Never an emoji**: the push
+  exception exists because the tray is a marketing channel; the app is not.
+- **Body** (required, surface `notification`): the push body, or a longer version with the
+  detail the tray could not hold. Same amount, same state vocabulary, same counterparty as
+  the push and the email for that event.
+- **No CTA**: the tap opens the screen for the event, as in the push.
+- The balance, a card detail or an unmasked identifier never appear here either; the list
+  is read on a shared screen as often as the tray is.
+
 ## Machine-readable spec
 
 ```json
@@ -84,7 +99,8 @@ A push is read by whoever is looking at the phone, not only by its owner.
     "tap-opens": "the thing it is about",
     "timing": { "money-and-security": "any hour", "everything-else": "respects quiet hours" },
     "one-event-one-notification": true,
-    "matches-email-and-in-app": true
+    "matches-email-and-in-app": true,
+    "in-app": { "title": { "surface": "notification-title", "emoji": false, "ending-period": false, "max-chars": 40 }, "body": { "surface": "notification" }, "cta": false }
   }
 }
 ```
@@ -109,6 +125,7 @@ See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the 
 ## Eval hooks
 
 - Title front-loads the key fact; about 40 characters or fewer.
+- The in-app title carries no emoji and no ending period (`A-NOTIFICATION-TITLE`).
 - Body about 120 characters or fewer (fits two lines); no emoji in the body.
 - Emoji (1-2) only in a non-critical title; never in security, fraud, or money-movement push.
 - Money notifications state the amount in European format.

@@ -178,6 +178,9 @@
     "notification": [
       "patterns/notifications.md"
     ],
+    "notification-title": [
+      "patterns/notifications.md"
+    ],
     "offer-screen": [
       "patterns/offers.md",
       "compliance/dark-patterns.md"
@@ -234,6 +237,16 @@
       "components/library/status-label.md"
     ],
     "success": [
+      "patterns/success.md"
+    ],
+    "success-body": [
+      "patterns/success.md"
+    ],
+    "success-option": [
+      "patterns/success.md",
+      "patterns/ctas.md"
+    ],
+    "success-title": [
       "patterns/success.md"
     ],
     "system-error": [

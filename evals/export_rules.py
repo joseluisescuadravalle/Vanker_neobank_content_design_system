@@ -47,6 +47,7 @@ def build():
             "social_proof_terms": assertions.SOCIAL_PROOF_TERMS,
             "guilt_terms": assertions.GUILT_TERMS,
             "guilt_exempt_surfaces": sorted(assertions.GUILT_EXEMPT),
+            "celebration_terms": assertions.CELEBRATION_TERMS,
         },
         "patterns": {
             "_": "JavaScript-compatible source strings. Match case-insensitively unless noted.",

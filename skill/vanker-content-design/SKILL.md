@@ -304,7 +304,7 @@ author is in the room.
 - `references/CLAUDE.md`, `terminology/`, `voice-and-tone/`, `compliance/`, `behavioral/`, `patterns/`,
   `components/library/`: the system, copied verbatim from the repository by
   `evals/build_skill.py`. Do not edit them here; edit the source and rebuild.
-- `scripts/check_copy.py`: the deterministic checks (69 as of this build), same code as
+- `scripts/check_copy.py`: the deterministic checks (71 as of this build), same code as
   `evals/assertions.py` in the repository, with `rules.json` beside it.
 - `scripts/editorial_review.py`: writes the editorial review prompt for a delivery-format
   file, choosing the reference files by surface from `references/owners.json`.

@@ -84,6 +84,8 @@ Each has an ID used in `golden-set/cases.jsonl` and implemented in `assertions.p
 
 | ID | Checks | Source |
 | --- | --- | --- |
+| `A-SUCCESS-TITLE` | Full-screen success title: no ending punctuation, not a question, no fireworks vocabulary ("congratulations", "you did it"), about 8 words | `../patterns/success.md` |
+| `A-NOTIFICATION-TITLE` | In-app notification title: no emoji (the push exception stops at the tray), no ending punctuation, about 40 characters | `../patterns/notifications.md` |
 | `A-CARD-HEADLINE` | Welcome-card headline: one line, about six words, no ending punctuation, no emoji | `../patterns/welcome-carousel.md` |
 | `A-CARD-BODY` | Welcome-card body: at most two short lines, one sentence, no ending period, and no figures (a rate or a price needs a disclosure the card cannot carry) | `../patterns/welcome-carousel.md` |
 | `A-INTRO-CTA` | Flow-intro buttons are "Start" and "Not now"; a goal verb ("Activate biometrics") is rejected because the tap only opens the first step | `../patterns/flow-intro.md`, `../patterns/ctas.md` |
@@ -237,6 +239,10 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 The body checks now include `A-PRICE-ASTERISK`; `push-body` and `carousel-body` carry it explicitly.
 | `push-title` | `A-PUSH-TITLE` (emoji allowed, non-critical only), money/banned/claims; no `A-NO-EMOJI` |
 | `push-body`, `notification` | `A-PUSH-BODY` plus the body checks (no emoji) |
+| `notification-title` | `A-NOTIFICATION-TITLE`, no emoji, money/banned/claims, mask, case |
+| `success-title` | `A-SUCCESS-TITLE`, no emoji, money/banned/claims, spelled negation, case, mask |
+| `success-body` | The body checks |
+| `success-option` | The CTA checks (a continue option is a button) |
 | `toast` | `A-TOAST`, `A-NO-EMOJI`, plus money/banned/claims |
 | `dropdown-option`, `option` | `A-OPTION`, plus banned/claims |
 | `label-in` | `A-LABEL-IN`, `A-NO-EMOJI`, banned/claims |

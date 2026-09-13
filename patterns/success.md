@@ -73,6 +73,8 @@ See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the 
 
 ## Eval hooks
 
-- Title has no ending period.
-- Continue options are CTAs (verb, 3 words max); exactly one is primary.
+- Title has no ending period, is not a question, and carries no fireworks (`A-SUCCESS-TITLE`,
+  surface `success-title`).
+- Body, when present, runs the body checks (surface `success-body`).
+- Continue options are CTAs (verb, 3 words max, surface `success-option`); exactly one is primary.
 - No emoji.

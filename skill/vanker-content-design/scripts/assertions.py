@@ -1410,8 +1410,47 @@ def decline_present(text, surface=None):
         return (True, "ok")
     return (False, "no way to say no: the screen asks for an acceptance and carries no decline; add " + " or ".join("'" + d + "'" for d in DECLINE_LABELS[:2]) + " beside the primary, at the same cost in taps")
 
+
+# Success screens (patterns/success.md) and the in-app notification (patterns/notifications.md).
+CELEBRATION_TERMS = ["congratulations", "congrats", "awesome", "fantastic", "brilliant", "amazing", "nailed it", "smashed it", "you did it", "well done"]
+CELEBRATION = re.compile(r"\b(?:" + "|".join(re.escape(t) for t in CELEBRATION_TERMS) + r")\b", re.IGNORECASE)
+
+
+def success_title(text, surface=None):
+    """A full-screen success title confirms the completed action, calm and contained."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty title")
+    if re.search(r"[.;:!]$", t):
+        problems.append("no ending punctuation on a success title")
+    if "?" in t:
+        problems.append("a success title states, it never asks")
+    if CELEBRATION.search(t):
+        problems.append("contained celebration: '" + CELEBRATION.search(t).group(0) + "' is fireworks; state what is done ('Your account is ready')")
+    if len(t.split()) > 8:
+        problems.append("too long (" + str(len(t.split())) + " words); a success title confirms the action in about 8")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def notification_title(text, surface=None):
+    """The title of an in-app notification: front-loaded, short, never an emoji, no ending period."""
+    t = text.strip()
+    problems = []
+    if not t:
+        return (False, "empty title")
+    if EMOJI.search(t):
+        problems.append("no emoji in an in-app notification title; the push exception does not reach the app")
+    if re.search(r"[.;:!?]$", t):
+        problems.append("no ending punctuation on a notification title")
+    if len(t) > 50:
+        problems.append("too long (" + str(len(t)) + " chars); about 40, the key fact first")
+    return (not problems, "; ".join(problems) or "ok")
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
+    "A-SUCCESS-TITLE": success_title,
+    "A-NOTIFICATION-TITLE": notification_title,
     "A-CONFIRMSHAME": confirmshame,
     "A-SCARCITY": scarcity,
     "A-DOUBLE-NEGATIVE": double_negative,
@@ -1549,6 +1588,11 @@ SURFACE_CHECKS = {
     "email-subject": ["A-SUBJECT", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT", "A-CREDENTIALS"],
     "email-preheader": ["A-PREHEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT"],
     "email-body": BODY_CHECKS + ["A-CREDENTIALS"] + ["A-PARAGRAPHS"],
+    # Success (patterns/success.md) and the in-app notification (patterns/notifications.md)
+    "success-title": ["A-SUCCESS-TITLE", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-NEGATION", "A-CASE", "A-MASK"],
+    "success-body": BODY_CHECKS,
+    "success-option": CTA_CHECKS,
+    "notification-title": ["A-NOTIFICATION-TITLE", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-CASE"],
     # Dark patterns (compliance/dark-patterns.md)
     "decline-cta": ["A-CONFIRMSHAME", "A-CTA", "A-NO-EMOJI", "A-CASE"],
     "offer-screen": BODY_CHECKS + ["A-DECLINE-PRESENT"],

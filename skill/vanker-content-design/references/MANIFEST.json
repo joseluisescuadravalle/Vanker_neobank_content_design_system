@@ -45,11 +45,11 @@
     "patterns/forms.md": "7a09aaaa4767a655790adb648550d26ebd48c0ca1c2183ca873ac6abedcf2ec8",
     "patterns/links.md": "3a7ad2d8438a2927e8fffe45c5e18cba1bef02831c1a919a95e0eb860bab2652",
     "patterns/loading.md": "99803cc1e4c1bcab953209f44f45e34387d438bde861f609b0a05e7f29b31a5f",
-    "patterns/notifications.md": "e1e2ebc34296cb4b41f2a9638f5910981be4700638463101924f0489d3ee334e",
+    "patterns/notifications.md": "542111accf734f2fc255e9b482ace01fd9fa3585677e3d29183213e2136e4c67",
     "patterns/offers.md": "7344be51f38fc3486d6c7b9b3e76d92f7db2c4420a293a6330bf4176701c33f1",
     "patterns/permissions.md": "37c8087ce0ccf86797fb2bfbe434ba137228915f2c32cf6940604eee1a571551",
     "patterns/search.md": "4409afa432b160a79c895e1c516214d97f83a57070a48b8b0047f2a766648fdb",
-    "patterns/success.md": "2e79616ae6cb6e80a87ea00b2c5f2260a0374ec8d2862772cd521ac8cbe40343",
+    "patterns/success.md": "c5465ec081d7bcdb568984ed64ba166306994e55ba86db97d3eaa411bfe83479",
     "patterns/system-errors.md": "48492aee44d9336c8230a1f22f384cb2b1e53e288050c9be24533953d03fe277",
     "patterns/welcome-carousel.md": "c6daafb9b87cb5f8b0cb1607699728772934556ace44deee93c55c42b3880d70",
     "components/library/README.md": "fbf960425125eda888802a1dff2ec5ef9e8bf59d391b9332643917629982ad4c",
@@ -77,7 +77,7 @@
     "components/library/transaction-row.md": "51e9d7d3814786ce06415dee940f780abd833cb805a4b73fc0e33cb863573be2"
   },
   "scripts": {
-    "assertions.py": "e5a8e165647bca2ec22a88895f3f4db34cb4692f27ac2c346df111e3559d2e76",
-    "rules.json": "aab20a229349a750a6595507c89f191263cdcd80be4d614b1ad3ee8fbbe35ee8"
+    "assertions.py": "b3febf989b896638678b83b87c90d6a827dad4c4311202633f4022f82a16345c",
+    "rules.json": "0031ec61b6daaf7cfef321c518348adb2acd2b5563f9ae1a81df638ce4a99698"
   }
 }

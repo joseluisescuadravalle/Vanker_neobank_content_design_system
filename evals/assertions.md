@@ -154,6 +154,12 @@ the code are kept in step by hand.
 | `A-GUILT` | No guilt or fear term ("you'll regret", "don't let", "lose out", "before it's too late", "you're missing", "don't miss"). Skipped by shape on `security`, `system-error` and `auth-error`, where a real consequence may need naming | `../compliance/dark-patterns.md` (rule 6), `../voice-and-tone/voice.md` |
 | `A-DECLINE-PRESENT` | **Screen level:** an `offer-screen` (title, body and buttons joined by line breaks, buttons last, one per line) carries a line equal to a decline label | `../compliance/dark-patterns.md` (rule 7) |
 
+`A-DECLINE-PRESENT` grades absence. When a second button exists, `A-CONFIRMSHAME` owns the
+judgment on it, so an interface runs the screen check only when the decline slot is empty
+(one character, one complaint); the second button of an offer is therefore optional in the
+form and required by the check, and the card is shown under that empty slot, where the
+defect is fixed, rather than in the screen-level block.
+
 ## Rules that are documented but not checked
 
 - The body never repeats the title (`../patterns/errors.md`). Word overlap is too weak a signal to check in code; the editorial review scores it under Clarity.

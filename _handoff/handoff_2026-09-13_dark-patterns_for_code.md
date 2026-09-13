@@ -69,15 +69,19 @@ Owners (for the gallery and "which file governs this"): `decline-cta` →
 | onboarding-step | `Don't let your savings lose value.` | fail A-GUILT |
 | security | `Someone tried to sign in from a new device. If it was not you, lock your card now.` | pass (exempt surface) |
 | offer-screen | `Upgrade to Plus` / body / `Upgrade` / `Not now` | pass |
-| offer-screen | same without `Not now` | fail A-DECLINE-PRESENT |
+| offer-screen | same without `Not now` | fail A-DECLINE-PRESENT, card under the second button |
 
 Amounts above carry a no-break space before `€` (U+00A0), as everywhere in the system.
 
 ## UI
 
 - No new panel: the seven checks render as the other 62 do (red card under the slot, FAIL +
-  check, Flagged, Reason, Suggestion). `A-DECLINE-PRESENT` renders under "Whole-screen
-  checks", next to `A-MONEY-ACCOUNTED`.
+  check, Flagged, Reason, Suggestion).
+- `A-DECLINE-PRESENT` (revised 13/09, after the first port): the second button of
+  `offer-screen` is optional in the form; the check runs only when that slot is empty, and
+  its card renders **under the second button slot**, where the defect is fixed, not under
+  "Whole-screen checks". When the slot is filled, `A-CONFIRMSHAME` owns the judgment.
+  Done in the app in `560dee0` (`SLOT_OWNED` in `App.tsx`, shared `ScreenFailCard`).
 - The gallery needs at least one `offer-screen` surface (an upgrade sheet: title, body,
   primary, tertiary) so the demo can load a bad example and watch the three screen and
   slot checks fire together.

@@ -38,11 +38,13 @@ to it; a pattern that lists none is "does not apply", and the review is skipped.
 | `decide-freely` | Decide freely | Accept or decline an offer with the cost in view and the decline at hand | offers |
 | `close-well` | Close well | End an action with the outcome stated and nothing sold | success |
 
-The **Label** is the short name an interface shows (two or three words, sentence case, the
-id in smaller type beside it); the description is helper text, never the option label. One
-allowed behavior is shown as a statement, not as a choice: a control with a single option
-is a question with one answer. Two to seven are a radio group, stacked, following
-`../patterns/forms.md`; never a dropdown for so few.
+The **Label** is the name an interface shows (two or three words, sentence case); the id
+is for files and prompts and is never shown next to the label. The description is helper
+text under the control, in the helper style of `../patterns/forms.md`, never part of the
+option and never run into the statement. One allowed behavior is shown as a statement, not
+as a choice ("This screen is for: Decide freely"): a control with a single option is a
+question with one answer. Two to seven are a radio group, stacked; never a dropdown for so
+few.
 
 ## Rubric
 

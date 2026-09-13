@@ -49,6 +49,7 @@ someone rebuilds the library. Read their property keys from
 | --- | --- | --- | --- |
 | `cta`, `button` | `Button` (page Button) | Style: Primary, Accent, Secondary, Tertiary, Destructive; Size: Large, Medium; State: Default, Pressed, Disabled | Label |
 | `error`, `confirmation`, `card-action`, `system-error-screen` in a dialog | `Sheet / Modal` (page Sheet & Modal) | Type: Sheet, Modal | Title, Body; nested Button instances `primary` and `cancel` carry their own Label |
+| `offer-screen` (an upgrade, a promotional rate, a partner product; `patterns/offers.md`) | `Sheet / Modal` (page Sheet & Modal) | Type: Sheet | Title carries the offer and its price; Body; `primary` carries the action verb; `cancel` carries the decline, one of Not now, Cancel, Back, Skip (surface `decline-cta`). Never build the sheet without the decline, and never place an offer on another surface |
 | `banner` | `Banner` (page Banner & Toast) | Variant: Info, Success, Warning, Error | Title, Description, Show description, Show action; nested Button instance `action` carries its Label |
 | `toast` | `Toast` (page Banner & Toast) | none | Message, Action, Show action |
 | `empty-state`, `no-results` | `Empty state` (page Empty state) | Kind: First use, No results, All caught up | Title, Description, Show action; nested Button `primary-action` |
@@ -78,6 +79,10 @@ the file is a placeholder (a circle or a simple vector); do not draw new icons o
 
 1. **Get the copy.** Run `vanker-content-design` on the request. Keep its output; it is
    also the text of the caption you will place next to the surface.
+   The content skill runs the dark-pattern checks with the rest (a shamed decline, false
+   scarcity, a hidden cost never reach Figma). The behavioral lens is not part of that
+   run: apply it only if the user asks for it, before building, and build from the copy
+   that passed the checks and the editorial review, not from the reviewer's notes.
 2. **Choose the container.** A full screen is a 375 × 812 frame named
    `Surface / <what it is>`, filled with `color/background`, corner radius 40, clipping
    content. A dialog sits on that frame above a `scrim` rectangle (fill `color/primary`,
@@ -144,5 +149,7 @@ the instance and report the defect as a finding.
   layer names that read as copy.
 - No normalizing the copy. The space between an amount and € is a no-break space (U+00A0)
   and stays one when pasted; a normal space lets the euro sign wrap alone on a narrow modal.
+- No offer, upgrade or partner product on a surface that is not an `offer-screen`: a
+  success, an error or a confirmation never carries an upsell (`patterns/offers.md`, rule 3).
 - No detaching instances. If a component does not fit, the component is wrong: fix it on
   its page.

@@ -107,8 +107,9 @@ can apply to a case the list never saw. Every card has the same four parts.
    Marketing of Financial Services (Directive EU 2023/2673) forbids making the decline
    harder than the accept.
 2. **No scarcity or time-pressure vocabulary anywhere in customer copy**: "limited time",
-   "only today", "ends soon", "ends in", "spots left", "only {n} left", "others are
-   viewing", "while it lasts". Reason: none of it is true of a bank product, and the words
+   "only today", "ends soon", "spots left", "only {n} left", "others are viewing", "while
+   it lasts", and no countdown ("ends in 2 hours", "in 04:59"; "your card ends in 4321"
+   is not one). Reason: none of it is true of a bank product, and the words
    are the ones a scam uses (see `../patterns/emails.md` on urgency and fraud).
 3. **No double negative in a checkbox or radio label.** Reason: nobody can tell what an
    unchecked "do not" means, and a consent given by mistake is not consent (see
@@ -176,7 +177,8 @@ can apply to a case the list never saw. Every card has the same four parts.
   "dark-patterns": {
     "decline-labels": ["Not now", "Cancel", "Back", "Skip"],
     "decline-forbidden": { "first-person": true, "cost-or-loss": true },
-    "scarcity-terms": ["limited time", "only today", "ends soon", "ends in", "spots left", "only {n} left", "others are viewing", "while it lasts"],
+    "scarcity-terms": ["limited time", "only today", "ends soon", "spots left", "only {n} left", "others are viewing", "while it lasts"],
+    "countdown": true,
     "double-negative": { "checkbox": false, "radio": false },
     "hidden-cost": { "asterisk-on-figure": false, "asterisk-on-free": false, "from-without-condition": false },
     "social-proof-terms": ["most people", "join thousands", "join millions", "everyone is", "customers like you"],

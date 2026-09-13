@@ -1312,7 +1312,7 @@ DECLINE_LABELS = ["Not now", "Cancel", "Back", "Skip"]
 _DECLINE_SET = {d.lower() for d in DECLINE_LABELS}
 FIRST_PERSON = re.compile(r"\b(?:i|i['’](?:ll|m|d|ve)|me|my|mine)\b", re.IGNORECASE)
 COST_OR_LOSS = re.compile(r"\b(?:pay|paying|fees?|lose|losing|loss|miss|missing|want|keep|stay|remain)\b", re.IGNORECASE)
-SCARCITY_TERMS = ["limited time", "only today", "ends soon", "ends in", "spots left", "seats left",
+SCARCITY_TERMS = ["limited time", "only today", "ends soon", "spots left", "seats left",
                   "places left", "only {n} left", "others are viewing", "people are viewing", "while it lasts"]
 SOCIAL_PROOF_TERMS = ["most people", "join thousands", "join millions", "everyone is", "customers like you",
                       "people like you"]
@@ -1333,7 +1333,9 @@ def _phrase_re(t):
 SCARCITY_RE = [(t, _phrase_re(t)) for t in SCARCITY_TERMS]
 SOCIAL_PROOF_RE = [(t, _phrase_re(t)) for t in SOCIAL_PROOF_TERMS]
 GUILT_RE = [(t, _phrase_re(t)) for t in GUILT_TERMS]
-COUNTDOWN = re.compile(r"\bin\s+\d{1,2}:\d{2}(?::\d{2})?\b|\b\d{1,2}:\d{2}(?::\d{2})?\b\s*(?:left|remaining)", re.IGNORECASE)
+# "ends in 4321" is a card number and "the code expires in 5 minutes" is a security fact;
+# "ends in 2 hours" and "ends in 04:59" are clocks on a decision.
+COUNTDOWN = re.compile(r"\bin\s+\d{1,2}:\d{2}(?::\d{2})?\b|\b\d{1,2}:\d{2}(?::\d{2})?\b\s*(?:left|remaining)|\b(?:ends?|closes?)\s+in\s+\d+\s*(?:seconds?|minutes?|hours?|days?|secs?|mins?|hrs?|h|m|s)\b", re.IGNORECASE)
 NEGATOR = re.compile(r"\b(?:not|never|no|without|un(?:tick|check|select|subscribe)\w*)\b|n['’]t\b", re.IGNORECASE)
 ASTERISK_PRICE = re.compile(r"(?:\d|€|\bfree)\s?\*", re.IGNORECASE)
 # "from 480 € to 505 €" is a range, not a price floor; the lookahead leaves it alone.

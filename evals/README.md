@@ -68,3 +68,14 @@ runs are the same model family, so it measures whether the system alone is enoug
 and to grade, not whether a different vendor would agree.
 
 Run all of them after any change.
+
+## Adversarial sweeps
+
+Before a new check is trusted, it is run against copy written to fool it in both
+directions: legitimate strings that share its vocabulary ("your card ends in 4321", "the
+code expires in 5 minutes", "from 480 € to 505 €") and dark patterns worded to slip past
+("Keep paying fees", "ends in 2 hours"). The 13 September sweep of the nine checks added
+that day (81 cases) found one false positive and no false negatives; the golden set
+carries the cases that changed a rule. The behavioral lens was exercised the same way,
+with four screens built to fail a named measure and an independent reviewer; each trap
+landed on the measure it was built for.

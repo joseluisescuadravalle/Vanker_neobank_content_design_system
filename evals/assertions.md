@@ -149,7 +149,7 @@ the code are kept in step by hand.
 | ID | Checks | Source |
 | --- | --- | --- |
 | `A-CONFIRMSHAME` | A decline label is one of "Not now", "Cancel", "Back", "Skip"; anything else fails, and the message names the first person or the cost or loss it found | `../compliance/dark-patterns.md` (rule 1), `../patterns/ctas.md` |
-| `A-SCARCITY` | No scarcity or time-pressure term ("limited time", "only today", "ends soon", "spots left", "only {n} left", "others are viewing", "while it lasts") and no countdown ("in 04:59", "02:00 left"). A clock time on its own ("after 22:00") passes | `../compliance/dark-patterns.md` (rule 2) |
+| `A-SCARCITY` | No scarcity or time-pressure term ("limited time", "only today", "ends soon", "spots left", "only {n} left", "others are viewing", "while it lasts") and no countdown ("in 04:59", "02:00 left", "ends in 2 hours"). A clock time on its own ("after 22:00") and a card number ("ends in 4321") pass | `../compliance/dark-patterns.md` (rule 2) |
 | `A-DOUBLE-NEGATIVE` | A checkbox or radio label carries at most one negator ("not", "never", "no", "without", "n't", "untick", "uncheck", "unsubscribe") | `../compliance/dark-patterns.md` (rule 3), `../components/library/checkbox.md` |
 | `A-PRICE-ASTERISK` | No `*` on a figure, on `€` or on "free"; "from {amount} €" needs a condition word ("if", "when", "for", "with", "after", "unless", "once", "on") in the same sentence. "from 480 € to 505 €" is a range and passes | `../compliance/dark-patterns.md` (rule 4), `../compliance/disclosures.md` |
 | `A-SOCIAL-PROOF` | No crowd without a source ("most people", "join thousands", "join millions", "everyone is", "customers like you") | `../compliance/dark-patterns.md` (rule 5) |

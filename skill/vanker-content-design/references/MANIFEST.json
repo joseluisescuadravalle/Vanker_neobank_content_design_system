@@ -17,7 +17,7 @@
     "compliance/README.md": "e52ccc7e7d6bb247f9ae4ed9e48edded3f5ac712c4543b2f11bdec6e81b3200c",
     "compliance/accessibility.md": "be8109ce3a94225c95edfc15ad0fa358c1cae6b3c54381f2312afac1e15800be",
     "compliance/complaints.md": "30bf8e44755aa123abd3f8257cedc97601ae7fa0c7575095847974915281e6c3",
-    "compliance/dark-patterns.md": "aedf6c2ecd00835b1e7b10d0a3ec87b1ce5ec1ca9619fad46bdd949c0977316b",
+    "compliance/dark-patterns.md": "294f57c6445a35c72811d6d28e02178009d74f65f5f6bf640486b78e280e12bb",
     "compliance/data-privacy.md": "b625daf54b9e41b02cc7529ff1088fa388fb7bf12000350d7d91fad3526cb195",
     "compliance/disclosures.md": "c3b7c11c91cd0108925e5082fe6eb113df3742b9b484285b0ce1845272d32f34",
     "compliance/framework.md": "93c8eec4922d20211ca7190260c14e57572f62d8060505a5f9e6e5953df8d320",
@@ -77,7 +77,7 @@
     "components/library/transaction-row.md": "51e9d7d3814786ce06415dee940f780abd833cb805a4b73fc0e33cb863573be2"
   },
   "scripts": {
-    "assertions.py": "b3febf989b896638678b83b87c90d6a827dad4c4311202633f4022f82a16345c",
-    "rules.json": "0031ec61b6daaf7cfef321c518348adb2acd2b5563f9ae1a81df638ce4a99698"
+    "assertions.py": "274cc5a398e55eaddd878c5742e2bb4f5e7fb8c8fde9cde7456a7e289d342c5c",
+    "rules.json": "e86f3678791ba2020c07908ffc26534ad20d36aefd59cd64cc97ce780f6ac197"
   }
 }

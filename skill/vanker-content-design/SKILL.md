@@ -23,8 +23,9 @@ When two sources disagree, the higher one wins:
 2. `references/compliance/`
 3. `references/terminology/` (always applied)
 4. `references/voice-and-tone/`
-5. `references/patterns/`
-6. `references/components/`
+5. `references/behavioral/` (the persuasion Vanker allows; a nudge never breaks the layers above)
+6. `references/patterns/`
+7. `references/components/`
 
 Examples never override rules. Anything labeled "example" is illustrative.
 

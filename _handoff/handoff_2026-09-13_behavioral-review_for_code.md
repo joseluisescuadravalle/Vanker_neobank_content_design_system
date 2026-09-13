@@ -79,13 +79,14 @@ maximum available for the applicable measures.
   `na` rendered as a muted "not applicable"; the verdict line; the block **What the
   behavioral reviewer would change**.
 - No "Use this copy" button on this panel: it never produces copy.
-- A short line under the title, always visible: "Does the copy serve the declared
-  behavior, with only the biases this pattern allows?" (Revised 13/09, evening: one
-  sentence; the earlier two-sentence version was too long.)
-- The behavior label is shown alone ("Decide freely"); the id is never shown. Its
-  description goes under the control as helper text, in the helper style of
-  `patterns/forms.md`, visually separate from the statement (see `behavioral/lens.md`,
-  the paragraph under the target-behaviors table).
+- A short line under the title, always visible: "Checks that the copy serves the declared
+  behavior, using only the biases this pattern allows." (Revised twice on 13/09: one
+  sentence, and a statement, never a question.)
+- Three lines, in this order: the label **Target behavior** (label-out style of
+  `patterns/forms.md`); the value ("Decide freely") on its own line, or the radio group
+  when the pattern allows several; the description as helper text under it, in the helper
+  style. The id is never shown. "This screen is for" is gone: it did not say what the
+  value was.
 
 ## The Offer example in the gallery
 

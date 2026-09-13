@@ -41,10 +41,12 @@ to it; a pattern that lists none is "does not apply", and the review is skipped.
 The **Label** is the name an interface shows (two or three words, sentence case); the id
 is for files and prompts and is never shown next to the label. The description is helper
 text under the control, in the helper style of `../patterns/forms.md`, never part of the
-option and never run into the statement. One allowed behavior is shown as a statement, not
-as a choice ("This screen is for: Decide freely"): a control with a single option is a
-question with one answer. Two to seven are a radio group, stacked; never a dropdown for so
-few.
+option and never run into the statement. The control is introduced by the label
+**Target behavior** (a label out, as in `../patterns/forms.md`), never by a sentence. One
+allowed behavior is shown as a value under that label, not as a choice ("Target behavior" /
+"Decide freely" / the helper): a control with a single option is a question with one
+answer. Two to seven are a radio group under the same label as its legend, stacked; never a
+dropdown for so few.
 
 ## Rubric
 

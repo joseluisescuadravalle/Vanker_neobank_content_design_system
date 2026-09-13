@@ -90,7 +90,7 @@ subscription they did not want.** Each card names both sides.
   rewards balance" that is not money). Vanker names what it is.
 - **Patterns.** empty-states, cards, success.
 - **Forbidden.** None.
-- ✅ Set money aside for what matters, like a trip or a rainy day.
+- ✅ Set money aside for what matters most, like a trip or a rainy day.
 - ❌ Your Vanker points are waiting for you. Reason: a label for something that is not money.
 - **Watched by.** `A-NO-BANNED` (code); "Label names real money" in `lens.md`.
 

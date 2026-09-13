@@ -103,3 +103,15 @@ The offer surface has its own pattern file. Two things for the app:
 - Owners for `offer-screen` are now `patterns/offers.md` and `compliance/dark-patterns.md`;
   for `decline-cta`, `patterns/offers.md`, `compliance/dark-patterns.md`, `patterns/ctas.md`
   (see `rules.json` / `owners.json` after the next build).
+
+## Addendum, 13 September (night): the withdrawal sentence
+
+`compliance/disclosures.md` now fixes the wording for a paid tier or feature: the offer body
+carries, verbatim, "You can change your mind within 14 days, and we refund the fee." The
+gallery example body for Offer (sheet) becomes:
+
+"Plus includes 5 free international transfers a month and a second card. You can cancel any
+month, and the fee stops the next month. You can change your mind within 14 days, and we
+refund the fee."
+
+Same as `patterns/offers.md` and the golden case `offer.plus-sheet`.

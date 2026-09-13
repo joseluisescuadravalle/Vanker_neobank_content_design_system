@@ -40,6 +40,9 @@ What Vanker must disclose, and where it appears. Amounts follow the European mon
 - State the **14-day right of withdrawal** where it applies, and provide a working
   **online withdrawal function** (a clear "withdrawal" control), no harder to use than
   sign-up.
+- A **paid tier or paid feature** taken in the app is a distance contract, so the right
+  applies. The offer body carries the fixed sentence, verbatim: "You can change your mind
+  within 14 days, and we refund the fee." (See `../patterns/offers.md`.)
 
 ## Credit (conditional, CCD2)
 
@@ -58,6 +61,7 @@ returns, before the person invests.
 ## Eval hooks
 
 - Every fee in customer copy states an exact amount or "free".
+- A paid tier or feature offer carries the withdrawal sentence verbatim.
 - Deposit-protection copy states "100.000 €" and names the scheme.
 - Currency conversion copy states the markup over the ECB rate.
 - Credit copy (if present) contains the APR and the total amount payable.

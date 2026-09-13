@@ -24,8 +24,9 @@ seen, the decline is as close as the accept, and the answer is taken as final. E
 ## Situations
 
 - **A paid tier or feature** (an upgrade): a contract at a distance, so
-  `../compliance/disclosures.md` applies: the fee, what it includes, and the right of
-  withdrawal where it applies.
+  `../compliance/disclosures.md` applies: the fee, what it includes, and the 14-day right
+  of withdrawal, with its fixed sentence in the body: "You can change your mind within 14
+  days, and we refund the fee."
 - **A promotional rate**: the rate, its end date as a plain date, and what happens after.
 - **A partner product**: who provides it, and that leaving Vanker's screens is about to
   happen.
@@ -78,8 +79,8 @@ seen, the decline is as close as the accept, and the answer is taken as final. E
 ## Examples (slot format)
 
 - ✅ Title "Plus for 4 € a month" / Body "Plus includes 5 free international transfers a month and
-  a second card. You can cancel any month, and the fee stops the next month." / Primary "Upgrade"
-  / Decline "Not now".
+  a second card. You can cancel any month, and the fee stops the next month. You can change
+  your mind within 14 days, and we refund the fee." / Primary "Upgrade" / Decline "Not now".
 - ✅ Title "2% on Spaces until 31 October 2026" / Body "The rate applies to every Space
   from today until 31 October 2026. After that date, the standard rate applies." /
   Primary "Activate" / Decline "Not now".
@@ -130,6 +131,8 @@ seen, the decline is as close as the accept, and the answer is taken as final. E
   question mark; the reviewer confirms it names the offer.
 - Decline is one of the controlled labels (`A-CONFIRMSHAME`) and is present
   (`A-DECLINE-PRESENT`).
+- A paid tier or feature carries the withdrawal sentence verbatim (reviewer, compliance
+  dimension).
 - No scarcity, crowd, fear or asterisk (`A-SCARCITY`, `A-SOCIAL-PROOF`, `A-GUILT`,
   `A-PRICE-ASTERISK`).
 - An offer never appears inside another task (reviewer; documented, not checked).

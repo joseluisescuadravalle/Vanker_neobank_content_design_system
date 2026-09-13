@@ -160,6 +160,12 @@ judgment on it, so an interface runs the screen check only when the decline slot
 form and required by the check, and the card is shown under that empty slot, where the
 defect is fixed, rather than in the screen-level block.
 
+`check_examples.py` runs only the surface-agnostic checks, so an approved example in the docs can
+still break a surface rule (`patterns/offers.md` shipped a body with a semicolon, found in the
+app). The fix is not a noisier example check (adding `A-PUNCTUATION` to it flagged 4 prose
+fragments and 1 real case): it is a golden case per approved screen example, which runs the
+full surface list. `offer.plus-sheet` is the first.
+
 ## Rules that are documented but not checked
 
 - The body never repeats the title (`../patterns/errors.md`). Word overlap is too weak a signal to check in code; the editorial review scores it under Clarity.

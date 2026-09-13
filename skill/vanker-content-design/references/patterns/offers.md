@@ -78,7 +78,7 @@ seen, the decline is as close as the accept, and the answer is taken as final. E
 ## Examples (slot format)
 
 - ✅ Title "Plus for 4 € a month" / Body "Plus includes 5 free international transfers a month and
-  a second card. You can cancel any month; the fee stops the next month." / Primary "Upgrade"
+  a second card. You can cancel any month, and the fee stops the next month." / Primary "Upgrade"
   / Decline "Not now".
 - ✅ Title "2% on Spaces until 31 October 2026" / Body "The rate applies to every Space
   from today until 31 October 2026. After that date, the standard rate applies." /

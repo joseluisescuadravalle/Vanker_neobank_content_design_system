@@ -28,15 +28,21 @@ and reviewable.
 The short list an author picks from. Each pattern's lens block names which of these apply
 to it; a pattern that lists none is "does not apply", and the review is skipped.
 
-| Id | Target behavior | Typical patterns |
-| --- | --- | --- |
-| `start-saving` | Open a first Space or make a first saving | empty-states, success, welcome-carousel |
-| `keep-saving` | Set or keep a recurring saving | success, notifications |
-| `complete-setup` | Finish a multi-step setup (alerts, biometrics, a first transfer) | flow-intro, forms |
-| `protect-account` | Turn on or keep a protection (alerts, freeze, limits) | notifications, cards, confirmations |
-| `confirm-safely` | Confirm an irreversible or large action with the consequence in view | confirmations, cards |
-| `decide-freely` | Accept or decline an offer with the cost in view and the decline at hand | offers |
-| `close-well` | End an action with the outcome stated and nothing sold | success |
+| Id | Label | What it means | Typical patterns |
+| --- | --- | --- | --- |
+| `start-saving` | Start saving | Open a first Space or make a first saving | empty-states, success, welcome-carousel |
+| `keep-saving` | Keep saving | Set or keep a recurring saving | success, notifications |
+| `complete-setup` | Complete a setup | Finish a multi-step setup (alerts, biometrics, a first transfer) | flow-intro, forms |
+| `protect-account` | Protect the account | Turn on or keep a protection (alerts, freeze, limits) | notifications, cards, confirmations |
+| `confirm-safely` | Confirm safely | Confirm an irreversible or large action with the consequence in view | confirmations, cards |
+| `decide-freely` | Decide freely | Accept or decline an offer with the cost in view and the decline at hand | offers |
+| `close-well` | Close well | End an action with the outcome stated and nothing sold | success |
+
+The **Label** is the short name an interface shows (two or three words, sentence case, the
+id in smaller type beside it); the description is helper text, never the option label. One
+allowed behavior is shown as a statement, not as a choice: a control with a single option
+is a question with one answer. Two to seven are a radio group, stacked, following
+`../patterns/forms.md`; never a dropdown for so few.
 
 ## Rubric
 

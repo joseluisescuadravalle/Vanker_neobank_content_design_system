@@ -14,14 +14,15 @@
     "voice-and-tone/inclusive-language.md": "141d8380fd4a55a4bc63cddb1b6cf51d02254a7d11b74a61b4bcf7b9669b2554",
     "voice-and-tone/tone.md": "c9d0d1039f825ace75d6f8b177f1698f017c3342b4dbc7989d47561e88ebc45e",
     "voice-and-tone/voice.md": "6d24338d51512f95728753a49e3229cfeb6855f51f9a6fed2cecd17d2920352b",
-    "compliance/README.md": "66429ec6c60d8236462c536d03531707350d31feb357f216add4d489c3c1eb8b",
+    "compliance/README.md": "e52ccc7e7d6bb247f9ae4ed9e48edded3f5ac712c4543b2f11bdec6e81b3200c",
     "compliance/accessibility.md": "be8109ce3a94225c95edfc15ad0fa358c1cae6b3c54381f2312afac1e15800be",
     "compliance/complaints.md": "30bf8e44755aa123abd3f8257cedc97601ae7fa0c7575095847974915281e6c3",
+    "compliance/dark-patterns.md": "8c48f9e8440f06ad498412c2cb95cf12fa9ae6ec7b24df57957162cac90fc692",
     "compliance/data-privacy.md": "b625daf54b9e41b02cc7529ff1088fa388fb7bf12000350d7d91fad3526cb195",
     "compliance/disclosures.md": "9d6ec272398965006dc606124f7127ef69b38b93214747d6c0459201dec73994",
-    "compliance/framework.md": "3a6304af6eaf44cc39ca1d36d51308834f0a79c1a484c351d8786bc7fcc7e141",
+    "compliance/framework.md": "93c8eec4922d20211ca7190260c14e57572f62d8060505a5f9e6e5953df8d320",
     "compliance/identity-kyc.md": "e76eed96f753f3293bc391895f5ec4a2f56f6b809b8c885bcbccd1e1ff29a517",
-    "compliance/principles.md": "0c8bedc2414593c86c00a3fc397a9beae0630094f107de101ab6f302e23ce41d",
+    "compliance/principles.md": "4e615f74e53245e931eaedcc804ee3d5a560d58be05d826f482ade17b77cc2d1",
     "compliance/risk-warnings.md": "f374722fe46121f3188481bf2c0a6b39ad351ec6a76dd3c178496fe7d2a29efc",
     "compliance/security-payments.md": "8dd25d0697a512eb1bbd4027fe74fd9d7aece82838c316238ef1aa7f19574147",
     "patterns/README.md": "94186ff0e2dd66d3a759087b1d7f0756fff58dd5947f6b026db0a3c121f9b886",
@@ -72,7 +73,7 @@
     "components/library/transaction-row.md": "51e9d7d3814786ce06415dee940f780abd833cb805a4b73fc0e33cb863573be2"
   },
   "scripts": {
-    "assertions.py": "a6de5165e35726fd31bda31259e33b5e3c55811e7a210da921ebfca620aad92b",
-    "rules.json": "f8a33ae8bdf4c58609e2be3a2a2fffaed43c104577a8df56b01a279d01c623fa"
+    "assertions.py": "e5a8e165647bca2ec22a88895f3f4db34cb4692f27ac2c346df111e3559d2e76",
+    "rules.json": "aab20a229349a750a6595507c89f191263cdcd80be4d614b1ad3ee8fbbe35ee8"
   }
 }

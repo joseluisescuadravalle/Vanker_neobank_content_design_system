@@ -112,7 +112,11 @@ costs you a rerun, not a customer.
    `risk-warnings.md`. Identity, documents, selfies: `identity-kyc.md`. Personal data,
    permissions, masking: `data-privacy.md`. A complaint or anything a person could
    complain about: `complaints.md`. Screen readers, color, alt text: `accessibility.md`.
-   Each file says which surfaces require what, verbatim where the wording is fixed.
+   An offer, an upgrade, a consent, or anything that asks the person to accept:
+   `dark-patterns.md` (the decline is "Not now", "Cancel", "Back" or "Skip", checked as
+   surface `decline-cta`; the whole sheet is checked as `offer-screen`, buttons last, one
+   per line). Each file says which surfaces require what, verbatim where the wording is
+   fixed.
 4. **Write.** Where the system fixes the wording, use it verbatim. A screen that interrupts
    a money action says one of exactly three things about the money ("No money has left
    your account.", "Your payment is on its way and we will confirm it.", "We do not know

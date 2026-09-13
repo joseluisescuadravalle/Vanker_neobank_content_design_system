@@ -135,9 +135,29 @@ single-use code is a **code** (see `../terminology/glossary.md`).
 | --- | --- | --- |
 | `A-NO-CLAIMS` | No prohibited claims ("guaranteed", "risk-free", etc.) | `../compliance/principles.md`, `../compliance/risk-warnings.md` |
 
+## Dark patterns
+
+Each check names the pattern, not only the word, because the pattern is what teaches the
+writer. `A-SCARCITY` and `A-GUILT` extend the pressure family `A-NO-BANNED` already
+rejects; they are separate checks so the panel says "false scarcity" rather than "banned
+word". Their lists live in `assertions.py` next to the checks and reach the app through
+`rules.json`; `terms_sync.py` does not cover them, so `../compliance/dark-patterns.md` and
+the code are kept in step by hand.
+
+| ID | Checks | Source |
+| --- | --- | --- |
+| `A-CONFIRMSHAME` | A decline label is one of "Not now", "Cancel", "Back", "Skip"; anything else fails, and the message names the first person or the cost or loss it found | `../compliance/dark-patterns.md` (rule 1), `../patterns/ctas.md` |
+| `A-SCARCITY` | No scarcity or time-pressure term ("limited time", "only today", "ends soon", "spots left", "only {n} left", "others are viewing", "while it lasts") and no countdown ("in 04:59", "02:00 left"). A clock time on its own ("after 22:00") passes | `../compliance/dark-patterns.md` (rule 2) |
+| `A-DOUBLE-NEGATIVE` | A checkbox or radio label carries at most one negator ("not", "never", "no", "without", "n't", "untick", "uncheck", "unsubscribe") | `../compliance/dark-patterns.md` (rule 3), `../components/library/checkbox.md` |
+| `A-PRICE-ASTERISK` | No `*` on a figure, on `€` or on "free"; "from {amount} €" needs a condition word ("if", "when", "for", "with", "after", "unless", "once", "on") in the same sentence. "from 480 € to 505 €" is a range and passes | `../compliance/dark-patterns.md` (rule 4), `../compliance/disclosures.md` |
+| `A-SOCIAL-PROOF` | No crowd without a source ("most people", "join thousands", "join millions", "everyone is", "customers like you") | `../compliance/dark-patterns.md` (rule 5) |
+| `A-GUILT` | No guilt or fear term ("you'll regret", "don't let", "lose out", "before it's too late", "you're missing", "don't miss"). Skipped by shape on `security`, `system-error` and `auth-error`, where a real consequence may need naming | `../compliance/dark-patterns.md` (rule 6), `../voice-and-tone/voice.md` |
+| `A-DECLINE-PRESENT` | **Screen level:** an `offer-screen` (title, body and buttons joined by line breaks, buttons last, one per line) carries a line equal to a decline label | `../compliance/dark-patterns.md` (rule 7) |
+
 ## Rules that are documented but not checked
 
 - The body never repeats the title (`../patterns/errors.md`). Word overlap is too weak a signal to check in code; the editorial review scores it under Clarity.
+- Four dark patterns no single string reveals (`../compliance/dark-patterns.md`, rule 8): asymmetric friction (more steps to cancel than to sign up), nagging (the same offer repeated after a "Not now"), preselecting the more expensive option (a component state, not a string), and sludge in the complaints route. They are graded by judgment, not by code.
 
 `../terminology/capitalization-and-punctuation.md` names two rules that are deliberately not
 implemented: curly quotes, and sentence case beyond Title Case detection. Both would produce
@@ -186,7 +206,7 @@ rule is code-checkable (those live in `rubric.md`).
 
 ## Checks that apply to every surface
 
-`A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, `A-REPEATED-CHARS` and `A-COLOR-ALONE` are appended to **every** surface list
+`A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, `A-REPEATED-CHARS`, `A-COLOR-ALONE`, `A-SCARCITY`, `A-SOCIAL-PROOF` and `A-GUILT` are appended to **every** surface list
 automatically. Surface lists are hand-written, so a cross-cutting check added later would
 otherwise reach only the surfaces someone remembered to update — which is exactly how the
 inclusive-language check first missed `helper-text`.
@@ -201,6 +221,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | --- | --- |
 | `cta`, `button` | `A-CTA`, `A-NO-EMOJI` only |
 | `field-error`, `validation` | `A-FIELD-ERROR`, plus the body checks (money format, banned, claims, acronyms) |
+
+The body checks now include `A-PRICE-ASTERISK`; `push-body` and `carousel-body` carry it explicitly.
 | `push-title` | `A-PUSH-TITLE` (emoji allowed, non-critical only), money/banned/claims; no `A-NO-EMOJI` |
 | `push-body`, `notification` | `A-PUSH-BODY` plus the body checks (no emoji) |
 | `toast` | `A-TOAST`, `A-NO-EMOJI`, plus money/banned/claims |
@@ -210,8 +232,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `legend` | `A-LEGEND`, `A-NO-EMOJI`, banned/claims |
 | `helper-text` | `A-HELPER`, `A-NO-EMOJI`, money/banned/claims/acronyms, `A-NO-INLINE-CTA` |
 | `placeholder` | `A-NO-EMOJI`, banned/claims (format example only) |
-| `checkbox` | `A-CHECKBOX`, `A-NO-EMOJI`, banned/claims |
-| `radio-option`, `radio` | `A-RADIO`, banned/claims |
+| `checkbox` | `A-CHECKBOX`, `A-DOUBLE-NEGATIVE`, `A-NO-EMOJI`, banned/claims |
+| `radio-option`, `radio` | `A-RADIO`, `A-DOUBLE-NEGATIVE`, banned/claims |
 | `status-label`, `status`, `badge`, `tag` | `A-STATUS`, `A-NO-EMOJI`, banned/claims |
 | `amount-value`, `preset-amount` | `A-AMOUNT-VALUE`, `A-NO-EMOJI`, banned/claims. **Never `A-CTA`**: a preset amount is a value, not a call to action |
 | `amount-label` | `A-AMOUNT-LABEL`, `A-NO-EMOJI`, banned/claims |
@@ -251,6 +273,8 @@ Apply checks by surface (see `SURFACE_CHECKS` / `checks_for` in `assertions.py`)
 | `email-subject` | `A-SUBJECT`, banned/claims, `A-MASK`, money format, `A-CREDENTIALS` |
 | `email-preheader` | `A-PREHEADER`, banned/claims, `A-MASK`, money format |
 | `email-body` | The body checks plus `A-CREDENTIALS` |
+| `decline-cta` | `A-CONFIRMSHAME`, `A-CTA`, `A-NO-EMOJI`, `A-CASE` (the second CTA slot of an offer or consent) |
+| `offer-screen` | The body checks plus `A-DECLINE-PRESENT` (screen level, slots joined) |
 | everything else (error, confirmation, empty-state, onboarding-step, disclosure, risk-warning, security, banner) | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-MASK` |
 
 The app must select checks by surface. `assertions.run(text, surface="cta")` returns only

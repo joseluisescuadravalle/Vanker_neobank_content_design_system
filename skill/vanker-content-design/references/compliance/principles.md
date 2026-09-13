@@ -11,7 +11,8 @@ The cross-cutting rules that apply to all customer-facing content, whatever the 
 - Every cost, risk, condition, and limit that affects a decision appears **before** the
   person commits, not after.
 - No dark patterns: no pre-ticked boxes, no disguised costs, no pressure, no harder path
-  to decline than to accept (Distance Marketing of Financial Services).
+  to decline than to accept (Distance Marketing of Financial Services). Each pattern,
+  its signal in the copy and its check are in `dark-patterns.md`.
 
 ## 2. Prohibited claims
 

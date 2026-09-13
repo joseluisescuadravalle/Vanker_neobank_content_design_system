@@ -63,6 +63,8 @@ SURFACE_OWNERS = {
     "email-subject": ["patterns/emails.md"],
     "email-preheader": ["patterns/emails.md"],
     "email-body": ["patterns/emails.md"],
+    "decline-cta": ["compliance/dark-patterns.md", "patterns/ctas.md"],
+    "offer-screen": ["compliance/dark-patterns.md"],
     "onboarding-step": ["components/library/onboarding-step.md", "patterns/flow-intro.md"],
     "flow-intro-body": ["patterns/flow-intro.md"],
     "flow-intro-cta": ["patterns/flow-intro.md", "patterns/ctas.md"],

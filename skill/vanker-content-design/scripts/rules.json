@@ -17,16 +17,20 @@
     "A-CHIP",
     "A-COLOR-ALONE",
     "A-COMPLAINT",
+    "A-CONFIRMSHAME",
     "A-COUNTER",
     "A-CREDENTIALS",
     "A-CTA",
     "A-DATE",
     "A-DATE-UNAVAILABLE",
+    "A-DECLINE-PRESENT",
+    "A-DOUBLE-NEGATIVE",
     "A-ENUMERATION",
     "A-ERROR-SUMMARY",
     "A-EURO-FORMAT",
     "A-FIELD-ERROR",
     "A-FX",
+    "A-GUILT",
     "A-HELPER",
     "A-INCLUSIVE",
     "A-INTRO-CTA",
@@ -49,14 +53,17 @@
     "A-PARAGRAPHS",
     "A-PERMISSION",
     "A-PREHEADER",
+    "A-PRICE-ASTERISK",
     "A-PUNCTUATION",
     "A-PUSH-BODY",
     "A-PUSH-TITLE",
     "A-RADIO",
     "A-REPEATED-CHARS",
     "A-REVERSIBILITY",
+    "A-SCARCITY",
     "A-SEARCH-PLACEHOLDER",
     "A-SKELETON",
+    "A-SOCIAL-PROOF",
     "A-STATUS",
     "A-SUBJECT",
     "A-SYSTEM-ERROR",
@@ -71,7 +78,10 @@
     "A-INCLUSIVE",
     "A-LOCALIZABLE",
     "A-REPEATED-CHARS",
-    "A-COLOR-ALONE"
+    "A-COLOR-ALONE",
+    "A-SCARCITY",
+    "A-SOCIAL-PROOF",
+    "A-GUILT"
   ],
   "surfaces": {
     "accordion-body": [
@@ -88,9 +98,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "accordion-header": [
       "A-ACCORDION-HEADER",
@@ -100,7 +114,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "alt-text": [
       "A-ALT",
@@ -112,7 +129,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "amount-label": [
       "A-AMOUNT-LABEL",
@@ -122,7 +142,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "amount-value": [
       "A-AMOUNT-VALUE",
@@ -132,7 +155,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "auth": [
       "A-NO-EMOJI",
@@ -148,10 +174,14 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-ENUMERATION",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "auth-error": [
       "A-FIELD-ERROR",
@@ -171,7 +201,10 @@
       "A-ENUMERATION",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "badge": [
       "A-STATUS",
@@ -181,7 +214,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "banner": [
       "A-NO-EMOJI",
@@ -197,9 +233,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "button": [
       "A-CTA",
@@ -210,7 +250,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "card-action": [
       "A-NO-EMOJI",
@@ -226,21 +269,29 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-REVERSIBILITY",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "carousel-body": [
       "A-CARD-BODY",
       "A-NO-BANNED",
       "A-NO-CLAIMS",
       "A-NO-EMOJI",
+      "A-PRICE-ASTERISK",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "carousel-headline": [
       "A-CARD-HEADLINE",
@@ -250,7 +301,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "category": [
       "A-CATEGORY-GUESS",
@@ -261,7 +315,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "chart-copy": [
       "A-NO-EMOJI",
@@ -277,20 +334,28 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-CATEGORY-GUESS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "checkbox": [
       "A-CHECKBOX",
+      "A-DOUBLE-NEGATIVE",
       "A-NO-EMOJI",
       "A-NO-BANNED",
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "chip": [
       "A-CHIP",
@@ -300,7 +365,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "code-screen": [
       "A-NO-EMOJI",
@@ -316,9 +384,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "complaint-acknowledgement": [
       "A-NO-EMOJI",
@@ -334,10 +406,14 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-COMPLAINT",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "complaint-answer": [
       "A-NO-EMOJI",
@@ -353,10 +429,14 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-COMPLAINT",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "confirmation": [
       "A-NO-EMOJI",
@@ -372,9 +452,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "count-badge": [
       "A-BADGE",
@@ -383,7 +467,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "counter": [
       "A-COUNTER",
@@ -392,7 +479,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "cta": [
       "A-CTA",
@@ -403,7 +493,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "date-unavailable": [
       "A-DATE-UNAVAILABLE",
@@ -415,7 +508,25 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
+    ],
+    "decline-cta": [
+      "A-CONFIRMSHAME",
+      "A-CTA",
+      "A-NO-EMOJI",
+      "A-CASE",
+      "A-NO-BANNED",
+      "A-NO-CLAIMS",
+      "A-INCLUSIVE",
+      "A-LOCALIZABLE",
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "disclosure": [
       "A-NO-EMOJI",
@@ -431,9 +542,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "dropdown-option": [
       "A-OPTION",
@@ -442,7 +557,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "email-body": [
       "A-NO-EMOJI",
@@ -458,11 +576,15 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-CREDENTIALS",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "email-preheader": [
       "A-PREHEADER",
@@ -473,7 +595,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "email-subject": [
       "A-SUBJECT",
@@ -485,7 +610,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "empty-state": [
       "A-NO-EMOJI",
@@ -501,9 +629,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "error": [
       "A-NO-EMOJI",
@@ -519,10 +651,14 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "error-summary-title": [
       "A-ERROR-SUMMARY",
@@ -532,7 +668,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "field-error": [
       "A-FIELD-ERROR",
@@ -551,7 +690,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "flow-intro-body": [
       "A-NO-EMOJI",
@@ -567,10 +709,14 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "flow-intro-cta": [
       "A-INTRO-CTA",
@@ -581,7 +727,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "fx-quote": [
       "A-NO-EMOJI",
@@ -597,10 +746,14 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-FX",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "helper-text": [
       "A-HELPER",
@@ -613,7 +766,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "label-in": [
       "A-LABEL-IN",
@@ -623,7 +779,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "label-out": [
       "A-LABEL-OUT",
@@ -634,7 +793,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "legend": [
       "A-LEGEND",
@@ -644,7 +806,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "link": [
       "A-LINK-TEXT",
@@ -655,7 +820,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "loading": [
       "A-LOADING",
@@ -664,7 +832,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "loading-screen": [
       "A-NO-EMOJI",
@@ -680,11 +851,15 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-MONEY-ACCOUNTED",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "no-results": [
       "A-NO-RESULTS",
@@ -696,7 +871,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "notification": [
       "A-NO-EMOJI",
@@ -712,9 +890,36 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
+    ],
+    "offer-screen": [
+      "A-NO-EMOJI",
+      "A-EURO-FORMAT",
+      "A-NO-BANNED",
+      "A-NO-CLAIMS",
+      "A-ACRONYMS",
+      "A-NO-INLINE-CTA",
+      "A-MASK",
+      "A-NEGATION",
+      "A-NUMERALS",
+      "A-PUNCTUATION",
+      "A-CASE",
+      "A-DATE",
+      "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
+      "A-DECLINE-PRESENT",
+      "A-LOCALIZABLE",
+      "A-REPEATED-CHARS",
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "onboarding-step": [
       "A-NO-EMOJI",
@@ -730,9 +935,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "option": [
       "A-OPTION",
@@ -741,7 +950,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "permission-body": [
       "A-NO-EMOJI",
@@ -757,11 +969,15 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-PERMISSION",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "permission-heading": [
       "A-NO-EMOJI",
@@ -771,7 +987,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "placeholder": [
       "A-NO-EMOJI",
@@ -780,7 +999,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "preset-amount": [
       "A-AMOUNT-VALUE",
@@ -790,7 +1012,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "push-body": [
       "A-PUSH-BODY",
@@ -802,10 +1027,14 @@
       "A-NO-INLINE-CTA",
       "A-MASK",
       "A-CREDENTIALS",
+      "A-PRICE-ASTERISK",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "push-title": [
       "A-PUSH-TITLE",
@@ -815,25 +1044,36 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "radio": [
       "A-RADIO",
+      "A-DOUBLE-NEGATIVE",
       "A-NO-BANNED",
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "radio-option": [
       "A-RADIO",
+      "A-DOUBLE-NEGATIVE",
       "A-NO-BANNED",
       "A-NO-CLAIMS",
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "risk-warning": [
       "A-NO-EMOJI",
@@ -849,9 +1089,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "search-placeholder": [
       "A-SEARCH-PLACEHOLDER",
@@ -862,7 +1106,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "security": [
       "A-NO-EMOJI",
@@ -878,9 +1125,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "skeleton": [
       "A-SKELETON",
@@ -889,7 +1140,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "status": [
       "A-STATUS",
@@ -899,7 +1153,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "status-label": [
       "A-STATUS",
@@ -909,7 +1166,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "system-error": [
       "A-NO-EMOJI",
@@ -925,10 +1185,14 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-SYSTEM-ERROR",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "system-error-screen": [
       "A-NO-EMOJI",
@@ -944,13 +1208,17 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-SYSTEM-ERROR",
       "A-MONEY-ACCOUNTED",
       "A-ATTRIBUTION",
       "A-PARAGRAPHS",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "system-error-title": [
       "A-SYSTEM-ERROR",
@@ -962,7 +1230,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "tag": [
       "A-STATUS",
@@ -972,7 +1243,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "toast": [
       "A-TOAST",
@@ -983,7 +1257,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "toggle-description": [
       "A-NO-EMOJI",
@@ -999,9 +1276,13 @@
       "A-CASE",
       "A-DATE",
       "A-INCLUSIVE",
+      "A-PRICE-ASTERISK",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "toggle-label": [
       "A-TOGGLE-LABEL",
@@ -1011,7 +1292,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "tooltip": [
       "A-TOOLTIP",
@@ -1022,7 +1306,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "tooltip-trigger": [
       "A-TOOLTIP-TRIGGER",
@@ -1032,7 +1319,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ],
     "validation": [
       "A-FIELD-ERROR",
@@ -1051,7 +1341,10 @@
       "A-INCLUSIVE",
       "A-LOCALIZABLE",
       "A-REPEATED-CHARS",
-      "A-COLOR-ALONE"
+      "A-COLOR-ALONE",
+      "A-SCARCITY",
+      "A-SOCIAL-PROOF",
+      "A-GUILT"
     ]
   },
   "lists": {
@@ -1271,6 +1564,50 @@
       "status-label",
       "tag",
       "toggle-label"
+    ],
+    "decline_labels": [
+      "Not now",
+      "Cancel",
+      "Back",
+      "Skip"
+    ],
+    "scarcity_terms": [
+      "limited time",
+      "only today",
+      "ends soon",
+      "ends in",
+      "spots left",
+      "seats left",
+      "places left",
+      "only {n} left",
+      "others are viewing",
+      "people are viewing",
+      "while it lasts"
+    ],
+    "social_proof_terms": [
+      "most people",
+      "join thousands",
+      "join millions",
+      "everyone is",
+      "customers like you",
+      "people like you"
+    ],
+    "guilt_terms": [
+      "you'll regret",
+      "you will regret",
+      "don't let",
+      "do not let",
+      "lose out",
+      "before it's too late",
+      "before it is too late",
+      "you're missing",
+      "you are missing",
+      "don't miss"
+    ],
+    "guilt_exempt_surfaces": [
+      "auth-error",
+      "security",
+      "system-error"
     ]
   },
   "patterns": {
@@ -1279,7 +1616,14 @@
     "repeated_chars": "([A-Za-z\\u00c0-\\u017f])\\1{2,}",
     "repeated_chars_exempt": "^(?:#[0-9A-Fa-f]{3,8}|(?:https?://|www\\.)\\S+|[A-Z0-9/#_-]+)$",
     "cta_two_actions": "\\b(?:or|and|then)\\b",
-    "emoji": "[\\u{1F300}-\\u{1FAFF}\\u{2600}-\\u{27BF}\\u{1F1E6}-\\u{1F1FF}]"
+    "emoji": "[\\u{1F300}-\\u{1FAFF}\\u{2600}-\\u{27BF}\\u{1F1E6}-\\u{1F1FF}]",
+    "countdown": "\\bin\\s+\\d{1,2}:\\d{2}(?::\\d{2})?\\b|\\b\\d{1,2}:\\d{2}(?::\\d{2})?\\b\\s*(?:left|remaining)",
+    "negator": "\\b(?:not|never|no|without|un(?:tick|check|select|subscribe)\\w*)\\b|n['\\u2019]t\\b",
+    "asterisk_price": "(?:\\d|€|\\bfree)\\s?\\*",
+    "from_price": "\\bfrom\\s+\\d[\\d.,]*\\s?€(?!\\s+(?:to|up to|down to)\\b)",
+    "price_condition": "\\b(?:if|when|for|with|after|unless|once|on)\\b",
+    "decline_first_person": "\\b(?:i|i['\\u2019](?:ll|m|d|ve)|me|my|mine)\\b",
+    "decline_cost_or_loss": "\\b(?:pay|paying|fees?|lose|losing|loss|miss|missing|want|keep|stay|remain)\\b"
   },
   "cta": {
     "max_words": 3,

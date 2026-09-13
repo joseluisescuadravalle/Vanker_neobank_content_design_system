@@ -97,6 +97,10 @@
     "date-unavailable": [
       "components/library/date-field.md"
     ],
+    "decline-cta": [
+      "compliance/dark-patterns.md",
+      "patterns/ctas.md"
+    ],
     "disclosure": [
       "compliance/disclosures.md"
     ],
@@ -172,6 +176,9 @@
     ],
     "notification": [
       "patterns/notifications.md"
+    ],
+    "offer-screen": [
+      "compliance/dark-patterns.md"
     ],
     "onboarding-step": [
       "components/library/onboarding-step.md",

@@ -4,7 +4,7 @@
 
 Start from the surface you are writing. Read the owning files before writing, and
 run `scripts/check_copy.py --surface <id>` on the result. Every surface also runs the
-universal checks: `A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, `A-REPEATED-CHARS`, `A-COLOR-ALONE`.
+universal checks: `A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, `A-REPEATED-CHARS`, `A-COLOR-ALONE`, `A-SCARCITY`, `A-SOCIAL-PROOF`, `A-GUILT`.
 
 ## Always read, whatever the surface
 
@@ -20,80 +20,82 @@ universal checks: `A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, 
 
 | Surface id | Checks (besides the universal ones) | Owning files |
 | --- | --- | --- |
-| `accordion-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `components/library/accordion.md` |
+| `accordion-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `components/library/accordion.md` |
 | `accordion-header` | `A-ACCORDION-HEADER`, `A-NUMERALS` | `components/library/accordion.md` |
 | `alt-text` | `A-ALT`, `A-CASE`, `A-PUNCTUATION`, `A-MASK` | `patterns/alt-text.md`, `patterns/accessibility.md` |
 | `amount-label` | `A-AMOUNT-LABEL`, `A-NO-EMOJI` | `components/library/amount-input.md` |
 | `amount-value` | `A-AMOUNT-VALUE`, `A-NO-EMOJI` | `components/library/amount-input.md` |
-| `auth` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-ENUMERATION` | `patterns/auth.md`, `components/library/code-input.md` |
+| `auth` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-ENUMERATION` | `patterns/auth.md`, `components/library/code-input.md` |
 | `auth-error` | `A-FIELD-ERROR`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-ENUMERATION` | `patterns/auth.md`, `patterns/errors.md` |
 | `badge` | `A-STATUS`, `A-NO-EMOJI` | `components/library/status-label.md` |
-| `banner` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `components/library/banner-toast.md` |
+| `banner` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `components/library/banner-toast.md` |
 | `button` | `A-CTA`, `A-NO-EMOJI`, `A-CASE` | `patterns/ctas.md`, `components/library/button.md` |
-| `card-action` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-REVERSIBILITY`, `A-PARAGRAPHS` | `patterns/cards.md`, `patterns/confirmations.md` |
-| `carousel-body` | `A-CARD-BODY`, `A-NO-EMOJI` | `patterns/welcome-carousel.md` |
+| `card-action` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-REVERSIBILITY`, `A-PARAGRAPHS` | `patterns/cards.md`, `patterns/confirmations.md` |
+| `carousel-body` | `A-CARD-BODY`, `A-NO-EMOJI`, `A-PRICE-ASTERISK` | `patterns/welcome-carousel.md` |
 | `carousel-headline` | `A-CARD-HEADLINE`, `A-NO-EMOJI` | `patterns/welcome-carousel.md` |
 | `category` | `A-CATEGORY-GUESS`, `A-CASE`, `A-PUNCTUATION` | `patterns/charts.md`, `components/library/transaction-row.md` |
-| `chart-copy` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-CATEGORY-GUESS` | `patterns/charts.md` |
-| `checkbox` | `A-CHECKBOX`, `A-NO-EMOJI` | `components/library/checkbox.md` |
+| `chart-copy` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-CATEGORY-GUESS` | `patterns/charts.md` |
+| `checkbox` | `A-CHECKBOX`, `A-DOUBLE-NEGATIVE`, `A-NO-EMOJI` | `components/library/checkbox.md` |
 | `chip` | `A-CHIP`, `A-CASE` | `components/library/chip.md` |
-| `code-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `components/library/code-input.md`, `patterns/auth.md`, `compliance/security-payments.md` |
-| `complaint-acknowledgement` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-COMPLAINT` | `patterns/complaints.md`, `compliance/complaints.md` |
-| `complaint-answer` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-COMPLAINT` | `patterns/complaints.md`, `compliance/complaints.md` |
-| `confirmation` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `patterns/confirmations.md`, `components/library/sheet-modal.md` |
+| `code-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `components/library/code-input.md`, `patterns/auth.md`, `compliance/security-payments.md` |
+| `complaint-acknowledgement` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-COMPLAINT` | `patterns/complaints.md`, `compliance/complaints.md` |
+| `complaint-answer` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-COMPLAINT` | `patterns/complaints.md`, `compliance/complaints.md` |
+| `confirmation` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `patterns/confirmations.md`, `components/library/sheet-modal.md` |
 | `count-badge` | `A-BADGE` | `components/library/count-badge.md` |
 | `counter` | `A-COUNTER` | `components/library/textarea.md` |
 | `cta` | `A-CTA`, `A-NO-EMOJI`, `A-CASE` | `patterns/ctas.md`, `components/library/button.md` |
 | `date-unavailable` | `A-DATE-UNAVAILABLE`, `A-DATE`, `A-PUNCTUATION`, `A-CASE` | `components/library/date-field.md` |
-| `disclosure` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `compliance/disclosures.md` |
+| `decline-cta` | `A-CONFIRMSHAME`, `A-CTA`, `A-NO-EMOJI`, `A-CASE` | `compliance/dark-patterns.md`, `patterns/ctas.md` |
+| `disclosure` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `compliance/disclosures.md` |
 | `dropdown-option` | `A-OPTION` | `components/library/dropdown.md` |
-| `email-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-CREDENTIALS`, `A-PARAGRAPHS` | `patterns/emails.md` |
+| `email-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-CREDENTIALS`, `A-PARAGRAPHS` | `patterns/emails.md` |
 | `email-preheader` | `A-PREHEADER`, `A-MASK`, `A-EURO-FORMAT` | `patterns/emails.md` |
 | `email-subject` | `A-SUBJECT`, `A-MASK`, `A-EURO-FORMAT`, `A-CREDENTIALS` | `patterns/emails.md` |
-| `empty-state` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `patterns/empty-states.md`, `components/library/empty-state.md` |
-| `error` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PARAGRAPHS` | `patterns/errors.md`, `components/library/sheet-modal.md` |
+| `empty-state` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `patterns/empty-states.md`, `components/library/empty-state.md` |
+| `error` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-PARAGRAPHS` | `patterns/errors.md`, `components/library/sheet-modal.md` |
 | `error-summary-title` | `A-ERROR-SUMMARY`, `A-NO-EMOJI` | `patterns/errors.md`, `patterns/forms.md` |
 | `field-error` | `A-FIELD-ERROR`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `patterns/errors.md`, `patterns/forms.md`, `components/library/text-field.md` |
-| `flow-intro-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PARAGRAPHS` | `patterns/flow-intro.md` |
+| `flow-intro-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-PARAGRAPHS` | `patterns/flow-intro.md` |
 | `flow-intro-cta` | `A-INTRO-CTA`, `A-CTA`, `A-NO-EMOJI` | `patterns/flow-intro.md`, `patterns/ctas.md` |
-| `fx-quote` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-FX` | `patterns/currency-exchange.md`, `compliance/disclosures.md` |
+| `fx-quote` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-FX` | `patterns/currency-exchange.md`, `compliance/disclosures.md` |
 | `helper-text` | `A-HELPER`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA` | `components/library/text-field.md`, `patterns/forms.md` |
 | `label-in` | `A-LABEL-IN`, `A-NO-EMOJI` | `components/library/text-field.md`, `patterns/forms.md` |
 | `label-out` | `A-LABEL-OUT`, `A-NO-EMOJI`, `A-ACRONYMS` | `components/library/text-field.md`, `patterns/forms.md` |
 | `legend` | `A-LEGEND`, `A-NO-EMOJI` | `components/library/text-field.md`, `components/library/radio-group.md`, `patterns/forms.md` |
 | `link` | `A-LINK-TEXT`, `A-CASE`, `A-PUNCTUATION` | `patterns/links.md` |
 | `loading` | `A-LOADING` | `patterns/loading.md` |
-| `loading-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-MONEY-ACCOUNTED`, `A-PARAGRAPHS` | `patterns/loading.md` |
+| `loading-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-MONEY-ACCOUNTED`, `A-PARAGRAPHS` | `patterns/loading.md` |
 | `no-results` | `A-NO-RESULTS`, `A-CASE`, `A-PUNCTUATION`, `A-NO-INLINE-CTA` | `patterns/search.md`, `patterns/empty-states.md` |
-| `notification` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `patterns/notifications.md` |
-| `onboarding-step` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `components/library/onboarding-step.md`, `patterns/flow-intro.md` |
+| `notification` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `patterns/notifications.md` |
+| `offer-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-DECLINE-PRESENT` | `compliance/dark-patterns.md` |
+| `onboarding-step` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `components/library/onboarding-step.md`, `patterns/flow-intro.md` |
 | `option` | `A-OPTION` | `components/library/dropdown.md` |
-| `permission-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PERMISSION`, `A-PARAGRAPHS` | `patterns/permissions.md` |
+| `permission-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-PERMISSION`, `A-PARAGRAPHS` | `patterns/permissions.md` |
 | `permission-heading` | `A-NO-EMOJI`, `A-MASK` | `patterns/permissions.md` |
 | `placeholder` | `A-NO-EMOJI` | `components/library/text-field.md`, `patterns/forms.md` |
 | `preset-amount` | `A-AMOUNT-VALUE`, `A-NO-EMOJI` | `components/library/amount-input.md` |
-| `push-body` | `A-PUSH-BODY`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-CREDENTIALS` | `patterns/notifications.md` |
+| `push-body` | `A-PUSH-BODY`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-CREDENTIALS`, `A-PRICE-ASTERISK` | `patterns/notifications.md` |
 | `push-title` | `A-PUSH-TITLE`, `A-EURO-FORMAT` | `patterns/notifications.md` |
-| `radio` | `A-RADIO` | `components/library/radio-group.md` |
-| `radio-option` | `A-RADIO` | `components/library/radio-group.md` |
-| `risk-warning` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `compliance/risk-warnings.md` |
+| `radio` | `A-RADIO`, `A-DOUBLE-NEGATIVE` | `components/library/radio-group.md` |
+| `radio-option` | `A-RADIO`, `A-DOUBLE-NEGATIVE` | `components/library/radio-group.md` |
+| `risk-warning` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `compliance/risk-warnings.md` |
 | `search-placeholder` | `A-SEARCH-PLACEHOLDER`, `A-CASE`, `A-PUNCTUATION` | `patterns/search.md` |
-| `security` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `compliance/security-payments.md`, `patterns/auth.md` |
+| `security` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `compliance/security-payments.md`, `patterns/auth.md` |
 | `skeleton` | `A-SKELETON` | `patterns/loading.md` |
 | `status` | `A-STATUS`, `A-NO-EMOJI` | `components/library/status-label.md` |
 | `status-label` | `A-STATUS`, `A-NO-EMOJI` | `components/library/status-label.md` |
-| `system-error` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-SYSTEM-ERROR` | `patterns/system-errors.md` |
-| `system-error-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-SYSTEM-ERROR`, `A-MONEY-ACCOUNTED`, `A-ATTRIBUTION`, `A-PARAGRAPHS` | `patterns/system-errors.md`, `components/library/empty-state.md` |
+| `system-error` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-SYSTEM-ERROR` | `patterns/system-errors.md` |
+| `system-error-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-SYSTEM-ERROR`, `A-MONEY-ACCOUNTED`, `A-ATTRIBUTION`, `A-PARAGRAPHS` | `patterns/system-errors.md`, `components/library/empty-state.md` |
 | `system-error-title` | `A-SYSTEM-ERROR`, `A-NO-EMOJI`, `A-NEGATION`, `A-PUNCTUATION` | `patterns/system-errors.md` |
 | `tag` | `A-STATUS`, `A-NO-EMOJI` | `components/library/status-label.md` |
 | `toast` | `A-TOAST`, `A-NO-EMOJI`, `A-EURO-FORMAT` | `components/library/banner-toast.md` |
-| `toggle-description` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `components/library/toggle.md` |
+| `toggle-description` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `components/library/toggle.md` |
 | `toggle-label` | `A-TOGGLE-LABEL`, `A-NO-EMOJI` | `components/library/toggle.md` |
 | `tooltip` | `A-TOOLTIP`, `A-ACRONYMS`, `A-NUMERALS` | `components/library/tooltip.md` |
 | `tooltip-trigger` | `A-TOOLTIP-TRIGGER`, `A-NO-EMOJI` | `components/library/tooltip.md` |
 | `validation` | `A-FIELD-ERROR`, `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE` | `patterns/errors.md`, `patterns/forms.md`, `components/library/text-field.md` |
 
-A string whose surface is not listed runs the body checks: `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-INCLUSIVE`.
+A string whose surface is not listed runs the body checks: `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-NO-BANNED`, `A-NO-CLAIMS`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-INCLUSIVE`, `A-PRICE-ASTERISK`.
 
 ## Compliance, by what the string touches
 
@@ -113,6 +115,7 @@ A string whose surface is not listed runs the body checks: `A-NO-EMOJI`, `A-EURO
 - `voice-and-tone/inclusive-language.md`: Who Vanker is talking to, and how it avoids deciding who they are. `voice.md` is how the brand sounds; this is who it sounds like it is talking to.
 - `compliance/accessibility.md`: Accessibility is a **legal requirement**, not a nicety. Under the European Accessibility Act (Directive EU 2019/882), in force from **28 June 2025**, Vanker's digital banking services must meet **EN 301 549 / WCAG 2.1 Le
 - `compliance/complaints.md`: Everyone has the right to complain, and Vanker makes it easy. Never discourage, dismiss, or obstruct a complaint.
+- `compliance/dark-patterns.md`: What Vanker never does to steer a decision, named pattern by pattern, with the signal each one leaves in the copy and the check that catches it. This is the deterministic half of the behavioral layer: the prohibitions. T
 - `compliance/data-privacy.md`: How Vanker talks about personal data (GDPR) and tracking (ePrivacy). Plain, honest, and in the person's control.
 - `compliance/disclosures.md`: What Vanker must disclose, and where it appears. Amounts follow the European money format (see `../terminology/glossary.md`).
 - `compliance/framework.md`: The European regulations relevant to an online euro-area bank, and the content obligation each creates for Vanker. Dates reflect the position as of 2026; confirm the current state before any real use.

@@ -1303,8 +1303,122 @@ def repeated_chars(text, surface=None):
     return (True, "ok")
 
 
+
+# ---------------------------------------------------------------------------
+# Dark patterns (compliance/dark-patterns.md). Each check names the pattern, not only the
+# word, because the pattern is what teaches the writer. The lists are data and reach the
+# app through rules.json.
+DECLINE_LABELS = ["Not now", "Cancel", "Back", "Skip"]
+_DECLINE_SET = {d.lower() for d in DECLINE_LABELS}
+FIRST_PERSON = re.compile(r"\b(?:i|i['’](?:ll|m|d|ve)|me|my|mine)\b", re.IGNORECASE)
+COST_OR_LOSS = re.compile(r"\b(?:pay|paying|fees?|lose|losing|loss|miss|missing|want|keep|stay|remain)\b", re.IGNORECASE)
+SCARCITY_TERMS = ["limited time", "only today", "ends soon", "ends in", "spots left", "seats left",
+                  "places left", "only {n} left", "others are viewing", "people are viewing", "while it lasts"]
+SOCIAL_PROOF_TERMS = ["most people", "join thousands", "join millions", "everyone is", "customers like you",
+                      "people like you"]
+GUILT_TERMS = ["you'll regret", "you will regret", "don't let", "do not let", "lose out",
+               "before it's too late", "before it is too late", "you're missing", "you are missing", "don't miss"]
+GUILT_EXEMPT = {"security", "system-error", "auth-error"}
+
+
+def _phrase_re(t):
+    t = t.replace("'", "['’]")
+    if "{n}" in t:
+        t = re.escape(t).replace(r"\{n\}", r"\d+").replace(r"\[", "[").replace(r"\]", "]").replace(r"\\'", "'")
+        return re.compile(r"\b" + t + r"\b", re.IGNORECASE)
+    parts = [re.escape(w).replace(r"\[", "[").replace(r"\]", "]").replace(r"\\'", "'") for w in t.split()]
+    return re.compile(r"\b" + r"\s+".join(parts) + r"\b", re.IGNORECASE)
+
+
+SCARCITY_RE = [(t, _phrase_re(t)) for t in SCARCITY_TERMS]
+SOCIAL_PROOF_RE = [(t, _phrase_re(t)) for t in SOCIAL_PROOF_TERMS]
+GUILT_RE = [(t, _phrase_re(t)) for t in GUILT_TERMS]
+COUNTDOWN = re.compile(r"\bin\s+\d{1,2}:\d{2}(?::\d{2})?\b|\b\d{1,2}:\d{2}(?::\d{2})?\b\s*(?:left|remaining)", re.IGNORECASE)
+NEGATOR = re.compile(r"\b(?:not|never|no|without|un(?:tick|check|select|subscribe)\w*)\b|n['’]t\b", re.IGNORECASE)
+ASTERISK_PRICE = re.compile(r"(?:\d|€|\bfree)\s?\*", re.IGNORECASE)
+# "from 480 € to 505 €" is a range, not a price floor; the lookahead leaves it alone.
+FROM_PRICE = re.compile(r"\bfrom\s+\d[\d.,]*\s?€(?!\s+(?:to|up to|down to)\b)", re.IGNORECASE)
+CONDITION = re.compile(r"\b(?:if|when|for|with|after|unless|once|on)\b", re.IGNORECASE)
+
+
+def confirmshame(text, surface=None):
+    """A decline is one of the controlled labels; anything else shames the no (compliance/dark-patterns.md, rule 1)."""
+    t = text.strip()
+    if t.lower() in _DECLINE_SET:
+        return (True, "ok")
+    why = []
+    if FIRST_PERSON.search(t):
+        why.append("first person")
+    if COST_OR_LOSS.search(t):
+        why.append("a cost or a loss")
+    tail = " (" + " and ".join(why) + " in the decline: confirmshaming)" if why else ""
+    return (False, "'" + t + "' is not a decline label" + tail + "; use " + ", ".join("'" + d + "'" for d in DECLINE_LABELS))
+
+
+def scarcity(text, surface=None):
+    """No limit or clock a bank does not have (rule 2)."""
+    hits = [t for t, rx in SCARCITY_RE if rx.search(text)]
+    m = COUNTDOWN.search(text)
+    if m:
+        hits.append("countdown '" + m.group(0).strip() + "'")
+    return (not hits, ("false scarcity: " + ", ".join(hits) + "; a real deadline is a date, written plainly") if hits else "ok")
+
+
+def double_negative(text, surface=None):
+    """A checkbox or radio label is one positive statement (rule 3)."""
+    negs = NEGATOR.findall(text)
+    if len(negs) >= 2:
+        return (False, "double negative (" + ", ".join(n.lower() for n in negs) + "); nobody can tell what the unchecked state means. Write what happens when it is selected")
+    return (True, "ok")
+
+
+def price_asterisk(text, surface=None):
+    """The cost and its condition sit in the same sentence, never behind an asterisk (rule 4)."""
+    problems = []
+    m = ASTERISK_PRICE.search(text)
+    if m:
+        problems.append("'" + m.group(0).strip() + "': the asterisk is where the cost hides; state the condition in the sentence")
+    for sent in re.split(r"(?<=[.!?])\s+|\n+", text):
+        fm = FROM_PRICE.search(sent)
+        if fm and not CONDITION.search(sent):
+            problems.append("'" + fm.group(0) + "' with no condition in the same sentence; say what the price depends on, or give the exact amount")
+    return (not problems, "; ".join(problems) or "ok")
+
+
+def social_proof(text, surface=None):
+    """No crowd without a figure, a source and a date (rule 5)."""
+    hits = [t for t, rx in SOCIAL_PROOF_RE if rx.search(text)]
+    return (not hits, ("unsourced social proof: " + ", ".join(hits) + "; a number with its source may be used, a crowd without one may not") if hits else "ok")
+
+
+def guilt(text, surface=None):
+    """No guilt or fear framing outside a real risk (rule 6). Security and error surfaces are exempt by shape."""
+    if (surface or "").lower() in GUILT_EXEMPT:
+        return (True, "ok")
+    hits = [t for t, rx in GUILT_RE if rx.search(text)]
+    return (not hits, ("guilt or fear framing: " + ", ".join(hits) + "; state the benefit or the fact and let the person decide") if hits else "ok")
+
+
+def decline_present(text, surface=None):
+    """Screen-level: an offer or consent screen carries a decline from the controlled set (rule 7).
+
+    Runs on the whole screen with the slots joined by line breaks, buttons last, one per
+    line. A title checked alone would always fail.
+    """
+    lines = [l.strip().lower() for l in text.splitlines() if l.strip()]
+    if any(l in _DECLINE_SET for l in lines):
+        return (True, "ok")
+    return (False, "no way to say no: the screen asks for an acceptance and carries no decline; add " + " or ".join("'" + d + "'" for d in DECLINE_LABELS[:2]) + " beside the primary, at the same cost in taps")
+
 REGISTRY = {
     "A-NO-EMOJI": no_emoji,
+    "A-CONFIRMSHAME": confirmshame,
+    "A-SCARCITY": scarcity,
+    "A-DOUBLE-NEGATIVE": double_negative,
+    "A-PRICE-ASTERISK": price_asterisk,
+    "A-SOCIAL-PROOF": social_proof,
+    "A-GUILT": guilt,
+    "A-DECLINE-PRESENT": decline_present,
     "A-EURO-FORMAT": euro_format,
     "A-NO-BANNED": no_banned_terms,
     "A-REPEATED-CHARS": repeated_chars,
@@ -1369,14 +1483,14 @@ REGISTRY = {
 }
 
 
-BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE", "A-INCLUSIVE"]
+BODY_CHECKS = ["A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE", "A-INCLUSIVE", "A-PRICE-ASTERISK"]
 CTA_CHECKS = ["A-CTA", "A-NO-EMOJI", "A-CASE"]
 FIELD_CHECKS = ["A-FIELD-ERROR", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-NEGATION", "A-NUMERALS", "A-PUNCTUATION", "A-CASE", "A-DATE", "A-INCLUSIVE"]
 SURFACE_CHECKS = {
     "cta": CTA_CHECKS, "button": CTA_CHECKS,
     "field-error": FIELD_CHECKS, "validation": FIELD_CHECKS,
     "push-title": ["A-PUSH-TITLE", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS"],
-    "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-CREDENTIALS"],
+    "push-body": ["A-PUSH-BODY", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA", "A-MASK", "A-CREDENTIALS", "A-PRICE-ASTERISK"],
     "error": BODY_CHECKS + ["A-PARAGRAPHS"], "confirmation": BODY_CHECKS, "empty-state": BODY_CHECKS,
     "notification": BODY_CHECKS, "onboarding-step": BODY_CHECKS, "disclosure": BODY_CHECKS,
     "risk-warning": BODY_CHECKS, "banner": BODY_CHECKS,
@@ -1387,8 +1501,8 @@ SURFACE_CHECKS = {
     "legend": ["A-LEGEND", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "helper-text": ["A-HELPER", "A-NO-EMOJI", "A-EURO-FORMAT", "A-NO-BANNED", "A-NO-CLAIMS", "A-ACRONYMS", "A-NO-INLINE-CTA"],
     "placeholder": ["A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
-    "checkbox": ["A-CHECKBOX", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
-    "radio-option": ["A-RADIO", "A-NO-BANNED", "A-NO-CLAIMS"], "radio": ["A-RADIO", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "checkbox": ["A-CHECKBOX", "A-DOUBLE-NEGATIVE", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
+    "radio-option": ["A-RADIO", "A-DOUBLE-NEGATIVE", "A-NO-BANNED", "A-NO-CLAIMS"], "radio": ["A-RADIO", "A-DOUBLE-NEGATIVE", "A-NO-BANNED", "A-NO-CLAIMS"],
     "status-label": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "status": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
     "badge": ["A-STATUS", "A-NO-EMOJI", "A-NO-BANNED", "A-NO-CLAIMS"],
@@ -1404,7 +1518,7 @@ SURFACE_CHECKS = {
     "loading-screen": BODY_CHECKS + ["A-MONEY-ACCOUNTED"] + ["A-PARAGRAPHS"],
     "skeleton": ["A-SKELETON"],
     "carousel-headline": ["A-CARD-HEADLINE", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI"],
-    "carousel-body": ["A-CARD-BODY", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI"],
+    "carousel-body": ["A-CARD-BODY", "A-NO-BANNED", "A-NO-CLAIMS", "A-NO-EMOJI", "A-PRICE-ASTERISK"],
     "flow-intro-cta": ["A-INTRO-CTA", "A-CTA", "A-NO-EMOJI"],
     "flow-intro-body": BODY_CHECKS + ["A-PARAGRAPHS"],
     "permission-body": BODY_CHECKS + ["A-PERMISSION"] + ["A-PARAGRAPHS"],
@@ -1435,6 +1549,9 @@ SURFACE_CHECKS = {
     "email-subject": ["A-SUBJECT", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT", "A-CREDENTIALS"],
     "email-preheader": ["A-PREHEADER", "A-NO-BANNED", "A-NO-CLAIMS", "A-MASK", "A-EURO-FORMAT"],
     "email-body": BODY_CHECKS + ["A-CREDENTIALS"] + ["A-PARAGRAPHS"],
+    # Dark patterns (compliance/dark-patterns.md)
+    "decline-cta": ["A-CONFIRMSHAME", "A-CTA", "A-NO-EMOJI", "A-CASE"],
+    "offer-screen": BODY_CHECKS + ["A-DECLINE-PRESENT"],
 }
 
 
@@ -1442,7 +1559,8 @@ SURFACE_CHECKS = {
 # a prohibited claim, or a word that labels a person. Surface lists are hand-written, so a
 # cross-cutting check added later would otherwise reach only the surfaces someone remembered
 # to update. This adds them everywhere, once.
-UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE", "A-LOCALIZABLE", "A-REPEATED-CHARS", "A-COLOR-ALONE"]
+UNIVERSAL = ["A-NO-BANNED", "A-NO-CLAIMS", "A-INCLUSIVE", "A-LOCALIZABLE", "A-REPEATED-CHARS", "A-COLOR-ALONE",
+             "A-SCARCITY", "A-SOCIAL-PROOF", "A-GUILT"]
 for _surface, _checks in list(SURFACE_CHECKS.items()):
     SURFACE_CHECKS[_surface] = _checks + [c for c in UNIVERSAL if c not in _checks]
 

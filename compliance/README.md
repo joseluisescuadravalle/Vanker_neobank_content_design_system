@@ -16,6 +16,9 @@ must not be used in a real product without independent review.
 - `framework.md` — the regulatory register: each regulation, what it is, and the content
   obligation it creates. Read this first for the map.
 - `principles.md` — cross-cutting content-compliance principles and prohibited practices.
+- `dark-patterns.md` — the manipulative practices Vanker never uses, named one by one
+  (confirmshaming, false scarcity, trick questions, hidden cost, unsourced social proof,
+  guilt and fear, no way to say no), with the check that catches each in the copy.
 - `disclosures.md` — what must be disclosed, and where (fees, deposit protection, credit,
   currency conversion, contract and withdrawal information).
 - `risk-warnings.md` — required risk warnings and prohibited claims.

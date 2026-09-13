@@ -244,6 +244,21 @@ transfer flow (see `../compliance/security-payments.md`), never a green tick on 
 }
 ```
 
+## Behavioral lens
+
+- **Applies** to amount fields, presets and defaults. Target behaviors:
+  `complete-setup`, `confirm-safely` on a money form.
+- **Biases allowed.** Anchoring in presets that match typical amounts, with the field
+  free; default effect toward the protective or free option (the safest delivery, the
+  cheapest route, alerts on); choice kept short (a design rule, not a nudge).
+- **Biases forbidden here.** Any preselected consent (`../components/library/checkbox.md`),
+  a default that favors the product or the expensive option, presets on a credit amount,
+  anchors set upward, a double negative (`A-DOUBLE-NEGATIVE`).
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "Anchor matches the person", "Default protects the person". The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Every input has a visible label in; no field is named by a placeholder alone.

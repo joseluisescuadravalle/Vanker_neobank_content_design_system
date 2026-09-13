@@ -17,8 +17,10 @@ When two sources in this repository disagree, resolve the conflict in this order
 2. **`compliance/`** — regulatory guardrails
 3. **`terminology/`** — controlled vocabulary (always applied)
 4. **`voice-and-tone/`** — brand voice
-5. **`patterns/`** — reusable UX copy patterns
-6. **`components/`** — component-level specs
+5. **`behavioral/`** — the persuasion Vanker allows (which bias, on which pattern, and
+   where it is forbidden); a nudge never breaks the layers above it
+6. **`patterns/`** — reusable UX copy patterns
+7. **`components/`** — component-level specs
 
 Examples never override rules. Anything labeled as an example is illustrative and non-binding.
 

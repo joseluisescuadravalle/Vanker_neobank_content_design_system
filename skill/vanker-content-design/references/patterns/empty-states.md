@@ -66,6 +66,21 @@ content structure; the component visuals live in `../components/library/empty-st
 }
 ```
 
+## Behavioral lens
+
+- **Applies** to the first-use variant only. Target behavior: `start-saving` (a Space, a
+  first goal). No-results and all-caught-up states are `na`: nothing is being decided.
+- **Biases allowed.** Mental accounting (the Space is money set apart for a purpose),
+  gain framing in the body (what appears here and why it is worth it), goal gradient once
+  a goal exists (the amount left).
+- **Biases forbidden here.** Default effect (no Space created for the person), scarcity,
+  social proof, fear (checks), and any offer: a first-use state proposes the product's own
+  feature, never a paid one (see `offers.md`).
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "Frame is a gain and the fact is complete", "Label names real money". The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Title has no ending period and is not a question.

@@ -55,6 +55,22 @@ go next? Full-screen success. Otherwise, a toast.
 }
 ```
 
+## Behavioral lens
+
+- **Applies.** Target behaviors: `close-well` (every success) and, on a first saving or a
+  completed setup, `keep-saving` or `protect-account` through the continue options.
+- **Biases allowed.** Peak-end (the title states the outcome; the last line closes),
+  implementation intentions as a continue option the person sets ("Save 50 € every 1st"),
+  goal gradient when a goal exists ("120 € to go"), mental accounting.
+- **Biases forbidden here.** Anything that sells: no offer, no upgrade, no partner product
+  on a success screen (`offers.md`, rule 3). No loud celebration (voice). No plan set for
+  the person.
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "The ending closes", "The person set the plan" when a plan is offered, "Progress is real"
+  when progress is shown. The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Title has no ending period.

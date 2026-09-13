@@ -119,6 +119,20 @@ structure, not "banned term" or "money format".
 }
 ```
 
+## Behavioral lens
+
+- **Applies** to the label of a primary that proposes something (a first Space, a
+  protection, a plan). Target behavior: the one of the screen the button belongs to.
+- **Biases allowed.** Gain framing inside the master rule: the label still names what
+  happens on tap ("Create space", "Turn on alerts"), never the benefit alone ("Save
+  more"). That limit is the pattern's own, and it wins.
+- **Biases forbidden here.** A decline that shames (`A-CONFIRMSHAME`), a label that hides
+  the cost of the tap, urgency or scarcity in a label, a "Yes" or "No" pair.
+- **What the reviewer scores.** "Uses only allowed biases" and "Frame is a gain and the
+  fact is complete", both against the master rule. The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - The label names what happens on tap, not the goal of the flow it opens.

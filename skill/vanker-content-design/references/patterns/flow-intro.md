@@ -114,6 +114,19 @@ Not this:
 }
 ```
 
+## Behavioral lens
+
+- **Applies.** Target behavior: `complete-setup`.
+- **Biases allowed.** Goal gradient (the real number of steps and the time it takes, in
+  the body), gain framing (what the person will be able to do at the end).
+- **Biases forbidden here.** Progress claimed without steps, any acceleration of identity
+  verification (KYC, Know Your Customer, is a neutral zone), scarcity or fear to push the
+  start, a default that skips the "Not now".
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "Progress is real", "Frame is a gain and the fact is complete". The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - The primary button is "Start": it names what the tap does, never the goal of the flow.

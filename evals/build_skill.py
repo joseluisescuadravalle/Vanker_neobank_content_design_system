@@ -27,7 +27,7 @@ REFS = os.path.join(SKILL, "references")
 SCRIPTS = os.path.join(SKILL, "scripts")
 
 # Documents copied verbatim. Foundations (tokens) carry no copy rules and stay out.
-COPY_DIRS = ["terminology", "voice-and-tone", "compliance", "patterns", "components/library"]
+COPY_DIRS = ["terminology", "voice-and-tone", "compliance", "behavioral", "patterns", "components/library"]
 COPY_FILES = ["CLAUDE.md", "evals/rubric.md", "evals/judge-prompt.md"]
 # The checker travels with the skill, so the agent runs the same code the golden set runs.
 SCRIPT_FILES = ["assertions.py", "rules.json"]
@@ -63,8 +63,8 @@ SURFACE_OWNERS = {
     "email-subject": ["patterns/emails.md"],
     "email-preheader": ["patterns/emails.md"],
     "email-body": ["patterns/emails.md"],
-    "decline-cta": ["compliance/dark-patterns.md", "patterns/ctas.md"],
-    "offer-screen": ["compliance/dark-patterns.md"],
+    "decline-cta": ["patterns/offers.md", "compliance/dark-patterns.md", "patterns/ctas.md"],
+    "offer-screen": ["patterns/offers.md", "compliance/dark-patterns.md"],
     "onboarding-step": ["components/library/onboarding-step.md", "patterns/flow-intro.md"],
     "flow-intro-body": ["patterns/flow-intro.md"],
     "flow-intro-cta": ["patterns/flow-intro.md", "patterns/ctas.md"],

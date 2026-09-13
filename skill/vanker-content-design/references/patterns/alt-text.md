@@ -129,6 +129,12 @@ Not this:
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: a description, not a decision. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - No alt text begins with "image of", "picture of", "photo of", "icon of", or "graphic of".

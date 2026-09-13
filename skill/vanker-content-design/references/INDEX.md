@@ -45,7 +45,7 @@ universal checks: `A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, 
 | `counter` | `A-COUNTER` | `components/library/textarea.md` |
 | `cta` | `A-CTA`, `A-NO-EMOJI`, `A-CASE` | `patterns/ctas.md`, `components/library/button.md` |
 | `date-unavailable` | `A-DATE-UNAVAILABLE`, `A-DATE`, `A-PUNCTUATION`, `A-CASE` | `components/library/date-field.md` |
-| `decline-cta` | `A-CONFIRMSHAME`, `A-CTA`, `A-NO-EMOJI`, `A-CASE` | `compliance/dark-patterns.md`, `patterns/ctas.md` |
+| `decline-cta` | `A-CONFIRMSHAME`, `A-CTA`, `A-NO-EMOJI`, `A-CASE` | `patterns/offers.md`, `compliance/dark-patterns.md`, `patterns/ctas.md` |
 | `disclosure` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `compliance/disclosures.md` |
 | `dropdown-option` | `A-OPTION` | `components/library/dropdown.md` |
 | `email-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-CREDENTIALS`, `A-PARAGRAPHS` | `patterns/emails.md` |
@@ -67,7 +67,7 @@ universal checks: `A-NO-BANNED`, `A-NO-CLAIMS`, `A-INCLUSIVE`, `A-LOCALIZABLE`, 
 | `loading-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-MONEY-ACCOUNTED`, `A-PARAGRAPHS` | `patterns/loading.md` |
 | `no-results` | `A-NO-RESULTS`, `A-CASE`, `A-PUNCTUATION`, `A-NO-INLINE-CTA` | `patterns/search.md`, `patterns/empty-states.md` |
 | `notification` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `patterns/notifications.md` |
-| `offer-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-DECLINE-PRESENT` | `compliance/dark-patterns.md` |
+| `offer-screen` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-DECLINE-PRESENT` | `patterns/offers.md`, `compliance/dark-patterns.md` |
 | `onboarding-step` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK` | `components/library/onboarding-step.md`, `patterns/flow-intro.md` |
 | `option` | `A-OPTION` | `components/library/dropdown.md` |
 | `permission-body` | `A-NO-EMOJI`, `A-EURO-FORMAT`, `A-ACRONYMS`, `A-NO-INLINE-CTA`, `A-MASK`, `A-NEGATION`, `A-NUMERALS`, `A-PUNCTUATION`, `A-CASE`, `A-DATE`, `A-PRICE-ASTERISK`, `A-PERMISSION`, `A-PARAGRAPHS` | `patterns/permissions.md` |
@@ -123,6 +123,8 @@ A string whose surface is not listed runs the body checks: `A-NO-EMOJI`, `A-EURO
 - `compliance/principles.md`: The cross-cutting rules that apply to all customer-facing content, whatever the surface.
 - `compliance/risk-warnings.md`: Required warnings and prohibited claims. A warning is clear, prominent, and never buried.
 - `compliance/security-payments.md`: Content rules for authentication, payee verification, payment transparency, and fraud.
+- `behavioral/biases.md`: Eight biases, one card each. Every card has the same six parts, because the boundary between a nudge and a dark pattern is not the bias but the way it is used, and a card without the "where it turns" part is a catalog of
+- `behavioral/lens.md`: The behavioral lens as a review: what the author declares, what the reviewer scores, and when it runs. It is the third step of the ladder, after the deterministic checks (correct) and the editorial review (good): a copy 
 - `patterns/accessibility.md`: Most of what makes a screen usable without sight, without a mouse, or without full attention is decided by **the words**, not by the code that renders them. A screen reader does not read a layout; it reads a sequence of 
 - `patterns/alt-text.md`: The text that stands in for anything that is not text: icons, illustrations, photographs, charts, card artwork, QR codes. It is copy, it is translated like copy, and it is written by whoever writes the copy, not left to 
 - `patterns/auth.md`: Everything between opening the app and being inside it: the passcode, face or fingerprint, the tries that run out, a forgotten passcode, a new phone, logging out, and the periodic re-check the regulation requires.
@@ -140,6 +142,7 @@ A string whose surface is not listed runs the body checks: `A-NO-EMOJI`, `A-EURO
 - `patterns/links.md`: Text a person taps to go somewhere. Buttons are in `ctas.md`; this is the other half of the same decision.
 - `patterns/loading.md`: What Vanker shows and says while something is happening. In a bank, waiting is rarely neutral: the person is often waiting to find out what happened to their money, and the wrong indicator turns a two-second delay into a
 - `patterns/notifications.md`: A push notification arrives outside the app, in the OS notification tray, and competes for attention. It has two slots and **no CTA** (tapping it opens the app).
+- `patterns/offers.md`: Copy that proposes something the person did not ask for and may pay for: a paid tier, a paid feature, a promotional rate, a partner product. It is the one surface in the product where Vanker's interest and the person's c
 - `patterns/permissions.md`: The screen Vanker shows **before** the phone asks for a permission: notifications, camera, location, contacts, face or fingerprint recognition.
 - `patterns/search.md`: The field, what it suggests, what it returns, and what it says when it returns nothing.
 - `patterns/success.md`: A success message confirms that an action the person took **just completed**. It has two homes, and it is **never a banner**: a persistent status like "Your card is on its way" is informational (an info banner), not a su

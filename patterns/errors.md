@@ -105,6 +105,12 @@ A Vanker error has up to three parts, in this order:
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: a person in an error is recovering, not deciding; the next step is stated, never sold. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - No visible error code in the primary message.

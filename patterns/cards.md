@@ -133,6 +133,22 @@ The most stressed moment in the product. The first line is not a form.
 }
 ```
 
+## Behavioral lens
+
+- **Applies** to card actions (freeze, unfreeze, replace, delete, limits). Target
+  behaviors: `protect-account`, `confirm-safely`.
+- **Biases allowed.** Positive friction on the irreversible (replace, delete: one step
+  that names the consequence and whether it can be undone, `A-REVERSIBILITY`), default
+  effect toward protection (freeze is one tap; limits default to the protective value),
+  mental accounting where a card is tied to a Space.
+- **Biases forbidden here.** Friction on unfreeze or on lowering a limit the person set
+  (the way back is as easy as the way in), any offer on a card screen (a second card is
+  an offer and follows `offers.md`), fear in a card alert outside a real security event.
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "Friction protects, never retains", "Default protects the person". The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Every card action states whether it can be undone, in the same copy as the action.

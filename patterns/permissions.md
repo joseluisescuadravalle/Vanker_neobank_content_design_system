@@ -138,6 +138,12 @@ alternative, not a consolation.
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: the person is deciding, but the pattern already fixes the frame (what they will do, what Vanker will not do, no fear); a nudge on a permission is a consent problem, owned by `../compliance/data-privacy.md`. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - The heading names the action the person takes, and the primary button repeats its verb.

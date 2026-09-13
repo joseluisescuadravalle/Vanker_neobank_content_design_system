@@ -160,6 +160,12 @@ someone who never logs out (`../compliance/framework.md`).
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: signing in is not a decision to nudge; positive friction here is security, owned by `../compliance/security-payments.md`. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - No copy states or implies whether an account, email, or phone number exists; the recovery

@@ -11,7 +11,7 @@ Contents:
   `flow-intro.md`, `permissions.md`, `auth.md`, `cards.md`, `empty-states.md`,
   `confirmations.md`,
   `notifications.md`, `emails.md`, `success.md`, `forms.md`, `search.md`, `charts.md`,
-  `currency-exchange.md`, `complaints.md`, `alt-text.md`, `accessibility.md`.
+  `currency-exchange.md`, `complaints.md`, `alt-text.md`, `accessibility.md`, `offers.md`.
 
 `errors.md` holds the anatomy of an error and the rules for field validation and modal
 errors. `system-errors.md` covers the situations where the problem is ours or the
@@ -22,6 +22,10 @@ indicator to show, what to say while it runs, and what to say when it runs long.
 `accessibility.md` is cross-cutting rather than a surface: what a screen reader says, what
 survives without color, and the read-it-aloud test. It is the content half of
 `../compliance/accessibility.md`, which carries the legal frame.
+
+`offers.md` is the one surface where Vanker's interest and the person's can pull apart: a
+paid tier, a promotional rate, a partner product. The price is in the title, the decline is
+one tap away, and every dark pattern it could carry is a check (`../compliance/dark-patterns.md`).
 
 Two patterns are often lumped together as "onboarding" and must not be:
 `welcome-carousel.md` is the pre-login argument (marketing voice, highest regulatory

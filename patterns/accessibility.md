@@ -96,6 +96,12 @@ the same plain language as everything else, and it is not the only route: someon
 use the form must be able to reach a person. See `../compliance/accessibility.md` and
 `complaints.md`.
 
+## Behavioral lens
+
+- **Does not apply**: a cross-cutting rule, not a decision the person takes. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - No string identifies something by color alone ("marked in red", "the green button").

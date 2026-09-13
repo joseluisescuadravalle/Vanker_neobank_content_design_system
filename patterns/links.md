@@ -108,6 +108,12 @@ An email link is the object phishing imitates most, so it carries two extra rule
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: a link names its destination; nothing else. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Link text names its destination: "here", "click here", "read more", "learn more", "more",

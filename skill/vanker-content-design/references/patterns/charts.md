@@ -118,6 +118,12 @@ checked.
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: a chart states what happened; a frame on a fact is a distortion, and a category guess already carries its correction. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Every chart's figures are available as text, and the totals agree with the chart.

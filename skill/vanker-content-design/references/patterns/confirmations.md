@@ -55,6 +55,22 @@ Examples:
 }
 ```
 
+## Behavioral lens
+
+- **Applies** to the pre-action confirmation. Target behavior: `confirm-safely`. The
+  post-action confirmation follows `success.md`.
+- **Biases allowed.** Positive friction (one step that names the consequence, the amount
+  and whether it can be undone), default effect toward the safe choice (the safe action is
+  the easy one; on a destructive dialog the primary is still the named action, and the
+  decline is one tap).
+- **Biases forbidden here.** Positive friction on the way out (cancel, withdraw, close:
+  no extra step, no "are you sure" that argues), gain framing (a confirmation states
+  facts, it does not sell the action), any offer.
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "Friction protects, never retains", "Default protects the person". The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Pre-action money confirmations state amount, recipient, timing, and fee (or "no fee").

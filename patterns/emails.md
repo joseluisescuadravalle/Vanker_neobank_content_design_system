@@ -158,6 +158,12 @@ compliance problem (`../compliance/data-privacy.md`).
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: a transactional email states what happened; a marketing email is an offer and follows `offers.md`. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - The subject front-loads the event, stays around 50 characters, and carries no emoji, no

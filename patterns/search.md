@@ -131,6 +131,12 @@ suggestion that the person typed it wrong.
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: nothing found is an empty state without a decision. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - The placeholder names the scope; a bare "Search" fails.

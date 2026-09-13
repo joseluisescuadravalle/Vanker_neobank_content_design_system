@@ -172,6 +172,12 @@ a feature:
 | A Retry button on a maintenance screen | An action that cannot work. |
 | An offline modal | Blocks an app that still works. |
 
+## Behavioral lens
+
+- **Does not apply**: the person is recovering; the money sentence and the attribution are facts, and the ending closes by rule. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - A system error that mentions a payment, a transfer, or money states what happened to the

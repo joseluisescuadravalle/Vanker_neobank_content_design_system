@@ -89,6 +89,23 @@ A push is read by whoever is looking at the phone, not only by its owner.
 }
 ```
 
+## Behavioral lens
+
+- **Applies.** Target behaviors: `protect-account` (security and card alerts),
+  `keep-saving` (a saving reminder the person set). A push that asks for an action after
+  an error follows `system-errors.md` and takes no nudge. Marketing pushes are offers and follow `offers.md`.
+- **Biases allowed.** Default effect (protective alerts on by default, and the copy says
+  it can be changed), implementation intentions (a reminder that names the day and amount
+  the person chose), gain framing in a non-critical push.
+- **Biases forbidden here.** Repetition after a "Not now" (nagging; documented, not
+  checked), fear outside a real security event (`A-GUILT`, with `security` exempt),
+  scarcity, social proof, any plan the person did not set.
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "Default protects the person", "The person set the plan", "Frame is a gain and the fact
+  is complete". The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Title front-loads the key fact; about 40 characters or fewer.

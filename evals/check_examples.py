@@ -17,7 +17,7 @@ import sys
 import assertions
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-DIRS = ["components", "patterns", "terminology", "voice-and-tone", "compliance"]
+DIRS = ["components", "patterns", "terminology", "voice-and-tone", "compliance", "behavioral"]
 
 # Checks that need no surface to be meaningful. Surface-specific rules (CTA length, toast
 # punctuation, field-error shape) are not run here: the docs do not say which surface each

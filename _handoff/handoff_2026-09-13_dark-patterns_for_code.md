@@ -68,7 +68,7 @@ Owners (for the gallery and "which file governs this"): `decline-cta` →
 | banner | `Join thousands who already switched to Plus.` | fail A-SOCIAL-PROOF |
 | onboarding-step | `Don't let your savings lose value.` | fail A-GUILT |
 | security | `Someone tried to sign in from a new device. If it was not you, lock your card now.` | pass (exempt surface) |
-| offer-screen | `Upgrade to Plus` / body / `Upgrade` / `Not now` | pass |
+| offer-screen | `Plus for 4 € a month` / body / `Upgrade` / `Not now` | pass |
 | offer-screen | same without `Not now` | fail A-DECLINE-PRESENT, card under the second button |
 
 Amounts above carry a no-break space before `€` (U+00A0), as everywhere in the system.
@@ -92,3 +92,14 @@ Amounts above carry a no-break space before `€` (U+00A0), as everywhere in the
 
 The app lists the dimension "structure" where the rubric says "pattern fit" (unchanged,
 still open).
+
+## Addendum, 13 September (evening): `patterns/offers.md` now exists
+
+The offer surface has its own pattern file. Two things for the app:
+
+- The gallery example title changes from "Upgrade to Plus" to "Plus for 4 € a month"
+  (with the no-break space): `offers.md` rule 1 puts the price in the title so the first
+  thing seen is the real cost. Primary "Upgrade", decline "Not now", body unchanged.
+- Owners for `offer-screen` are now `patterns/offers.md` and `compliance/dark-patterns.md`;
+  for `decline-cta`, `patterns/offers.md`, `compliance/dark-patterns.md`, `patterns/ctas.md`
+  (see `rules.json` / `owners.json` after the next build).

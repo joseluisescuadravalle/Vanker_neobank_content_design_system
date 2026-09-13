@@ -118,6 +118,12 @@ Not one of them replaces another:
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: a quote with its markup is a disclosure; the only anchor allowed is the ECB (European Central Bank) reference rate, which is a fact. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - A screen showing a rate also shows the markup over the ECB reference rate and the cost in

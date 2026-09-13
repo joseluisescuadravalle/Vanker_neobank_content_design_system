@@ -143,7 +143,7 @@ taps, and the decline never leaves the task the person was doing.
 
 **Offer screen (title, body and buttons together)**
 
-- ✅ Title "Upgrade to Plus", body with the price, primary "Upgrade", tertiary "Not now".
+- ✅ Title "Plus for 4 € a month" (the price is the anchor, see `../patterns/offers.md`), body with what it includes, primary "Upgrade", tertiary "Not now".
 - ❌ The same screen with "Upgrade" as the only button. Reason: no way to say no.
 
 **Security warning (exempt from rule 6)**

@@ -42,7 +42,9 @@ _(to be completed as the system grows)_
 - `patterns/` — reusable UX copy patterns (buttons, errors, empty states, confirmations).
 - `components/` — component-level content specs.
 - `terminology/` — glossary and controlled vocabulary.
-- `compliance/` — regulatory guardrail layer.
+- `compliance/` — regulatory guardrail layer (dark patterns included, as checks).
+- `behavioral/` — the persuasion Vanker allows: eight biases, where each helps and where it
+  turns, and the behavioral lens as an opt-in review after the editorial one.
 - `skill/`: the system packaged as Claude skills. `vanker-content-design` is the system
   itself, generated from the folders above by `evals/build_skill.py`: install it to write
   with the rules instead of being judged by them. `vanker-figma-surfaces` builds a surface

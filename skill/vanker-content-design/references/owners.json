@@ -98,6 +98,7 @@
       "components/library/date-field.md"
     ],
     "decline-cta": [
+      "patterns/offers.md",
       "compliance/dark-patterns.md",
       "patterns/ctas.md"
     ],
@@ -178,6 +179,7 @@
       "patterns/notifications.md"
     ],
     "offer-screen": [
+      "patterns/offers.md",
       "compliance/dark-patterns.md"
     ],
     "onboarding-step": [

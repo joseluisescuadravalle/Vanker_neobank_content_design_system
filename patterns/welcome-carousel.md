@@ -123,6 +123,23 @@ Not this:
 }
 ```
 
+## Behavioral lens
+
+- **Applies.** Target behavior: `start-saving` in the broad sense (open the account, see
+  what Vanker does). This is the highest regulatory exposure in the product, so the lens
+  is narrow here.
+- **Biases allowed.** Gain framing (a benefit per card, no figures), goal gradient across
+  the cards (the dots, the count, "3 things to know"), peak-end (the last card is the one
+  that stays: it states what happens next, it does not close with a claim).
+- **Biases forbidden here.** Scarcity, social proof without a source, fear, a rate or a
+  price without its disclosure (`A-CARD-BODY`), any claim from
+  `../compliance/risk-warnings.md`, a default that skips the argument.
+- **What the reviewer scores.** "Serves the declared behavior", "Uses only allowed biases",
+  "Frame is a gain and the fact is complete", "Progress is real", "The ending closes".
+  The rest `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - Exactly three cards, each carrying one idea.

@@ -238,6 +238,12 @@ The spinner is never fuchsia on a dark surface (see `../components/foundations/c
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: a wait is not a decision; the only rule is that the line closes with what happens next (`../behavioral/biases.md`, peak-end), which the pattern already fixes. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - A waiting message says what is happening, in the present participle, with no ending

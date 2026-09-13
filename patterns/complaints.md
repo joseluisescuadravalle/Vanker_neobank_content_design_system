@@ -142,6 +142,12 @@ The person may be frightened, out of money, or right. Often more than one.
 }
 ```
 
+## Behavioral lens
+
+- **Does not apply**: the one place where any nudge would be sludge; the ending closes by regulation (`../compliance/complaints.md`), not by choice. The reviewer scores it `na`.
+
+See `../behavioral/biases.md` for the cards and `../behavioral/lens.md` for the rubric.
+
 ## Eval hooks
 
 - The route is reachable without the app and without passing a gate.

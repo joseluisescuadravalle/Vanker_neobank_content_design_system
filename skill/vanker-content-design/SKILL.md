@@ -221,6 +221,28 @@ sentence the system requires verbatim is wrong, and you say so in the delivery i
 changing the sentence. And it does not replace the checks: never send it copy the checker
 rejected. The cheap gate runs first, always.
 
+## Behavioral lens (opt-in, after the editorial review)
+
+The third step of the ladder, and never by default. The dark-pattern guardrails
+(`references/compliance/dark-patterns.md`) run always, with the checks. The lens is the
+persuasion Vanker allows (`references/behavioral/biases.md`, eight biases) reviewed
+against a declared target behavior (`references/behavioral/lens.md`), and it runs only
+when the user asks for it ("apply the behavioral lens", "behavioral review") **and** the
+editorial review already meets the rubric. A copy that has not met the rubric is not ready
+for a nudge.
+
+When asked:
+
+1. Read the **Behavioral lens** block of the pattern file for the surface. If it says
+   "does not apply", say so and stop: the reviewer scores it `na`.
+2. Ask for, or take from the request, the target behavior from the list in `lens.md`
+   (`start-saving`, `keep-saving`, `complete-setup`, `protect-account`, `confirm-safely`,
+   `decide-freely`, `close-well`). No declared behavior, no review.
+3. Score the measures of `lens.md` 0, 1, 2 or `na`, then the verdict line
+   (`Behavioral lens: pass, N of M applicable, against 85%`), then "What the behavioral
+   reviewer would change" as judgment, never as rewritten copy. A rewrite goes back
+   through the checks and the editorial review.
+
 ## Delivery format
 
 Plain text, one slot per line, `slot (surface): text`. A body that needs more than one
@@ -278,10 +300,10 @@ author is in the room.
 
 - `references/INDEX.md`: surface ids, the checks each surface runs, and the component,
   pattern, and compliance files that own it. Start here for any screen.
-- `references/CLAUDE.md`, `terminology/`, `voice-and-tone/`, `compliance/`, `patterns/`,
+- `references/CLAUDE.md`, `terminology/`, `voice-and-tone/`, `compliance/`, `behavioral/`, `patterns/`,
   `components/library/`: the system, copied verbatim from the repository by
   `evals/build_skill.py`. Do not edit them here; edit the source and rebuild.
-- `scripts/check_copy.py`: the deterministic checks (62 as of this build), same code as
+- `scripts/check_copy.py`: the deterministic checks (69 as of this build), same code as
   `evals/assertions.py` in the repository, with `rules.json` beside it.
 - `scripts/editorial_review.py`: writes the editorial review prompt for a delivery-format
   file, choosing the reference files by surface from `references/owners.json`.

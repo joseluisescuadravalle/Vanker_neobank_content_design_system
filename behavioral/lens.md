@@ -76,10 +76,11 @@ The reviewer returns, in this order:
 
 1. The measures with their scores and `na` where they do not apply.
 2. The verdict line: `Behavioral lens: pass, N of M applicable, against 85%` or `fail`.
-3. **What the behavioral reviewer would change**: judgment, not copy. It names the bias in
-   play and the line where it turns, and it never rewrites the string; the rewrite goes
-   back through the rules and the editorial review, because any change to the copy
-   invalidates both.
+3. **What the behavioral reviewer would change**: judgment first. It names the bias in
+   play and the line where it turns.
+4. The rewrite, when there is something to change: the copy with only the lines named in
+   point 3 changed, within the biases the pattern allows. It passes the deterministic
+   checks before it is offered; once the person accepts it, it is the approved copy.
 
 ## When it runs
 
@@ -101,7 +102,8 @@ pattern file for this surface, and compliance/dark-patterns.md.
 Surface: {surface}. Pattern: {pattern}. Declared target behavior: {behavior}.
 Copy: {candidate}
 Score each measure of lens.md 0, 1, 2 or na. Then the verdict line. Then "What the
-behavioral reviewer would change", as judgment, never as rewritten copy.
+behavioral reviewer would change", as judgment. Then the rewrite, changing only those
+lines.
 ```
 
 ```json
@@ -112,8 +114,8 @@ behavioral reviewer would change", as judgment, never as rewritten copy.
     "target-behaviors": ["start-saving", "keep-saving", "complete-setup", "protect-account", "confirm-safely", "decide-freely", "close-well"],
     "measures": ["serves-declared-behavior", "allowed-biases-only", "default-protects", "progress-real", "frame-gain-complete", "anchor-matches-person", "friction-protects", "person-set-plan", "ending-closes"],
     "pass": { "min-per-measure": 1, "allowed-biases-only": 2, "threshold": 0.85 },
-    "output": ["scores", "verdict", "what-the-reviewer-would-change"],
-    "rewrites-copy": false,
+    "output": ["scores", "verdict", "what-the-reviewer-would-change", "rewrite"],
+    "rewrites-copy": "only the lines named in the change list, checked before it is offered",
     "skill-activation": "explicit"
   }
 }
@@ -122,6 +124,8 @@ behavioral reviewer would change", as judgment, never as rewritten copy.
 ## Eval hooks
 
 - The review never runs without a declared target behavior (app, skill).
-- The review never runs before the editorial review meets the rubric or the person accepts its rewrite (app).
+- The review never runs before the editorial review meets the rubric or the person accepts
+  its rewrite (app).
 - "Uses only allowed biases" is 2 on every pass.
-- The reviewer output carries no rewritten copy.
+- The rewrite changes only the lines named in the change list and passes the deterministic
+  checks before it is offered.

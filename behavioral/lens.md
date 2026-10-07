@@ -6,7 +6,7 @@ The behavioral lens as a review: what the author declares, what the reviewer sco
 when it runs. It is the third step of the ladder, after the deterministic checks (correct)
 and the editorial review (good): a copy that has not met the rubric is not ready for a
 nudge, so the behavioral review unlocks only when the editorial review reports "meets the
-rubric".
+rubric", or the person accepts its rewrite.
 
 **The thesis: a nudge is judged against a declared intention, never in the abstract.**
 The author states what the screen is for; the reviewer scores whether the copy serves that
@@ -83,8 +83,9 @@ The reviewer returns, in this order:
 
 ## When it runs
 
-- Only after the editorial review reports "meets the rubric". A copy that has not met it
-  is reviewed for quality first.
+- Only after the editorial review reports "meets the rubric", or the person accepts its
+  rewrite. Accepting the rewrite is the approval: the lens runs on the last copy the
+  person approved. A copy edited after that is reviewed for quality first.
 - Only when the author declares a target behavior. No declaration, no review; the panel
   says so.
 - Never by default in the Claude skill: the lens is invoked with an explicit ask
@@ -106,7 +107,7 @@ behavioral reviewer would change", as judgment, never as rewritten copy.
 ```json
 {
   "behavioral-lens": {
-    "unlocks-after": "editorial review meets the rubric",
+    "unlocks-after": "editorial review meets the rubric, or the person accepts its rewrite",
     "requires": "declared target behavior",
     "target-behaviors": ["start-saving", "keep-saving", "complete-setup", "protect-account", "confirm-safely", "decide-freely", "close-well"],
     "measures": ["serves-declared-behavior", "allowed-biases-only", "default-protects", "progress-real", "frame-gain-complete", "anchor-matches-person", "friction-protects", "person-set-plan", "ending-closes"],
@@ -121,6 +122,6 @@ behavioral reviewer would change", as judgment, never as rewritten copy.
 ## Eval hooks
 
 - The review never runs without a declared target behavior (app, skill).
-- The review never runs before the editorial review meets the rubric (app).
+- The review never runs before the editorial review meets the rubric or the person accepts its rewrite (app).
 - "Uses only allowed biases" is 2 on every pass.
 - The reviewer output carries no rewritten copy.

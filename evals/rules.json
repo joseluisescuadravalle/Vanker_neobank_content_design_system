@@ -1428,7 +1428,6 @@
       "world-class",
       "cutting-edge",
       "seamless",
-      "effortless",
       "the best",
       "the cheapest",
       "the fastest",
@@ -1635,6 +1634,14 @@
       "status-label",
       "tag",
       "toggle-label"
+    ],
+    "ease_ok_surfaces": [
+      "carousel-body",
+      "carousel-headline",
+      "email-subject",
+      "marketing",
+      "offer-screen",
+      "push-title"
     ],
     "decline_labels": [
       "Not now",

@@ -13,7 +13,7 @@ import assertions
 DOC = os.path.join(os.path.dirname(__file__), "..", "terminology", "banned-terms.md")
 
 # Documented rules that a word list cannot express; each has its own logic in assertions.py.
-NOT_A_WORD_LIST = {"login / log-in", "& in body copy"}
+NOT_A_WORD_LIST = {"login / log-in", "& in body copy", "easy", "easily", "effortless", "effortlessly"}
 
 
 def documented_terms(path=DOC):

@@ -11,7 +11,7 @@ import re
 BANNED_TERMS = [
     # Hype and marketing inflation
     "revolutionary", "game-changing", "amazing", "incredible", "best-in-class",
-    "world-class", "cutting-edge", "seamless", "effortless",
+    "world-class", "cutting-edge", "seamless",
     # Unevidenced marketing claims
     "the best", "the cheapest", "the fastest", "no strings attached", "free forever",
     # Pressure
@@ -42,6 +42,11 @@ LOGIN_AS_VERB = re.compile(r"\b(?:to|please|can|could|must|cannot|will|and|or)\s
 AMPERSAND_OK = {"cta", "button", "label-in", "label-out", "status-label", "status", "badge",
                 "tag", "toggle-label", "option", "dropdown-option", "preset-amount",
                 "accordion-header", "flow-intro-cta", "counter"}
+# An ease claim: the brand may promise in marketing, but in the product it shows it is
+# simple, it does not assert it. Allowed only in these surfaces.
+EASE_OK = {"carousel-headline", "carousel-body", "marketing", "offer-screen",
+           "push-title", "email-subject"}
+EASE_RE = re.compile(r"\b(?:easy|easily|effortless(?:ly)?)\b", re.IGNORECASE)
 BANNED_RE = [(t, re.compile(r"\b" + re.escape(t).replace(r"\ ", r"\s+") + r"s?\b", re.IGNORECASE))
              for t in BANNED_TERMS]
 PROHIBITED_CLAIMS = [
@@ -91,6 +96,8 @@ def no_banned_terms(text, surface=None):
         hits.append("login (as a verb; 'log in' is the verb, 'login' only a noun)")
     if "&" in text and (surface or "").lower() not in AMPERSAND_OK:
         hits.append("& in body copy (use 'and'; the ampersand is for tight labels only)")
+    if EASE_RE.search(text) and (surface or "").lower() not in EASE_OK:
+        hits.append("ease claim outside marketing (show it is simple, do not assert it; allowed in welcome carousel, offers, push, and marketing email)")
     return (not hits, ("banned: " + ", ".join(hits)) if hits else "ok")
 
 

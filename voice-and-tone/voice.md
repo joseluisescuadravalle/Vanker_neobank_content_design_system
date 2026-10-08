@@ -86,8 +86,10 @@ promotional copy; everywhere else Vanker is warm but serious.
 
 ## Words to avoid
 
-- Hype: revolutionary, amazing, incredible, game-changing, best-in-class, effortless
-  (as a claim).
+- Hype: revolutionary, amazing, incredible, game-changing, best-in-class.
+- Ease claims (easy, easily, effortless, effortlessly): marketing only (welcome carousel,
+  offers, push, and marketing email); elsewhere in the product, show it is simple, do not
+  assert it.
 - Jargon without explanation: leverage, utilize, provision, disbursement, remittance.
 - Pressure: hurry, last chance, do not miss out, act now.
 - Blame: you failed to, you entered the wrong, invalid.

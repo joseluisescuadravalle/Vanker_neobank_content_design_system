@@ -68,6 +68,9 @@ seen, the decline is as close as the accept, and the answer is taken as final. E
    gain frame helps the person weigh the offer; it never replaces the cost.
 8. **A partner product says who provides it before the tap.** Reason: the person is
    about to deal with another company under other terms.
+9. **An ease claim is allowed.** easy, easily, effortless and effortlessly are fine in an
+   offer, which is marketing; elsewhere in the product it shows it is simple, it does not
+   assert it. Reason: the brand may promise where it sells, not where something goes wrong.
 
 ## Accessibility
 

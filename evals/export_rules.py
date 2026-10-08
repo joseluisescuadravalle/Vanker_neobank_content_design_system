@@ -42,6 +42,7 @@ def build():
             "title_case_ok": sorted(assertions.TITLE_CASE_OK),
             "proper_nouns": assertions.PROPER_NOUNS,
             "ampersand_ok_surfaces": sorted(assertions.AMPERSAND_OK),
+            "ease_ok_surfaces": sorted(assertions.EASE_OK),
             "decline_labels": assertions.DECLINE_LABELS,
             "scarcity_terms": assertions.SCARCITY_TERMS,
             "social_proof_terms": assertions.SOCIAL_PROOF_TERMS,

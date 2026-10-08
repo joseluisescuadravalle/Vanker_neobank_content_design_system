@@ -5,7 +5,7 @@
     "evals/rubric.md": "53524d8755a59834be4d2da625c9f948cf2f897abdd63ec8af15ddf4c47c4707",
     "evals/judge-prompt.md": "9f7107af6ad1d1bd958ae7742d33299773700a9350cfb8a2513d77be6ae6dfeb",
     "terminology/README.md": "24c9dc8a866db3d0bb984e6616b775f7153d65a59ca3f0c203a8dc65b82223d0",
-    "terminology/banned-terms.md": "3705e930f177ca195171177cbec160bc46fa57fa4cd795782680c62fec384e3e",
+    "terminology/banned-terms.md": "1c1f636e1cca7d448c1ac50b78dec89eac84147ecf5c66877dc2ab1721e97825",
     "terminology/capitalization-and-punctuation.md": "05a0539f7d0fd81ecbe9c56d590fac4914057eacc348b6b73601e94d62da8108",
     "terminology/glossary.md": "0227abef11002d1f0e1f8ac62efd6afb5aa9364f63a833d4e29563d9c23933dc",
     "terminology/localization.md": "0068b3a2a764dfa695bc18e63bdfab67b486bb35187ca9ae000ee2bfa41f7a5d",
@@ -13,7 +13,7 @@
     "voice-and-tone/README.md": "30e12d038f7b16bd10a97e55324875be2788fe4e2e21dd834f3abe4caffe2802",
     "voice-and-tone/inclusive-language.md": "141d8380fd4a55a4bc63cddb1b6cf51d02254a7d11b74a61b4bcf7b9669b2554",
     "voice-and-tone/tone.md": "c9d0d1039f825ace75d6f8b177f1698f017c3342b4dbc7989d47561e88ebc45e",
-    "voice-and-tone/voice.md": "6d24338d51512f95728753a49e3229cfeb6855f51f9a6fed2cecd17d2920352b",
+    "voice-and-tone/voice.md": "74206328c0cac8376e5bf796e7fdb7622bbcaf367e04d7fabc87c24911ab3c42",
     "compliance/README.md": "e52ccc7e7d6bb247f9ae4ed9e48edded3f5ac712c4543b2f11bdec6e81b3200c",
     "compliance/accessibility.md": "be8109ce3a94225c95edfc15ad0fa358c1cae6b3c54381f2312afac1e15800be",
     "compliance/complaints.md": "30bf8e44755aa123abd3f8257cedc97601ae7fa0c7575095847974915281e6c3",
@@ -46,12 +46,12 @@
     "patterns/links.md": "3a7ad2d8438a2927e8fffe45c5e18cba1bef02831c1a919a95e0eb860bab2652",
     "patterns/loading.md": "99803cc1e4c1bcab953209f44f45e34387d438bde861f609b0a05e7f29b31a5f",
     "patterns/notifications.md": "542111accf734f2fc255e9b482ace01fd9fa3585677e3d29183213e2136e4c67",
-    "patterns/offers.md": "7344be51f38fc3486d6c7b9b3e76d92f7db2c4420a293a6330bf4176701c33f1",
+    "patterns/offers.md": "47264069eb9e434a9a42130d4213c454d03ccdd2c68d4719e2e9aad957421082",
     "patterns/permissions.md": "37c8087ce0ccf86797fb2bfbe434ba137228915f2c32cf6940604eee1a571551",
     "patterns/search.md": "4409afa432b160a79c895e1c516214d97f83a57070a48b8b0047f2a766648fdb",
     "patterns/success.md": "c5465ec081d7bcdb568984ed64ba166306994e55ba86db97d3eaa411bfe83479",
     "patterns/system-errors.md": "48492aee44d9336c8230a1f22f384cb2b1e53e288050c9be24533953d03fe277",
-    "patterns/welcome-carousel.md": "c6daafb9b87cb5f8b0cb1607699728772934556ace44deee93c55c42b3880d70",
+    "patterns/welcome-carousel.md": "ca8946318225a6536c348f93765013f2b48d8ed074e8b75821a42d61ae1c4ca8",
     "components/library/README.md": "fbf960425125eda888802a1dff2ec5ef9e8bf59d391b9332643917629982ad4c",
     "components/library/accordion.md": "ba01998062f30bf002ab5da268e9143513bfe3d77baa5ba66e104d8ad561129c",
     "components/library/amount-input.md": "67dc9e9f3c1343d196689d8397bbd3c16f34cfdcc8e0e429e312ca65dcfa7afe",
@@ -77,7 +77,7 @@
     "components/library/transaction-row.md": "51e9d7d3814786ce06415dee940f780abd833cb805a4b73fc0e33cb863573be2"
   },
   "scripts": {
-    "assertions.py": "274cc5a398e55eaddd878c5742e2bb4f5e7fb8c8fde9cde7456a7e289d342c5c",
-    "rules.json": "e86f3678791ba2020c07908ffc26534ad20d36aefd59cd64cc97ce780f6ac197"
+    "assertions.py": "322fbd41f325c622d9b78ddcc7ab9f9636b29d502be9d9af8a11293012be32ec",
+    "rules.json": "ed3071ea05eee578026474f576469d3603ce96af2ff8aea97b4283f734b3784b"
   }
 }

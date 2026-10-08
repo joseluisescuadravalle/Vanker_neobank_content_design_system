@@ -65,6 +65,9 @@ not as a reminder:
 - **No urgency and no scarcity.** There is no deadline on opening a bank account.
 - Personality is allowed here, humor lightly; hype is not (see
   `../terminology/banned-terms.md`).
+- **An ease claim is allowed here** (easy, easily, effortless, effortlessly): this is
+  marketing, and the brand may promise. In the product — an error, a verification, a
+  confirmation — it shows it is simple, it does not assert it.
 
 ## Examples (illustrative)
 

@@ -13,7 +13,8 @@ assertions in `../evals/`.
 | --- | --- | --- |
 | revolutionary, game-changing, incredible, amazing | describe the concrete benefit | Vanker earns trust with clarity, not hype. |
 | best-in-class, world-class, cutting-edge | say what it actually does | Empty claims. |
-| seamless, effortless (as a claim) | show it is simple, do not assert it | Overused and often untrue. |
+| seamless (as a claim) | show it is simple, do not assert it | Overused and often untrue. |
+| easy, easily, effortless, effortlessly | Allowed only in marketing (welcome carousel, offers, push, and marketing email). Elsewhere in the product, show it is simple, do not assert it. | In marketing the brand may promise; in an error or a verification, a promise of ease rings false exactly when something is not. |
 
 ## Pressure
 

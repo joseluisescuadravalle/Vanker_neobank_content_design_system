@@ -89,14 +89,6 @@ and the three depend on each other: if one fails, it all fails.
 | "Your session will expire soon." | "You have 2 minutes left. Do you want to stay logged in?" | It warns and says how much time is left. |
 | "Arrives in 3-5 working days." | "Arrives in 3 to 5 working days." | A hyphen next to a figure reads as a minus sign. |
 
-## Accessibility statement
-
-Vanker publishes an accessibility statement describing conformance, known limitations, and
-how to report a problem, and it acts on what is reported. The route to report is written in
-the same plain language as everything else, and it is not the only route: someone who cannot
-use the form must be able to reach a person. See `../compliance/accessibility.md` and
-`complaints.md`.
-
 ## Behavioral lens
 
 - **Does not apply**: a cross-cutting rule, not a decision the person takes. The reviewer scores it `na`.

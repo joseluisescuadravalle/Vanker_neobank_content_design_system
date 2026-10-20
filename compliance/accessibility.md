@@ -19,8 +19,11 @@ services must meet **EN 301 549 / WCAG 2.1 Level AA**.
 
 ## Accessibility statement
 
-- Publish an accessibility statement describing conformance, known limitations, and a
-  way for people to report accessibility problems, and act on those reports.
+- Publish an accessibility statement describing conformance, known limitations, and a way
+  for people to report accessibility problems. Vanker acts on those reports.
+- The route to report is written in the same plain language as everything else. It is not
+  the only route: someone who cannot use the form must be able to reach a person (see
+  `complaints.md`).
 
 ## Where the content rules live
 

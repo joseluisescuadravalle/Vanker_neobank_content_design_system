@@ -122,7 +122,7 @@ A string whose surface is not listed runs the body checks: `A-NO-EMOJI`, `A-EURO
 - `compliance/dark-patterns.md`: What Vanker never does to steer a decision, named pattern by pattern, with the signal each one leaves in the copy and the check that catches it. This is the deterministic half of the behavioral layer: the prohibitions. T
 - `compliance/data-privacy.md`: How Vanker talks about personal data (GDPR) and tracking (ePrivacy). Plain, honest, and in the person's control.
 - `compliance/disclosures.md`: What Vanker must disclose, and where it appears. Amounts follow the European money format (see `../terminology/glossary.md`).
-- `compliance/framework.md`: The European regulations relevant to an online euro-area bank, and the content obligation each creates for Vanker. Dates reflect the position as of 2026; confirm the current state before any real use.
+- `compliance/framework.md`: The European regulations relevant to an online euro-area bank, and the content obligation each creates for Vanker. Dates reflect the position as of 2026; the current state will need to be confirmed before any real use.
 - `compliance/identity-kyc.md`: How Vanker talks about identity verification and anti-money-laundering checks (AMLR / AMLA). The rules are strict; the tone stays plain, calm, and never accusatory.
 - `compliance/principles.md`: The cross-cutting rules that apply to all customer-facing content, whatever the surface.
 - `compliance/risk-warnings.md`: Required warnings and prohibited claims. A warning is clear, prominent, and never buried.

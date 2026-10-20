@@ -1,6 +1,6 @@
 # Identity and KYC
 
-**Status: normative within the fiction. Illustrative, not verified.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 How Vanker talks about identity verification and anti-money-laundering checks (AMLR /
 AMLA). The rules are strict; the tone stays plain, calm, and never accusatory.

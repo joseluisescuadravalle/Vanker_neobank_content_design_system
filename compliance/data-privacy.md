@@ -1,6 +1,6 @@
 # Data and privacy
 
-**Status: normative within the fiction. Illustrative, not verified.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 How Vanker talks about personal data (GDPR) and tracking (ePrivacy). Plain, honest, and
 in the person's control.

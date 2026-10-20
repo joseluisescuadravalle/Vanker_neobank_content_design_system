@@ -1,22 +1,22 @@
 # Compliance principles
 
-**Status: normative within the fiction. Illustrative, not verified.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 The cross-cutting rules that apply to all customer-facing content, whatever the surface.
 
 ## 1. Transparency and fairness
 
-- Present the real offer plainly. No misleading, exaggerated, or half-true copy (Unfair
+- Present the real offer clearly. No misleading, exaggerated, or half-true text (Unfair
   Commercial Practices Directive).
 - Every cost, risk, condition, and limit that affects a decision appears **before** the
   person commits, not after.
 - No dark patterns: no pre-ticked boxes, no disguised costs, no pressure, no harder path
   to decline than to accept (Distance Marketing of Financial Services). Each pattern,
-  its signal in the copy and its check are in `dark-patterns.md`.
+  its signal in the copy and its check are documented in `dark-patterns.md`.
 
 ## 2. Prohibited claims
 
-Never write copy that:
+Never write text that:
 
 - Promises or implies guaranteed returns, profit, or a "risk-free" outcome.
 - Calls a product "free" when conditions or costs apply.

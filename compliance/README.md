@@ -1,6 +1,6 @@
 # Compliance
 
-**Status: normative within the fiction. Illustrative, not verified. See `/DISCLAIMER.md`.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 The regulatory guardrail layer. In the precedence order of `/CLAUDE.md`, this layer sits
 directly below `CLAUDE.md` and overrides voice, patterns, and components: when a rule

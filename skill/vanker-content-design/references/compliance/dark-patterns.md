@@ -1,6 +1,6 @@
 # Dark patterns
 
-**Status: normative within the fiction. Illustrative, not verified. See `/DISCLAIMER.md`.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 What Vanker never does to steer a decision, named pattern by pattern, with the signal each
 one leaves in the copy and the check that catches it. This is the deterministic half of the
@@ -27,77 +27,85 @@ twice: from Vanker, and from whoever pretends to be Vanker.
 ## The patterns
 
 Each pattern names the bias it exploits, because a rule an agent understands is a rule it
-can apply to a case the list never saw. Every card has the same four parts.
+can apply to a case the list never saw. Every card has the same five parts.
 
 ### 1. Confirmshaming
 
-- **What it is.** Wording the decline so that saying no costs the person some self-respect
-  ("No thanks, I like paying fees").
+- **What it is.** Wording the decline to an action so that it makes the person feel
+  uncomfortable ("No thanks, I'd rather keep paying fees").
 - **What it exploits.** Loss aversion and self-image.
-- **The signal in the copy.** A decline label that leaves the controlled set, speaks in
-  the first person, or names a cost or a loss.
-- **What Vanker does instead.** Declines with "Not now", "Cancel", "Back" or "Skip",
-  nothing else.
+- **The signal in the copy.** A decline label that speaks in the first person and names a
+  cost or a loss.
+- **What Vanker does instead.** Declines explicitly, using "Not now", "Cancel", "Back" or
+  "Skip", nothing else.
+- **Checked as.** no confirmshaming.
 
 ### 2. False scarcity and countdowns
 
-- **What it is.** A limit or a clock the product has no reason to have ("Only 3 spots left
-  at this rate", "Offer ends in 04:59").
+- **What it is.** A limit or a time counter the product should not have ("Only 3 left at
+  this rate", "Offer ends in 04:59").
 - **What it exploits.** The scarcity heuristic.
 - **The signal in the copy.** Scarcity and time-pressure vocabulary, or a countdown. A
-  bank's rates, accounts and cards are not seats on a flight.
-- **What Vanker does instead.** A real deadline is a date, written plainly (see
+  bank's rates, accounts and cards cannot be treated like seats on a flight.
+- **What Vanker does instead.** A real deadline is a date, written clearly (see
   `../terminology/numbers-and-dates.md`), never a countdown.
+- **Checked as.** no false scarcity.
 
 ### 3. Trick questions
 
 - **What it is.** A consent or an option worded so that the natural answer does the
   opposite of what it reads ("Untick this box to not receive offers").
-- **What it exploits.** Cognitive load and the default.
+- **What it exploits.** The effort of understanding a double negative and the tendency not
+  to change (status quo).
 - **The signal in the copy.** Two negators in one checkbox or radio label.
 - **What Vanker does instead.** Every checkbox and radio label is one positive statement
   about what happens when it is selected.
+- **Checked as.** no double negative.
 
 ### 4. Hidden cost
 
 - **What it is.** An asterisk on a figure, a "free*", or a "from 0,99 €" whose condition
-  lives somewhere else.
+  is not shown at the same level.
 - **What it exploits.** Anchoring: the first number seen is the number remembered.
-- **The signal in the copy.** An asterisk next to a figure or to "free"; "from" before an
-  amount with no condition in the same sentence.
+- **The signal in the copy.** An asterisk next to a figure or next to the word "free";
+  "from" before an amount with no condition in the same sentence.
 - **What Vanker does instead.** The exact amount and its condition sit in the same
-  sentence, or the sentence does not carry the amount.
+  sentence, or the sentence does not include the amount.
+- **Checked as.** price without asterisk.
 
 ### 5. Unsourced social proof
 
-- **What it is.** "Join thousands who already switched", "most people choose Plus".
-- **What it exploits.** The bandwagon effect.
-- **The signal in the copy.** A crowd without a figure, a source and a date: a claim
-  Vanker cannot back.
-- **What Vanker does instead.** A number with its source may be used; a crowd without one
-  may not.
+- **What it is.** Phrases like "Join the thousands who already switched", "most people
+  choose Plus".
+- **What it exploits.** The tendency to do what we believe most people do.
+- **The signal in the copy.** A reference to many people ("thousands", "most") with no
+  figure, no source and no date.
+- **What Vanker does instead.** Only gives a figure of people if it can cite where it comes
+  from.
+- **Checked as.** no "thousands" or "most" without a source.
 
 ### 6. Guilt and fear
 
-- **What it is.** Turning loss aversion against the person: "Don't let your savings lose
-  value", "You'll regret this", "before it's too late".
+- **What it is.** Turning loss aversion against the person. For example: "Don't let your
+  savings lose value", "You'll regret this", "Do it before it's too late".
 - **What it exploits.** Loss aversion.
-- **The signal in the copy.** Regret, loss and "too late" vocabulary aimed at the person.
-  Three surfaces are exempt by shape, because a real consequence may need naming there:
-  `security`, `system-error` and `auth-error`. Marketing and onboarding are not exempt:
-  they are where this language appears, and where the regulator looks first.
+- **The signal in the copy.** Regret, loss and "too late" phrases aimed at the person.
+  Marketing and onboarding are not exempt: they are where this language appears, and where
+  the regulator looks first.
 - **What Vanker does instead.** States the benefit or the fact and lets the person decide.
+- **Checked as.** no guilt framing.
 
-### 7. No way to say no
+### 7. Forced action and obstruction
 
-- **What it is.** An offer, an upgrade or a consent with a primary action and no decline
-  ("Accept" alone, or a decline that only appears after scrolling).
-- **What it exploits.** The default.
-- **The signal in the copy.** A screen that asks for an acceptance and carries no decline
-  from the controlled set.
+- **What it is.** An offer, an upgrade or a consent with a primary action and no way to
+  decline (an "Accept" button only, or a decline that only appears after scrolling).
+- **What it exploits.** The tendency to follow the only path the screen shows.
+- **The signal in the copy.** A screen that asks for an acceptance and shows no option to
+  decline at the same level.
 - **What Vanker does instead.** Every screen that asks the person to accept something
-  carries the decline beside it, at the same cost in taps, and the decline never leaves
-  the task the person was doing.
+  carries the decline at the same visual level. The decline never leaves the task the
+  person was doing.
+- **Checked as.** there is a way to decline.
 
 ## Rules
 

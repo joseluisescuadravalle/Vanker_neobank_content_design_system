@@ -42,3 +42,7 @@ Identity verification (KYC, Know Your Customer) is a fourth zone: nothing accele
 Rules first (the deterministic checks), then the editorial review, then this lens. A copy
 that has not met the rubric is not ready for a nudge; the behavioral review unlocks only
 when the editorial review meets the rubric. See `lens.md`.
+
+The editorial review scores the 7 dimensions the system rules do not check: brand voice,
+tone fit, clarity, approved terms, pattern fit, compliance and accessibility (see
+`../evals/rubric.md`).

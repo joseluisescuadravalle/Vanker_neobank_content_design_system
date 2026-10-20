@@ -1,12 +1,12 @@
-# Regulatory framework (register)
+# Regulatory framework
 
-**Status: normative within the fiction. Illustrative, not verified.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 The European regulations relevant to an online euro-area bank, and the content obligation
-each creates for Vanker. Dates reflect the position as of 2026; confirm the current state
-before any real use.
+each creates for Vanker. Dates reflect the position as of 2026; the current state will need
+to be confirmed before any real use.
 
-| Regulation | What it is | Content obligation for Vanker | Lands in |
+| Regulation | What it is | Content obligation for Vanker | Developed in |
 | --- | --- | --- | --- |
 | **PSD2** → **PSD3 + PSR** (Payment Services Directive 3 / Payment Services Regulation) | The core payments rulebook. PSD2 is in force; PSD3 and the PSR are expected to apply around 2026 to 2027 (roughly 21 months after entry into force, with Verification of Payee at about 27 months). | Strong Customer Authentication messaging; transparency of terms, charges, and execution times; fraud protection and payee matching; complaints handling. | `security-payments`, `disclosures`, `complaints` |
 | **Instant Payments Regulation** (EU 2024/886) | Instant euro credit transfers. | Offer instant transfers; charge no more than for standard transfers; show Verification of Payee (VoP) results before sending (euro area from 9 October 2025). | `security-payments` |

@@ -1,6 +1,6 @@
 # Security and payments
 
-**Status: normative within the fiction. Illustrative, not verified.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 Content rules for authentication, payee verification, payment transparency, and fraud.
 

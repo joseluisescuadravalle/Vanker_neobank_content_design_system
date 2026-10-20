@@ -1,6 +1,6 @@
 # Complaints
 
-**Status: normative within the fiction. Illustrative, not verified.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 Everyone has the right to complain, and Vanker makes it easy. Never discourage, dismiss,
 or obstruct a complaint.

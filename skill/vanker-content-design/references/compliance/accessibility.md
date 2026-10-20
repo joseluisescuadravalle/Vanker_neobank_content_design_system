@@ -1,6 +1,6 @@
 # Accessibility (European Accessibility Act)
 
-**Status: normative within the fiction. Illustrative, not verified.**
+**Status:** mandatory rules for Vanker, a fictional bank. They show how to apply the regulation, but no legal professional has reviewed them.
 
 Accessibility is a **legal requirement**, not a nicety. Under the European Accessibility
 Act (Directive EU 2019/882), in force from **28 June 2025**, Vanker's digital banking
@@ -19,11 +19,11 @@ services must meet **EN 301 549 / WCAG 2.1 Level AA**.
 
 ## Accessibility statement
 
-- Publish an accessibility statement describing conformance, known limitations, and a way
-  for people to report accessibility problems. Vanker acts on those reports.
-- The route to report is written in the same plain language as everything else. It is not
-  the only route: someone who cannot use the form must be able to reach a person (see
-  `complaints.md`).
+By law, Vanker publishes a page that states which level it meets (WCAG 2.1 AA), which parts
+it knows still fail and how to report a barrier. Whoever reports one gets an answer and the
+failure is fixed. That reporting channel is written in plain language, like everything else.
+It is never just a form: there is also a person to talk to, in case the form itself is not
+accessible (see `complaints.md`).
 
 ## Where the content rules live
 
